@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageTest;
+use App\Http\Controllers\CollectionController;
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +42,19 @@ Route::get('/profile', function () {
 });
 
 Route::get('/collection', function () {
-    return view('collection');
+    return view('/collection/index');
 });
 
 Route::get('/detail', function () {
     return view('detail');
 });
+
+
+Route::get('/upload', [ImageTest::class, "create"]);
+Route::post('/upload', [ImageTest::class, "store"]);
+
+Route::get('/collection/addCollection', [CollectionController::class, "create"]);
+Route::post('/collection/addCollection', [CollectionController::class, "store"]);
+
+
+
