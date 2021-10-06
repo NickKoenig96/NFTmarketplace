@@ -17,6 +17,7 @@ class CreateCollectionsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
+            $table->string('image_file_path');
             $table->timestamps();
         });
     }
