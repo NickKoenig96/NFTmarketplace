@@ -7,6 +7,8 @@
         <p>id = {{ $collection->id }}</p>
         <p>{{ $collection->title }}</p>
         <a href="delete/{{ $collection->id }}">DELETE</a>
+        <a href="edit/{{ $collection->id }}">EDIT</a>
+
     </div>
 
 @endforeach

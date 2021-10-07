@@ -20,7 +20,6 @@ class walletController extends Controller
     public function index()
     {
         $collections = \DB::table("collections")->get();
-        // dd($collections);
         $data["collections"] = $collections;
          return view('wallet/index', $data);
     }
@@ -54,7 +53,10 @@ class walletController extends Controller
      */
     public function show($id)
     {
-        //
+        $collection = Collection::find($id);
+        $data['collection'] = $collection;
+        return view('collection/editCollection', $data);
+
     }
 
     /**
@@ -65,7 +67,6 @@ class walletController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -75,9 +76,17 @@ class walletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $image_file_path = $request->file('collectionImage')->getClientOriginalName();
+        $request->file('collectionImage')->store('public/images/');
+       
+        $collection = Collection::find($request->id);
+        $collection->title = $request->input('collectionTitle');
+        $collection->description = $request->input('collectionDescription');
+        $collection->image_file_path = $image_file_path;
+        $collection->save();
+        return redirect('./wallet');
     }
 
     /**
@@ -89,7 +98,6 @@ class walletController extends Controller
     public function destroy($id)
     {
         $data = Collection::find($id);
-        //dd($data);
         $data->delete();
         return redirect('/wallet');
     }

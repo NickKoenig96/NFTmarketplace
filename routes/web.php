@@ -49,23 +49,26 @@ Route::get('/detail', function () {
 });
 
 
-Route::get('/upload', [ImageTest::class, "create"]);
-Route::post('/upload', [ImageTest::class, "store"]);
 
-
+//colection
 Route::get('/collection', [CollectionController::class, "index"]);
 
-
+//wallet
 Route::get('/wallet', [walletController::class, "index"]);
+//wallet (add/edit/remove collection)
 Route::get('/delete/{id}', [walletController::class, "destroy"]);
-
-
-
-
-
-
+Route::get('/edit/{id}', [walletController::class, "show"]);
+Route::post('/collection/editCollection', [walletController::class, "update"]);
 Route::get('/collection/addCollection', [CollectionController::class, "create"]);
 Route::post('/collection/addCollection', [CollectionController::class, "store"]);
+
+
+
+
+
+
+
+
 
 
 
