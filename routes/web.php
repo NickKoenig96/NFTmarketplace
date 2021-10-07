@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\walletController;
+
 
 
 
@@ -41,9 +43,6 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/collection', function () {
-    return view('/collection/index');
-});
 
 Route::get('/detail', function () {
     return view('detail');
@@ -53,8 +52,27 @@ Route::get('/detail', function () {
 Route::get('/upload', [ImageTest::class, "create"]);
 Route::post('/upload', [ImageTest::class, "store"]);
 
+
+Route::get('/collection', [CollectionController::class, "index"]);
+
+
+Route::get('/wallet', [walletController::class, "index"]);
+Route::get('/delete/{id}', [walletController::class, "destroy"]);
+
+
+
+
+
+
 Route::get('/collection/addCollection', [CollectionController::class, "create"]);
 Route::post('/collection/addCollection', [CollectionController::class, "store"]);
+
+
+
+
+
+
+
 
 
 

@@ -14,4 +14,9 @@ class ImageTest extends Controller
 
         dd($request);
     }
+
+    public function destroy(Request $request){
+
+        dd($request);
+    }
 }

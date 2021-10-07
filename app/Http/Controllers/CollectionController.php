@@ -8,8 +8,17 @@ use App\Models\Collection;
 
 class CollectionController extends Controller
 {
+
+    public function index(/*\App\Models\Collection $collections*/){
+        
+       $collections = \DB::table("collections")->get();
+       // dd($collections);
+       $data["collections"] = $collections;
+        return view('collection/index', $data);
+    }
+
     public function create(){
-        return view('collection/addColection');
+        return view('collection/addCollection');
     }
 
     public function store(Request $request){
@@ -24,4 +33,6 @@ class CollectionController extends Controller
         $collection->save();
         return redirect('./collection');
     }
+
 }
+
