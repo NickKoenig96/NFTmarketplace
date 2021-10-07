@@ -14,17 +14,14 @@ class CollectionController extends Controller
 
     public function store(Request $request){
 
-       // dd($request->file());
-
         $image_file_path = $request->file('collectionImage')->getClientOriginalName();
-        //dd($image_file_path);
-
-        $request->file('collectionImage')->store('public/images');
-        $collectionImage = new Collection();
-        $collectionImage->title = 'imagetest';
-        $collectionImage->description = 'imageTest';
-        $collectionImage->image_file_path = $image_file_path;
-        $collectionImage->save();
-        return redirect()->back();
+        $request->file('collectionImage')->store('public/images/');
+       
+        $collection = new Collection();
+        $collection->title = $request->input('collectionTitle');
+        $collection->description = $request->input('collectionDescription');
+        $collection->image_file_path = $image_file_path;
+        $collection->save();
+        return redirect('./collection');
     }
 }
