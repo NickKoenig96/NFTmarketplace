@@ -2,7 +2,7 @@
 
 @foreach ($nfts as $nft)
     <div>
-        <p>{{ $nft->title }}</p>
+        <a href="/nfts/{{$nft->id}}">{{ $nft->title }}</a>
         {{-- add image --}}
     </div>
 @endforeach

@@ -28,8 +28,11 @@ use App\Http\Controllers\homepageController;
     return view('welcome');
 });*/
 
-
+// homepage
 Route::get('/', [homepageController::class, "index"]);
+
+// detail page from homepage
+Route::get('/nfts/{id}', [homepageController::class, "show"]);
 
 Route::get('/login', function () {
     return view('login');

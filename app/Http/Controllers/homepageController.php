@@ -18,5 +18,14 @@ class homepageController extends Controller
         $data["nfts"] = $Nft;
          return view('homepage', $data);
     }
+
+
+    public function show($id){
+        echo $id;
+        // $Nft = \DB::table("nfts")->get();
+        // // dd($Nft);
+        // $data["nfts"] = $Nft;
+        //  return view('homepage', $data);
+    }
 }
 
