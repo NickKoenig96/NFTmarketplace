@@ -20,21 +20,10 @@ class walletController extends Controller
     public function index()
     {
         $collections = \DB::table("collections")->get();
+        $nfts = \DB::table("nfts")->get();
+        $data["nfts"] = $nfts;
         $data["collections"] = $collections;
          return view('wallet/index', $data);
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $collection = Collection::find($id);
-        $data['collection'] = $collection;
-        return view('collection/editCollection', $data);
-
     }
 
 }
