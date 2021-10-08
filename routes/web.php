@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
+use App\Http\Controllers\homepageController;
+
 
 
 
@@ -27,9 +29,7 @@ use App\Http\Controllers\walletController;
 });*/
 
 
-Route::get('/', function () {
-    return view('homepage');
-});
+Route::get('/', [homepageController::class, "index"]);
 
 Route::get('/login', function () {
     return view('login');
