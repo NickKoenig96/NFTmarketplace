@@ -54,6 +54,10 @@ Route::get('/nft', [NftController::class, "index"]);
 Route::get('/delete/nft/{id}', [NftController::class, "destroy"]);
 Route::get('/nft/addNft', [NftController::class, "create"]);
 Route::post('/nft/addNft', [NftController::class, "store"]);
+Route::get('/edit/nft/{id}', [NftController::class, "show"]);
+Route::post('/nft/editNft', [NftController::class, "edit"]);
+
+
 
 
 

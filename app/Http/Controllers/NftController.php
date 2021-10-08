@@ -65,4 +65,36 @@ class NftController extends Controller
         return redirect('./nft');
     }
 
+        /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $nft = Nft::find($id);
+        $data['nft'] = $nft;
+        return view('nft/editNft', $data);
+
+    }
+
+            /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request)
+    {
+
+       
+       $nft = Nft::find($request->id);
+       $nft->title = $request->input('nftTitle');
+       $nft->description = $request->input('nftDescription');
+       $nft->save();
+        return redirect('./wallet');
+    }
+
+
 }

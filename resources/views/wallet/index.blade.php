@@ -20,7 +20,7 @@
         <p>id = {{ $nft->id }}</p>
         <p>{{ $nft->title }}</p>
         <a href="delete/nft/{{ $nft->id }}">DELETE</a>
-        <a href="edit/{{ $nft->id }}">EDIT</a>
+        <a href="edit/nft/{{ $nft->id }}">EDIT</a>
 
     </div>
 
