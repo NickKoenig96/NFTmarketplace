@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Nft;
+use App\Models\Collection;
+
 
 
 class NftController extends Controller
@@ -43,7 +45,10 @@ class NftController extends Controller
      */
 
     public function create(){
-        return view('nft/addNft');
+
+        $collections = \DB::table("collections")->get();
+        $data['collections'] = $collections;
+        return view('nft/addNft', $data);
     }
 
 
@@ -60,7 +65,7 @@ class NftController extends Controller
         $nft = new Nft();
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
-        $nft->collection_id = $request->input('collection_id');
+        $nft->collection_id = $request->input('collectionsId');
         $nft->save();
         return redirect('./nft');
     }
@@ -73,6 +78,7 @@ class NftController extends Controller
      */
     public function show($id)
     {
+       
         $nft = Nft::find($id);
         $data['nft'] = $nft;
         return view('nft/editNft', $data);

@@ -20,6 +20,8 @@
         <label for="cDescription">nft description</label><br>
         <input type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
 
+
+
         <input type="submit" name="upload" value="edit">
 
     </form>
