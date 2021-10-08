@@ -18,9 +18,10 @@ class NftController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $data['user'] = 'Nick Koenig';
+        $user = 'Nick Koenig';
         $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
+        $data["user"] = $user;
          return view('nft/index', $data);
      }
 
