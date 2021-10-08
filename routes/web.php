@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
+use App\Http\Controllers\NftController;
+
 
 
 
@@ -44,10 +46,12 @@ Route::get('/profile', function () {
 });
 
 
-Route::get('/detail', function () {
-    return view('detail');
-});
 
+
+
+//nft
+Route::get('/nft', [NftController::class, "index"]);
+Route::get('/delete/nft/{id}', [NftController::class, "destroy"]);
 
 
 //colection

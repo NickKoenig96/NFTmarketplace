@@ -12,3 +12,16 @@
     </div>
 
 @endforeach
+
+<h2>Your NFT's (at the moment all NFT's)</h2>
+
+@foreach ($nfts as $nft)
+    <div>
+        <p>id = {{ $nft->id }}</p>
+        <p>{{ $nft->title }}</p>
+        <a href="delete/nft/{{ $nft->id }}">DELETE</a>
+        <a href="edit/{{ $nft->id }}">EDIT</a>
+
+    </div>
+
+@endforeach

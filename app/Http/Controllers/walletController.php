@@ -20,6 +20,8 @@ class walletController extends Controller
     public function index()
     {
         $collections = \DB::table("collections")->get();
+        $nfts = \DB::table("nfts")->get();
+        $data["nfts"] = $nfts;
         $data["collections"] = $collections;
          return view('wallet/index', $data);
     }

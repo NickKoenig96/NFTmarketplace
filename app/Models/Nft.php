@@ -9,7 +9,7 @@ class Nft extends Model
 {
     use HasFactory;
 
-    protected $with = ["comments"];
+    //protected $with = ["comments"];
 
     public function collection(){
         return $this->belongsTo(\App\Models\Collection::class);
