@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
+use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
+
 
 
 
@@ -28,10 +30,11 @@ use App\Http\Controllers\NftController;
     return view('welcome');
 });*/
 
+// homepage
+Route::get('/', [NftController::class, "homepage"]);
 
-Route::get('/', function () {
-    return view('homepage');
-});
+// detail page from homepage
+Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
 
 Route::get('/login', function () {
     return view('login');
