@@ -11,6 +11,9 @@
 <body>
     <form method="POST" action="/nft/addNft" id="editNftForm">
         @csrf
+
+        <input type="hidden" name='creator' value="{{ $user }}">
+
         <label for="nTitle">nft title</label><br>
         <input type="text" id="nTitle" name="nftTitle"><br>
 

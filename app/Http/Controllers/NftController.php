@@ -18,7 +18,7 @@ class NftController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        
+        $data['user'] = 'Nick Koenig';
         $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
          return view('nft/index', $data);
@@ -45,7 +45,7 @@ class NftController extends Controller
      */
 
     public function create(){
-
+        $data['user'] = 'Nick Koenig';
         $collections = \DB::table("collections")->get();
         $data['collections'] = $collections;
         return view('nft/addNft', $data);
@@ -63,6 +63,7 @@ class NftController extends Controller
       
        
         $nft = new Nft();
+        $nft->creator = $request->input('creator');
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
         $nft->collection_id = $request->input('collectionsId');
