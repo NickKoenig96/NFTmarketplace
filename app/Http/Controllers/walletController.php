@@ -25,18 +25,5 @@ class walletController extends Controller
         $data["collections"] = $collections;
          return view('wallet/index', $data);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $collection = Collection::find($id);
-        $data['collection'] = $collection;
-        return view('collection/editCollection', $data);
-
-    }
 
 }

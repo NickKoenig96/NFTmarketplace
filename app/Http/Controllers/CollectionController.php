@@ -51,6 +51,21 @@ class CollectionController extends Controller
     }
 
         /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $collection = Collection::find($id);
+        $data['collection'] = $collection;
+        return view('collection/editCollection', $data);
+
+    }
+
+
+        /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
