@@ -22,7 +22,25 @@ class NftController extends Controller
         $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
          return view('nft/index', $data);
-     }
+    }
+
+    // nfts in homepage
+    public function homepage(){
+        
+        $nfts = \DB::table("nfts")->get();
+        $data["nfts"] = $nfts;
+         return view('homepage', $data);
+    }
+
+    // detail page from the homepage
+    public function showAllNfts($id){
+        // echo $id;
+        $nft = \DB::table('nfts')->where('id', $id)->first();
+        // dd($nft);
+        $data['nft'] = $nft;
+        return view('nft/showAllNfts', $data);
+    }
+
 
 
     /**
