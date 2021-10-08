@@ -52,15 +52,16 @@ Route::get('/detail', function () {
 
 //colection
 Route::get('/collection', [CollectionController::class, "index"]);
+Route::get('/delete/{id}', [CollectionController::class, "destroy"]);
+Route::post('/collection/editCollection', [CollectionController::class, "edit"]);
+Route::get('/collection/addCollection', [CollectionController::class, "create"]);
+Route::post('/collection/addCollection', [CollectionController::class, "store"]);
+
 
 //wallet
 Route::get('/wallet', [walletController::class, "index"]);
-//wallet (add/edit/remove collection)
-Route::get('/delete/{id}', [walletController::class, "destroy"]);
 Route::get('/edit/{id}', [walletController::class, "show"]);
-Route::post('/collection/editCollection', [walletController::class, "update"]);
-Route::get('/collection/addCollection', [CollectionController::class, "create"]);
-Route::post('/collection/addCollection', [CollectionController::class, "store"]);
+
 
 
 

@@ -50,5 +50,39 @@ class CollectionController extends Controller
         return redirect('./collection');
     }
 
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request)
+    {
+
+        $image_file_path = $request->file('collectionImage')->getClientOriginalName();
+        $request->file('collectionImage')->store('public/images/');
+       
+        $collection = Collection::find($request->id);
+        $collection->title = $request->input('collectionTitle');
+        $collection->description = $request->input('collectionDescription');
+        $collection->image_file_path = $image_file_path;
+        $collection->save();
+        return redirect('./wallet');
+    }
+
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $data = Collection::find($id);
+        $data->delete();
+        return redirect('/wallet');
+    }
+
 }
 
