@@ -45,7 +45,11 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+
+
+//profile
 Route::get('/profile', [UserController::class, "profile"]);
+Route::post('/profile/updateName', [UserController::class, "updateName"]);
 
 
 

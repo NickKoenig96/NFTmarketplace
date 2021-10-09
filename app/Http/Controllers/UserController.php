@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Image;
+
 
 class UserController extends Controller
 {
@@ -14,11 +16,36 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function profile(){
-        $name = "Jonathan Verhaegen";
-        $user = \DB::table("users")->where('name', $name)->first();
+        $id = 4;
+        $user = \DB::table("users")->where('id', $id)->first();
         $data['user'] = $user;
         return view('profile', $data);
 
+    }
+
+    // public function updateAvatar(Request $req){
+    //     if($req->hasFile('avatar')){
+    //         $avatar = $req->file('avatar');
+    //         $filename = time() . '.' . $avatar->getClientOriginalExtension();
+    //         Image::make($avatar)->resize(300, 300)->save(public_path('images/' .$filename));
+
+    //         $user = User::find($req->id);
+    //         $user->avatar = $filename;
+    //         $user->save();
+    //         return redirect('./profile');
+
+           
+    //     }
+
+        
+    // }
+
+    public function updateName(Request $req){
+        
+        $user = User::find($req->id);
+        $user->name = $req->input('newName');
+        $user->save();
+        return redirect('./profile');
     }
 
     
