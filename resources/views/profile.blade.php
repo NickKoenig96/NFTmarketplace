@@ -9,7 +9,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <img src="/img/{{ $user->avatar }}" alt="{{ $user->avatar }}" >
+                
+                <img src="../img/default.png" alt="">
                 <p>{{$user->name}}</p>
             </div>
         </div>
