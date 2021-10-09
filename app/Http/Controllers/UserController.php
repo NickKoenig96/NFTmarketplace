@@ -23,22 +23,23 @@ class UserController extends Controller
 
     }
 
-    // public function updateAvatar(Request $req){
-    //     if($req->hasFile('avatar')){
-    //         $avatar = $req->file('avatar');
-    //         $filename = time() . '.' . $avatar->getClientOriginalExtension();
-    //         Image::make($avatar)->resize(300, 300)->save(public_path('images/' .$filename));
+    public function updateAvatar(Request $req){
+        if($req->hasFile('avatar')){
+            $avatar = $req->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // $path = public_path('img/'.$filename);
+            // Image::make($avatar)->resize(300, 300)->save($path);
 
-    //         $user = User::find($req->id);
-    //         $user->avatar = $filename;
-    //         $user->save();
-    //         return redirect('./profile');
+            $user = User::find($req->id);
+            $user->avatar = $filename;
+            $user->save();
+            return redirect('./profile');
 
            
-    //     }
+        }
 
         
-    // }
+    }
 
     public function updateName(Request $req){
         
