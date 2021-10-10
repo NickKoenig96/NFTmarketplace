@@ -27,7 +27,7 @@ class UserController extends Controller
         if($req->hasFile('avatar')){
             $avatar = $req->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $path = public_path('../resources/img/'.$filename);
+            $path = public_path('../public/images/'.$filename);
             Image::make($avatar)->resize(300, 300)->save($path);
 
             $user = User::find($req->id);

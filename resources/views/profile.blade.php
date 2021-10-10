@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 
-                <img src="../img/default.png" alt="">
+                <img src="http://localhost/images/{{ $user->avatar }}" alt="avatar" style="border-radius:50%;">
                 <p>{{$user->name}}</p>
             </div>
         </div>
