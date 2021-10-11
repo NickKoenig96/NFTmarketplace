@@ -19,7 +19,8 @@ class NftController extends Controller
      */
     public function index(){
         $user = 'Nick Koenig';
-        $nfts = \DB::table("nfts")->get();
+        $nfts = Nft::get();
+       // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
          return view('nft/index', $data);
@@ -27,8 +28,8 @@ class NftController extends Controller
 
     // nfts in homepage
     public function homepage(){
-        
-        $nfts = \DB::table("nfts")->get();
+        $nfts = Nft::get();
+       // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
          return view('homepage', $data);
     }
@@ -36,7 +37,8 @@ class NftController extends Controller
     // detail page from the homepage
     public function showAllNfts($id){
         // echo $id;
-        $nft = \DB::table('nfts')->where('id', $id)->first();
+        $nft = Nft::where('id', $id)->first();
+       // $nft = \DB::table('nfts')->where('id', $id)->first();
         // dd($nft);
         $data['nft'] = $nft;
         return view('nft/showAllNfts', $data);
@@ -65,7 +67,8 @@ class NftController extends Controller
 
     public function create(){
         $data['user'] = 'Nick Koenig';
-        $collections = \DB::table("collections")->get();
+        $collections = Collection::get();
+       // $collections = \DB::table("collections")->get();
         $data['collections'] = $collections;
         return view('nft/addNft', $data);
     }

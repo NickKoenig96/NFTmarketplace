@@ -13,9 +13,10 @@ class CollectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(/*\App\Models\Collection $collections*/){
+    public function index(){
         
-       $collections = \DB::table("collections")->get();
+        $collections = Collection::get();
+       //$collections = \DB::table("collections")->get();
        $data["collections"] = $collections;
         return view('collection/index', $data);
     }
