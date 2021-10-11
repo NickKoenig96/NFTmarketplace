@@ -22,6 +22,13 @@
         <input type="submit" name="upload">
 
     </form>
+
+    <ul>
+        @foreach ($collections as $collection)
+            <li>{{ $collection->image_file_path }} <img
+                    src="{{ asset('storage/images/' . $collection->image_file_path) }}" alt=""></li>
+        @endforeach
+    </ul>
 </body>
 
 </html>

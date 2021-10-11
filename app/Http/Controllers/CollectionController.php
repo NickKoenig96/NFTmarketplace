@@ -27,7 +27,8 @@ class CollectionController extends Controller
      */
 
     public function create(){
-        return view('collection/addCollection');
+        $collections = Collection::all();
+        return view('collection/addCollection', compact('collections'));
     }
 
 
@@ -40,7 +41,7 @@ class CollectionController extends Controller
     public function store(Request $request){
 
         $image_file_path = $request->file('collectionImage')->getClientOriginalName();
-        $request->file('collectionImage')->store('public/images/');
+        $path = $request->file('collectionImage')->storeAs('public/images/', $image_file_path );
        
         $collection = new Collection();
         $collection->title = $request->input('collectionTitle');
