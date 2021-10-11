@@ -1,5 +1,5 @@
 <h1>searchResults</h1>
 
-@foreach ($nfts as $nft)
-    <p>{{ $nft->title }}</p>
+@foreach ($data as $d)
+    <p>{{ $d->title }}</p>
 @endforeach

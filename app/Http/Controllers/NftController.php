@@ -122,11 +122,22 @@ class NftController extends Controller
         return redirect('./wallet');
     }
 
-    public function search(){
+    public function search(Request $request){
         $searchText = $_GET["searchTerm"];
-        $nfts = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
+        $category = $request->input('category');
+        //dd($category);
+        if($category == 'Collections'){
+            $data = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
 
-        return view("nft/search", compact("nfts"));
+            return view("nft/search", compact("data"));
+
+        }else{
+            $data = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
+
+            return view("nft/search", compact("data"));
+        }
+
+       
 
     }
 
