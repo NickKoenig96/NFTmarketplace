@@ -6,6 +6,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -44,9 +45,13 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+
+
+//profile
+Route::get('/profile', [UserController::class, "profile"]);
+Route::post('/profile/updateName', [UserController::class, "updateName"]);
+Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
+
 
 
 
@@ -75,6 +80,8 @@ Route::post('/collection/addCollection', [CollectionController::class, "store"])
 
 //wallet
 Route::get('/wallet', [walletController::class, "index"]);
+
+
 
 
 
