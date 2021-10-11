@@ -1,0 +1,25 @@
+@use '../abstracts' as *;
+
+header{
+    padding: 40px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .searchbar{
+    margin-left: 70px;
+}
+
+header nav{
+    flex-grow: 1;
+}
+nav{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+    a:not(:last-child){ //every a-tag but the last one
+        margin-right: 59px;
+    }
+}

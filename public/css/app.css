@@ -1,0 +1,179 @@
+/* ---------- RESET.CSS ----------*/
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  color: black;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*20=33, 40=66, 60=99, 80=cc*/
+/*25=40, 50=80, 75=bf*/
+/*25=40, 50=80, 75=bf*/
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+*::-moz-placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+
+*:-ms-input-placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+
+*::placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+
+.test {
+  color: #162C99;
+  margin-left: 25px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.card {
+  background-color: red;
+}
+
+header {
+  padding: 40px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .searchbar {
+  margin-left: 70px;
+}
+
+header nav {
+  flex-grow: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+nav a:not(:last-child) {
+  margin-right: 59px;
+}
+
+.searchbar {
+  width: 400px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 8px;
+  border: none;
+  background-color: #ECF1F2;
+  background-image: url(/images/icon_search.svg?42b119e5caeea2b2ad6300a1b67e8e3a);
+  background-repeat: no-repeat;
+  background-position-x: 12px;
+  background-position-y: center;
+}
+
+.searchbar::-moz-placeholder {
+  position: relative;
+  left: 40px;
+  font-size: 16px;
+  transform: scale(0.95) translateX(-5px);
+}
+
+.searchbar:-ms-input-placeholder {
+  position: relative;
+  left: 40px;
+  font-size: 16px;
+  transform: scale(0.95) translateX(-5px);
+}
+
+.searchbar::placeholder {
+  position: relative;
+  left: 40px;
+  font-size: 16px;
+  transform: scale(0.95) translateX(-5px);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  background-color: #162C99;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.btn--signedin {
+  background-image: url(/images/icon_user--white.svg?0ceb83b49325358fa9d3ce95cbd84727);
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position-x: 12px;
+  background-position-y: center;
+  padding-left: 40px;
+  padding-right: 10px;
+  height: 40px;
+  border: 2pt solid #162C99;
+  transition: 0s;
+}
+
+.btn--signedin:hover {
+  background-image: url(/images/icon_user--blue.svg?c099446f0dfd19ed90d1bda8d466fe9c);
+  color: #162C99;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 2pt solid #162C99;
+}
+
+body {
+  padding: 0px 80px;
+}

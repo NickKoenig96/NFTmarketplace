@@ -1,0 +1,10 @@
+@use '../abstracts' as *;
+
+$danger: red;
+
+.test{
+    color: $blue;
+    margin-left: 25px;
+    font-family: 'Work Sans', sans-serif;
+}
+

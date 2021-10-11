@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.searchbar{
+    width: 400px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    border: none;
+    background-color: $grey--light;
+    background-image: url(../../../public/assets/icons/icon_search.svg);
+    background-repeat: no-repeat;
+    background-position-x: 12px;
+    background-position-y: center;
+
+}
+
+.searchbar::placeholder{
+    position: relative;
+    left: 40px;
+    font-size: 16px;
+    transform: scale(0.95) translateX(-5px);
+}

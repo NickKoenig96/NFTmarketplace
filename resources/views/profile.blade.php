@@ -1,9 +1,12 @@
-@extends('layouts/profile')
-
+@extends('layouts/app')
+@section('title', 'Profile')
 
 @section('content')
-    <h1>Profile</h1>
+    <x-header firstname="{{ $user->name }}" />
 
+    <h1 class="test">Profile</h1>
+
+    <x-notification message="{{ $user->name }}" />
 
 
     <div class="container">
