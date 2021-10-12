@@ -49,7 +49,7 @@ Route::get('/signup', function () {
 
 //profile
 Route::get('/profile', [UserController::class, "profile"]);
-Route::post('/profile/updateName', [UserController::class, "updateName"]);
+Route::post('/profile/updateUserdata', [UserController::class, "updateUserdata"]);
 Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
 
 

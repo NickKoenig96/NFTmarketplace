@@ -8,3 +8,34 @@ $danger: red;
     font-family: 'Work Sans', sans-serif;
 }
 
+h1{
+    font-weight: bold;
+    font-size: 46px;
+    margin-bottom: 24px;
+}
+h3{
+    font-weight: 700;
+    font-style: normal;
+    font-size: 26px;
+    line-height: 30,5px;
+    margin-bottom: 5px;
+}
+
+
+.body--normal--bold{
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+}
+.body--tiny{
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+
+.black--60{
+    color: $black--60;
+}

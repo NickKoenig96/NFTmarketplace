@@ -6,6 +6,8 @@
     background-color: $blue;
     color: $white;
     border-radius: 10px;
+    height: 40px;  
+    padding: 8px 10px;
 }
 
 .btn--signedin{
@@ -16,7 +18,6 @@
     background-position-y: center;
     padding-left: 40px;
     padding-right: 10px;
-    height: 40px;
     border: 2pt solid $blue;
     transition: 0s;
 }
@@ -26,4 +27,10 @@
     box-sizing: border-box;
     background-color: $white;
     border: 2pt solid $blue;
+}
+
+.btn--destroy--plain{
+    margin-top: 20px;
+    background-color: inherit;
+    color: $danger;
 }

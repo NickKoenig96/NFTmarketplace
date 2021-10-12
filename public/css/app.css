@@ -61,6 +61,7 @@ a {
 /*20=33, 40=66, 60=99, 80=cc*/
 /*25=40, 50=80, 75=bf*/
 /*25=40, 50=80, 75=bf*/
+/*---------- NEUTRAL COLORS ----------*/
 body {
   font-family: "Work Sans", sans-serif;
 }
@@ -83,8 +84,109 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 46px;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 30, 5px;
+  margin-bottom: 5px;
+}
+
+.body--normal--bold {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body--tiny {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.black--60 {
+  color: #00000099;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card {
-  background-color: red;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.card--profile {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card--edit {
+  width: 840px;
+  height: 610px;
+}
+
+.card__title {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 23px;
+  color: #00000099;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  margin-bottom: 24px;
+}
+
+.card__profilepicture {
+  border-radius: 20px;
+  width: 120px;
+  width: 120px;
+  border: 7px solid #f7F7F9;
+  margin-bottom: 24px;
+}
+
+.card__biography {
+  color: #00000099;
+  width: 260px;
+  margin-top: 12px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ececec;
+}
+
+.card--profile__totals {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 1;
+}
+
+.userCollections, .usernfts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/2;
+  width: 130px;
+}
+
+.usernfts {
+  grid-column: 2/3;
+  border-left: 2px solid #ececec;
 }
 
 header {
@@ -125,24 +227,58 @@ nav a:not(:last-child) {
 }
 
 .searchbar::-moz-placeholder {
-  position: relative;
-  left: 40px;
-  font-size: 16px;
-  transform: scale(0.95) translateX(-5px);
+  text-indent: 40px;
 }
 
 .searchbar:-ms-input-placeholder {
-  position: relative;
-  left: 40px;
-  font-size: 16px;
-  transform: scale(0.95) translateX(-5px);
+  text-indent: 40px;
 }
 
 .searchbar::placeholder {
-  position: relative;
-  left: 40px;
+  text-indent: 40px;
+}
+
+.form__control {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-top: 6px;
+  margin-bottom: 17px;
+  height: 44px;
+  width: 375px;
+  border-radius: 5px;
+  border: 3px #162C9933 solid;
+  text-indent: 15px;
   font-size: 16px;
-  transform: scale(0.95) translateX(-5px);
+}
+
+input[type=submit] {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.form__control--smaller input {
+  width: 120px;
+}
+
+.form__control--small input {
+  width: 245px;
+}
+
+.form__control--double {
+  display: flex;
+  justify-content: space-between;
+}
+
+.twocol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
 }
 
 .btn {
@@ -151,6 +287,8 @@ nav a:not(:last-child) {
   background-color: #162C99;
   color: #ffffff;
   border-radius: 10px;
+  height: 40px;
+  padding: 8px 10px;
 }
 
 .btn--signedin {
@@ -161,7 +299,6 @@ nav a:not(:last-child) {
   background-position-y: center;
   padding-left: 40px;
   padding-right: 10px;
-  height: 40px;
   border: 2pt solid #162C99;
   transition: 0s;
 }
@@ -174,6 +311,18 @@ nav a:not(:last-child) {
   border: 2pt solid #162C99;
 }
 
+.btn--destroy--plain {
+  margin-top: 20px;
+  background-color: inherit;
+  color: red;
+}
+
 body {
   padding: 0px 80px;
+  background-color: #f9fafd;
+}
+
+.mcenter {
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,3 +1,70 @@
+@use '../abstracts' as *;
+
+.cards{
+    display: flex;
+    justify-content: space-between;
+}
+
 .card{
-    background-color: red;
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+.card--profile{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card--edit{
+    width: 840px;
+    height: 610px;
+}
+
+.card__title{
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: $black--60;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    margin-bottom: 24px;
+}
+
+.card__profilepicture{
+    border-radius: 20px;
+    width: 120px;
+    width: 120px;
+    border: 7px solid #f7F7F9;
+    margin-bottom: 24px;
+}
+
+.card__biography{
+    color: $black--60;
+    width: 260px;
+    margin-top: 12px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ececec;
+}
+
+.card--profile__totals{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 1;
+}
+.userCollections, .usernfts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1/2;
+    width: 130px;
+}
+.usernfts{
+    grid-column: 2/3;
+    border-left: 2px solid #ececec;
 }
