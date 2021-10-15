@@ -198,6 +198,8 @@ header {
 
 header .searchbar {
   margin-left: 70px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 header nav {
@@ -325,4 +327,8 @@ body {
 .mcenter {
   margin-left: auto;
   margin-right: auto;
+}
+
+.hidden {
+  display: none;
 }

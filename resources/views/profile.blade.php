@@ -24,7 +24,12 @@
                     <span class="body--tiny black--60">NFT's</span>
                 </div>
             </div>
-            <a href="#" class="btn">Upload new avatar</a>
+            <form enctype="multipart/form-data"  action="/profile/updateAvatar" method="POST">
+                <div class="form__control--small">
+                    <input class="hidden fileSelect" type="file" name="avatar">
+                    <input type="hidden" name="id" value="{{ $user->id }}">
+                    <input type="submit" class="btn" value="Upload new avatar">
+                </div>
             <a href="#" class="btn btn--destroy--plain">Delete avatar</a>
         </div>
         
@@ -84,22 +89,23 @@
                     <input type="submit" class="btn mcenter" value="Update information">
                 </form>
             </div>
-</div>
-    </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <form enctype="multipart/form-data"  action="/profile/updateAvatar" method="POST">
-                @csrf
-                    <label for="">Update Avatar</label>
-                    <input type="file" name="avatar">
-                    <input type="hidden" name="id" value="{{ $user->id }}">
-                    <input type="submit" class="btn btn-small btn-primary" value="Send">
-                    </form>
-            </div>
         </div>
     </div>
+    
+
+    <script>
+       document.querySelector('.card__profilepicture').addEventListener('click', function(e) {
+            e.preventDefault();
+            fileSelect.click();
+        });
+
+        let fileSelect = document.querySelector('.fileSelect');
+        fileSelect.addEventListener("change", function(f){
+            let preview = document.querySelector('.prev').addEventListener('click', function(e) {
+                console.log('changed');
+            }
+        )});
+    </script>
 
 
 @endsection
