@@ -41,10 +41,19 @@ class UserController extends Controller
         
     }
 
-    public function updateName(Request $req){
+    public function updateUserdata(Request $req){
         
         $user = User::find($req->id);
-        $user->name = $req->input('newName');
+        $user->firstname = $req->input('firstname');
+        $user->lastname = $req->input('lastname');
+        $user->email = $req->input('email');
+        $user->password = $req->input('password');
+        $user->street = $req->input('street');
+        $user->housenumber = $req->input('housenumber');
+        $user->city = $req->input('city');
+        $user->postal = $req->input('postal');
+        $user->country = $req->input('country');
+        $user->phone = $req->input('phone');
         $user->save();
         return redirect('./profile');
     }

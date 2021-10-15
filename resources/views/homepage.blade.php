@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('layouts/app')
+@section('title', 'Home')
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+@section('content')
 
-    <title>Document</title>
-</head>
-
-<body>
     <h1>Homepage</h1>
 
     <form action="{{ url('/search') }}" type="get">
@@ -28,9 +19,21 @@
     @foreach ($nfts as $nft)
         <div>
             <a href="/nfts/{{ $nft->id }}">{{ $nft->title }}</a>
+
+
+
+
+    <x-header firstname="{{ 'Jonathan' }}" />
+    <h1>Homepage</h1>
+
+    @foreach ($nfts as $nft)
+        <div>
+            <a href="/nfts/{{$nft->id}}">{{ $nft->title }}</a>
+
             {{-- add image --}}
         </div>
     @endforeach
+
 
     <script>
         var path = "{{ url('homepage/action') }}";
@@ -56,6 +59,6 @@
         });
     </script>
 
-</body>
 
-</html>
+@endsection
+
