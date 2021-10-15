@@ -124,22 +124,6 @@ class NftController extends Controller
 
 
 
-    public function search(Request $request){
-        $searchText = $_GET["searchTerm"];
-        $category = $request->input('category');
-        //dd($category);
-        if($category == 'Collections'){
-            $data = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
-
-            return view("nft/search", compact("data"));
-
-        }else{
-            $data = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
-
-            return view("nft/search", compact("data"));
-        }
-
-    }
 
   
 
