@@ -6,6 +6,8 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
+use App\Http\Controllers\SearchController;
+
 
 
 
@@ -49,6 +51,14 @@ Route::get('/profile', function () {
 });
 
 
+//search
+Route::get('/search', [SearchController::class, "search"]);
+
+Route::get('/homepage', [SearchController::class, 'index']);
+Route::get('/homepage/action', [SearchController::class, 'action'])->name('typeahead_autocomplete.action');
+
+
+
 
 
 
@@ -59,9 +69,6 @@ Route::get('/nft/addNft', [NftController::class, "create"]);
 Route::post('/nft/addNft', [NftController::class, "store"]);
 Route::get('/edit/nft/{id}', [NftController::class, "show"]);
 Route::post('/nft/editNft', [NftController::class, "edit"]);
-
-
-
 
 
 //colection
