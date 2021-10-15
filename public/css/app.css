@@ -1,0 +1,334 @@
+/* ---------- RESET.CSS ----------*/
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  color: black;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*20=33, 40=66, 60=99, 80=cc*/
+/*25=40, 50=80, 75=bf*/
+/*25=40, 50=80, 75=bf*/
+/*---------- NEUTRAL COLORS ----------*/
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+*::-moz-placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+
+*:-ms-input-placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+
+*::placeholder {
+  font-family: "Work Sans", sans-serif;
+}
+
+.test {
+  color: #162C99;
+  margin-left: 25px;
+  font-family: "Work Sans", sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 46px;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 30, 5px;
+  margin-bottom: 5px;
+}
+
+.body--normal--bold {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body--tiny {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.black--60 {
+  color: #00000099;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.card--profile {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card--edit {
+  width: 840px;
+  height: 610px;
+}
+
+.card__title {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 23px;
+  color: #00000099;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  margin-bottom: 24px;
+}
+
+.card__profilepicture {
+  border-radius: 20px;
+  width: 120px;
+  width: 120px;
+  border: 7px solid #f7F7F9;
+  margin-bottom: 24px;
+}
+
+.card__biography {
+  color: #00000099;
+  width: 260px;
+  margin-top: 12px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ececec;
+}
+
+.card--profile__totals {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 1;
+}
+
+.userCollections, .usernfts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/2;
+  width: 130px;
+}
+
+.usernfts {
+  grid-column: 2/3;
+  border-left: 2px solid #ececec;
+}
+
+header {
+  padding: 40px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .searchbar {
+  margin-left: 70px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+header nav {
+  flex-grow: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+nav a:not(:last-child) {
+  margin-right: 59px;
+}
+
+.searchbar {
+  width: 400px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 8px;
+  border: none;
+  background-color: #ECF1F2;
+  background-image: url(/images/icon_search.svg?42b119e5caeea2b2ad6300a1b67e8e3a);
+  background-repeat: no-repeat;
+  background-position-x: 12px;
+  background-position-y: center;
+}
+
+.searchbar::-moz-placeholder {
+  text-indent: 40px;
+}
+
+.searchbar:-ms-input-placeholder {
+  text-indent: 40px;
+}
+
+.searchbar::placeholder {
+  text-indent: 40px;
+}
+
+.form__control {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-top: 6px;
+  margin-bottom: 17px;
+  height: 44px;
+  width: 375px;
+  border-radius: 5px;
+  border: 3px #162C9933 solid;
+  text-indent: 15px;
+  font-size: 16px;
+}
+
+input[type=submit] {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.form__control--smaller input {
+  width: 120px;
+}
+
+.form__control--small input {
+  width: 245px;
+}
+
+.form__control--double {
+  display: flex;
+  justify-content: space-between;
+}
+
+.twocol {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  background-color: #162C99;
+  color: #ffffff;
+  border-radius: 10px;
+  height: 40px;
+  padding: 8px 10px;
+}
+
+.btn--signedin {
+  background-image: url(/images/icon_user--white.svg?0ceb83b49325358fa9d3ce95cbd84727);
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position-x: 12px;
+  background-position-y: center;
+  padding-left: 40px;
+  padding-right: 10px;
+  border: 2pt solid #162C99;
+  transition: 0s;
+}
+
+.btn--signedin:hover {
+  background-image: url(/images/icon_user--blue.svg?c099446f0dfd19ed90d1bda8d466fe9c);
+  color: #162C99;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 2pt solid #162C99;
+}
+
+.btn--destroy--plain {
+  margin-top: 20px;
+  background-color: inherit;
+  color: red;
+}
+
+body {
+  padding: 0px 80px;
+  background-color: #f9fafd;
+}
+
+.mcenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hidden {
+  display: none;
+}

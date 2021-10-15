@@ -17,6 +17,13 @@ class NftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function profile(){
+        $id = 4;
+        $user = \DB::table("users")->where('id', $id)->first();
+        $data['user'] = $user;
+        return view('homepage', $data);
+    }
+
     public function index(){
         $user = 'Nick Koenig';
         $nfts = Nft::get();
