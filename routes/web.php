@@ -6,12 +6,9 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
-<<<<<<< HEAD
 use App\Http\Controllers\SearchController;
-
-=======
 use App\Http\Controllers\UserController;
->>>>>>> 3d9fcf84e0dc1a542e1a19d26a1967b80ce92583
+
 
 
 
