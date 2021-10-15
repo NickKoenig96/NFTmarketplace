@@ -6,6 +6,8 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
 use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
+use App\Http\Controllers\SearchController;
+
 
 
 
@@ -51,6 +53,13 @@ Route::get('/profile', function () {
 
 //search
 Route::get('/search', [NftController::class, "search"]);
+
+Route::get('/homepage', [SearchController::class, 'index']);
+Route::get('/homepage/action', [SearchController::class, 'action'])->name('typeahead_autocomplete.action');
+
+
+
+
 
 
 //nft

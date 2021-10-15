@@ -122,6 +122,8 @@ class NftController extends Controller
         return redirect('./wallet');
     }
 
+
+
     public function search(Request $request){
         $searchText = $_GET["searchTerm"];
         $category = $request->input('category');
@@ -137,9 +139,8 @@ class NftController extends Controller
             return view("nft/search", compact("data"));
         }
 
-       
-
     }
 
+  
 
 }
