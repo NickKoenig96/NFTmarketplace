@@ -1,27 +1,63 @@
-<h1>wallet</h1>
+@extends('layouts/app')
 
-<h2>Your collections (at the moment all collections)</h2>
+@section('title', 'Wallet')
 
-@foreach ($collections as $collection)
-    <div>
-        <p>id = {{ $collection->id }}</p>
-        <p>{{ $collection->title }}</p>
-        <a href="delete/{{ $collection->id }}">DELETE</a>
-        <a href="edit/{{ $collection->id }}">EDIT</a>
+@section('content')
 
+    <x-header firstname="{{ 'Jonathan' }}" />
+
+    <div class="walletTitle">
+        <h1>My NFT's (at the moment all nft's)</h1>
+        <div class="card--btns">
+            <a href="nft/addNft"> <img src="{{ url('assets/icons/icon_plus.png') }}" alt="bin">
+            </a>
+        </div>
     </div>
 
-@endforeach
 
-<h2>Your NFT's (at the moment all NFT's)</h2>
 
-@foreach ($nfts as $nft)
-    <div>
-        <p>id = {{ $nft->id }}</p>
-        <p>{{ $nft->title }}</p>
-        <a href="delete/nft/{{ $nft->id }}">DELETE</a>
-        <a href="edit/nft/{{ $nft->id }}">EDIT</a>
 
+    <div class="walletNFT">
+        @foreach ($nfts as $nft)
+
+            <div class="cards card card--NFT">
+                <img class="card--NftImg" src="{{ asset('storage/images/' . $nft->image_file_path) }}" alt="">
+                <p class="card__title card--nftTitle">{{ $nft->title }}</p>
+                <div class="card--btns">
+                    <a class="btn btn--view" href="#">View</a>
+                    <a class="btn btn--sell" href="#">Sell</a>
+                </div>
+                <div class="card--btns">
+                    <a href="delete/nft/{{ $nft->id }}"> <img class="card--icon"
+                            src="{{ url('assets/icons/icon_bin.png') }}" alt="bin">
+                    </a>
+                    <a href="edit/nft/{{ $nft->id }}"><img class="card--icon"
+                            src="{{ url('assets/icons/icon_edit.png') }}" alt="edit"></a>
+                </div>
+            </div>
+
+
+        @endforeach
     </div>
 
-@endforeach
+
+
+
+
+    <div class="walletTitle">
+        <h1>My collections (at the moment all collections)</h1>
+        <div class="card--btns">
+            <a href="collection/addCollection"> <img src="{{ url('assets/icons/icon_plus.png') }}" alt="bin">
+            </a>
+        </div>
+    </div>
+
+    @foreach ($collections as $collection)
+
+        <p>add code of person that makes collection page</p>
+
+    @endforeach
+
+
+
+@endsection

@@ -68,3 +68,45 @@
     grid-column: 2/3;
     border-left: 2px solid #ececec;
 }
+
+
+.walletNFT{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+
+.card--NFT{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 1em;
+}
+
+.card--NftImg{
+    width: 12em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.card--nftTitle{
+    color: black;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.card--btns{
+    display: flex;
+   justify-content: center;
+   
+}
+
+.card--icon{
+    width: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 1em;
+
+}

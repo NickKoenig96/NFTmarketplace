@@ -189,6 +189,44 @@ h3 {
   border-left: 2px solid #ececec;
 }
 
+.walletNFT {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card--NFT {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 1em;
+}
+
+.card--NftImg {
+  width: 12em;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+}
+
+.card--nftTitle {
+  color: black;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.card--btns {
+  display: flex;
+  justify-content: center;
+}
+
+.card--icon {
+  width: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 1em;
+}
+
 header {
   padding: 40px 0px;
   display: flex;
@@ -352,6 +390,32 @@ input[type=submit] {
   position: absolute;
   left: 42em;
   top: 3em;
+}
+
+.btn--view {
+  background-color: #ECF1F2;
+  color: black;
+  font-weight: bold;
+  padding-left: 2em;
+  padding-right: 2em;
+  height: 2em;
+}
+
+.btn--sell {
+  background-color: #162C99;
+  padding-left: 2em;
+  padding-right: 2em;
+  height: 2em;
+}
+
+.walletTitle {
+  display: flex;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.walletTitle h1 {
+  margin-right: 0.3em;
 }
 
 body {

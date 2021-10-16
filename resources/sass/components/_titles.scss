@@ -1,0 +1,12 @@
+@use '../abstracts' as *;
+
+
+.walletTitle{
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.walletTitle h1{
+    margin-right: 0.3em;
+}
