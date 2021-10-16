@@ -225,15 +225,15 @@ select {
   border-radius: 6px;
   height: 35px;
   border: none;
-  margin-left: 3em;
+  margin-left: 2em;
   padding: 0.5em;
 }
 
 .typeahead {
   background-color: #fff;
-  width: 400px;
+  width: 300px;
   display: block;
-  margin-left: 9em;
+  margin-left: 8.5em;
 }
 
 .typeahead li {
@@ -245,7 +245,7 @@ select {
 }
 
 .searchbar {
-  width: 400px;
+  width: 300px;
   height: 40px;
   display: inline-block;
   border-radius: 8px;
@@ -349,8 +349,9 @@ input[type=submit] {
 
 .btn--search {
   width: 8em;
-  position: fixed;
-  left: 50em;
+  position: absolute;
+  left: 42em;
+  top: 3em;
 }
 
 body {

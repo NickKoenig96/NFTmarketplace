@@ -31,26 +31,22 @@ nav{
     flex-direction: row;
 }
 
-
-
-
 select{
     background-color: #162C99;
     color: white;
     border-radius: 6px;
     height: 35px;
     border: none;
-    margin-left: 3em;
+    margin-left: 2em;
     padding: 0.5em;
 }
 
-
-
+//bootstrap classes
 .typeahead{
     background-color: #fff;
-    width: 400px;
+    width: 300px;
     display: block;
-    margin-left: 9em;
+    margin-left: 8.5em;
 }
 
 .typeahead li{
