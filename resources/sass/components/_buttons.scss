@@ -1,7 +1,6 @@
 @use '../abstracts' as *;
 
 .btn{
-    display: flex;
     align-items: center;
     background-color: $blue;
     color: $white;
@@ -33,4 +32,12 @@
     margin-top: 20px;
     background-color: inherit;
     color: $danger;
+}
+
+.btn--search{
+width: 8em;
+position: absolute;
+left: 42em;
+top: 3em;
+
 }

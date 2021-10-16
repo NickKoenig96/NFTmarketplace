@@ -197,7 +197,6 @@ header {
 }
 
 header .searchbar {
-  margin-left: 70px;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -215,8 +214,38 @@ nav a:not(:last-child) {
   margin-right: 59px;
 }
 
+.search {
+  display: flex;
+  flex-direction: row;
+}
+
+select {
+  background-color: #162C99;
+  color: white;
+  border-radius: 6px;
+  height: 35px;
+  border: none;
+  margin-left: 2em;
+  padding: 0.5em;
+}
+
+.typeahead {
+  background-color: #fff;
+  width: 300px;
+  display: block;
+  margin-left: 8.5em;
+}
+
+.typeahead li {
+  padding: 5px;
+}
+
+.typeahead li.active {
+  background-color: #eee;
+}
+
 .searchbar {
-  width: 400px;
+  width: 300px;
   height: 40px;
   display: inline-block;
   border-radius: 8px;
@@ -284,7 +313,6 @@ input[type=submit] {
 }
 
 .btn {
-  display: flex;
   align-items: center;
   background-color: #162C99;
   color: #ffffff;
@@ -317,6 +345,13 @@ input[type=submit] {
   margin-top: 20px;
   background-color: inherit;
   color: red;
+}
+
+.btn--search {
+  width: 8em;
+  position: absolute;
+  left: 42em;
+  top: 3em;
 }
 
 body {

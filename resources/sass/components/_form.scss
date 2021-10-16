@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .searchbar{
-    width: 400px;
+    width: 300px;
     height: 40px;
     display: inline-block;
     border-radius: 8px;
@@ -44,6 +44,8 @@ input[type=submit]{
     display: flex;
     justify-content: center;
 }
+
+
 
 .form__control--smaller input{
     width: 120px;
