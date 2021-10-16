@@ -58,7 +58,6 @@ Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
 
 //search
 Route::get('/search', [SearchController::class, "search"]);
-
 Route::get('/homepage', [SearchController::class, 'index']);
 Route::get('/homepage/action', [SearchController::class, 'action'])->name('typeahead_autocomplete.action');
 

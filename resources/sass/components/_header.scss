@@ -8,7 +8,6 @@ header{
 }
 
 header .searchbar{
-    margin-left: 70px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -25,3 +24,40 @@ nav{
         margin-right: 59px;
     }
 }
+
+
+.search{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+select{
+    background-color: #162C99;
+    color: white;
+    border-radius: 6px;
+    height: 35px;
+    border: none;
+    margin-left: 3em;
+    padding: 0.5em;
+}
+
+
+
+.typeahead{
+    background-color: #fff;
+    width: 400px;
+    display: block;
+    margin-left: 9em;
+}
+
+.typeahead li{
+    padding: 5px;
+}
+
+.typeahead li.active{
+    background-color: #eee;
+}
+
