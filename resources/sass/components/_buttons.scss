@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.btn{
+    display: flex;
+    align-items: center;
+    background-color: $blue;
+    color: $white;
+    border-radius: 10px;
+    height: 40px;  
+    padding: 8px 10px;
+}
+
+.btn--signedin{
+    background-image: url(../../../public/assets/icons/icon_user--white.svg);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position-x: 12px;
+    background-position-y: center;
+    padding-left: 40px;
+    padding-right: 10px;
+    border: 2pt solid $blue;
+    transition: 0s;
+}
+.btn--signedin:hover{
+    background-image: url(../../../public/assets/icons/icon_user--blue.svg);
+    color: $blue;
+    box-sizing: border-box;
+    background-color: $white;
+    border: 2pt solid $blue;
+}
+
+.btn--destroy--plain{
+    margin-top: 20px;
+    background-color: inherit;
+    color: $danger;
+}
