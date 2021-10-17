@@ -11,7 +11,7 @@
         <div class="card card--profile">
             <p class="card__title">Your profile</p>
 
-            <img class="card__profilepicture" src="http://localhost/images/{{ $user->avatar }}" alt="avatar">
+            <img class="card__profilepicture" src="https://res.cloudinary.com/dqelbnq5n/image/upload/v1634474746/tp2lqpemi15beax4krmn.jpg" alt="avatar">
             <p class="body--normal--bold"><span>{{ $user->firstname }}</span> <span>{{ $user->lastname }}</span></p>
             <blockquote class="body--tiny card__biography">{{ $user->bio }}</blockquote>
             <div class="card--profile__totals">

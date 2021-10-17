@@ -26,18 +26,17 @@ class UserController extends Controller
 
     public function updateAvatar(Request $request){
         if($request->hasFile('avatar')){
-            // $avatar = $req->file('avatar');
-            // $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            // $path = public_path('../public/images/'.$filename);
-            // Image::make($avatar)->resize(300, 300)->save($path);
+            
 
-            // $user = User::find($req->id);
-            // $user->avatar = $filename;
-            // $user->save();
-            // return redirect('./profile');
+            
             
             $uploadedFileUrl = \Cloudinary::upload($request->file('avatar')->getRealPath())->getSecurePath();
-            dd($uploadedFileUrl);
+            
+
+            $user = User::find($request->id);
+            $user->avatar = $uploadedFileUrl;
+            $user->save();
+            return redirect('./profile');
 
            
         }
