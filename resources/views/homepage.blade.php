@@ -16,6 +16,16 @@
         <button type="submit">Search </button>
     </form>
 
+    <h2 class="form-group__title">Filter:</h2>
+    <form action="{{ url('/homepageFilter') }}" type="get">
+        <select name="filter" id="filter"> 
+            <option value="Price">Price</option>
+            <option value="Area">Area</option>
+            <option value="Type">Type</option>
+        </select>
+        <button type="submit">Submit </button>
+    </form>
+
     @foreach ($nfts as $nft)
         <div>
             <a href="/nfts/{{ $nft->id }}">{{ $nft->title }}</a>
