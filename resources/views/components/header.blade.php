@@ -6,6 +6,6 @@
         <a href="#">My favourites</a>
         <a href="#">About us</a>
         <a href="#">Contact</a>
-        <a class="btn btn--signedin" href="#">{{ $firstname }}</a>
+        <a class="btn btn--signedin" href="#">{{ $firstname ?? '' }}</a>
     </nav>
 </header>
