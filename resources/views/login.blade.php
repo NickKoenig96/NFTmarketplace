@@ -4,21 +4,21 @@
 @section('content')
 
 
-<h1>Login</h1>
 
-<form action="{{ url('/users/login') }}" method="POST">
+<div class="form__container">
+    <img src="" alt="">
+<form action="{{ url('/users/login') }}" method="POST" class="form">
     @csrf
 
-    <label for="email">Email</label>
-    <input type="text" placeholder="Email" name="email" id="email">
+    
+    <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
-    <label for="password">Password</label>
-    <input type="password" placeholder="Password" name="password" id="password">
+    <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 
-    <input type="submit"  value="Login">
+    <input class="btn btn--light" type="submit"  value="Login">
 
     
 
 </form>
-
+</div>
 @endsection

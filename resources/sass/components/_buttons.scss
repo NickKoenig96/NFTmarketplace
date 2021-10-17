@@ -34,3 +34,17 @@
     background-color: inherit;
     color: $danger;
 }
+
+.btn--light{
+    background-color: $white;
+    color: $blue;
+    border-radius: 20px;
+    margin-top:5%;
+    border:none;
+}
+
+.btn--light:hover{
+    border: 2pt solid $white;
+    background-color: $blue;
+    color:$white;
+}
