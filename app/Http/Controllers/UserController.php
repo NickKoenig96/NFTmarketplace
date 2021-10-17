@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Image;
+
+
 
 
 class UserController extends Controller
@@ -23,17 +24,20 @@ class UserController extends Controller
 
     }
 
-    public function updateAvatar(Request $req){
-        if($req->hasFile('avatar')){
-            $avatar = $req->file('avatar');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            $path = public_path('../public/images/'.$filename);
-            Image::make($avatar)->resize(300, 300)->save($path);
+    public function updateAvatar(Request $request){
+        if($request->hasFile('avatar')){
+            // $avatar = $req->file('avatar');
+            // $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // $path = public_path('../public/images/'.$filename);
+            // Image::make($avatar)->resize(300, 300)->save($path);
 
-            $user = User::find($req->id);
-            $user->avatar = $filename;
-            $user->save();
-            return redirect('./profile');
+            // $user = User::find($req->id);
+            // $user->avatar = $filename;
+            // $user->save();
+            // return redirect('./profile');
+            
+            $uploadedFileUrl = \Cloudinary::upload($request->file('avatar')->getRealPath())->getSecurePath();
+            dd($uploadedFileUrl);
 
            
         }
@@ -41,19 +45,19 @@ class UserController extends Controller
         
     }
 
-    public function updateUserdata(Request $req){
+    public function updateUserdata(Request $request){
         
-        $user = User::find($req->id);
-        $user->firstname = $req->input('firstname');
-        $user->lastname = $req->input('lastname');
-        $user->email = $req->input('email');
-        $user->password = $req->input('password');
-        $user->street = $req->input('street');
-        $user->housenumber = $req->input('housenumber');
-        $user->city = $req->input('city');
-        $user->postal = $req->input('postal');
-        $user->country = $req->input('country');
-        $user->phone = $req->input('phone');
+        $user = User::find($request->id);
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->street = $request->input('street');
+        $user->housenumber = $request->input('housenumber');
+        $user->city = $request->input('city');
+        $user->postal = $request->input('postal');
+        $user->country = $request->input('country');
+        $user->phone = $request->input('phone');
         $user->save();
         return redirect('./profile');
     }
