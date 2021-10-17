@@ -74,16 +74,22 @@ class UserController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->phone = $request->input('phone');
-        $user->bio = $request->input('bio');
-        $user->street = $request->input('street');
-        $user->housenumber = $request->input('housenumber');
-        $user->city = $request->input('city');
-        $user->postal = $request->input('postal');
-        $user->country = $request->input('country');
-        $user->save();
-        return redirect('./');
+        if($request->password === $request->confirmPassword){
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+            return redirect('./');
+        }
+        
+        
+        
+
+         // $user->phone = $request->input('phone');
+        // $user->bio = $request->input('bio');
+        // $user->street = $request->input('street');
+        // $user->housenumber = $request->input('housenumber');
+        // $user->city = $request->input('city');
+        // $user->postal = $request->input('postal');
+        // $user->country = $request->input('country');
 
         
     }
