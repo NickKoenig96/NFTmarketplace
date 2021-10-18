@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/collection/addCollection" enctype='multipart/form-data'>
+    <form method="POST" action="{{ url('/collection/addCollection') }}" enctype='multipart/form-data'>
         @csrf
         <label for="cTitle">collection title</label><br>
         <input type="text" id="cTitle" name="collectionTitle"><br>

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/nft/editNft" enctype='multipart/form-data'>>
+    <form method="POST" action="{{ url('/nft/editNft') }}" enctype='multipart/form-data'>>
         @csrf
 
         <input type="hidden" name="id" value="{{ $nft->id }}">
