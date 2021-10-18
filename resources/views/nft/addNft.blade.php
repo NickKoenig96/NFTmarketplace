@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/nft/addNft" id="editNftForm">
+    <form method="POST" action="/nft/addNft" id="editNftForm" enctype='multipart/form-data'>
         @csrf
 
         <input type="hidden" name='creator' value="{{ $user }}">
@@ -20,7 +20,8 @@
         <label for="nDescription">nft description</label><br>
         <input type="text" id="nDescription" name="nftDescription"><br>
 
-
+        <label for="nImage">nft image</label><br>
+        <input type="file" name="nftImage"> <br>
 
         <label for="collections">Choose a collection:</label>
         <select id="collections" name="collectionsId" form="editNftForm">
