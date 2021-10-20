@@ -4,7 +4,7 @@ header{
     padding: 40px 0px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 header .searchbar{
@@ -13,7 +13,7 @@ header .searchbar{
 }
 
 header nav{
-    flex-grow: 1;
+    flex-grow: 100%;
 }
 nav{
     display: flex;
@@ -28,17 +28,26 @@ nav{
 
 .search{
     display: flex;
+    align-items: flex-start;
     flex-direction: row;
 }
 
 select{
-    background-color: #162C99;
-    color: white;
+    background-color: $blue--bg;
+    border: 1px solid black;
+    color: $black;
     border-radius: 6px;
     height: 35px;
     border: none;
     margin-left: 2em;
     padding: 0.5em;
+    text-align: right;
+}
+
+.search button{
+    margin-left: 10px;
+    width: 40px;
+    border: none;
 }
 
 //bootstrap classes

@@ -193,7 +193,7 @@ header {
   padding: 40px 0px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 header .searchbar {
@@ -202,7 +202,7 @@ header .searchbar {
 }
 
 header nav {
-  flex-grow: 1;
+  flex-grow: 100%;
 }
 
 nav {
@@ -216,17 +216,26 @@ nav a:not(:last-child) {
 
 .search {
   display: flex;
+  align-items: flex-start;
   flex-direction: row;
 }
 
 select {
-  background-color: #162C99;
-  color: white;
+  background-color: #f9fafd;
+  border: 1px solid black;
+  color: #000000;
   border-radius: 6px;
   height: 35px;
   border: none;
   margin-left: 2em;
   padding: 0.5em;
+  text-align: right;
+}
+
+.search button {
+  margin-left: 10px;
+  width: 40px;
+  border: none;
 }
 
 .typeahead {
@@ -251,22 +260,11 @@ select {
   border-radius: 8px;
   border: none;
   background-color: #ECF1F2;
-  background-image: url(/images/icon_search.svg?b3a9d258804afe7dcbff9bc726b9af11);
+  background-image: url(/images/icon_search.svg?42b119e5caeea2b2ad6300a1b67e8e3a);
   background-repeat: no-repeat;
   background-position-x: 12px;
   background-position-y: center;
-}
-
-.searchbar::-moz-placeholder {
-  text-indent: 40px;
-}
-
-.searchbar:-ms-input-placeholder {
-  text-indent: 40px;
-}
-
-.searchbar::placeholder {
-  text-indent: 40px;
+  padding-left: 20px;
 }
 
 .form__control {

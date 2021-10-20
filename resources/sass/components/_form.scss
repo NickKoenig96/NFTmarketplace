@@ -11,12 +11,10 @@
     background-repeat: no-repeat;
     background-position-x: 12px;
     background-position-y: center;
-
+    padding-left: 20px;
 }
 
-.searchbar::placeholder{
-    text-indent: 40px;
-}
+
 
 .form__control{
     display: flex;
