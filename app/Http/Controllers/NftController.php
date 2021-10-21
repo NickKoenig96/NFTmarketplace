@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Nft;
 use App\Models\Collection;
 
+use Illuminate\Support\Facades\Http;
+
 
 
 class NftController extends Controller
@@ -27,9 +29,12 @@ class NftController extends Controller
     public function index(){
         $user = 'Nick Koenig';
         $nfts = Nft::get();
+        $eth = Http::get('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=EUR')['EUR'];
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
+        $data["eth"] = $eth;
+
          return view('nft/index', $data);
     }
 

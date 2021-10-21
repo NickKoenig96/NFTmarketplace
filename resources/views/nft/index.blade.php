@@ -1,3 +1,5 @@
+<p>current ETH price in EUR = {{ $eth }}</p>
+
 <h1>nft</h1>
 
 

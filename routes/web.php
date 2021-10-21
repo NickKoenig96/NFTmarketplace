@@ -8,6 +8,7 @@ use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\apiController;
 
 
 
@@ -63,9 +64,6 @@ Route::get('/homepage/action', [SearchController::class, 'action'])->name('typea
 
 
 
-
-
-
 //nft
 Route::get('/nft', [NftController::class, "index"]);
 Route::get('/delete/nft/{id}', [NftController::class, "destroy"]);
@@ -86,6 +84,10 @@ Route::post('/collection/addCollection', [CollectionController::class, "store"])
 
 //wallet
 Route::get('/wallet', [walletController::class, "index"]);
+
+
+
+
 
 
 
