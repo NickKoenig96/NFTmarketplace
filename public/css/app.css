@@ -312,6 +312,38 @@ input[type=submit] {
        column-gap: 40px;
 }
 
+.form__container {
+  background-color: #162C99;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 75px;
+}
+
+.input--light {
+  border-radius: 20px;
+  margin-bottom: 5%;
+  border: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.form__img {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
 .btn {
   align-items: center;
   background-color: #162C99;
@@ -347,11 +379,18 @@ input[type=submit] {
   color: red;
 }
 
-.btn--search {
-  width: 8em;
-  position: absolute;
-  left: 42em;
-  top: 3em;
+.btn--light {
+  background-color: #ffffff;
+  color: #162C99;
+  border-radius: 20px;
+  margin-top: 5%;
+  border: none;
+}
+
+.btn--light:hover {
+  border: 2pt solid #ffffff;
+  background-color: #162C99;
+  color: #ffffff;
 }
 
 body {

@@ -34,10 +34,16 @@
     color: $danger;
 }
 
-.btn--search{
-width: 8em;
-position: absolute;
-left: 42em;
-top: 3em;
+.btn--light{
+    background-color: $white;
+    color: $blue;
+    border-radius: 20px;
+    margin-top:5%;
+    border:none;
+}
 
+.btn--light:hover{
+    border: 2pt solid $white;
+    background-color: $blue;
+    color:$white;
 }
