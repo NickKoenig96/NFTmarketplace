@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\View\Composers\EthComposer;
+use App\Views\Composers\MultiComposer;
+
 
 
 class ComposerServiceProvider extends ServiceProvider
@@ -19,7 +21,7 @@ class ComposerServiceProvider extends ServiceProvider
         
 
      // Using class based composers...
-     View::composer('nft/index', EthComposer::class);
+     View::composer(['homepage','nft/index', 'nft/showAllNfts', 'nft/search'], EthComposer::class);
 
 
     }
