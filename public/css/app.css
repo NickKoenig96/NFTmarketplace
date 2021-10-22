@@ -393,6 +393,13 @@ input[type=submit] {
   color: #ffffff;
 }
 
+.btn--search {
+  width: 8em;
+  position: absolute;
+  left: 42em;
+  top: 3em;
+}
+
 body {
   padding: 0px 80px;
   background-color: #f9fafd;
