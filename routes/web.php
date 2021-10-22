@@ -39,13 +39,18 @@ Route::get('/', [NftController::class, "homepage"]);
 // detail page from homepage
 Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-Route::get('/signup', function () {
-    return view('signup');
-});
+
+//login and register
+
+
+
+Route::get('/signup', [UserController::class, "register" ]);
+Route::post('/users/signup', [UserController::class, "store"]);
+Route::get('/login', [UserController::class, "login"]);
+Route::post('/users/login', [UserController::class, "handleLogin"]);
+
+
 
 
 
@@ -86,6 +91,8 @@ Route::post('/collection/addCollection', [CollectionController::class, "store"])
 
 //wallet
 Route::get('/wallet', [walletController::class, "index"]);
+
+
 
 
 
