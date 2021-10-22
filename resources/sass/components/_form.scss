@@ -68,6 +68,10 @@ input[type=submit]{
     margin-left:auto;
     margin-right:auto;
     width:50%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top:75px;
 }
 
 .input--light{
@@ -82,5 +86,12 @@ input[type=submit]{
     align-items: center;
     padding-top:10%;
     padding-bottom:10%;
-    margin-top:25%;
+    
+}
+
+.form__img{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
 }

@@ -4,8 +4,11 @@
 @section('content')
 
 
-<h1>Signup</h1>
+
 <div class="form__container">
+    
+    <img class="form__img"  src="{{ url('assets/atria_logo.svg') }}" alt="Logo Atria">
+    
 <form action="{{ url('/users/signup') }}" method="POST" class="form">
     @csrf
     

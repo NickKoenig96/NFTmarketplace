@@ -6,7 +6,7 @@
 
 
 <div class="form__container">
-    <img src="" alt="">
+    <img class="form__img"  src="{{ url('assets/atria_logo.svg') }}" alt="Logo Atria">
 <form action="{{ url('/users/login') }}" method="POST" class="form">
     @csrf
 
