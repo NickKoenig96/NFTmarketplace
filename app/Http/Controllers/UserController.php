@@ -78,7 +78,7 @@ class UserController extends Controller
         if($request->password === $request->confirmPassword){
             $user->password = Hash::make($request->input('password'));
             $user->save();
-            return redirect('./');
+            return redirect()->intended('./');
         }
 
         
@@ -98,6 +98,11 @@ class UserController extends Controller
         }
 
 
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('./login');
     }
 
     

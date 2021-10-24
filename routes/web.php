@@ -48,13 +48,11 @@ Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
 
 
 //login and register
-
-
-
 Route::get('/signup', [UserController::class, "register" ]);
 Route::post('/users/signup', [UserController::class, "store"]);
 Route::get('/login', [UserController::class, "login"]);
 Route::post('/users/login', [UserController::class, "handleLogin"]);
+Route::get('/logout', [Usercontroller::class, "logout"]);
 
 
 
