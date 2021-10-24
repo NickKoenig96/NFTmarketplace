@@ -22,7 +22,7 @@
             @if($nft->forSale === 0)
             <p>This NFT is not for sale right now</p>
             @elseif($nft->forSale === 1)
-            <a href="">Buy this NFT</a>
+            <a href="/nft/buy/{{ $nft->id }}">Buy this NFT</a>
             @endif
         @endif
         <br>

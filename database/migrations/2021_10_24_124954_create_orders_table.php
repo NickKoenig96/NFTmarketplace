@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('nft_id');
-            $table->foreignId('creator_id');
-            $table->foreignId('owner_id');
+            $table->foreignId('seller_id');
+            $table->foreignId('buyer_id');
             $table->float('price');
             $table->timestamps();
         });

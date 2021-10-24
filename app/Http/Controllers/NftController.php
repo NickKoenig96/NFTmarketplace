@@ -147,8 +147,32 @@ class NftController extends Controller
         return redirect('./wallet');
     }
 
-    public function buy(Request $request){
+    public function buyNft($id){
+        $user = Auth::id();
+        $nft = Nft::find($id);
+        $data["nft"] = $nft;
+        $data["user"] = $user;
+        return view('nft/buyNft', $data );
+    }
+
+    public function Order(Request $request){
+        //order toevoegen
+        $order = new \App\Models\Order();
+        $order->nft_id = $request->input('id');
+        $order->price = $request->input('price');
+        $order->seller_id = $request->input('seller');
+        $order->buyer_id = $request->input('buyer');
+        $order->save();
         
+
+        //nft updaten
+        $nft = Nft::find($request->input('id'));
+        $nft->owner_id = $request->input('buyer');
+        $nft->forSale = 0;
+        $nft->save();
+
+        return redirect('./nft');
+
     }
 
 

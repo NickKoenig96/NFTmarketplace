@@ -79,7 +79,8 @@ Route::get('/nft/addNft', [NftController::class, "create"]);
 Route::post('/nft/addNft', [NftController::class, "store"]);
 Route::get('/edit/nft/{id}', [NftController::class, "show"]);
 Route::post('/nft/editNft', [NftController::class, "edit"]);
-Route::post('/nft/buy', [NftController::class, "buy"]);
+Route::get('/nft/buy/{id}', [NftController::class, "buyNft"]);
+Route::post('nft/order', [NftController::class, "order"]);
 
 
 //collection
