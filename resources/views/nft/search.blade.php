@@ -1,5 +1,7 @@
 <h1>searchResults</h1>
 
+<p>1 euro = {{ $eth }}ETH</p>
+
 
 @if ($data->isEmpty())
     <p>No results found</p>
