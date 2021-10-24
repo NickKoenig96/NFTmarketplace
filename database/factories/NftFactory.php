@@ -24,8 +24,8 @@ class NftFactory extends Factory
         return [
             //
             'title' => $this->faker->name(),
+            'creator_id' => $this->faker->numberBetween(1, 4),
             'owner_id' => $this->faker->numberBetween(1, 4),
-            'user_id' => $this->faker->numberBetween(1, 4),
             'description' => $this->faker->realText(100, 2),
             'collection_id' => $this->faker->numberBetween(1, 5)
         ];
