@@ -1,28 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts/app')
+@extends('components/header')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('title', 'AddNft')
 
-<body>
+
     <form method="POST" action="{{ url('/collection/addCollection') }}" enctype='multipart/form-data'>
         @csrf
         <label for="cTitle">collection title</label><br>
         <input type="text" id="cTitle" name="collectionTitle"><br>
 
-        <label for="cDescription">collection description</label><br>
-        <input type="text" id="cDescription" name="collectionDescription"><br>
+    <h1>Add collection</h1>
 
-        <label for="cImage">collection image</label><br>
-        <input type="file" name="collectionImage"> <br>
-        <input type="submit" name="upload">
+    <div class="form-group">
+        <form method="POST" action="/collection/addCollection" enctype='multipart/form-data'>
+            @csrf
+            <h2 class="form-group__title">New collection for your NFT's</h2>
+            <label class="form-group__label" for="cTitle">title</label><br>
+            <input class="form-group__input" type="text" id="cTitle" name="collectionTitle"><br>
 
-    </form>
+            <label class="form-group__label" for="cDescription">description</label><br>
+            <input class="form-group__input" type="text" id="cDescription" name="collectionDescription"><br>
 
-</body>
+            <label class="form-group__label" for="cImage">upload image</label><br>
+            <input class="form-group__input--image" type="file" name="collectionImage"> <br>
+            <input class="btn-center" type="submit" name="upload" value="Add">
+        </form>
+    </div>
 
-</html>
+@endsection

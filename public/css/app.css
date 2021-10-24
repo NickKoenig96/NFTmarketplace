@@ -334,7 +334,7 @@ select {
   flex-direction: column;
 }
 
-input {
+input, select {
   margin-top: 6px;
   margin-bottom: 17px;
   height: 44px;
@@ -372,6 +372,7 @@ input[type=submit] {
        column-gap: 40px;
 }
 
+
 .form__container {
   background-color: #162C99;
   margin-left: auto;
@@ -389,7 +390,76 @@ input[type=submit] {
   border: none;
 }
 
-.form {
+.form-group {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  margin: auto;
+  width: 50%;
+}
+.form-group__title {
+  font-weight: 900;
+  font-size: 26px;
+  margin-top: 4em;
+  margin-bottom: 0.5em;
+}
+.form-group__input {
+  background-color: #ffffff !important;
+  border-radius: 5px;
+  border: 3px #162C9933 solid;
+}
+.form-group__input--image::before {
+  content: url("http://localhost/images/image-upload.png");
+  display: flex;
+  padding-left: 5.5em;
+  padding-bottom: 5px;
+}
+.form-group__input--image {
+  height: 100px;
+  color: #162C99cc;
+  font-weight: 600;
+  padding: 0.5em;
+  padding-left: 6em;
+  font-size: 14px;
+}
+.form-group__input--image::after {
+  content: "PNG, JPG or GIF (max. 800 x 400 px)";
+  display: flex;
+  color: #00000066;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  margin-left: -20px;
+  font-size: 12px;
+}
+
+select {
+  background-color: #ffffff;
+  color: #162C9966;
+}
+
+#editNftForm {
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  margin: 0;
+}
+
+@media screen and (min-width: 400px) {
+  .form-group {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .form-group {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 800px) {
+  .form-group {
+    width: 35%;
+  }
+}
+.btn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -498,6 +568,13 @@ input[type=submit] {
   position: absolute;
   top: 4px;
   left: 13px;
+
+.btn-center {
+  background-color: #162C99;
+  color: #ffffff;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+
 }
 
 body {
@@ -524,6 +601,7 @@ section:not(:first-of-type) {
   display: none;
 }
 
+
 .bg--2 {
   background-color: #E1E5F4;
 }
@@ -531,4 +609,10 @@ section:not(:first-of-type) {
 .flex--spbet {
   display: flex;
   justify-content: space-between;
+
+h1 {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+
 }

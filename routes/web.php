@@ -42,6 +42,8 @@ use App\Views\Composers\MultiComposer;
 // homepage
 Route::get('/', [NftController::class, "homepage"]);
 
+Route::get('/homepageFilter', [NftController::class, "filter"]);
+
 // detail page from homepage
 Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
 

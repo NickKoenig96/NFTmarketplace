@@ -20,5 +20,6 @@
         <a href="#">About us</a>
         <a href="#">Contact</a>
         <a class="btn btn--blue btn--h40 btn--signedin" href="/profile">{{ $firstname }}</a>
+
     </nav>
 </header>

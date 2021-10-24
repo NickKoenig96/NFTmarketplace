@@ -1,39 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts/app')
+@extends('components/header')
+{{-- @extends('views/sass/app') --}}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('title', 'AddNft')
 
-<body>
-    <form method="POST" action="{{ url('/nft/addNft') }}" id="editNftForm" enctype='multipart/form-data'>
-        @csrf
+@section('content')
 
-        <input type="hidden" name='creator' value="{{ $user }}">
+    <h1>Add NFT</h1>
 
-        <label for="nTitle">nft title</label><br>
-        <input type="text" id="nTitle" name="nftTitle"><br>
+    <div class="form-group">
+        <form method="POST" action="/nft/addNft" id="editNftForm" enctype='multipart/form-data'>
+            @csrf
+            <h2 class="form-group__title">Upload a new masterpiece</h2>
+            <input type="hidden" name='creator' value="{{ $user }}">
 
-        <label for="nDescription">nft description</label><br>
-        <input type="text" id="nDescription" name="nftDescription"><br>
+            <label class="form-group__label" for="nTitle"> title</label><br>
+            <input class="form-group__input" type="text" id="nTitle" name="nftTitle"><br>
 
-        <label for="nImage">nft image</label><br>
-        <input type="file" name="nftImage"> <br>
+            <label class="form-group__label" for="nDescription">description</label><br>
+            <input class="form-group__input" type="text" id="nDescription" name="nftDescription"><br>
 
-        <label for="collections">Choose a collection:</label>
-        <select id="collections" name="collectionsId" form="editNftForm">
-            @foreach ($collections as $collection)
-                <option value="{{ $collection->id }}">{{ $collection->title }}e</option>
-            @endforeach
-        </select>
-        <br>
+            <label class="form-group__label" for="nImage">upload image</label><br>
+            <input class="form-group__input--image" type="file" id="nImage" name="nftImage"><br>
 
-        <input type="submit" name="upload" value="add">
+            <label class="form-group__label" for="collections">choose collection</label><br>
+            <select id="collections" name="collectionsId" form="editNftForm">
+                @foreach ($collections as $collection)
+                    <option class="form-group__input" value="{{ $collection->id }}">{{ $collection->title }}e</option>
+                @endforeach
+            </select>
+            <br>
 
-    </form>
-</body>
+            <input class="btn-center" type="submit" name="upload" value="Add">
 
-</html>
+        </form>
+    </div>
+
+@endsection

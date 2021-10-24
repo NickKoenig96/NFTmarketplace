@@ -28,6 +28,7 @@ section{
     display: none;
 }
 
+
 .bg--2{
     background-color: $blue--bg2;
 }
@@ -35,4 +36,9 @@ section{
 .flex--spbet{
     display: flex;
     justify-content: space-between;
+
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
 }
