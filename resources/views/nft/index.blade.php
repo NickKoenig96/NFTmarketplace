@@ -12,13 +12,9 @@
             <p>price in EUR = {{ $nft->price }}</p>
             <p>price in ETH = {{ $eth * $nft->price }}</p>
             @if($nft->forSale === 0)
-            <form method="POST" action="{{ url('/nft/markForSale') }}" enctype='multipart/form-data'>
-            @csrf
-                <input type="hidden" name="id" value="{{ $nft->id }}">
-                <input type="submit" value="mark for sale">
-            </form>
+            <a href="/nft/sell/{{ $nft->id }}">Sell this NFT</a>
             @elseif($nft->forSale === 1)
-            <p>This NFT is for sale</p>
+            <p>Your NFT is for sale</p>
             @endif
             
         @elseif($nft->creator != $user && $nft->minted == 0 && $nft->forsale == 0) 

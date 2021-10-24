@@ -175,10 +175,17 @@ class NftController extends Controller
 
     }
 
+    public function sell($id){
+        $nft = Nft::find($id);
+        $data["nft"] = $nft;
+        return view("nft/sellNft", $data);
+    }
+
     public function markForSale(Request $request){
         $nft = Nft::find($request->input('id'));
         if($nft->owner_id === Auth::id()){
             $nft->forSale = 1;
+            $nft->price = $request->input('price');
             $nft->save();
             return redirect('./nft');
         }
