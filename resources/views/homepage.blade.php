@@ -7,38 +7,9 @@
 
     <x-header firstname="{{ $user->firstname }}" />
 
-    <h1>Homepage</h1>
-
-    <form action="{{ url('/search') }}" type="get">
-        <select name="category" id="category">
-            <option value="Collections">Collections</option>
-            <option value="NFT's">NFT's</option>
-        </select>
-        <input class="form-control-lg" type="search" id="search" name="searchTerm" placeholder="Search"
-            aria-label="Search">
-        <button type="submit">Search </button>
-    </form>
-
-    <h2 class="form-group__title">Filter:</h2>
-    <form action="{{ url('/homepageFilter') }}" type="get">
-        <select name="filter" id="filter"> 
-            <option value="Price">Price</option>
-            <option value="Area">Area</option>
-            <option value="Type">Type</option>
-        </select>
-        <button type="submit">Submit </button>
-    </form>
-
-    @foreach ($nfts as $nft)
-        <div>
-            <a href="/nfts/{{ $nft->id }}">{{ $nft->title }}</a>
-
-            {{-- add image --}}
-        </div>
-    @endforeach
-
-
+    {{-- <h1>Homepage</h1> --}}
     <p>1 euro = {{ $eth }}ETH</p>
+
     <section>
         <h1>Collections</h1>
 
@@ -60,6 +31,15 @@
 
     <section class="bg--2">
         <h1>NFT's</h1>
+        <form action="{{ url('/homepageFilter') }}" type="get">
+            <h2 class="form-group__title">Filter:</h2>
+            <select name="filter" id="filter"> 
+                <option value="Price">Price</option>
+                <option value="Area">Area</option>
+                <option value="Type">Type</option>
+            </select>
+            <button type="submit" class="btn--blue btn--h40 btn--center">Submit </button>
+        </form>
 
         <div class="cardgallery">
             @foreach ($nfts as $nft)
@@ -71,9 +51,6 @@
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                     </div>
                 </div>
-
-            
-            
             @endforeach
         </div>
     </section>

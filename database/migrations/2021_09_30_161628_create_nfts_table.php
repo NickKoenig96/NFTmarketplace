@@ -24,7 +24,6 @@ class CreateNftsTable extends Migration
             $table->boolean('minted')->default(false);
             $table->boolean('forSale')->default(false);
             $table->foreignId('collection_id');
-            $table->float('price');
             $table->float('area');
             $table->string('object_type');
             $table->timestamps();
