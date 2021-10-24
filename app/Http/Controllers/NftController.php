@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Nft;
 use App\Models\Collection;
 
+use Illuminate\Support\Facades\Http;
+
 
 
 class NftController extends Controller
@@ -27,9 +29,11 @@ class NftController extends Controller
     public function index(){
         $user = 'Nick Koenig';
         $nfts = Nft::get();
+       
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
+
          return view('nft/index', $data);
     }
 
