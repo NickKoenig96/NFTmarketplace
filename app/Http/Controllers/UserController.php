@@ -17,8 +17,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function profile(){
-        $id = 4;
-        $user = \DB::table("users")->where('id', $id)->first();
+        
+        $user = Auth::user();
         $data['user'] = $user;
         return view('profile', $data);
 
@@ -78,7 +78,7 @@ class UserController extends Controller
         if($request->password === $request->confirmPassword){
             $user->password = Hash::make($request->input('password'));
             $user->save();
-            return redirect()->intended('./');
+            return redirect('./login');
         }
 
         
