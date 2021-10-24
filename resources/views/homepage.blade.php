@@ -2,10 +2,13 @@
 
 @section('title', 'Home')
 
+
 @section('content')
-    <x-header firstname="{{ 'Jonathan' }}" />
+
+    <x-header firstname="{{ $user->firstname }}" />
 
     <p>1 euro = {{ $eth }}ETH</p>
+    <p>{{ $user }}</p>
 
     <h1>Homepage</h1>
 

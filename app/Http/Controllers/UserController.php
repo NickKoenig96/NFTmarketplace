@@ -103,7 +103,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect('./');
+            return redirect()->intended('./');
         }else{
             return redirect('./login');
         }

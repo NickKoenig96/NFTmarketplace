@@ -2,15 +2,17 @@
 
 <h1>nft</h1>
 
+{{ $user }}
 
 @foreach ($nfts as $nft)
     <div>
-        @if ($nft->creator == $user)
+        @if ($nft->user_id == $user)
             <p>id = {{ $nft->id }}</p>
             <p>{{ $nft->title }}</p>
             <a href="">Mint this NFT</a>
             <p>price in EUR = {{ $nft->price }}</p>
             <p>price in ETH = {{ $eth * $nft->price }}</p>
+            <a href="">Mark for sale</a>
         @elseif($nft->creator != $user && $nft->minted == 0)
             <p>id = {{ $nft->id }}</p>
             <p>{{ $nft->title }}</p>

@@ -8,6 +8,7 @@ use App\Models\Nft;
 use App\Models\Collection;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -27,12 +28,12 @@ class NftController extends Controller
     }
 
     public function index(){
-        $user = 'Nick Koenig';
+        
         $nfts = Nft::get();
        
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
-        $data["user"] = $user;
+        
 
          return view('nft/index', $data);
     }
@@ -40,8 +41,10 @@ class NftController extends Controller
     // nfts in homepage
     public function homepage(){
         $nfts = Nft::get();
+        $user = Auth::user();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
+        $data["user"] = $user;
          return view('homepage', $data);
     }
 
