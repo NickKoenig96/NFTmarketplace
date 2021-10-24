@@ -5,6 +5,7 @@
 @section('content')
     <x-header firstname="{{ 'Jonathan' }}" />
 
+    <p>1 euro = {{ $eth }}ETH</p>
     <section>
         <h1>Collections</h1>
 
