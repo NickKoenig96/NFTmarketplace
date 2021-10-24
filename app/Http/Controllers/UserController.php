@@ -80,17 +80,6 @@ class UserController extends Controller
             $user->save();
             return redirect('./');
         }
-        
-        
-        
-
-         // $user->phone = $request->input('phone');
-        // $user->bio = $request->input('bio');
-        // $user->street = $request->input('street');
-        // $user->housenumber = $request->input('housenumber');
-        // $user->city = $request->input('city');
-        // $user->postal = $request->input('postal');
-        // $user->country = $request->input('country');
 
         
     }

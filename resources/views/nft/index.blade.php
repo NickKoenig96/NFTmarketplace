@@ -1,8 +1,7 @@
 <p>1 euro = {{ $eth }}ETH</p>
 
 <h1>nft</h1>
-
-{{ $user }}
+{{$user}}
 
 @foreach ($nfts as $nft)
     <div>
