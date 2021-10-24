@@ -10,7 +10,7 @@
 
             <input class="form-control-lg searchbar" type="search" id="search" name="searchTerm" placeholder="Search"
                 aria-label="Search">
-            <button class="btn btn--search" type="submit">Go</button>
+            <button class="btn btn--blue btn--h40 btn--search" type="submit">Go</button>
         </form>
     </div>
 
@@ -19,6 +19,6 @@
         <a href="#">My favourites</a>
         <a href="#">About us</a>
         <a href="#">Contact</a>
-        <a class="btn btn--signedin" href="#">{{ $firstname }}</a>
+        <a class="btn btn--blue btn--h40 btn--signedin" href="#">{{ $firstname }}</a>
     </nav>
 </header>

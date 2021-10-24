@@ -29,11 +29,11 @@
                     <div class="form__control--small">
                         <input class="hidden fileSelect" type="file" name="avatar">
                         <input type="hidden" name="id" value="{{ $user->id }}">
-                        <input type="submit" class="btn" value="Upload new avatar">
+                        <input type="submit" class="btn btn--blue btn--h40" value="Upload new avatar">
                     </div>
                     @csrf
                 </form>
-                <a href="#" class="btn btn--destroy--plain">Delete avatar</a>
+                <a href="#" class="btn btn--blue btn--h40 btn--destroy--plain">Delete avatar</a>
             </div>
 
 
@@ -99,7 +99,7 @@
                     </div>
                     <input type="hidden" name="id" value="{{ $user->id }}">
 
-                    <input type="submit" class="btn mcenter" value="Update information">
+                    <input type="submit" class="btn btn--blue btn--h40 mcenter" value="Update information">
                 </form>
             </div>
         </div>

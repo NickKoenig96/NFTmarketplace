@@ -20,7 +20,7 @@
 .card--3col{
     position: relative;
     width: 290px;
-    height: 395px;
+    height: 396px;
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
@@ -54,6 +54,9 @@
     height: 142px;
     border-radius: 5px;
     object-fit: cover;
+}
+.card__image--large{
+    height: 200px;
 }
 
 .card__specs{

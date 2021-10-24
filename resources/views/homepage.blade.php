@@ -11,7 +11,7 @@
         <div class="cardgallery">
             @foreach ($collections as $collection)
             <a class="card card--3col" href="/collections/{{ $collection->id }}">
-                <img class="card__image" src="{{ $collection->image_file_path}}" alt="nft image">
+                <img class="card__image" src="{{ $collection->image_file_path}}" alt="collection image">
                 <img class="card__profilepicture--small" src="{{ $collection->image_file_path }}" alt="creator image">
                 <div class="card__specs">
                     <div class="btn--favourite"></div>
@@ -24,12 +24,22 @@
         </div>
     </section>
 
-    <section>
+    <section class="bg--2">
         <h1>NFT's</h1>
 
         <div class="cardgallery">
             @foreach ($nfts as $nft)
-                <a href="/nfts/{{ $nft->id }}" class="card card--3col"></a>
+                <div class="card card--3col flex--spbet">
+                    <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
+                    <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $nft->title }}</p>
+                    <div class="flex--spbet">
+                        <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
+                        <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                    </div>
+                </div>
+
+            
+            
             @endforeach
         </div>
     </section>

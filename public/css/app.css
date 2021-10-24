@@ -144,7 +144,7 @@ h3 {
 .card--3col {
   position: relative;
   width: 290px;
-  height: 395px;
+  height: 396px;
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
@@ -179,6 +179,10 @@ h3 {
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.card__image--large {
+  height: 200px;
 }
 
 .card__specs {
@@ -402,11 +406,31 @@ input[type=submit] {
 
 .btn {
   align-items: center;
+  border-radius: 10px;
+  height: 30px;
+  padding: 8px 10px;
+}
+
+.btn--blue {
   background-color: #162C99;
   color: #ffffff;
-  border-radius: 10px;
+}
+
+.btn--h40 {
   height: 40px;
-  padding: 8px 10px;
+}
+
+.btn--1col, .btn--155 {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 74px;
+  border-radius: 8px;
+}
+
+.btn--155 {
+  width: 155px;
 }
 
 .btn--signedin {
@@ -436,10 +460,8 @@ input[type=submit] {
 }
 
 .btn--light {
-  background-color: #ffffff;
-  color: #162C99;
-  border-radius: 20px;
-  margin-top: 5%;
+  background-color: #ECF1F2;
+  color: #000000;
   border: none;
 }
 
@@ -489,6 +511,9 @@ section {
 section:not(:last-of-type) {
   padding-bottom: 40px;
 }
+section:not(:first-of-type) {
+  padding-top: 40px;
+}
 
 .mcenter {
   margin-left: auto;
@@ -497,4 +522,13 @@ section:not(:last-of-type) {
 
 .hidden {
   display: none;
+}
+
+.bg--2 {
+  background-color: #E1E5F4;
+}
+
+.flex--spbet {
+  display: flex;
+  justify-content: space-between;
 }
