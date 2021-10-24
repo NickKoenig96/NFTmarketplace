@@ -50,13 +50,11 @@ Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
 
 
 //login and register
-
-
-
 Route::get('/signup', [UserController::class, "register" ]);
 Route::post('/users/signup', [UserController::class, "store"]);
 Route::get('/login', [UserController::class, "login"]);
 Route::post('/users/login', [UserController::class, "handleLogin"]);
+Route::get('/logout', [Usercontroller::class, "logout"]);
 
 
 
@@ -83,15 +81,20 @@ Route::get('/nft/addNft', [NftController::class, "create"]);
 Route::post('/nft/addNft', [NftController::class, "store"]);
 Route::get('/edit/nft/{id}', [NftController::class, "show"]);
 Route::post('/nft/editNft', [NftController::class, "edit"]);
+Route::get('/nft/buy/{id}', [NftController::class, "buyNft"]);
+Route::post('nft/order', [NftController::class, "order"]);
+Route::get('/nft/sell/{id}', [NftController::class, "sell"]);
+Route::post('/nft/markForSale', [NftController::class, "markForSale"]);
 
 
-//colection
+//collection
 Route::get('/collection', [CollectionController::class, "index"]);
 Route::get('/delete/{id}', [CollectionController::class, "destroy"]);
 Route::get('/edit/{id}', [CollectionController::class, "show"]);
 Route::post('/collection/editCollection', [CollectionController::class, "edit"]);
 Route::get('/collection/addCollection', [CollectionController::class, "create"]);
 Route::post('/collection/addCollection', [CollectionController::class, "store"]);
+
 
 
 //wallet
