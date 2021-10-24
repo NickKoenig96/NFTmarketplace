@@ -8,6 +8,7 @@ use App\Models\Nft;
 use App\Models\Collection;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -27,12 +28,13 @@ class NftController extends Controller
     }
 
     public function index(){
-        $user = 'Nick Koenig';
+        
         $nfts = Nft::get();
-       
+        $user = Auth::id();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
-        $data["user"] = $user;
+        $data['user'] = $user;
+        
 
          return view('nft/index', $data);
     }
@@ -41,9 +43,12 @@ class NftController extends Controller
     public function homepage(){
         $nfts = Nft::get();
         $collections = Collection::get();
-       // $nfts = \DB::table("nfts")->get();
+        $user = Auth::user();
+       
         $data["nfts"] = $nfts;
+        $data["user"] = $user;
         $data["collections"] = $collections;
+
          return view('homepage', $data);
     }
 
@@ -143,6 +148,50 @@ class NftController extends Controller
        $nft->image_file_path = $image_file_path;
        $nft->save();
         return redirect('./wallet');
+    }
+
+    public function buyNft($id){
+        $user = Auth::id();
+        $nft = Nft::find($id);
+        $data["nft"] = $nft;
+        $data["user"] = $user;
+        return view('nft/buyNft', $data );
+    }
+
+    public function Order(Request $request){
+        //order toevoegen
+        $order = new \App\Models\Order();
+        $order->nft_id = $request->input('id');
+        $order->price = $request->input('price');
+        $order->seller_id = $request->input('seller');
+        $order->buyer_id = $request->input('buyer');
+        $order->save();
+        
+
+        //nft updaten
+        $nft = Nft::find($request->input('id'));
+        $nft->owner_id = $request->input('buyer');
+        $nft->forSale = 0;
+        $nft->save();
+
+        return redirect('./nft');
+
+    }
+
+    public function sell($id){
+        $nft = Nft::find($id);
+        $data["nft"] = $nft;
+        return view("nft/sellNft", $data);
+    }
+
+    public function markForSale(Request $request){
+        $nft = Nft::find($request->input('id'));
+        if($nft->owner_id === Auth::id()){
+            $nft->forSale = 1;
+            $nft->price = $request->input('price');
+            $nft->save();
+            return redirect('./nft');
+        }
     }
 
 

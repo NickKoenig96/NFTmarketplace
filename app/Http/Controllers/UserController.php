@@ -17,8 +17,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function profile(){
-        $id = 4;
-        $user = \DB::table("users")->where('id', $id)->first();
+        
+        $user = Auth::user();
         $data['user'] = $user;
         return view('profile', $data);
 
@@ -78,19 +78,8 @@ class UserController extends Controller
         if($request->password === $request->confirmPassword){
             $user->password = Hash::make($request->input('password'));
             $user->save();
-            return redirect('./');
+            return redirect('./login');
         }
-        
-        
-        
-
-         // $user->phone = $request->input('phone');
-        // $user->bio = $request->input('bio');
-        // $user->street = $request->input('street');
-        // $user->housenumber = $request->input('housenumber');
-        // $user->city = $request->input('city');
-        // $user->postal = $request->input('postal');
-        // $user->country = $request->input('country');
 
         
     }
@@ -103,12 +92,17 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect('./');
+            return redirect()->intended('./');
         }else{
             return redirect('./login');
         }
 
 
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('./login');
     }
 
     

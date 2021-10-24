@@ -17,9 +17,6 @@
     
     <input class="input input--light" type="text" placeholder="Lastname" name="lastname" id="lastname">
 
-    
-    <input class="input input--light" type="text" placeholder="Username" name="username" id="username">
-
 
     <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
 

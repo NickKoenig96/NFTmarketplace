@@ -17,10 +17,12 @@ class CreateNftsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->string('image_file_path')->default("defaultImage.png");;
-            $table->string('creator');
-            $table->int('price');
+            $table->string('image_file_path')->default("defaultImage.png");
+            $table->foreignId('creator_id');
+            $table->foreignId('owner_id');
+            $table->integer('price')->default(0);
             $table->boolean('minted')->default(false);
+            $table->boolean('forSale')->default(false);
             $table->foreignId('collection_id');
             $table->float('price');
             $table->float('area');

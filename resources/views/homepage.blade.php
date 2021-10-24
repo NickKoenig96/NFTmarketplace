@@ -2,8 +2,10 @@
 
 @section('title', 'Home')
 
+
 @section('content')
-    <x-header firstname="{{ 'Jonathan' }}" />
+
+    <x-header firstname="{{ $user->firstname }}" />
 
     <h1>Homepage</h1>
 
