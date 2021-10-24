@@ -2,17 +2,16 @@
 @section('title', 'Home')
 
 @section('content')
-        {{-- @foreach($nfts ?? '' as $nft)
-            <p>{{$nfts ?? ''->title}}<p>
-        @endforeach --}}
-    {{-- @foreach ($nf as $nft)
-        <p>{{ $nft->title }}</p>
-    @endforeach --}}
-    @foreach ($data as $d)
-        {{-- <p>{{ $d->title }}</p> --}}
-        <p>{{ $d }}</p>
-        {{-- <p>{{ $d->title }}</p> --}}
+    @foreach ($nfts as $nft)  
+        @if($filter == 'Price')
+            <p>{{ $nft->price }}</p>
+            <p>{{ $nft->title }}</p>
+        @elseif($filter == 'Area')
+            <p>{{ $nft->area }}</p>
+            <p>{{ $nft->title }}</p>
+        @else
+            <p>{{ $nft->object_type }}</p>
+            <p>{{ $nft->title }}</p> 
+        @endif
     @endforeach
-
-
 @endsection 

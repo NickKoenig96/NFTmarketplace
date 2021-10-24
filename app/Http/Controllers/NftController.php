@@ -134,28 +134,18 @@ class NftController extends Controller
 
 
     public function filter(Request $request){
-        $filter = $request->filter;
+        $filter = $request->input('filter');
+        if($filter == 'Price'){
+            $nfts = \DB::table("nfts")->select('price', 'title')->get();
+            return view("/homepageFilter", compact("nfts"), compact("filter"));
 
-        if($filter == "Price"){
-            $data = Nft::select('price')
-            ->where('price', 'like', "%{$request->term}%")
-            ->pluck('price');
-            // dd($filter);
-            return view("/homepageFilter", compact("data"));
-            // return $data;
-
-        }else if($filter == "Area") {
-            $data = Nft::select('area')
-            ->where('area', 'like', "%{$request->term}%")
-            ->pluck('area');
-            return view("/homepageFilter", compact("data"));
-            // return $data;
-        }else{
-            $data = Nft::select('object_type')
-            ->where('object_type', 'like', "%{$request->term}%")
-            ->pluck('object_type');
-            return view("/homepageFilter", compact("data"));
-            // return $data;
+        }else if($filter == 'Area'){
+            $nfts = \DB::table("nfts")->select('area', 'title')->get();
+            return view("/homepageFilter", compact("nfts"), compact("filter"));
+        }
+        else{
+            $nfts = \DB::table("nfts")->select('object_type', 'title')->get();
+            return view("/homepageFilter", compact("nfts"), compact("filter"));
         }
     }
 
