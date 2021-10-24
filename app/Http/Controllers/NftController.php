@@ -147,6 +147,10 @@ class NftController extends Controller
         return redirect('./wallet');
     }
 
+    public function buy(Request $request){
+        
+    }
+
 
 
 
