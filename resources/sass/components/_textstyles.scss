@@ -22,12 +22,12 @@ h3{
 }
 
 
-.body--normal--bold{
-    font-weight: 700;
+.body--normal{
     font-style: normal;
     font-size: 16px;
     line-height: 24px;
 }
+
 .body--tiny{
     font-weight: 400;
     font-style: normal;
@@ -38,4 +38,12 @@ h3{
 
 .black--60{
     color: $black--60;
+}
+
+.ta_c{
+    text-align: center;
+}
+
+.bold{
+    font-weight: 700;
 }
