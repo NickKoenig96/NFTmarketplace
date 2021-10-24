@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/collection/editCollection" enctype='multipart/form-data'>
+    <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
         @csrf
 
         <input type="hidden" name="id" value="{{ $collection->id }}">

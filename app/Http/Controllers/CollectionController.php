@@ -40,13 +40,15 @@ class CollectionController extends Controller
      */
     public function store(Request $request){
 
-        $image_file_path = $request->file('collectionImage')->getClientOriginalName();
-        $path = $request->file('collectionImage')->storeAs('public/images/', $image_file_path );
+        // $image_file_path = $request->file('collectionImage')->getClientOriginalName();
+        // $path = $request->file('collectionImage')->storeAs('public/images/', $image_file_path );
+
+        $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
         $collection = new Collection();
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
-        $collection->image_file_path = $image_file_path;
+        $collection->image_file_path = $uploadedFileUrl;
         $collection->save();
         return redirect('./collection');
     }

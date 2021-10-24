@@ -9,7 +9,7 @@
     <h1>Add NFT</h1>
 
     <div class="form-group">
-        <form method="POST" action="/nft/addNft" id="editNftForm">
+        <form method="POST" action="/nft/addNft" id="editNftForm" enctype='multipart/form-data'>
             @csrf
             <h2 class="form-group__title">Upload a new masterpiece</h2>
             <input type="hidden" name='creator' value="{{ $user }}">
@@ -19,7 +19,6 @@
 
             <label class="form-group__label" for="nDescription">description</label><br>
             <input class="form-group__input" type="text" id="nDescription" name="nftDescription"><br>
-
 
             <label class="form-group__label" for="nImage">upload image</label><br>
             <input class="form-group__input--image" type="file" id="nImage" name="nftImage"><br>

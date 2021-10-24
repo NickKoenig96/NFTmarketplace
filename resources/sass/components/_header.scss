@@ -1,20 +1,19 @@
 @use '../abstracts' as *;
 
 header{
-    padding: 40px 0px;
+    padding: 40px 80px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 header .searchbar{
-    margin-left: 70px;
     margin-top: auto;
     margin-bottom: auto;
 }
 
 header nav{
-    flex-grow: 1;
+    flex-grow: 100%;
 }
 nav{
     display: flex;
@@ -25,3 +24,45 @@ nav{
         margin-right: 59px;
     }
 }
+
+
+.search{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+select{
+    background-color: $blue--bg;
+    border: 1px solid black;
+    color: $black;
+    border-radius: 6px;
+    height: 35px;
+    border: none;
+    margin-left: 2em;
+    padding: 0.5em;
+    text-align: right;
+}
+
+.search button{
+    margin-left: 10px;
+    width: 40px;
+    border: none;
+}
+
+//bootstrap classes
+.typeahead{
+    background-color: #fff;
+    width: 300px;
+    display: block;
+    margin-left: 8.5em;
+}
+
+.typeahead li{
+    padding: 5px;
+}
+
+.typeahead li.active{
+    background-color: #eee;
+}
+

@@ -8,6 +8,12 @@ use App\Http\Controllers\homepageController;
 use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\apiController;
+
+
+
+use App\Views\Composers\MultiComposer;
+
 
 
 
@@ -41,13 +47,18 @@ Route::get('/homepageFilter', [NftController::class, "filter"]);
 // detail page from homepage
 Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-Route::get('/signup', function () {
-    return view('signup');
-});
+
+//login and register
+
+
+
+Route::get('/signup', [UserController::class, "register" ]);
+Route::post('/users/signup', [UserController::class, "store"]);
+Route::get('/login', [UserController::class, "login"]);
+Route::post('/users/login', [UserController::class, "handleLogin"]);
+
+
 
 
 
@@ -60,12 +71,8 @@ Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
 
 //search
 Route::get('/search', [SearchController::class, "search"]);
-
 Route::get('/homepage', [SearchController::class, 'index']);
 Route::get('/homepage/action', [SearchController::class, 'action'])->name('typeahead_autocomplete.action');
-
-
-
 
 
 
@@ -89,24 +96,3 @@ Route::post('/collection/addCollection', [CollectionController::class, "store"])
 
 //wallet
 Route::get('/wallet', [walletController::class, "index"]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

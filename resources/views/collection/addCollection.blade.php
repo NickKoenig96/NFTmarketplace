@@ -3,7 +3,11 @@
 
 @section('title', 'AddNft')
 
-@section('content')
+
+    <form method="POST" action="{{ url('/collection/addCollection') }}" enctype='multipart/form-data'>
+        @csrf
+        <label for="cTitle">collection title</label><br>
+        <input type="text" id="cTitle" name="collectionTitle"><br>
 
     <h1>Add collection</h1>
 

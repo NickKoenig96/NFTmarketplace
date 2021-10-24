@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Nft;
 use App\Models\Collection;
 
+use Illuminate\Support\Facades\Http;
+
 
 
 class NftController extends Controller
@@ -27,17 +29,21 @@ class NftController extends Controller
     public function index(){
         $user = 'Nick Koenig';
         $nfts = Nft::get();
+       
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
+
          return view('nft/index', $data);
     }
 
     // nfts in homepage
     public function homepage(){
         $nfts = Nft::get();
+        $collections = Collection::get();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
+        $data["collections"] = $collections;
          return view('homepage', $data);
     }
 
@@ -89,12 +95,15 @@ class NftController extends Controller
      */
     public function store(Request $request){
 
+        $image_file_path = $request->file('nftImage')->getClientOriginalName();
+        $path = $request->file('nftImage')->storeAs('public/images/', $image_file_path );
       
        
         $nft = new Nft();
         $nft->creator = $request->input('creator');
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
+        $nft->image_file_path = $image_file_path;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
         return redirect('./nft');
@@ -124,10 +133,14 @@ class NftController extends Controller
     public function edit(Request $request)
     {
 
+        $image_file_path = $request->file('nftImage')->getClientOriginalName();
+        $path = $request->file('nftImage')->storeAs('public/images/', $image_file_path );
+
        
        $nft = Nft::find($request->id);
        $nft->title = $request->input('nftTitle');
        $nft->description = $request->input('nftDescription');
+       $nft->image_file_path = $image_file_path;
        $nft->save();
         return redirect('./wallet');
     }

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/nft/editNft">
+    <form method="POST" action="{{ url('/nft/editNft') }}" enctype='multipart/form-data'>>
         @csrf
 
         <input type="hidden" name="id" value="{{ $nft->id }}">
@@ -17,9 +17,12 @@
         <label for="cTitle">nft title</label><br>
         <input type="text" id="cTitle" value="{{ $nft->title }}" name="nftTitle"><br>
 
+
         <label for="cDescription">nft description</label><br>
         <input type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
 
+        <label for="nImage">nft image</label><br>
+        <input type="file" name="nftImage"> <br>
 
 
         <input type="submit" name="upload" value="edit">
