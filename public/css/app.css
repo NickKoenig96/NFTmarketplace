@@ -500,11 +500,15 @@ input[type=submit] {
   top: 3em;
 }
 
-.btn--favourite {
+.btn--favourite, .btn--favourite--true {
   width: 24px;
   height: 22px;
   background-image: url(/images/icon_heart.svg?275a1a15676ad09164665e0e9672f0ec);
   background-repeat: no-repeat;
+}
+
+.btn--favourite--true {
+  background-image: url(/images/icon_heart-filled.svg?c3a6d042cd28a2a3d0079224abfbff64);
 }
 
 .btn--nftcount {

@@ -147,6 +147,27 @@
             @endforeach
         </div>
 
+        <!-- Momenteel dezelfde output als bij de "owned NFT's" -->
+        <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}--> favourite nft's</h6>
+        <div class="cardgallery">
+            @foreach ($nfts as $nft)
+                <div class="card card--3col flex--spbet">
+                    <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
+                    <div class="marginb-24">
+                    <div class="flex--spbet">
+                        <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
+                        <div class="btn--favourite--true"></div>
+                    </div>
+                        <span class="card__price">€ {{ $nft->price }}</span>
+                    </div>
+                    <div class="flex--spbet">
+                        <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
+                        <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
     </section>
 
     <script>
