@@ -75,10 +75,14 @@
     top: 3em;
 }
 
-.btn--favourite{
+.btn--favourite, .btn--favourite--true{
     width: 24px;
     height: 22px;
     background-image: url(../../../public/assets/icons/icon_heart.svg);
+    background-repeat: no-repeat;
+}
+.btn--favourite--true{
+    background-image: url(../../../public/assets/icons/icon_heart-filled.svg);
 }
 
 .btn--nftcount{

@@ -26,6 +26,8 @@ class CreateNftsTable extends Migration
             $table->foreignId('collection_id');
             $table->float('area');
             $table->string('object_type');
+            $table->foreignId('owner_id');
+            $table->double('price');
             $table->timestamps();
         });
     }

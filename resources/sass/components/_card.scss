@@ -63,7 +63,16 @@
     margin-top: 14px;
     margin-bottom: 14px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+}
+
+.card__price{
+    // color: $white;
+    display: inline-block;
+    margin-top: 6px;
+    // background-color: $blue--60;
+    // padding: 4px;
+    // border-radius: 5px;
 }
 
 .card__profilepicture{

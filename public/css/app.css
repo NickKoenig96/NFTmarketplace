@@ -115,12 +115,29 @@ h3 {
   color: #00000099;
 }
 
+.ta_l {
+  text-align: left;
+}
+
 .ta_c {
   text-align: center;
 }
 
+.ta_r {
+  text-align: right;
+}
+
 .bold {
   font-weight: 700;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.hr {
+  display: block;
+  border-bottom: 1px solid #898C8C;
 }
 
 .cardgallery {
@@ -189,7 +206,12 @@ h3 {
   margin-top: 14px;
   margin-bottom: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.card__price {
+  display: inline-block;
+  margin-top: 6px;
 }
 
 .card__profilepicture {
@@ -552,10 +574,15 @@ select {
   top: 3em;
 }
 
-.btn--favourite {
+.btn--favourite, .btn--favourite--true {
   width: 24px;
   height: 22px;
   background-image: url(/images/icon_heart.svg?275a1a15676ad09164665e0e9672f0ec);
+  background-repeat: no-repeat;
+}
+
+.btn--favourite--true {
+  background-image: url(/images/icon_heart-filled.svg?c3a6d042cd28a2a3d0079224abfbff64);
 }
 
 .btn--nftcount {
@@ -616,8 +643,6 @@ section:not(:first-of-type) {
   justify-content: space-between;
 }
 
-h1 {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 900;
-  font-size: 48px;
+.marginb-24 {
+  margin-bottom: 24px;
 }

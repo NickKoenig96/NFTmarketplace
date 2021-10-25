@@ -28,8 +28,10 @@ class NftFactory extends Factory
             'owner_id' => $this->faker->numberBetween(1, 4),
             'description' => $this->faker->realText(100, 2),
             'collection_id' => $this->faker->numberBetween(1, 5),
+            'owner_id' => $this->faker->numberBetween(3, 5),
+            'image_file_path' => $this->faker->randomElement(['https://res.cloudinary.com/dqelbnq5n/image/upload/v1634481475/default_odqauf.png', 'https://res.cloudinary.com/dqelbnq5n/image/upload/v1634481475/default_odqauf.png']),
+            'price' => $this->faker->numberBetween(75, 400),
             'object_type' => $this->faker->name(),
-            'price' => $this->faker->numberBetween(1, 50), 
             'area' => $this->faker->numberBetween(1, 100)
         ];
     }

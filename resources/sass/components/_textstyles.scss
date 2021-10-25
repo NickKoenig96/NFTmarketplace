@@ -20,6 +20,9 @@ h3{
     line-height: 30,5px;
     margin-bottom: 5px;
 }
+h6{
+
+}
 
 
 .body--normal{
@@ -40,10 +43,25 @@ h3{
     color: $black--60;
 }
 
+.ta_l{
+    text-align: left;
+}
 .ta_c{
     text-align: center;
+}
+.ta_r{
+    text-align: right;
 }
 
 .bold{
     font-weight: 700;
+}
+
+.medium{
+    font-weight: 500;
+}
+
+.hr{
+    display: block;
+    border-bottom: 1px solid $grey;
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Nft;
+use App\Models\Collection;
 use Image;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +19,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function profile(){
-        
+        $id = 4;
+        $nfts = Nft::where("owner_id", $id)->get();
+        $collections = Collection::where("creator_id", $id)->get();
         $user = Auth::user();
         $data['user'] = $user;
+        $data['nfts'] = $nfts;
+        $data['collections'] = $collections;
         return view('profile', $data);
 
     }
