@@ -22,7 +22,8 @@ class UserController extends Controller
         $id = 4;
         $nfts = Nft::where("owner_id", $id)->get();
         $collections = Collection::where("creator_id", $id)->get();
-        $user = Auth::user();
+        // $user = Auth::user();
+        $user = \DB::table("users")->where('id', $id)->first();
         $data['user'] = $user;
         $data['nfts'] = $nfts;
         $data['collections'] = $collections;

@@ -47,10 +47,11 @@ class NftController extends Controller
 
     // nfts in homepage
     public function homepage(){
+        $id = 4;
         $nfts = Nft::get();
         $collections = Collection::get();
         $user = Auth::user();
-       
+        $user = \DB::table("users")->where('id', $id)->first();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
