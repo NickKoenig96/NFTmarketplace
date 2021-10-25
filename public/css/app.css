@@ -131,6 +131,15 @@ h3 {
   font-weight: 700;
 }
 
+.medium {
+  font-weight: 500;
+}
+
+.hr {
+  display: block;
+  border-bottom: 1px solid #898C8C;
+}
+
 .cardgallery {
   display: flex;
   justify-content: space-between;
@@ -545,4 +554,8 @@ section:not(:first-of-type) {
 .flex--spbet {
   display: flex;
   justify-content: space-between;
+}
+
+.marginb-24 {
+  margin-bottom: 24px;
 }

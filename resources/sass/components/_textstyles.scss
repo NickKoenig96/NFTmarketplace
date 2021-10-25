@@ -20,6 +20,9 @@ h3{
     line-height: 30,5px;
     margin-bottom: 5px;
 }
+h6{
+
+}
 
 
 .body--normal{
@@ -52,4 +55,13 @@ h3{
 
 .bold{
     font-weight: 700;
+}
+
+.medium{
+    font-weight: 500;
+}
+
+.hr{
+    display: block;
+    border-bottom: 1px solid $grey;
 }

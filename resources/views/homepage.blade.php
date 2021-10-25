@@ -31,12 +31,12 @@
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">
                     <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
-                    <div style="margin-bottom: 24px;">
+                    <div class="marginb-24">
                     <div class="flex--spbet">
                         <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
                         <div class="btn--favourite"></div>
                     </div>
-                        <span class="card__price">€ <!--{{ $nft->price }}--> 154</span>
+                        <span class="card__price">€ {{ $nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
