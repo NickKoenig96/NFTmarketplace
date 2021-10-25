@@ -106,6 +106,10 @@
         </div>
     </section>
 
+    @foreach ($nfts as $nft)
+        <p>{{ $nft->title }}</p>
+    @endforeach
+
     <script>
         document.querySelector('.card__profilepicture').addEventListener('click', function(e) {
             e.preventDefault();

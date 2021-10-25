@@ -24,6 +24,12 @@ class NftController extends Controller
         return view('homepage', $data);
     }
 
+    public function profilepage(){
+        $nfts = Nft::get();
+        $data['nfts'] = $nfts;
+        return view('profile', $data);
+    }
+
     public function index(){
         $user = 'Nick Koenig';
         $nfts = Nft::get();

@@ -115,8 +115,16 @@ h3 {
   color: #00000099;
 }
 
+.ta_l {
+  text-align: left;
+}
+
 .ta_c {
   text-align: center;
+}
+
+.ta_r {
+  text-align: right;
 }
 
 .bold {
@@ -189,7 +197,12 @@ h3 {
   margin-top: 14px;
   margin-bottom: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.card__price {
+  display: inline-block;
+  margin-top: 6px;
 }
 
 .card__profilepicture {
@@ -482,6 +495,7 @@ input[type=submit] {
   width: 24px;
   height: 22px;
   background-image: url(/images/icon_heart.svg?275a1a15676ad09164665e0e9672f0ec);
+  background-repeat: no-repeat;
 }
 
 .btn--nftcount {

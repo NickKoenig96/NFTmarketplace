@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Nft;
 use Image;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,9 @@ class UserController extends Controller
     public function profile(){
         $id = 4;
         $user = \DB::table("users")->where('id', $id)->first();
+        $nfts = Nft::get();
         $data['user'] = $user;
+        $data['nfts'] = $nfts;
         return view('profile', $data);
 
     }
