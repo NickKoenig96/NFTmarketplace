@@ -3,6 +3,7 @@
 @section('title', 'Home')
 
 
+
 @section('content')
 
     <x-header firstname="{{ $user->firstname }}" />

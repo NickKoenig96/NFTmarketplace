@@ -99,3 +99,4 @@ Route::post('/collection/addCollection', [CollectionController::class, "store"])
 
 //wallet
 Route::get('/wallet', [walletController::class, "index"]);
+
