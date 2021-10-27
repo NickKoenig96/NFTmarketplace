@@ -20,12 +20,6 @@ class NftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile(){
-        $id = 4;
-        $user = \DB::table("users")->where('id', $id)->first();
-        $data['user'] = $user;
-        return view('homepage', $data);
-    }
 
     public function profilepage(){
         $nfts = Nft::get();
@@ -47,11 +41,9 @@ class NftController extends Controller
 
     // nfts in homepage
     public function homepage(){
-        $id = 4;
         $nfts = Nft::get();
         $collections = Collection::get();
         $user = Auth::user();
-        $user = \DB::table("users")->where('id', $id)->first();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;

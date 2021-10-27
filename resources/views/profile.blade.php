@@ -110,7 +110,7 @@
         <h1>My NFT's and collections</h1>
 
 
-        <h3 class="medium hr black--60 marginb-24">{{ count($nfts) }} Owned NFT's</h6>
+        <h3 class="medium hr black--60 marginb-24">{{ count($nfts) }} Owned NFT's</h3>
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">
@@ -130,8 +130,8 @@
             @endforeach
         </div>
 
-
-        <h3 class="medium hr black--60 marginb-24">{{ count($collections) }} Created collections</h6>
+        {{ $collections }}
+        <h3 class="medium hr black--60 marginb-24">{{ count($collections) }} Created collections</h3>
         <div class="cardgallery">
             @foreach ($collections as $collection)
             <a class="card card--3col" href="/collections/{{ $collection->id }}">
@@ -148,7 +148,7 @@
         </div>
 
         <!-- Momenteel dezelfde output als bij de "owned NFT's" -->
-        <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}--> favourite nft's</h6>
+        <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}--> favourite nft's</h3>
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">

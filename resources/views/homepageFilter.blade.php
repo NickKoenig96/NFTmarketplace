@@ -3,6 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
+<x-header firstname="{{ $user->firstname }}" />
     <div class="cardgallery">
         @foreach ($nfts as $nft)
             <div class="card card--3col flex--spbet">  
