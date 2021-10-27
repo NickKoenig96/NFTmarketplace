@@ -83,7 +83,7 @@ class NftController extends Controller
      */
 
     public function create(){
-        $data['user'] = 'Nick Koenig';
+        $data['user'] = Auth::user();
         $collections = Collection::get();
        // $collections = \DB::table("collections")->get();
         $data['collections'] = $collections;
@@ -99,15 +99,19 @@ class NftController extends Controller
      */
     public function store(Request $request){
 
-        $image_file_path = $request->file('nftImage')->getClientOriginalName();
-        $path = $request->file('nftImage')->storeAs('public/images/', $image_file_path );
+        
+        
+        $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
       
        
         $nft = new Nft();
-        $nft->creator = $request->input('creator');
+        $nft->creator_id = $request->input('creator');
+        $nft->owner_id = $request->input('creator');
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
-        $nft->image_file_path = $image_file_path;
+        $nft->area = $request->input('nftArea');
+        $nft->object_type = $request->input('nftObjectType');
+        $nft->image_file_path = $uploadedFileUrl;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
         return redirect('./nft');

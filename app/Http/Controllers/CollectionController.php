@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class CollectionController extends Controller
 {
@@ -14,10 +15,11 @@ class CollectionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        
+        $user = Auth::user();
         $collections = Collection::get();
        //$collections = \DB::table("collections")->get();
        $data["collections"] = $collections;
+       $data["user"] = $user;
         return view('collection/index', $data);
     }
 
@@ -28,7 +30,9 @@ class CollectionController extends Controller
      */
 
     public function create(){
-        return view('collection/addCollection');
+        $user = Auth::user();
+        $data["user"] = $user;
+        return view('collection/addCollection', $data);
     }
 
 
@@ -40,8 +44,7 @@ class CollectionController extends Controller
      */
     public function store(Request $request){
 
-        // $image_file_path = $request->file('collectionImage')->getClientOriginalName();
-        // $path = $request->file('collectionImage')->storeAs('public/images/', $image_file_path );
+        
 
         $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
@@ -49,6 +52,7 @@ class CollectionController extends Controller
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $uploadedFileUrl;
+        $collection->creator_id = Auth::id();
         $collection->save();
         return redirect('./collection');
     }

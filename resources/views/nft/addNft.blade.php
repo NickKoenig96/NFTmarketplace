@@ -1,10 +1,12 @@
 @extends('layouts/app')
-@extends('components/header')
+
 {{-- @extends('views/sass/app') --}}
 
 @section('title', 'AddNft')
 
 @section('content')
+
+<x-header firstname="{{ $user->firstname }}" />
 
     <h1>Add NFT</h1>
 
@@ -12,13 +14,19 @@
         <form method="POST" action="/nft/addNft" id="editNftForm" enctype='multipart/form-data'>
             @csrf
             <h2 class="form-group__title">Upload a new masterpiece</h2>
-            <input type="hidden" name='creator' value="{{ $user }}">
+            <input type="hidden" name='creator' value="{{ $user->id }}">
 
             <label class="form-group__label" for="nTitle"> title</label><br>
             <input class="form-group__input" type="text" id="nTitle" name="nftTitle"><br>
 
             <label class="form-group__label" for="nDescription">description</label><br>
             <input class="form-group__input" type="text" id="nDescription" name="nftDescription"><br>
+
+            <label class="form-group__label" for="nArea">Area</label><br>
+            <input class="form-group__input" type="text" id="nArea" name="nftArea"><br>
+
+            <label class="form-group__label" for="nObjectType">Object type</label><br>
+            <input class="form-group__input" type="text" id="nObjectType" name="nftObjectType"><br>
 
             <label class="form-group__label" for="nImage">upload image</label><br>
             <input class="form-group__input--image" type="file" id="nImage" name="nftImage"><br>

@@ -1,13 +1,12 @@
 @extends('layouts/app')
-@extends('components/header')
+
 
 @section('title', 'AddNft')
 
+@section('content')
 
-    <form method="POST" action="{{ url('/collection/addCollection') }}" enctype='multipart/form-data'>
-        @csrf
-        <label for="cTitle">collection title</label><br>
-        <input type="text" id="cTitle" name="collectionTitle"><br>
+<x-header firstname="{{ $user->firstname}}" />
+
 
     <h1>Add collection</h1>
 
