@@ -59,8 +59,7 @@
                         </div>
                         <div class="form__control">
                             <label for="password">password</label>
-                            <input type="password" id="password" name="password" placeholder="••••••••••••"
-                                value="{{ $user->password }}">
+                            <input type="password" id="password" name="password" placeholder="••••••••••••">
                         </div>
                         <div class="form__control--double">
                             <div class="form__control form__control--small">
@@ -130,7 +129,6 @@
             @endforeach
         </div>
 
-        {{ $collections }}
         <h3 class="medium hr black--60 marginb-24">{{ count($collections) }} Created collections</h3>
         <div class="cardgallery">
             @foreach ($collections as $collection)
@@ -148,7 +146,7 @@
         </div>
 
         <!-- Momenteel dezelfde output als bij de "owned NFT's" -->
-        <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}--> favourite nft's</h3>
+        <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}-->4 Favourite nft's</h3>
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">

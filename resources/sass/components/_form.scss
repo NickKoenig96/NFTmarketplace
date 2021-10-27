@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
 }
-input, select{
+input{
     margin-top: 6px;
     margin-bottom: 17px;
     height: 44px;
@@ -141,6 +141,18 @@ input[type=submit]{
         margin-left: -20px;
         font-size: 12px;
     }
+}
+
+header select, select{
+    background-color: $blue--bg;
+    border: 1px solid black;
+    color: $black;
+    border-radius: 6px;
+    height: 35px;
+    border: none;
+    margin-left: 2em;
+    padding: 0.5em;
+    text-align: right;
 }
 
 select {

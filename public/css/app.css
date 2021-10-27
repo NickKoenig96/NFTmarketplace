@@ -304,18 +304,6 @@ nav a:not(:last-child) {
   flex-direction: row;
 }
 
-select {
-  background-color: #f9fafd;
-  border: 1px solid black;
-  color: #000000;
-  border-radius: 6px;
-  height: 35px;
-  border: none;
-  margin-left: 2em;
-  padding: 0.5em;
-  text-align: right;
-}
-
 .search button {
   margin-left: 10px;
   width: 40px;
@@ -356,7 +344,7 @@ select {
   flex-direction: column;
 }
 
-input, select {
+input {
   margin-top: 6px;
   margin-bottom: 17px;
   height: 44px;
@@ -466,6 +454,18 @@ input[type=submit] {
   text-align: center;
   margin-left: -20px;
   font-size: 12px;
+}
+
+header select, select {
+  background-color: #f9fafd;
+  border: 1px solid black;
+  color: #000000;
+  border-radius: 6px;
+  height: 35px;
+  border: none;
+  margin-left: 2em;
+  padding: 0.5em;
+  text-align: right;
 }
 
 select {

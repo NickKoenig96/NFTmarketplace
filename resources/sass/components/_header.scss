@@ -32,18 +32,6 @@ nav{
     flex-direction: row;
 }
 
-select{
-    background-color: $blue--bg;
-    border: 1px solid black;
-    color: $black;
-    border-radius: 6px;
-    height: 35px;
-    border: none;
-    margin-left: 2em;
-    padding: 0.5em;
-    text-align: right;
-}
-
 .search button{
     margin-left: 10px;
     width: 40px;

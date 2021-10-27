@@ -8,9 +8,9 @@
     <x-header firstname="{{ $user->firstname }}" />
 
     {{-- <h1>Homepage</h1> --}}
-    <p>1 euro = {{ $eth }}ETH</p>
-
+    
     <section>
+        <p>1 euro = {{ $eth }}ETH</p>
         <h1>Collections</h1>
 
         <div class="cardgallery">
