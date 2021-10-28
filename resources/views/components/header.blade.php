@@ -15,7 +15,7 @@
     </div>
 
     <nav>
-        <a href="/wallet">My wallets</a>
+        <a href="/wallet">My wallet</a>
         <a href="/profile">My favourites</a>
         <a href="#">About us</a>
         <a href="#">Contact</a>

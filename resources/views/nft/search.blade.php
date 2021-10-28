@@ -16,7 +16,6 @@
 
     <br>
 
-    <p>{{ $category }}</p>
 
 
     @if ($category === 'Collections')
