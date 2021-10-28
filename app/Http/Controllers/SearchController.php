@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Nft;
 use App\Models\Collection;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class SearchController extends Controller
 {
 
@@ -13,11 +16,15 @@ class SearchController extends Controller
         $searchText = $_GET["searchTerm"];
         $category = $request->input('category');
         $cat = '';
+        $user = Auth::user();
+
         //dd($category);
         if($category == 'Collections'){
             $data['category'] = $category;
             $collections = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
             $data['collections'] = $collections;
+            $data["user"] = $user;
+
             return view("nft/search", $data);
 
         }else{
@@ -25,6 +32,7 @@ class SearchController extends Controller
             $data['category'] = $category;
             $nfts = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
             $data['nfts'] = $nfts;
+            $data["user"] = $user;
 
             return view("nft/search", $data);
         }

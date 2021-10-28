@@ -7,6 +7,7 @@
 @section('content')
 
 
+    <x-header firstname="{{ $user->firstname }}" />
 
 
     <h1>searchResults</h1>
