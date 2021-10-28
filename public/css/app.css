@@ -332,7 +332,7 @@ nav a:not(:last-child) {
   border-radius: 8px;
   border: none;
   background-color: #ECF1F2;
-  background-image: url(/images/icon_search.svg?b3a9d258804afe7dcbff9bc726b9af11);
+  background-image: url(/images/icon_search.svg?42b119e5caeea2b2ad6300a1b67e8e3a);
   background-repeat: no-repeat;
   background-position-x: 12px;
   background-position-y: center;
@@ -577,19 +577,19 @@ select {
 .btn--favourite, .btn--favourite--true {
   width: 24px;
   height: 22px;
-  background-image: url(/images/icon_heart.svg?22ac986e96d5f78498f91b427fd14c3d);
+  background-image: url(/images/icon_heart.svg?275a1a15676ad09164665e0e9672f0ec);
   background-repeat: no-repeat;
 }
 
 .btn--favourite--true {
-  background-image: url(/images/icon_heart-filled.svg?ddd4924c0c68c93859ea741d67dff59b);
+  background-image: url(/images/icon_heart-filled.svg?c3a6d042cd28a2a3d0079224abfbff64);
 }
 
 .btn--nftcount {
   width: 36px;
   height: 24px;
   position: relative;
-  background-image: url(/images/icon__nftcount.svg?fb43ac78d72106104fa3018b3e15d9f5);
+  background-image: url(/images/icon__nftcount.svg?d191c993a09e23b235f9f6daf09e5520);
 }
 .btn--nftcount span {
   width: 24px;
@@ -618,6 +618,22 @@ select {
 .btn--green {
   background-color: green;
   color: #ffffff;
+}
+
+.btn--login {
+  background-color: #ECF1F2;
+  border-radius: 20px;
+  margin-top: 5%;
+  border: none;
+  color: #162C99;
+  width: 40%;
+  font-weight: bold;
+}
+
+.btn--login:hover {
+  background-color: #162C99;
+  color: #ECF1F2;
+  border: 2px solid #ECF1F2;
 }
 
 body {

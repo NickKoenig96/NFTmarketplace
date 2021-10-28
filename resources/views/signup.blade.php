@@ -27,7 +27,7 @@
     <input class="input input--light" type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword">
 
 
-    <input class="btn btn--light" type="submit"  value="Signup">
+    <input class="btn--login" type="submit"  value="Signup">
 
     
 
