@@ -9,6 +9,9 @@ use App\Models\Collection;
 
 use Illuminate\Support\Facades\Http;
 
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 class NftController extends Controller
@@ -19,20 +22,24 @@ class NftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile(){
-        $id = 4;
-        $user = \DB::table("users")->where('id', $id)->first();
-        $data['user'] = $user;
-        return view('homepage', $data);
+
+    public function profilepage(){
+        $nfts = Nft::get();
+        $data['nfts'] = $nfts;
+        return view('profile', $data);
     }
 
     public function index(){
-        $user = 'Nick Koenig';
+        
         $nfts = Nft::get();
-       
+
+        $user = Auth::id();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
-        $data["user"] = $user;
+        $data['user'] = $user;
+        
+
+
 
          return view('nft/index', $data);
     }
@@ -40,8 +47,12 @@ class NftController extends Controller
     // nfts in homepage
     public function homepage(){
         $nfts = Nft::get();
-       // $nfts = \DB::table("nfts")->get();
+        $collections = Collection::get();
+        $user = Auth::user();
         $data["nfts"] = $nfts;
+        $data["user"] = $user;
+        $data["collections"] = $collections;
+
          return view('homepage', $data);
     }
 
@@ -77,7 +88,7 @@ class NftController extends Controller
      */
 
     public function create(){
-        $data['user'] = 'Nick Koenig';
+        $data['user'] = Auth::user();
         $collections = Collection::get();
        // $collections = \DB::table("collections")->get();
         $data['collections'] = $collections;
@@ -93,15 +104,19 @@ class NftController extends Controller
      */
     public function store(Request $request){
 
-        $image_file_path = $request->file('nftImage')->getClientOriginalName();
-        $path = $request->file('nftImage')->storeAs('public/images/', $image_file_path );
+        
+        
+        $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
       
        
         $nft = new Nft();
-        $nft->creator = $request->input('creator');
+        $nft->creator_id = $request->input('creator');
+        $nft->owner_id = $request->input('creator');
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
-        $nft->image_file_path = $image_file_path;
+        $nft->area = $request->input('nftArea');
+        $nft->object_type = $request->input('nftObjectType');
+        $nft->image_file_path = $uploadedFileUrl;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
         return redirect('./nft');
@@ -143,8 +158,66 @@ class NftController extends Controller
         return redirect('./wallet');
     }
 
+    public function buyNft($id){
+        $user = Auth::id();
+        $nft = Nft::find($id);
+        $data["nft"] = $nft;
+        $data["user"] = $user;
+        return view('nft/buyNft', $data );
+    }
+
+    public function Order(Request $request){
+        //order toevoegen
+        $order = new \App\Models\Order();
+        $order->nft_id = $request->input('id');
+        $order->price = $request->input('price');
+        $order->seller_id = $request->input('seller');
+        $order->buyer_id = $request->input('buyer');
+        $order->save();
+        
+
+        //nft updaten
+        $nft = Nft::find($request->input('id'));
+        $nft->owner_id = $request->input('buyer');
+        $nft->forSale = 0;
+        $nft->save();
+
+        return redirect('./nft');
+
+    }
+
+    public function sell($id){
+        $nft = Nft::find($id);
+        $data["nft"] = $nft;
+        return view("nft/sellNft", $data);
+    }
+
+    public function markForSale(Request $request){
+        $nft = Nft::find($request->input('id'));
+        if($nft->owner_id === Auth::id()){
+            $nft->forSale = 1;
+            $nft->price = $request->input('price');
+            $nft->save();
+            return redirect('./nft');
+        }
+    }
 
 
+    public function filter(Request $request){
+        $filter = $request->input('filter');
+        if($filter == 'Price'){
+            $nfts = \DB::table("nfts")->select('id','price', 'title', 'image_file_path')->orderBy('price')->get();
+            return view("/homepageFilter", compact("nfts"), compact("filter"));
+
+        }else if($filter == 'Area'){
+            $nfts = \DB::table("nfts")->select('id','area', 'title', 'image_file_path')->orderBy('area')->get();
+            return view("/homepageFilter", compact("nfts"), compact("filter"));
+        }
+        else{
+            $nfts = \DB::table("nfts")->select('id','object_type', 'title', 'image_file_path')->orderBy('object_type')->get();
+            return view("/homepageFilter", compact("nfts"), compact("filter"));
+        }
+    }
 
   
 

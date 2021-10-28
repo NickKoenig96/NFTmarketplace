@@ -2,11 +2,31 @@
 
 .btn{
     align-items: center;
+    border-radius: 10px;
+    height: 30px;  
+    padding: 8px 10px;
+}
+
+.btn--blue{
     background-color: $blue;
     color: $white;
-    border-radius: 10px;
-    height: 40px;  
-    padding: 8px 10px;
+}
+
+.btn--h40{
+    height: 40px;
+}
+
+.btn--1col, .btn--155{
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 74px;
+    border-radius: 8px;
+}
+
+.btn--155{
+    width: 155px;
 }
 
 .btn--signedin{
@@ -35,10 +55,10 @@
 }
 
 .btn--light{
-    background-color: $white;
-    color: $blue;
-    border-radius: 20px;
-    margin-top:5%;
+    background-color: $grey--light;
+    color: $black;
+    // border-radius: 20px;
+    // margin-top:5%;
     border:none;
 }
 
@@ -53,5 +73,51 @@
     position: absolute;
     left: 42em;
     top: 3em;
-    
+}
+
+.btn--favourite, .btn--favourite--true{
+    width: 24px;
+    height: 22px;
+    background-image: url(../../../public/assets/icons/icon_heart.svg);
+    background-repeat: no-repeat;
+}
+.btn--favourite--true{
+    background-image: url(../../../public/assets/icons/icon_heart-filled.svg);
+}
+
+.btn--nftcount{
+    width: 36px;
+    height: 24px;
+    position: relative;
+    background-image: url(../../../public/assets/icons/icon__nftcount.svg);
+    span{
+        width: 24px;
+        text-align: center;
+        font-size: 15px;
+        color: $white;
+        position: absolute;
+        top: 4px;
+        left: 13px;
     }
+}
+
+.btn--center {
+    font-weight: 600;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 74px;
+    border-radius: 8px;
+    border: 2px solid $blue--20;
+}
+
+.btn--red{
+    background-color: red;
+    color: $white;
+}
+
+.btn--green{
+    background-color: green;
+    color: $white;
+}
+

@@ -26,5 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+        Gate::define('selling-nft', function(\App\Models\Nft $nft){
+            return $nft->user_id === 4;
+        });
     }
 }

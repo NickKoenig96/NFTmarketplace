@@ -1,5 +1,11 @@
 @use '../abstracts' as *;
 
+.cardgallery{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .cards{
     display: flex;
     justify-content: space-between;
@@ -11,12 +17,22 @@
     box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.1);
     padding: 25px;
 }
+.card--3col{
+    position: relative;
+    width: 290px;
+    height: 396px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
 .card--profile{
     width: 400px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
+
 .card--edit{
     width: 840px;
     height: 610px;
@@ -33,12 +49,59 @@
     margin-bottom: 24px;
 }
 
+.card__image{
+    width: 100%;
+    height: 142px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.card__image--large{
+    height: 200px;
+}
+
+.card__specs{
+    margin-top: 14px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card__price{
+    // color: $white;
+    display: inline-block;
+    margin-top: 6px;
+    // background-color: $blue--60;
+    // padding: 4px;
+    // border-radius: 5px;
+}
+
 .card__profilepicture{
     border-radius: 20px;
     width: 120px;
     width: 120px;
     border: 7px solid #f7F7F9;
     margin-bottom: 24px;
+}
+
+.card__profilepicture--small{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 5px solid #FFFFFF;
+    box-sizing: content-box;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
+}
+
+.card__description{
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 122px;
 }
 
 .card__biography{

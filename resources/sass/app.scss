@@ -6,8 +6,17 @@
 @use 'components/buttons';
 
 body{
-    padding: 0px 80px;
     background-color: $blue--bg;
+}
+section{
+    padding-left: 80px;
+    padding-right: 80px;
+    &:not(:last-of-type){
+        padding-bottom: 40px;
+    }
+    &:not(:first-of-type){
+        padding-top: 40px;
+    }
 }
 
 .mcenter{
@@ -17,4 +26,18 @@ body{
 
 .hidden{
     display: none;
+}
+
+
+.bg--2{
+    background-color: $blue--bg2;
+}
+
+.flex--spbet{
+    display: flex;
+    justify-content: space-between;
+}
+
+.marginb-24{
+    margin-bottom: 24px;
 }
