@@ -8,12 +8,15 @@
     <x-header firstname="{{ $user->firstname }}" />
 
     <section>
+
         <h1>wallet</h1>
-        <a href="/nft/addNft" class="btn btn--blue btn--155">add NFT</a>
+
 
         <br>
         <section>
             <h3>My NFT's</h3>
+            <a href="/nft/addNft" class="btn btn--blue btn--155">add NFT</a>
+            <br>
             <div class="cardgallery">
                 @foreach ($nfts as $nft)
                     @if ($nft->owner_id == $user->id)
@@ -49,20 +52,38 @@
         </section>
 
         <section class="bg--2">
+            <h3>My Collections</h3>
+            <a href="/collection/addCollection" class="btn btn--blue btn--155">add Collection</a>
+            <br>
             <div class="cardgallery">
                 @foreach ($collections as $collection)
                     @if ($collection->creator_id == $user->id)
-                        <a class="card card--3col" href="/collections/{{ $collection->id }}">
-                            <img class="card__image" src="{{ $collection->image_file_path }}" alt="collection image">
-                            <img class="card__profilepicture--small" src="{{ $collection->image_file_path }}"
-                                alt="creator image">
-                            <div class="card__specs">
-                                <!-- <div class="btn--favourite"></div> -->
-                                <div class="btn--nftcount"><span>5</span></div>
+                        <div>
+                            <div class="card card--3col" href="/collections/{{ $collection->id }}">
+                                <img class="card__image" src="{{ $collection->image_file_path }}"
+                                    alt="collection image">
+                                <img class="card__profilepicture--small" src="{{ $collection->image_file_path }}"
+                                    alt="creator image">
+                                <div class="card__specs">
+                                    <!-- <div class="btn--favourite"></div> -->
+                                    <div class="btn--nftcount"><span>5</span></div>
+                                </div>
+                                <div>
+                                    <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $collection->title }}</p>
+                                    <p class="card__description body--normal"> {{ $collection->description }}</p>
+                                </div>
+                                <br>
+                                <div class="flex--spbet">
+                                    <a href="delete/nft/{{ $nft->id }}" class="btn btn--red btn--155">DELETE</a>
+                                    <a href="edit/nft/{{ $nft->id }}" class="btn btn--green btn--155">EDIT</a>
+
+                                </div>
                             </div>
-                            <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $collection->title }}</p>
-                            <p class="card__description body--normal"> {{ $collection->description }}</p>
-                        </a>
+
+
+                        </div>
+
+
                     @endif
                 @endforeach
             </div>
