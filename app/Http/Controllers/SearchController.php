@@ -6,22 +6,35 @@ use Illuminate\Http\Request;
 use App\Models\Nft;
 use App\Models\Collection;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class SearchController extends Controller
 {
 
     public function search(Request $request){
         $searchText = $_GET["searchTerm"];
         $category = $request->input('category');
+        $cat = '';
+        $user = Auth::user();
+
         //dd($category);
         if($category == 'Collections'){
-            $data = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
+            $data['category'] = $category;
+            $collections = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
+            $data['collections'] = $collections;
+            $data["user"] = $user;
 
-            return view("nft/search", compact("data"));
+            return view("nft/search", $data);
 
         }else{
-            $data = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
 
-            return view("nft/search", compact("data"));
+            $data['category'] = $category;
+            $nfts = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
+            $data['nfts'] = $nfts;
+            $data["user"] = $user;
+
+            return view("nft/search", $data);
         }
 
     }
@@ -39,7 +52,7 @@ class SearchController extends Controller
 
         $category = $request->category;
 
-        if($category == "NFT's"){
+        if($category == "NFTs"){
             $data = Nft::select('title')
             ->where('title', 'like', "%{$request->term}%")
             ->pluck('title');

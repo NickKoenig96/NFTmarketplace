@@ -111,3 +111,30 @@
     border: 2px solid $blue--20;
 }
 
+.btn--red{
+    background-color: red;
+    color: $white;
+}
+
+.btn--green{
+    background-color: green;
+    color: $white;
+}
+
+.btn--login{
+    background-color: $grey--light;
+    
+    border-radius: 20px;
+    margin-top:5%;
+    border:none;
+    color: $blue;
+    width:40%;
+    font-weight: bold;
+}
+
+.btn--login:hover{
+    background-color: $blue;
+    color: $grey--light;
+    border: 2px solid $grey--light;
+}
+

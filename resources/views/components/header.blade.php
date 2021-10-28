@@ -4,7 +4,7 @@
         <form action="{{ url('/search') }}" type="get" autocomplete="off">
             <select name="category" id="category">
                 <option value="Collections">Collections</option>
-                <option value="NFT's">NFT's</option>
+                <option value="NFTs">NFT's</option>
 
             </select>
 
@@ -15,7 +15,7 @@
     </div>
 
     <nav>
-        <a href="/wallet">My wallets</a>
+        <a href="/wallet">My wallet</a>
         <a href="/profile">My favourites</a>
         <a href="#">About us</a>
         <a href="#">Contact</a>

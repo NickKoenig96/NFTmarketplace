@@ -15,10 +15,15 @@
 
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 
-    <input class="btn btn--light" type="submit"  value="Login">
+    <input class=" btn--login" type="submit"  value="Login">
+
+    <a class="form__link" href="/signup">New user? Create an account</a>
 
     
 
 </form>
+
+
+
 </div>
 @endsection
