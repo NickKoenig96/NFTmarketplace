@@ -12,16 +12,21 @@ class SearchController extends Controller
     public function search(Request $request){
         $searchText = $_GET["searchTerm"];
         $category = $request->input('category');
+        $cat = '';
         //dd($category);
         if($category == 'Collections'){
-            $data = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
-
-            return view("nft/search", compact("data"));
+            $data['category'] = $category;
+            $collections = Collection::where('title', 'LIKE', '%'.$searchText.'%')->get();
+            $data['collections'] = $collections;
+            return view("nft/search", $data);
 
         }else{
-            $data = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
 
-            return view("nft/search", compact("data"));
+            $data['category'] = $category;
+            $nfts = Nft::where('title', 'LIKE', '%'.$searchText.'%')->get();
+            $data['nfts'] = $nfts;
+
+            return view("nft/search", $data);
         }
 
     }

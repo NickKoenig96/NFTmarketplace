@@ -28,6 +28,7 @@
                 </a>
             @endforeach
         </div>
+
     </section>
 
     <section class="bg--2">
