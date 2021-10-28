@@ -38,7 +38,11 @@ use App\Views\Composers\MultiComposer;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-
+//login and register
+    
+Route::post('/users/signup', [UserController::class, "store"]);
+Route::post('/users/login', [UserController::class, "handleLogin"]);
+Route::get('/logout', [Usercontroller::class, "logout"]);
 Route::get('/login',  [ UserController::class, "login"])->name("login"); //name meegeven zodat auth middleware een route kan redirecten
 Route::get('/signup', [UserController::class, "register" ]);
 
@@ -52,18 +56,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     // detail page from homepage
     Route::get('/nfts/{id}', [NftController::class, "showAllNfts"]);
-
-
-
-    //login and register
-    
-    Route::post('/users/signup', [UserController::class, "store"]);
-    Route::post('/users/login', [UserController::class, "handleLogin"]);
-    Route::get('/logout', [Usercontroller::class, "logout"]);
-
-
-
-
 
     //profile
     Route::get('/profile', [UserController::class, "profile"]);
