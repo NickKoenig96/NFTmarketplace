@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Nft;
 use App\Models\Collection;
+use App\Models\Comment;
 
 use Illuminate\Support\Facades\Http;
 
@@ -58,11 +59,14 @@ class NftController extends Controller
 
     // detail page from the homepage
     public function showAllNfts($id){
-        // echo $id;
-        $nft = Nft::where('id', $id)->first();
-       // $nft = \DB::table('nfts')->where('id', $id)->first();
-        // dd($nft);
+        $user = Auth::user();
+        $userId = $user["id"];
+        $nft = Nft::where('id', $id)->with('Comment')->first();
+        $comments = Comment::with('Nft', 'User')->get();
+        $data['user'] = $user;
         $data['nft'] = $nft;
+        // dd($nft);
+        // dd($user->lastname);
         return view('nft/showAllNfts', $data);
     }
 

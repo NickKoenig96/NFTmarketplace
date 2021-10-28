@@ -51,6 +51,12 @@ input[type=submit]{
 .form__control--small input{
     width: 245px;
 }
+.form__control--80perc{
+    width: 80%;
+    input{
+        width: 100%;
+    }
+}
 .form__control--double{
     display: flex;
     justify-content: space-between;

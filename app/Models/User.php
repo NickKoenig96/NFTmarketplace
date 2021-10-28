@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // protected $with = ['nfts'];
+    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -42,7 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function nft(){
+    public function nfts(){
         return $this->hasMany(\App\Models\Nft::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(\App\Models\Comment::class);
     }
 }
