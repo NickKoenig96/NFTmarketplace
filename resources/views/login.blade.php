@@ -17,8 +17,13 @@
 
     <input class=" btn--login" type="submit"  value="Login">
 
+    <a class="form__link" href="/signup">New user? Create an account</a>
+
     
 
 </form>
+
+
+
 </div>
 @endsection

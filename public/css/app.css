@@ -391,6 +391,7 @@ input[type=submit] {
   flex-direction: column;
   justify-content: center;
   margin-top: 75px;
+  margin-bottom: 200px;
 }
 
 .input--light {
@@ -483,6 +484,11 @@ select {
 #filter {
   margin-left: 0;
   margin-bottom: 4em;
+}
+
+.form__link {
+  color: white;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 400px) {

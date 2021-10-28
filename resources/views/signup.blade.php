@@ -29,6 +29,8 @@
 
     <input class="btn--login" type="submit"  value="Signup">
 
+    <a class="form__link" href="/login">Already have an account?</a>
+
     
 
 </form>
