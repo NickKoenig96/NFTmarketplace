@@ -44,7 +44,7 @@ class SearchController extends Controller
 
         $category = $request->category;
 
-        if($category == "NFT's"){
+        if($category == "NFTs"){
             $data = Nft::select('title')
             ->where('title', 'like', "%{$request->term}%")
             ->pluck('title');
