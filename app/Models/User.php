@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function nft(){
         return $this->hasMany(\App\Models\Nft::class);
     }
+
+    public function nfts(){
+        return $this->belongsToMany(\App\Models\Nft::class);
+    }
 }

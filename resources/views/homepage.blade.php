@@ -48,7 +48,8 @@
                     <div class="marginb-24">
                     <div class="flex--spbet">
                         <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
-                        <div class="btn--favourite"></div>
+                        <livewire:nft-favourite />
+                        {{-- <div class="btn--favourite"></div> --}}
                     </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                     </div>

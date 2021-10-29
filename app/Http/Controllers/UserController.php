@@ -27,7 +27,10 @@ class UserController extends Controller
         $data['user'] = $user;
         $data['nfts'] = $nfts;
         $data['collections'] = $collections;
-        return view('profile', $data);
+        
+        $user = User::find($id);
+
+        return view('profile', $data)->with('user', $user);
 
     }
 

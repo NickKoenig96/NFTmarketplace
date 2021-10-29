@@ -55,8 +55,7 @@ class NftController extends Controller
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
-
-         return view('homepage', $data);
+        return view('homepage', $data);
     }
 
     // detail page from the homepage

@@ -20,14 +20,14 @@ class CreateNftsTable extends Migration
             $table->string('image_file_path')->default("defaultImage.png");
             $table->foreignId('creator_id');
             $table->foreignId('owner_id');
+            // $table->foreignId('favorite_id');
             $table->integer('price')->default(0);
             $table->boolean('minted')->default(false);
             $table->boolean('forSale')->default(false);
             $table->foreignId('collection_id');
             $table->float('area');
             $table->string('object_type');
-            $table->foreignId('owner_id');
-            $table->double('price');
+            // $table->double('price');
             $table->timestamps();
         });
     }

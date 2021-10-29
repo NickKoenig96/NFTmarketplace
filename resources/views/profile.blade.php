@@ -150,7 +150,7 @@
         <!-- Momenteel dezelfde output als bij de "owned NFT's" -->
         <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}--> favourite nft's</h6>
         <div class="cardgallery">
-            @foreach ($nfts as $nft)
+            @forelse ($user->nfts as $nft)
                 <div class="card card--3col flex--spbet">
                     <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
                     <div class="marginb-24">
@@ -165,7 +165,12 @@
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p>
+                    No favourite has found
+                </p>
+            @endforelse
+            
         </div>
 
     </section>
