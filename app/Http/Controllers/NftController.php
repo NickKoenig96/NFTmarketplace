@@ -215,17 +215,23 @@ class NftController extends Controller
 
     public function filter(Request $request){
         $filter = $request->input('filter');
+        $user = Auth::user();
+        $data["filter"] = $filter;
+        $data["user"] = $user;
         if($filter == 'Price'){
             $nfts = \DB::table("nfts")->select('id','price', 'title', 'image_file_path')->orderBy('price')->get();
-            return view("/homepageFilter", compact("nfts"), compact("filter"));
+            $data["nfts"] = $nfts;
+            return view("/homepageFilter", $data);
 
         }else if($filter == 'Area'){
             $nfts = \DB::table("nfts")->select('id','area', 'title', 'image_file_path')->orderBy('area')->get();
-            return view("/homepageFilter", compact("nfts"), compact("filter"));
+            $data["nfts"] = $nfts;
+            return view("/homepageFilter", $data);
         }
         else{
             $nfts = \DB::table("nfts")->select('id','object_type', 'title', 'image_file_path')->orderBy('object_type')->get();
-            return view("/homepageFilter", compact("nfts"), compact("filter"));
+            $data["nfts"] = $nfts;
+            return view("/homepageFilter", $data);
         }
     }
 
