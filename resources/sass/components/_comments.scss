@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+.comment{
+    padding: 24px 48px;
+    background-color: $blue--bg;
+    border-radius: 5px;
+    &:not(:last-of-type){
+        margin-bottom: 24px;
+    }
+}
+
+.comment__user{
+    color: $blue--60;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.comment__text{
+    margin-bottom: 24px;
+}
+
+.comment__details *{
+    color: $grey;
+    &:first-of-type{
+        color: $danger;
+    }
+}

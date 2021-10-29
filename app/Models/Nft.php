@@ -10,6 +10,7 @@ class Nft extends Model
     use HasFactory;
 
     //protected $with = ["comments"];
+    protected $with = ["owner"];
 
     public function collection(){
         return $this->belongsTo(\App\Models\Collection::class);
@@ -20,6 +21,9 @@ class Nft extends Model
     }
 
     public function user(){
+        return $this->belongsTo(\App\Models\User::class);
+    }
+    public function owner(){
         return $this->belongsTo(\App\Models\User::class);
     }
 }

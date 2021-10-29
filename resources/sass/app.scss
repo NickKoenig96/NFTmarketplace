@@ -4,6 +4,7 @@
 @use 'components/header';
 @use 'components/form';
 @use 'components/buttons';
+@use 'components/comments';
 
 body{
     background-color: $blue--bg;
@@ -28,16 +29,67 @@ section{
     display: none;
 }
 
-
+.blue--20{
+    color: #A2ABD6;
+}
 .bg--2{
     background-color: $blue--bg2;
+}
+.flex{
+    display: flex;
 }
 
 .flex--spbet{
     display: flex;
     justify-content: space-between;
 }
+.flex--start{
+    justify-content: flex-start;
+}
+.flex--alcen{
+    align-items: center;
+}
+.flex--gap40{
+    gap: 40px;
+}
+.flex--col{
+    flex-direction: column;
+}
 
+.marginb-48{
+    margin-bottom: 48px;
+}
+.marginr-48{
+    margin-right: 48px;
+}
+.margint-48{
+    margin-top: 48px;
+}
 .marginb-24{
     margin-bottom: 24px;
+}
+.marginr-24{
+    margin-right: 24px;
+}
+.margint-24{
+    margin-top: 24px;
+}
+.marginl-24{
+    margin-left: 24px;
+}
+.marginb-12{
+    margin-bottom: 12px;
+}
+.marginr-12{
+    margin-right: 12px;
+}
+.marginl-12{
+    margin-left: 12px;
+}
+.margint-12{
+    margin-top: 12px;
+}
+
+.pad-5perc{
+    padding: 3%;
 }

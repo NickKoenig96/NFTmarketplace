@@ -25,6 +25,15 @@
     border-radius: 8px;
 }
 
+.btn--50perc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    height: 60px;
+    width: 50%;
+}
+
 .btn--155{
     width: 155px;
 }
@@ -84,7 +93,16 @@
 .btn--favourite--true{
     background-image: url(../../../public/assets/icons/icon_heart-filled.svg);
 }
+.btn--favourite--small{
+    height: 20px;
+}
 
+.btn--view{
+    height: 16px;
+    width: 22px;
+    background-image: url(../../../public/assets/icons/icon_eye.svg);
+    background-repeat: no-repeat;
+}
 .btn--nftcount{
     width: 36px;
     height: 24px;
