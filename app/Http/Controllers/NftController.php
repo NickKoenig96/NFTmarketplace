@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Nft;
 use App\Models\Collection;
+use App\Models\Comment;
 
 use Illuminate\Support\Facades\Http;
 
@@ -64,11 +65,14 @@ class NftController extends Controller
 
     // detail page from the homepage
     public function showAllNfts($id){
-        // echo $id;
-        $nft = Nft::where('id', $id)->first();
-       // $nft = \DB::table('nfts')->where('id', $id)->first();
-        // dd($nft);
+        $user = Auth::user();
+        $userId = $user["id"];
+        $nft = Nft::where('id', $id)->with('Comment')->first();
+        $comments = Comment::with('Nft', 'User')->get();
+        $data['user'] = $user;
         $data['nft'] = $nft;
+        // dd($nft);
+        // dd($user->lastname);
         return view('nft/showAllNfts', $data);
     }
 
@@ -215,17 +219,17 @@ class NftController extends Controller
         $data["filter"] = $filter;
         $data["user"] = $user;
         if($filter == 'Price'){
-            $nfts = \DB::table("nfts")->select('id','price', 'title', 'image_file_path')->orderBy('price')->get();
+            $nfts = \DB::table("nfts")->select('id','price', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('price')->get();
             $data["nfts"] = $nfts;
             return view("/homepageFilter", $data);
 
         }else if($filter == 'Area'){
-            $nfts = \DB::table("nfts")->select('id','area', 'title', 'image_file_path')->orderBy('area')->get();
+            $nfts = \DB::table("nfts")->select('id','area', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('area')->get();
             $data["nfts"] = $nfts;
             return view("/homepageFilter", $data);
         }
         else{
-            $nfts = \DB::table("nfts")->select('id','object_type', 'title', 'image_file_path')->orderBy('object_type')->get();
+            $nfts = \DB::table("nfts")->select('id','object_type', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('object_type')->get();
             $data["nfts"] = $nfts;
             return view("/homepageFilter", $data);
         }

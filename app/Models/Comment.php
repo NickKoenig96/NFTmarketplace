@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+    protected $with = ['nft'];
+
 
     public function nft(){
         return $this->belongsTo(\App\Models\Nft::class);

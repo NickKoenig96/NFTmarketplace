@@ -13,7 +13,9 @@
                     <p class="card__title ta_c" style="margin-bottom: 12px;">€ {{ $nft->price }} </p>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
+                        @if($nft->forSale === 1 && $user->id != $nft->owner_id)
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        @endif
                     </div>
                 @elseif($filter == 'Area')
                     <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
@@ -21,7 +23,9 @@
                     <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $nft->area }} km2</p>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
+                        @if($nft->forSale === 1 && $user->id != $nft->owner_id)
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        @endif
                     </div>
                 @else
                     <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
@@ -29,7 +33,9 @@
                     <p class="card__title ta_c" style="margin-bottom: 12px;">Type: {{ $nft->object_type }} </p>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
+                        @if($nft->forSale === 1 && $user->id != $nft->owner_id)
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        @endif
                     </div>
                 @endif
             </div>
