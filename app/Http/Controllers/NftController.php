@@ -155,16 +155,15 @@ class NftController extends Controller
      */
     public function edit(Request $request)
     {
-
-        $image_file_path = $request->file('nftImage')->getClientOriginalName();
-        $path = $request->file('nftImage')->storeAs('public/images/', $image_file_path );
+        
+        $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
 
        
-       $nft = Nft::find($request->id);
-       $nft->title = $request->input('nftTitle');
-       $nft->description = $request->input('nftDescription');
-       $nft->image_file_path = $image_file_path;
-       $nft->save();
+        $nft = Nft::find($request->id);
+        $nft->title = $request->input('nftTitle');
+        $nft->description = $request->input('nftDescription');
+        $nft->image_file_path = $uploadedFileUrl;
+        $nft->save();
         return redirect('./wallet');
     }
 

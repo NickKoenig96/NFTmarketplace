@@ -81,13 +81,12 @@ class CollectionController extends Controller
     public function edit(Request $request)
     {
 
-        $image_file_path = $request->file('collectionImage')->getClientOriginalName();
-        $request->file('collectionImage')->store('public/images/');
+        $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
         $collection = Collection::find($request->id);
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
-        $collection->image_file_path = $image_file_path;
+        $collection->image_file_path = $uploadedFileUrl;
         $collection->save();
         return redirect('./wallet');
     }
