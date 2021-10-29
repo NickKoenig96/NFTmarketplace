@@ -14,7 +14,7 @@
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
                         @if($nft->forSale === 1 && $user->id != $nft->owner_id)
-                        <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                         @endif
                     </div>
                 @elseif($filter == 'Area')
@@ -24,7 +24,7 @@
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
                         @if($nft->forSale === 1 && $user->id != $nft->owner_id)
-                        <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                         @endif
                     </div>
                 @else
@@ -34,7 +34,7 @@
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
                         @if($nft->forSale === 1 && $user->id != $nft->owner_id)
-                        <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                         @endif
                     </div>
                 @endif

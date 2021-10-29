@@ -25,7 +25,7 @@
                     <p>{{ $nft->description }}</p>
                 </div>
                 @if($nft->forSale === 1 && $user->id != $nft->owner_id)
-                <a href="/nfts/buyNft/{{ $nft->id }}" class="btn btn--40 btn--blue btn--50perc">Buy this NFT</a>
+                <a href="/nft/buy/{{ $nft->id }}" class="btn btn--40 btn--blue btn--50perc">Buy this NFT</a>
                 @endif
             </div>
         </div>
