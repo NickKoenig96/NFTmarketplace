@@ -74,8 +74,8 @@
                                 </div>
                                 <br>
                                 <div class="flex--spbet">
-                                    <a href="delete/nft/{{ $nft->id }}" class="btn btn--red btn--155">DELETE</a>
-                                    <a href="edit/nft/{{ $nft->id }}" class="btn btn--green btn--155">EDIT</a>
+                                    <a href="delete/{{ $collection->id }}" class="btn btn--red btn--155">DELETE</a>
+                                    <a href="edit/{{ $collection->id }}" class="btn btn--green btn--155">EDIT</a>
 
                                 </div>
                             </div>
