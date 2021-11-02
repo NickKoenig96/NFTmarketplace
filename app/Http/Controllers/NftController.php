@@ -46,9 +46,11 @@ class NftController extends Controller
         $nfts = Nft::get();
         $collections = Collection::get();
         $user = Auth::user();
+       $nftAmount = Collection::with('nft')->get()->count();
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
+       $data["nftAmount"] = $nftAmount;
 
         // if(!empty($user)){
             return view('homepage', $data);
