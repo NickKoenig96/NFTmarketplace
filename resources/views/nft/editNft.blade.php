@@ -21,6 +21,10 @@
         <label for="cDescription">nft description</label><br>
         <input type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
 
+
+        <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
+        <input class="form-group__input" type="text" id="nPrice" name="nftPrice"><br>
+
         <label for="nImage">nft image</label><br>
         <input type="file" name="nftImage"> <br>
 
