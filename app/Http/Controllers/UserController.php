@@ -28,6 +28,7 @@ class UserController extends Controller
         $data['user'] = $user;
         $data['nfts'] = $nfts;
         $data['collections'] = $collections;
+
         return view('profile', $data);
 
     }
