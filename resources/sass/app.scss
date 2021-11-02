@@ -5,6 +5,8 @@
 @use 'components/form';
 @use 'components/buttons';
 @use 'components/comments';
+@use 'components/messages';
+
 
 body{
     background-color: $blue--bg;

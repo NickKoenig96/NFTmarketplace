@@ -34,14 +34,10 @@ class NftController extends Controller
         
         $nfts = Nft::get();
 
-        $user = Auth::id();
+        $user = Auth::user();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data['user'] = $user;
-        
-
-
-
          return view('nft/index', $data);
     }
 
