@@ -147,6 +147,8 @@ class NftController extends Controller
     {
        
         $nft = Nft::find($id);
+        $collections = Collection::get();
+        $data['collections'] = $collections;
         $data['nft'] = $nft;
         return view('nft/editNft', $data);
 
@@ -160,6 +162,8 @@ class NftController extends Controller
      */
     public function edit(Request $request)
     {
+
+    
         
         $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
 
@@ -168,7 +172,10 @@ class NftController extends Controller
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
         $nft->price = $request->input('nftPrice');
+        $nft->area = $request->input('nftArea');
+        $nft->object_type = $request->input('nftObjectType');
         $nft->image_file_path = $uploadedFileUrl;
+        $nft->collection_id = $request->input('collectionsId');
         $nft->save();
         return redirect('./wallet');
     }
