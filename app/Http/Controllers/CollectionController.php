@@ -105,5 +105,14 @@ class CollectionController extends Controller
         return redirect('/wallet');
     }
 
+    public function showCollection($id){
+        $collection = Collection::find($id);
+        $user = Auth::user();
+        $data["collection"] = $collection;
+        $data["user"] = $user;
+        return view('collection/showCollection', $data);
+
+    }
+
 }
 
