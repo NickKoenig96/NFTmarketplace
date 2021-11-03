@@ -79,6 +79,12 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
+        
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
         $user = new \App\Models\User();
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
@@ -86,7 +92,12 @@ class UserController extends Controller
         if($request->password === $request->confirmPassword){
             $user->password = Hash::make($request->input('password'));
             $user->save();
-            return redirect('./login');
+            
+            if (Auth::attempt($credentials)) {
+                return redirect()->intended('./');
+            }else{
+                return redirect('./login');
+            }
         }
 
         
@@ -102,7 +113,8 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('./');
         }else{
-            return redirect('./login');
+            $data['errors'] = "Email and password do not match";
+            return view('./login', $data);
         }
 
 

@@ -3,7 +3,7 @@
 
 @section('content')
 
-
+{{ $errors }}
 
 <div class="form__container">
     <img class="form__img"  src="{{ url('assets/atria_logo.svg') }}" alt="Logo Atria">
