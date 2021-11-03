@@ -6,7 +6,7 @@
 
 @section('content')
 
-<x-header firstname="{{ $user->firstname }}" />
+    <x-header firstname="{{ $user->firstname }}" />
 
     <h1>Add NFT</h1>
 
@@ -27,6 +27,9 @@
 
             <label class="form-group__label" for="nObjectType">Object type</label><br>
             <input class="form-group__input" type="text" id="nObjectType" name="nftObjectType"><br>
+
+            <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
+            <input class="form-group__input" type="text" id="nPrice" name="nftPrice"><br>
 
             <label class="form-group__label" for="nImage">upload image</label><br>
             <input class="form-group__input--image" type="file" id="nImage" name="nftImage"><br>

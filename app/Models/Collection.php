@@ -17,4 +17,8 @@ class Collection extends Model
    public function nft(){
         return $this->hasMany(\App\Models\Nft::class);
     }
+
+    public function creator(){
+        return $this->belongsTo(\App\Models\User::class);
+    }
 }

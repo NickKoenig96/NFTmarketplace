@@ -34,14 +34,10 @@ class NftController extends Controller
         
         $nfts = Nft::get();
 
-        $user = Auth::id();
+        $user = Auth::user();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data['user'] = $user;
-        
-
-
-
          return view('nft/index', $data);
     }
 
@@ -126,6 +122,7 @@ class NftController extends Controller
         $nft->description = $request->input('nftDescription');
         $nft->area = $request->input('nftArea');
         $nft->object_type = $request->input('nftObjectType');
+        $nft->price = $request->input('nftPrice');
         $nft->image_file_path = $uploadedFileUrl;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
@@ -162,6 +159,7 @@ class NftController extends Controller
         $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
+        $nft->price = $request->input('nftPrice');
         $nft->image_file_path = $uploadedFileUrl;
         $nft->save();
         return redirect('./wallet');

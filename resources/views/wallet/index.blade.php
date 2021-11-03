@@ -62,11 +62,10 @@
                             <div class="card card--3col" href="/collections/{{ $collection->id }}">
                                 <img class="card__image" src="{{ $collection->image_file_path }}"
                                     alt="collection image">
-                                <img class="card__profilepicture--small" src="{{ $collection->image_file_path }}"
-                                    alt="creator image">
+                                <img class="card__profilepicture--small" src="{{ $user->avatar }}" alt="creator image">
                                 <div class="card__specs">
                                     <!-- <div class="btn--favourite"></div> -->
-                                    <div class="btn--nftcount"><span>5</span></div>
+                                    <div class="btn--nftcount"><span> {{ $collection->nft()->count() }}</span></div>
                                 </div>
                                 <div>
                                     <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $collection->title }}</p>
