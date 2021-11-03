@@ -110,6 +110,7 @@ class CollectionController extends Controller
         $user = Auth::user();
         $data["collection"] = $collection;
         $data["user"] = $user;
+        
         return view('collection/showCollection', $data);
 
     }
