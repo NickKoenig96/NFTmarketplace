@@ -81,8 +81,11 @@ class UserController extends Controller
     public function store(Request $request){
         
         $credentials = $request->validate([
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
             'email' => ['required', 'email'],
             'password' => ['required'],
+            'confirmPassword' => ['required']
         ]);
 
         $user = new \App\Models\User();
