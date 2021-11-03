@@ -3,7 +3,25 @@
 
 @section('content')
 
-{{ $errors }}
+@if($errors->any())
+    @component('components/alert')
+        @slot('type') danger @endslot
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endcomponent
+@elseif(!empty($error))
+@component('components/alert')
+        @slot('type') danger @endslot
+        <ul>
+           
+            <li>{{ $error }}</li>
+            
+        </ul>
+    @endcomponent
+@endif
 
 <div class="form__container">
     <img class="form__img"  src="{{ url('assets/atria_logo.svg') }}" alt="Logo Atria">
