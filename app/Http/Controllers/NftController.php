@@ -111,12 +111,12 @@ class NftController extends Controller
     public function store(Request $request){
 
         $validated = $request->validate([
-            'nftTitle' => 'required',
+            'nftTitle' => 'required|unique:nfts,title',
             'nftDescription' => 'required',
-            'nftArea' => 'required',
+            'nftArea' => 'required|integer',
             'nftObjectType' => 'required',
-            'nftPrice' => 'required',
-            'nftImage' => 'required',
+            'nftPrice' => 'required|integer',
+            'nftImage' => 'required|image',
             'collectionsId' => 'required',
         ]);
         

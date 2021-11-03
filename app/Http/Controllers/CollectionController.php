@@ -45,9 +45,9 @@ class CollectionController extends Controller
     public function store(Request $request){
 
         $validated = $request->validate([
-            'collectionTitle' => 'required',
+            'collectionTitle' => 'required |unique:collections,title',
             'collectionDescription' => 'required',
-            'collectionImage' => 'required',
+            'collectionImage' => 'required|image',
         ]);
         
 
