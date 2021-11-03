@@ -85,7 +85,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     //collection
-    Route::get('/collection', [CollectionController::class, "index"]);
+    Route::get('/collections', [CollectionController::class, "index"]);
     Route::get('/delete/{id}', [CollectionController::class, "destroy"]);
     Route::get('/edit/{id}', [CollectionController::class, "show"]);
     Route::post('/collection/editCollection', [CollectionController::class, "edit"]);

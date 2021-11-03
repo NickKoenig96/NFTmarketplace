@@ -29,7 +29,9 @@
                 </a>
             @endforeach
         </div>
-
+        <div class="btn__container">
+            <a class="btn btn--blue" href="/collections">See all collections</a>
+        </div>
     </section>
 
     <section class="bg--2">
