@@ -739,6 +739,10 @@ select {
   background-color: red;
 }
 
+.alert--succes {
+  background-color: #0d9b3c;
+}
+
 .info {
   background-color: #459155;
   border-radius: 2px;

@@ -44,6 +44,11 @@ class CollectionController extends Controller
      */
     public function store(Request $request){
 
+        $validated = $request->validate([
+            'collectionTitle' => 'required |unique:collections,title',
+            'collectionDescription' => 'required',
+            'collectionImage' => 'required|image',
+        ]);
         
 
         $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();

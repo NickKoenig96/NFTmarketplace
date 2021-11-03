@@ -14,6 +14,7 @@
         <p>1 euro = {{ $eth }}ETH</p>
         <h1>NFT's</h1>
 
+
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">

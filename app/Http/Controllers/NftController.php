@@ -110,7 +110,15 @@ class NftController extends Controller
      */
     public function store(Request $request){
 
-        
+        $validated = $request->validate([
+            'nftTitle' => 'required|unique:nfts,title',
+            'nftDescription' => 'required',
+            'nftArea' => 'required|integer',
+            'nftObjectType' => 'required',
+            'nftPrice' => 'required|integer',
+            'nftImage' => 'required|image',
+            'collectionsId' => 'required',
+        ]);
         
         $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
       
@@ -126,7 +134,13 @@ class NftController extends Controller
         $nft->image_file_path = $uploadedFileUrl;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
-        return redirect('./nft');
+
+        //dd($nft['id']);
+$test = $nft['id'];
+        $request->session()->flash('message', 'NFT successfully created');
+
+
+        return redirect("./nfts/$test");
     }
 
         /**
@@ -139,6 +153,8 @@ class NftController extends Controller
     {
        
         $nft = Nft::find($id);
+        $collections = Collection::get();
+        $data['collections'] = $collections;
         $data['nft'] = $nft;
         return view('nft/editNft', $data);
 
@@ -152,6 +168,8 @@ class NftController extends Controller
      */
     public function edit(Request $request)
     {
+
+    
         
         $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
 
@@ -160,7 +178,10 @@ class NftController extends Controller
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
         $nft->price = $request->input('nftPrice');
+        $nft->area = $request->input('nftArea');
+        $nft->object_type = $request->input('nftObjectType');
         $nft->image_file_path = $uploadedFileUrl;
+        $nft->collection_id = $request->input('collectionsId');
         $nft->save();
         return redirect('./wallet');
     }
