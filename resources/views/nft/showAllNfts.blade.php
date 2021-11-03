@@ -8,7 +8,11 @@
         <p>1 euro = {{ $eth }}ETH</p>
 
         @if ($flash = session('message'))
-            {{ $flash }}
+            @component('components/alert')
+                @slot('type') succes @endslot
+                <p> {{ $flash }}</p>
+            @endcomponent
+
         @endif
 
         <div class="flex flex--start flex--gap40">

@@ -688,7 +688,6 @@ select {
   border: 2px solid #ECF1F2;
 }
 
-
 .btn--mint {
   background-color: #f7b552;
 }
@@ -720,7 +719,6 @@ select {
   color: red;
 }
 
-
 .alert {
   width: 50%;
   margin-left: auto;
@@ -739,6 +737,11 @@ select {
 
 .alert--danger {
   background-color: red;
+}
+
+.alert--succes {
+  background-color: #0d9b3c;
+}
 
 .info {
   background-color: #459155;
@@ -747,7 +750,6 @@ select {
   font-weight: 600;
   margin: 1%;
   padding: 2%;
-
 }
 
 body {
