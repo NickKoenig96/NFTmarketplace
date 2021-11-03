@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Collection;
+use App\Models\Nft;
 use Illuminate\Support\Facades\Auth;
 
 class CollectionController extends Controller
@@ -107,9 +108,11 @@ class CollectionController extends Controller
 
     public function showCollection($id){
         $collection = Collection::find($id);
+        $nfts = Nft::get()->where('collection_id', $id);
         $user = Auth::user();
         $data["collection"] = $collection;
         $data["user"] = $user;
+        $data["nfts"] = $nfts;
         
         return view('collection/showCollection', $data);
 
