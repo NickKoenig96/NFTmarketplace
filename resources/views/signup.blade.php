@@ -3,7 +3,16 @@
 
 @section('content')
 
-
+@if($errors->any())
+    @component('components/alert')
+        @slot('type') danger @endslot
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endcomponent
+@endif
 
 <div class="form__container">
     

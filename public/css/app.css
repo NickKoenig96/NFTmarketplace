@@ -688,6 +688,7 @@ select {
   border: 2px solid #ECF1F2;
 }
 
+
 .btn--mint {
   background-color: #f7b552;
 }
@@ -719,6 +720,26 @@ select {
   color: red;
 }
 
+
+.alert {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #162C99;
+  padding: 15px;
+  color: #ffffff;
+}
+
+.alert li {
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.alert--danger {
+  background-color: red;
+
 .info {
   background-color: #459155;
   border-radius: 2px;
@@ -726,6 +747,7 @@ select {
   font-weight: 600;
   margin: 1%;
   padding: 2%;
+
 }
 
 body {
