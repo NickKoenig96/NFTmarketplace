@@ -134,7 +134,13 @@ class NftController extends Controller
         $nft->image_file_path = $uploadedFileUrl;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
-        return redirect('./nft');
+
+        //dd($nft['id']);
+$test = $nft['id'];
+        $request->session()->flash('message', 'NFT successfully created');
+
+
+        return redirect("./nfts/$test");
     }
 
         /**
