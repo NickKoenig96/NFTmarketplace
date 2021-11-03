@@ -110,7 +110,15 @@ class NftController extends Controller
      */
     public function store(Request $request){
 
-        
+        $validated = $request->validate([
+            'nftTitle' => 'required',
+            'nftDescription' => 'required',
+            'nftArea' => 'required',
+            'nftObjectType' => 'required',
+            'nftPrice' => 'required',
+            'nftImage' => 'required',
+            'collectionsId' => 'required',
+        ]);
         
         $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
       
