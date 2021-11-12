@@ -97,25 +97,23 @@ class UserController extends Controller
         $credentials = $request->validate([
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'confirmPassword' => ['required']
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8'
         ]);
+
 
         $user = new \App\Models\User();
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
-        if($request->input('password') === $request->input('confirmPassword')){
+        // if($request->input('password') === $request->input('confirmPassword')){
             $user->password = Hash::make($request->input('password'));
             $user->save();
             
             if (Auth::attempt($credentials)) {
                 return redirect()->intended('./');
-            }else{
-                return redirect('./login');
             }
-        }
+        
 
         
     }

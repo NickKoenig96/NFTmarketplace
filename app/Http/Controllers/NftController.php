@@ -50,11 +50,9 @@ class NftController extends Controller
         $data["user"] = $user;
         $data["collections"] = $collections;
 
-        // if(!empty($user)){
-            return view('homepage', $data);
-        // }else{
-        //     return view('login');
-        // }
+        
+        return view('homepage', $data);
+        
 
          
     }
@@ -67,8 +65,6 @@ class NftController extends Controller
         $comments = Comment::with('Nft', 'User')->get();
         $data['user'] = $user;
         $data['nft'] = $nft;
-        // dd($nft);
-        // dd($user->lastname);
         return view('nft/showAllNfts', $data);
     }
 
