@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Nft;
+use App\Models\User;
 use App\Models\Collection;
-
+use App\Models\Favourite;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,6 +56,8 @@ class NftController extends Controller
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
+        // $favourites = Favourite::get();
+        // dd($favourites->user_id);
         return view('homepage', $data);
     }
 
