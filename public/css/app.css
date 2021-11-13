@@ -662,6 +662,32 @@ select {
   border: 2px solid #D0D5EB;
 }
 
+.btn--red {
+  background-color: red;
+  color: #ffffff;
+}
+
+.btn--green {
+  background-color: green;
+  color: #ffffff;
+}
+
+.btn--login {
+  background-color: #ECF1F2;
+  border-radius: 20px;
+  margin-top: 5%;
+  border: none;
+  color: #162C99;
+  width: 40%;
+  font-weight: bold;
+}
+
+.btn--login:hover {
+  background-color: #162C99;
+  color: #ECF1F2;
+  border: 2px solid #ECF1F2;
+}
+
 .comment {
   padding: 24px 48px;
   background-color: #f9fafd;
@@ -687,32 +713,6 @@ select {
 }
 .comment__details *:first-of-type {
   color: red;
-}
-
-.btn--red {
-  background-color: red;
-  color: #ffffff;
-}
-
-.btn--green {
-  background-color: green;
-  color: #ffffff;
-}
-
-.btn--login {
-  background-color: #ECF1F2;
-  border-radius: 20px;
-  margin-top: 5%;
-  border: none;
-  color: #162C99;
-  width: 40%;
-  font-weight: bold;
-}
-
-.btn--login:hover {
-  background-color: #162C99;
-  color: #ECF1F2;
-  border: 2px solid #ECF1F2;
 }
 
 body {

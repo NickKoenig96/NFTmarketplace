@@ -65,6 +65,7 @@ class CollectionController extends Controller
      */
     public function show($id)
     {
+        $data['user'] = Auth::user();
         $collection = Collection::find($id);
         $data['collection'] = $collection;
         return view('collection/editCollection', $data);

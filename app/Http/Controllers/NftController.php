@@ -141,6 +141,7 @@ class NftController extends Controller
     public function show($id)
     {
        
+        $data['user'] = Auth::user();
         $nft = Nft::find($id);
         $data['nft'] = $nft;
         return view('nft/editNft', $data);
@@ -158,7 +159,6 @@ class NftController extends Controller
         
         $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
 
-       
         $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
