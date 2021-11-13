@@ -574,8 +574,21 @@ select {
   top: 3em;
 }
 
+.btn--favourite {
+  margin-left: -20px;
+}
+
+.btn--count {
+  float: left;
+  margin-top: -18px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  margin-left: 5px;
+  font-size: 16px;
+}
+
 .btn--favourite, .btn--favourite--true {
-  width: 24px;
+  width: 20px;
   height: 22px;
   background-image: url(/images/icon_heart.svg?275a1a15676ad09164665e0e9672f0ec);
   background-repeat: no-repeat;
