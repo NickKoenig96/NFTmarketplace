@@ -22,4 +22,17 @@ class Nft extends Model
     public function user(){
         return $this->belongsTo(\App\Models\User::class);
     }
+
+
+    public function users(){
+        return $this->belongsToMany(\App\Models\User::class);
+    }
+    // public function favourites(){
+    //     return $this->hasMany(Nft_user::class)
+    //                     ->where(function ($query){
+    //                         if(auth()->check()){
+    //                             $query->where('user_id', auth()->user()->id);
+    //                         }
+    //                     });
+    // }
 }

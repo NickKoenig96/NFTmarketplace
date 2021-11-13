@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNftsUsersTable extends Migration
+class CreateNftUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateNftsUsersTable extends Migration
     {
         Schema::create('nft_user', function (Blueprint $table) {
             $table->id();
-            // // $table->integer('user_id')->unsigned();
+            // $table->integer('user_id')->unsigned();
             // // $table->integer('nft_id')->unsigned();
             $table->foreignId('user_id')
                 ->references('id')
@@ -36,6 +36,6 @@ class CreateNftsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nfts_users');
+        Schema::dropIfExists('nft_user');
     }
 }
