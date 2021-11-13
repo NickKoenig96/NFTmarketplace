@@ -359,8 +359,8 @@ nav a:not(:last-child) {
 }
 
 .form__control {
-  display: flex;
-  flex-direction: column;
+  max-width: 380px;
+  margin: auto;
 }
 
 input {
