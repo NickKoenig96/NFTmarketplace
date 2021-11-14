@@ -21,13 +21,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->default('https://res.cloudinary.com/dqelbnq5n/image/upload/v1634481475/default_odqauf.png');
-            $table->string('street')->default(' ');
-            $table->string('housenumber')->default(' ');
-            $table->string('city')->default(' ');
-            $table->string('postal')->default(' ');
-            $table->string('country')->default(' ');
-            $table->string('phone')->default(' ');
-            $table->string('bio')->default(' ');
             $table->rememberToken();
             $table->timestamps();
         });

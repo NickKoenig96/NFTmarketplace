@@ -72,12 +72,6 @@ class UserController extends Controller
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        $user->street = $request->input('street');
-        $user->housenumber = $request->input('housenumber');
-        $user->city = $request->input('city');
-        $user->postal = $request->input('postal');
-        $user->country = $request->input('country');
-        $user->phone = $request->input('phone');
         $user->save();
         return redirect('./profile');
     }

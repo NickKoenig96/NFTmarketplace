@@ -9,9 +9,6 @@ use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
-
-
-
 use App\Views\Composers\MultiComposer;
 
 

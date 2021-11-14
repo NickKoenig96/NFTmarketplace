@@ -43,57 +43,23 @@
                     @csrf
                     <div class="twocol" style="height: 332px; margin-top:40px; margin-bottom: 40px;">
                         <div class="form__control">
-                            <label for="firstname">firstname</label>
+                            <label for="firstname">Firstname</label>
                             <input type="text" id="firstname" name="firstname" placeholder="{{ $user->firstname }}"
                                 value="{{ $user->firstname }}">
                         </div>
                         <div class="form__control">
-                            <label for="lastname">lastname</label>
+                            <label for="lastname">Lastname</label>
                             <input type="text" id="lastname" name="lastname" placeholder="{{ $user->lastname }}"
                                 value="{{ $user->lastname }}">
                         </div>
                         <div class="form__control">
-                            <label for="email">email</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="{{ $user->email }}"
                                 value="{{ $user->email }}">
                         </div>
                         <div class="form__control">
-                            <label for="password">password</label>
+                            <label for="password">Password</label>
                             <input type="password" id="password" name="password" placeholder="••••••••••••">
-                        </div>
-                        <div class="form__control--double">
-                            <div class="form__control form__control--small">
-                                <label for="street">street</label>
-                                <input type="text" id="street" name="street" placeholder="{{ $user->street }}"
-                                    value="{{ $user->street }}">
-                            </div>
-                            <div class="form__control form__control--smaller">
-                                <label for="housenumber">housenumber</label>
-                                <input type="text" id="housenumber" name="housenumber"
-                                    placeholder="{{ $user->housenumber }}" value="{{ $user->housenumber }}">
-                            </div>
-                        </div>
-                        <div class="form__control--double">
-                            <div class="form__control form__control--small">
-                                <label for="city">city</label>
-                                <input type="text" id="city" name="city" placeholder="{{ $user->city }}"
-                                    value="{{ $user->city }}">
-                            </div>
-                            <div class="form__control form__control--smaller">
-                                <label for="postal">postal</label>
-                                <input type="text" id="postal" name="postal" placeholder="{{ $user->postal }}"
-                                    value="{{ $user->postal }}">
-                            </div>
-                        </div>
-                        <div class="form__control">
-                            <label for="country">country</label>
-                            <input type="text" id="country" name="country" placeholder="{{ $user->country }}"
-                                value="{{ $user->country }}">
-                        </div>
-                        <div class="form__control">
-                            <label for="phone">phone</label>
-                            <input type="text" id="phone" name="phone" placeholder="{{ $user->phone }}"
-                                value="{{ $user->phone }}">
                         </div>
                     </div>
                     <input type="hidden" name="id" value="{{ $user->id }}">

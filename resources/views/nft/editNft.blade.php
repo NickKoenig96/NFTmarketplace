@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts/app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('title', 'editNft')
+
 
 <body>
 
@@ -26,14 +21,20 @@
     <form method="POST" action="{{ url('/nft/editNft') }}" enctype='multipart/form-data'>>
         @csrf
 
-        <input type="hidden" name="id" value="{{ $nft->id }}">
+<x-header firstname="{{ $user->firstname }}" />
 
-        <label for="cTitle">nft title</label><br>
-        <input type="text" id="cTitle" value="{{ $nft->title }}" name="nftTitle"><br>
+<h1>Edit NFT</h1>
+
+    <div class="form-group">
+        <form method="POST" action="{{ url('/nft/editNft') }}" enctype='multipart/form-data'>
+            @csrf
+
+            <h2 class="form-group__title">Edit a new masterpiece</h2>
+            <input type="hidden" name="id" value="{{ $nft->id }}">
 
 
-        <label for="cDescription">nft description</label><br>
-        <input type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
+            <label class="form-group__label" for="cTitle">nft title</label><br>
+            <input class="form-group__input" type="text" id="cTitle" value="{{ $nft->title }}" name="nftTitle"><br>
 
         <label class="form-group__label" for="nArea">Area</label><br>
         <input class="form-group__input" type="text" value="{{ $nft->area }}" id="nArea" name="nftArea"><br>
@@ -58,9 +59,17 @@
         <br>
 
 
-        <input type="submit" name="upload" value="edit">
 
-    </form>
-</body>
+            <label class="form-group__label" for="cDescription">nft description</label><br>
+            <input class="form-group__input" type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
 
-</html>
+            <label class="form-group__label" for="nImage">nft image</label><br>
+            <input class="form-group__input--image" type="file" name="nftImage"> <br>
+
+
+            <input type="submit" name="upload" value="edit">
+
+        </form>
+    </div>
+
+@endsection

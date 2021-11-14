@@ -359,8 +359,8 @@ nav a:not(:last-child) {
 }
 
 .form__control {
-  display: flex;
-  flex-direction: column;
+  max-width: 380px;
+  margin: auto;
 }
 
 input {
@@ -693,10 +693,10 @@ select {
   border: 2px solid #ECF1F2;
 }
 
+=======
 .btn--mint {
   background-color: #f7b552;
 }
-
 .comment {
   padding: 24px 48px;
   background-color: #f9fafd;
@@ -723,6 +723,7 @@ select {
 .comment__details *:first-of-type {
   color: red;
 }
+
 
 .alert {
   width: 50%;
