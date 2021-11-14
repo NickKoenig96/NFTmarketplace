@@ -34,14 +34,10 @@ class NftController extends Controller
         
         $nfts = Nft::get();
 
-        $user = Auth::id();
+        $user = Auth::user();
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data['user'] = $user;
-        
-
-
-
          return view('nft/index', $data);
     }
 
@@ -54,11 +50,9 @@ class NftController extends Controller
         $data["user"] = $user;
         $data["collections"] = $collections;
 
-        // if(!empty($user)){
-            return view('homepage', $data);
-        // }else{
-        //     return view('login');
-        // }
+        
+        return view('homepage', $data);
+        
 
          
     }
@@ -71,8 +65,6 @@ class NftController extends Controller
         $comments = Comment::with('Nft', 'User')->get();
         $data['user'] = $user;
         $data['nft'] = $nft;
-        // dd($nft);
-        // dd($user->lastname);
         return view('nft/showAllNfts', $data);
     }
 
@@ -88,6 +80,9 @@ class NftController extends Controller
     {
         $data = Nft::find($id);
         $data->delete();
+
+        session()->flash('message', 'NFT successfully edited');
+        
         return redirect('/wallet');
     }
 
@@ -114,11 +109,23 @@ class NftController extends Controller
      */
     public function store(Request $request){
 
+        $validated = $request->validate([
+            'nftTitle' => 'required|unique:nfts,title',
+            'nftDescription' => 'required',
+            'nftArea' => 'required|integer',
+            'nftObjectType' => 'required',
+            'nftPrice' => 'required|integer',
+            'nftImage' => 'required|image',
+            'collectionsId' => 'required',
+        ]);
         
+        // $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
+        $image = $request->file('nftImage');
+        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
+        $response = Http::withToken($token)->attach('attachment', file_get_contents($image))->post('https://api.pinata.cloud/pinning/pinFileToIPFS', ['file' => fopen($image, "r")]);
+        $answer = json_decode($response);
+        $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
         
-        $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
-      
-       
         $nft = new Nft();
         $nft->creator_id = $request->input('creator');
         $nft->owner_id = $request->input('creator');
@@ -126,10 +133,17 @@ class NftController extends Controller
         $nft->description = $request->input('nftDescription');
         $nft->area = $request->input('nftArea');
         $nft->object_type = $request->input('nftObjectType');
-        $nft->image_file_path = $uploadedFileUrl;
+        $nft->price = $request->input('nftPrice');
+        $nft->image_file_path = $filePath;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
-        return redirect('./nft');
+
+        //dd($nft['id']);
+        $test = $nft['id'];
+        $request->session()->flash('message', 'NFT successfully created');
+
+
+        return redirect("./nfts/$test");
     }
 
         /**
@@ -143,6 +157,8 @@ class NftController extends Controller
        
         $data['user'] = Auth::user();
         $nft = Nft::find($id);
+        $collections = Collection::get();
+        $data['collections'] = $collections;
         $data['nft'] = $nft;
         return view('nft/editNft', $data);
 
@@ -156,14 +172,38 @@ class NftController extends Controller
      */
     public function edit(Request $request)
     {
+        $validated = $request->validate([
+            'nftTitle' => 'required',
+            'nftDescription' => 'required',
+            'nftArea' => 'required|integer',
+            'nftObjectType' => 'required',
+            'nftPrice' => 'required|integer',
+            'nftImage' => 'required|image',
+            'collectionsId' => 'required',
+        ]);
+     
+
+    
         
-        $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
+        // $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
+        $image = $request->file('nftImage');
+        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
+        $response = Http::withToken($token)->attach('attachment', file_get_contents($image))->post('https://api.pinata.cloud/pinning/pinFileToIPFS', ['file' => fopen($image, "r")]);
+        $answer = json_decode($response);
+        $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
         $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
-        $nft->image_file_path = $uploadedFileUrl;
+        $nft->price = $request->input('nftPrice');
+        $nft->area = $request->input('nftArea');
+        $nft->object_type = $request->input('nftObjectType');
+        $nft->image_file_path = $filePath;
+        $nft->collection_id = $request->input('collectionsId');
         $nft->save();
+
+        $request->session()->flash('message', 'NFT successfully edited');
+
         return redirect('./wallet');
     }
 

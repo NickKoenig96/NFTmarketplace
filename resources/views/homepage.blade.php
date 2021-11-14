@@ -14,21 +14,24 @@
         <p>1 euro = {{ $eth }}ETH</p>
         <h1>Collections</h1>
 
+
         <div class="cardgallery">
             @foreach ($collections as $collection)
                 <a class="card card--3col" href="/collections/{{ $collection->id }}">
                     <img class="card__image" src="{{ $collection->image_file_path }}" alt="collection image">
-                    <img class="card__profilepicture--small" src="{{ $collection->image_file_path }}" alt="creator image">
+                    <img class="card__profilepicture--small" src="{{ $collection->creator->avatar }}" alt="creator image">
                     <div class="card__specs">
                         <!-- <div class="btn--favourite"></div> -->
-                        <div class="btn--nftcount"><span>5</span></div>
+                        <div class="btn--nftcount"><span> {{ $collection->nft()->count() }}</span></div>
                     </div>
                     <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $collection->title }}</p>
                     <p class="card__description body--normal"> {{ $collection->description }}</p>
                 </a>
             @endforeach
         </div>
-
+        <div class="btn__container">
+            <a class="btn btn--blue" href="/collections">See all collections</a>
+        </div>
     </section>
 
     <section class="bg--2">
@@ -63,13 +66,34 @@
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
-                        @if($nft->forSale === 1 && $user->id != $nft->owner_id)
-                        <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        @if ($nft->forSale === 1 && $user->id != $nft->owner_id)
+                            <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        @endif
+                    </div>
+                    <div class="flex--spbet">
+                        @if ($nft->owner_id == $user->id)
+                            <a href="" class="btn btn--blue btn--155 btn--mint">Mint NFT</a>
+
+                            @if ($nft->forSale === 0)
+                                <a href="/nft/sell/{{ $nft->id }}" class="btn btn--blue btn--155">Sell NFT</a>
+                            @elseif($nft->forSale === 1)
+                                <p class="info">Your NFT is for sale</p>
+                            @endif
+
+                        @elseif($nft->creator != $user && $nft->minted == 0 && $nft->forsale == 0)
+
+                            <p class="info">This NFT has not been minted yet</p>
+
+                            @if ($nft->forSale === 0)
+                                <p class="info">This NFT is not for sale right now</p>
+                            @endif
+
                         @endif
                     </div>
                 </div>
             @endforeach
         </div>
+
     </section>
 
 

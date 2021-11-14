@@ -3,7 +3,7 @@
 
 @section('content')
     <x-header firstname="{{ $user->firstname }}" />
-    
+
     <section>
         <h1>Profile</h1>
 
@@ -81,10 +81,10 @@
                 <div class="card card--3col flex--spbet">
                     <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
                     <div class="marginb-24">
-                    <div class="flex--spbet">
-                        <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
-                        <div class="btn--favourite"></div>
-                    </div>
+                        <div class="flex--spbet">
+                            <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
+                            <div class="btn--favourite"></div>
+                        </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
@@ -98,30 +98,33 @@
         <h3 class="medium hr black--60 marginb-24">{{ count($collections) }} Created collections</h3>
         <div class="cardgallery">
             @foreach ($collections as $collection)
-            <a class="card card--3col" href="/collections/{{ $collection->id }}">
-                <img class="card__image" src="{{ $collection->image_file_path}}" alt="collection image">
-                <img class="card__profilepicture--small" src="{{ $collection->image_file_path }}" alt="creator image">
-                <div class="card__specs">
-                    <!-- <div class="btn--favourite"></div> -->
-                    <div class="btn--nftcount"><span>5</span></div>
-                </div>
-                <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $collection->title }}</p>
-                <p class="card__description body--normal"> {{ $collection->description }}</p>
-            </a>
+                <a class="card card--3col" href="/collections/{{ $collection->id }}">
+                    <img class="card__image" src="{{ $collection->image_file_path }}" alt="collection image">
+                    <img class="card__profilepicture--small" src="{{ $collection->creator->avatar }}"
+                        alt="creator image">
+                    <div class="card__specs">
+                        <!-- <div class="btn--favourite"></div> -->
+                        <div class="btn--nftcount"><span> {{ $collection->nft()->count() }}</span></div>
+                    </div>
+                    <p class="card__title ta_c" style="margin-bottom: 12px;">{{ $collection->title }}</p>
+                    <p class="card__description body--normal"> {{ $collection->description }}</p>
+                </a>
             @endforeach
         </div>
 
         <!-- Momenteel dezelfde output als bij de "owned NFT's" -->
-        <h3 class="medium hr black--60 marginb-24"><!--{{ count($collections) }}-->4 Favourite nft's</h3>
+        <h3 class="medium hr black--60 marginb-24">
+            <!--{{ count($collections) }}-->4 Favourite nft's
+        </h3>
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">
                     <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
                     <div class="marginb-24">
-                    <div class="flex--spbet">
-                        <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
-                        <div class="btn--favourite--true"></div>
-                    </div>
+                        <div class="flex--spbet">
+                            <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
+                            <div class="btn--favourite--true"></div>
+                        </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
