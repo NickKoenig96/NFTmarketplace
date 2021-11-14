@@ -49,7 +49,7 @@
             <label class="form-group__label" for="collections">choose collection</label><br>
             <select id="collections" name="collectionsId" form="editNftForm">
                 @foreach ($collections as $collection)
-                    <option class="form-group__input" value="{{ $collection->id }}">{{ $collection->title }}e</option>
+                    <option class="form-group__input" value="{{ $collection->id }}">{{ $collection->title }}</option>
                 @endforeach
             </select>
             <br>

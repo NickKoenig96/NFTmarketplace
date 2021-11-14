@@ -26,6 +26,15 @@ class CollectionController extends Controller
         return view('collection/index', $data);
     }
 
+
+    public function indexDetail(){
+        $user = Auth::user();
+        $collections = Collection::get();
+       $data["collections"] = $collections;
+       $data["user"] = $user;
+        return view('collection/detailCollection', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -73,7 +82,16 @@ class CollectionController extends Controller
         $collection->image_file_path = $filePath;
         $collection->creator_id = Auth::id();
         $collection->save();
+<<<<<<< HEAD
         return redirect('./collections');
+=======
+
+        //add colection id when Nicolas made detailpage
+        $request->session()->flash('message', 'Collection successfully created');
+
+
+        return redirect('./collection/detailCollection');
+>>>>>>> ValidationErrores
     }
 
         /**
@@ -100,6 +118,7 @@ class CollectionController extends Controller
     public function edit(Request $request)
     {
 
+<<<<<<< HEAD
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
         $image = $request->file('collectionImage');
             
@@ -109,11 +128,24 @@ class CollectionController extends Controller
         $answer = json_decode($response);
         $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
+=======
+        $validated = $request->validate([
+            'collectionTitle' => 'required |unique:collections,title',
+            'collectionDescription' => 'required',
+            'collectionImage' => 'required|image',
+        ]);
+
+        $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
+       
+>>>>>>> ValidationErrores
         $collection = Collection::find($request->id);
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $filePath;
         $collection->save();
+
+        $request->session()->flash('message', 'Collection successfully edited');
+
         return redirect('./wallet');
     }
 
@@ -128,6 +160,9 @@ class CollectionController extends Controller
     {
         $data = Collection::find($id);
         $data->delete();
+
+        session()->flash('message', 'Collection successfully deleted');
+
         return redirect('/wallet');
     }
 

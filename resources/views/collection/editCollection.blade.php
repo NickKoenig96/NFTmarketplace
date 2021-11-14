@@ -9,6 +9,18 @@
 </head>
 
 <body>
+
+    @if ($errors->any())
+        @component('components/alert')
+            @slot('type') danger @endslot
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endcomponent
+    @endif
+
     <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
         @csrf
 

@@ -93,6 +93,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/collection/addCollection', [CollectionController::class, "create"]);
     Route::post('/collection/addCollection', [CollectionController::class, "store"]);
 
+    Route::get('/collection/detailCollection', [CollectionController::class, "indexDetail"]);
+
+
 
 
     //wallet

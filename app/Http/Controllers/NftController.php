@@ -80,6 +80,9 @@ class NftController extends Controller
     {
         $data = Nft::find($id);
         $data->delete();
+
+        session()->flash('message', 'NFT successfully edited');
+        
         return redirect('/wallet');
     }
 
@@ -168,6 +171,16 @@ class NftController extends Controller
      */
     public function edit(Request $request)
     {
+        $validated = $request->validate([
+            'nftTitle' => 'required',
+            'nftDescription' => 'required',
+            'nftArea' => 'required|integer',
+            'nftObjectType' => 'required',
+            'nftPrice' => 'required|integer',
+            'nftImage' => 'required|image',
+            'collectionsId' => 'required',
+        ]);
+     
 
     
         
@@ -178,7 +191,6 @@ class NftController extends Controller
         $answer = json_decode($response);
         $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
-       
         $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
@@ -188,6 +200,9 @@ class NftController extends Controller
         $nft->image_file_path = $filePath;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
+
+        $request->session()->flash('message', 'NFT successfully edited');
+
         return redirect('./wallet');
     }
 

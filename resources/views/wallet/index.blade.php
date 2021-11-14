@@ -17,6 +17,15 @@
             <h3>My NFT's</h3>
             <a href="/nft/addNft" class="btn btn--blue btn--155">add NFT</a>
             <br>
+
+            @if ($flash = session('message'))
+                @component('components/alert')
+                    @slot('type') succes @endslot
+                    <p> {{ $flash }}</p>
+                @endcomponent
+
+            @endif
+
             <div class="cardgallery">
                 @foreach ($nfts as $nft)
                     @if ($nft->owner_id == $user->id)
