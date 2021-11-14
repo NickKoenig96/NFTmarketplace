@@ -1,7 +1,7 @@
 <div>
 
+    <p wire:click="favorite({{ $nftId }})" wire:model="favorite">add favorite</p>
 
-    <p wire:click="favorite({{ $id = 30 }})" wire:model="favorite" value="30">add favorite</p>
 
 
 
