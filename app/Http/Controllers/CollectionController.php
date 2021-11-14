@@ -130,6 +130,9 @@ class CollectionController extends Controller
     {
         $data = Collection::find($id);
         $data->delete();
+
+        session()->flash('message', 'Collection successfully deleted');
+
         return redirect('/wallet');
     }
 

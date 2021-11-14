@@ -84,6 +84,9 @@ class NftController extends Controller
     {
         $data = Nft::find($id);
         $data->delete();
+
+        session()->flash('message', 'NFT successfully edited');
+        
         return redirect('/wallet');
     }
 
