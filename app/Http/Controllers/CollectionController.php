@@ -23,6 +23,15 @@ class CollectionController extends Controller
         return view('collection/index', $data);
     }
 
+
+    public function indexDetail(){
+        $user = Auth::user();
+        $collections = Collection::get();
+       $data["collections"] = $collections;
+       $data["user"] = $user;
+        return view('collection/detailCollection', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +68,12 @@ class CollectionController extends Controller
         $collection->image_file_path = $uploadedFileUrl;
         $collection->creator_id = Auth::id();
         $collection->save();
-        return redirect('./collection');
+
+        //add colection id when Nicolas made detailpage
+        $request->session()->flash('message', 'Collection successfully created');
+
+
+        return redirect('./collection/detailCollection');
     }
 
         /**
