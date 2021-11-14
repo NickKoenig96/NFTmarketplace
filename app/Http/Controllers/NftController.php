@@ -136,7 +136,7 @@ class NftController extends Controller
         $nft->save();
 
         //dd($nft['id']);
-$test = $nft['id'];
+        $test = $nft['id'];
         $request->session()->flash('message', 'NFT successfully created');
 
 
