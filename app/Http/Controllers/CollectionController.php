@@ -100,6 +100,12 @@ class CollectionController extends Controller
     public function edit(Request $request)
     {
 
+        $validated = $request->validate([
+            'collectionTitle' => 'required |unique:collections,title',
+            'collectionDescription' => 'required',
+            'collectionImage' => 'required|image',
+        ]);
+
         $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
         $collection = Collection::find($request->id);
@@ -107,6 +113,9 @@ class CollectionController extends Controller
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $uploadedFileUrl;
         $collection->save();
+
+        $request->session()->flash('message', 'Collection successfully edited');
+
         return redirect('./wallet');
     }
 
