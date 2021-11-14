@@ -33,7 +33,7 @@
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 
     
-    <input class="input input--light" type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword">
+    <input class="input input--light" type="password" placeholder="Confirm Password" name="password_confirmation" id="confirmPassword">
 
 
     <input class="btn--login" type="submit"  value="Signup">

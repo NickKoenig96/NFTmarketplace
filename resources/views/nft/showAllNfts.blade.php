@@ -1,5 +1,5 @@
 @extends('layouts/app')
-@section('title', 'Profile')
+@section('title', 'NFT')
 
 @section('content')
     <x-header firstname="{{ $user->firstname }}" />

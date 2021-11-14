@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Collection;
+use App\Models\Nft;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+
 
 class CollectionController extends Controller
 {
@@ -51,15 +54,26 @@ class CollectionController extends Controller
         ]);
         
 
-        $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
+        // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
+
+        $image = $request->file('collectionImage');
+            
+        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
+            
+        $response = Http::withToken($token)->attach('attachment', file_get_contents($image))->post('https://api.pinata.cloud/pinning/pinFileToIPFS', ['file' => fopen($image, "r")]);
+
+
+        $answer = json_decode($response);
+        $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
+        
        
         $collection = new Collection();
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
-        $collection->image_file_path = $uploadedFileUrl;
+        $collection->image_file_path = $filePath;
         $collection->creator_id = Auth::id();
         $collection->save();
-        return redirect('./collection');
+        return redirect('./collections');
     }
 
         /**
@@ -86,12 +100,19 @@ class CollectionController extends Controller
     public function edit(Request $request)
     {
 
-        $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
-       
+        // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
+        $image = $request->file('collectionImage');
+            
+        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
+            
+        $response = Http::withToken($token)->attach('attachment', file_get_contents($image))->post('https://api.pinata.cloud/pinning/pinFileToIPFS', ['file' => fopen($image, "r")]);
+        $answer = json_decode($response);
+        $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
+
         $collection = Collection::find($request->id);
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
-        $collection->image_file_path = $uploadedFileUrl;
+        $collection->image_file_path = $filePath;
         $collection->save();
         return redirect('./wallet');
     }
@@ -108,6 +129,18 @@ class CollectionController extends Controller
         $data = Collection::find($id);
         $data->delete();
         return redirect('/wallet');
+    }
+
+    public function showCollection($id){
+        $collection = Collection::find($id);
+        $nfts = Nft::get()->where('collection_id', $id);
+        $user = Auth::user();
+        $data["collection"] = $collection;
+        $data["user"] = $user;
+        $data["nfts"] = $nfts;
+        
+        return view('collection/showCollection', $data);
+
     }
 
 }
