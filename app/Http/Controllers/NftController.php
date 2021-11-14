@@ -222,32 +222,32 @@ class NftController extends Controller
 
         if($filter == 'Price'){
             if($option == 'PriceLH'){
-                $nfts = \DB::table("nfts")->select('id','price', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('price')->get();
+                $nfts = Nft::select('id','price', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('price')->get();
                 $data["nfts"] = $nfts;
                 return view("/homepageFilter", $data);
             }else{
-                $nfts = \DB::table("nfts")->select('id','price', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('price', 'desc')->get();
+                $nfts = Nft::select('id','price', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('price', 'desc')->get();
                 $data["nfts"] = $nfts;
                 return view("/homepageFilter", $data);
             }
         }else if($filter == 'Area'){
             if($option == 'AreaLH'){
-                $nfts = \DB::table("nfts")->select('id','area', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('area')->get();
+                $nfts = Nft::select('id','area', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('area')->get();
                 $data["nfts"] = $nfts;
                 return view("/homepageFilter", $data);
             }else{
-                $nfts = \DB::table("nfts")->select('id','area', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('area', 'desc')->get();
+                $nfts = Nft::select('id','area', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('area', 'desc')->get();
                 $data["nfts"] = $nfts;
                 return view("/homepageFilter", $data);
             }
         }
         else{
             if($option == 'TypeAZ'){
-                $nfts = \DB::table("nfts")->select('id','object_type', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('object_type')->get();
+                $nfts = Nft::select('id','object_type', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('object_type')->get();
                 $data["nfts"] = $nfts;
                 return view("/homepageFilter", $data);
             }else{
-                $nfts = \DB::table("nfts")->select('id','object_type', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('object_type', 'desc')->get();
+                $nfts = Nft::select('id','object_type', 'title', 'image_file_path','forSale', 'owner_id')->orderBy('object_type', 'desc')->get();
                 $data["nfts"] = $nfts;
                 return view("/homepageFilter", $data);
             }
