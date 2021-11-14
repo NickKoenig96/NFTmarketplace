@@ -693,10 +693,10 @@ select {
   border: 2px solid #ECF1F2;
 }
 
-=======
 .btn--mint {
   background-color: #f7b552;
 }
+
 .comment {
   padding: 24px 48px;
   background-color: #f9fafd;
@@ -724,7 +724,6 @@ select {
   color: red;
 }
 
-
 .alert {
   width: 50%;
   margin-left: auto;
@@ -746,7 +745,12 @@ select {
 }
 
 .alert--succes {
-  background-color: #0d9b3c;
+  background-color: #5CB323;
+  color: white;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  border: 2px solid #5CB323;
+  border-radius: 5px;
 }
 
 .info {

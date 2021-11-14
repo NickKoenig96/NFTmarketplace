@@ -57,6 +57,7 @@ class UserController extends Controller
 
 
             $user->save();
+            $request->session()->flash('message', 'Profile picture has been changed successfully');
             return redirect('./profile');
 
            
@@ -73,6 +74,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->save();
+        $request->session()->flash('message', 'Profile has been changed successfully');
         return redirect('./profile');
     }
 

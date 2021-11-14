@@ -3,6 +3,12 @@
 
 @section('content')
     <x-header firstname="{{ $user->firstname }}" />
+        @if ($flash = session('message'))
+            @component('components/alert')
+                @slot('type') succes @endslot
+                <p> {{ $flash }}</p>
+            @endcomponent
+        @endif
 
     <section>
         <h1>Profile</h1>
@@ -63,7 +69,6 @@
                         </div>
                     </div>
                     <input type="hidden" name="id" value="{{ $user->id }}">
-
                     <input type="submit" class="btn btn--blue btn--h40 mcenter" value="Update information">
                 </form>
             </div>

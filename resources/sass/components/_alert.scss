@@ -22,5 +22,10 @@
 
 .alert--succes{
     background-color: $succes;
+    color: white;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    border: 2px solid $succes;
+    border-radius: 5px;
 }
 
