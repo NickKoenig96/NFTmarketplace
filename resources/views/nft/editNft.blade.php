@@ -10,6 +10,16 @@
 
 <body>
 
+    @if ($errors->any())
+        @component('components/alert')
+            @slot('type') danger @endslot
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endcomponent
+    @endif
 
 
 
@@ -26,22 +36,23 @@
         <input type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
 
         <label class="form-group__label" for="nArea">Area</label><br>
-        <input class="form-group__input" type="text" id="nArea" name="nftArea"><br>
+        <input class="form-group__input" type="text" value="{{ $nft->area }}" id="nArea" name="nftArea"><br>
 
         <label class="form-group__label" for="nObjectType">Object type</label><br>
-        <input class="form-group__input" type="text" id="nObjectType" name="nftObjectType"><br>
+        <input class="form-group__input" type="text" value="{{ $nft->object_type }}" id="nObjectType"
+            name="nftObjectType"><br>
 
 
         <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
-        <input class="form-group__input" type="text" id="nPrice" name="nftPrice"><br>
+        <input class="form-group__input" type="text" value="{{ $nft->price }}" id="nPrice" name="nftPrice"><br>
 
         <label for="nImage">nft image</label><br>
-        <input type="file" name="nftImage"> <br>
+        <input type="file" value="{{ $nft->image_file_path }}" name="nftImage"> <br>
 
         <label class="form-group__label" for="collections">choose collection</label><br>
-        <select id="collections" name="collectionsId" form="editNftForm">
+        <select id="collections" name="collectionsId">
             @foreach ($collections as $collection)
-                <option class="form-group__input" value="{{ $collection->id }}">{{ $collection->title }}e</option>
+                <option class="form-group__input" value="{{ $collection->id }}">{{ $collection->title }}</option>
             @endforeach
         </select>
         <br>

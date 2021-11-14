@@ -168,12 +168,21 @@ $test = $nft['id'];
      */
     public function edit(Request $request)
     {
+        $validated = $request->validate([
+            'nftTitle' => 'required',
+            'nftDescription' => 'required',
+            'nftArea' => 'required|integer',
+            'nftObjectType' => 'required',
+            'nftPrice' => 'required|integer',
+            'nftImage' => 'required|image',
+            'collectionsId' => 'required',
+        ]);
+     
 
     
         
         $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
 
-       
         $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
@@ -183,6 +192,9 @@ $test = $nft['id'];
         $nft->image_file_path = $uploadedFileUrl;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
+
+        $request->session()->flash('message', 'NFT successfully edited');
+
         return redirect('./wallet');
     }
 
