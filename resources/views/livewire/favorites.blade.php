@@ -1,12 +1,9 @@
 <div>
 
-    <p wire:click="favorite({{ $nftId }})" wire:model="favorite">add favorite</p>
+    @if($liked == false)
+        <div wire:click="favourite" wire:model="favourite" class="btn--favourite"></div>
+    @else 
+        <div wire:click="unfavourite" wire:model="unfavourite" class="btn--favourite--true"></div>
+    @endif
 
-
-
-
-    <br>
-    @foreach ($nfts as $nft)
-        <p>{{ $nft->title }}</p>
-    @endforeach
 </div>
