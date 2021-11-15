@@ -3,16 +3,21 @@
 @section('title', 'Home')
 
 
-
 @section('content')
+
+
 
     <x-header firstname="{{ $user->firstname }}" />
 
     {{-- <h1>Homepage</h1> --}}
 
     <section>
+
+
         <p>1 euro = {{ $eth }}ETH</p>
         <h1>Collections</h1>
+
+
 
 
         <div class="cardgallery">
@@ -57,7 +62,9 @@
                     <div class="marginb-24">
                         <div class="flex--spbet">
                             <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
-                            <div class="btn--favourite"></div>
+                            {{-- <div class="btn--favourite"></div> --}}
+                            @livewire("favorites", ['nftId' => $nft->id, 'userId' => $user->id])
+
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
@@ -164,6 +171,7 @@
             }
         });
     </script>
+
 
 
 

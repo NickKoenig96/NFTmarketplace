@@ -82,16 +82,15 @@ class CollectionController extends Controller
         $collection->image_file_path = $filePath;
         $collection->creator_id = Auth::id();
         $collection->save();
-<<<<<<< HEAD
-        return redirect('./collections');
-=======
+
+        // return redirect('./collections');
+
 
         //add colection id when Nicolas made detailpage
         $request->session()->flash('message', 'Collection successfully created');
 
 
         return redirect('./collection/detailCollection');
->>>>>>> ValidationErrores
     }
 
         /**
@@ -119,7 +118,7 @@ class CollectionController extends Controller
     public function edit(Request $request)
     {
 
-<<<<<<< HEAD
+
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
         $image = $request->file('collectionImage');
             
@@ -129,16 +128,15 @@ class CollectionController extends Controller
         $answer = json_decode($response);
         $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
-=======
+
         $validated = $request->validate([
             'collectionTitle' => 'required |unique:collections,title',
             'collectionDescription' => 'required',
             'collectionImage' => 'required|image',
         ]);
 
-        $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
+        // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
->>>>>>> ValidationErrores
         $collection = Collection::find($request->id);
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
