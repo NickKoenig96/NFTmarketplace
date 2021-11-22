@@ -1,5 +1,6 @@
 {
     "private": true,
+    "type": "commonjs",
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
@@ -19,6 +20,9 @@
         "sass-loader": "^12.2.0"
     },
     "dependencies": {
-        "jquery-typeahead": "^2.11.1"
+        "ethers": "^5.5.1",
+        "jquery-typeahead": "^2.11.1",
+        "requirejs": "^2.3.6",
+        "vue": "^2.6.14"
     }
 }
