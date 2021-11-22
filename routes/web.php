@@ -109,22 +109,25 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     //mail
-    Route::get('/testmail', function (){
+   /* Route::get('/testmail', function (){
         
     $data = ['message' => 'This is a test!'];
 
     Mail::to('nick.koenig.be@gmail.com')->send(new TestEmail($data));
-    });
+    });*/
 
     Route::get('/nftSoldMail', function (){
 
         $data = ['message' => 'This is a test!'];
     
-        Mail::to('nick.koenig.be@gmail.com')->send(new nftSoldMail($data));
+        Mail::to('nick.koenig@mail.com')->send(new nftSoldMail($data));
 
-        return redirect('nft');
+        return redirect('wallet');
 
     });
+
+    Route::get('nft/order', [MailController::class, "mailData"]);
+
 
 
 

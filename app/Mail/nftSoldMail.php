@@ -20,11 +20,11 @@ class nftSoldMail extends Mailable
 
     public function build()
     {
-        $address = 'r0620110@student.thomasmore.be';
+        $address = 'nick.koenig.be@gmail.com';
         $subject = 'One off your nfts has been sold';
         $name = 'Atria';
 
-        return $this->view('emails.test')
+        return $this->view('emails.nftSoldMail')
                     ->from($address, $name)
                     ->cc($address, $name)
                     ->bcc($address, $name)

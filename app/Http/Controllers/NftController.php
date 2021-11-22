@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Http;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\MailController;
+
 
 
 
@@ -231,7 +233,9 @@ class NftController extends Controller
         $nft->forSale = 0;
         $nft->save();
 
-        return redirect('./nft');
+        MailController::mailData($request->input('id'));
+
+        return redirect('/nftSoldMail');
 
     }
 
