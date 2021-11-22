@@ -15,6 +15,7 @@ use App\Views\Composers\MultiComposer;
 
 
 
+use App\Mail\TestEmail;
 
 
 
@@ -97,6 +98,16 @@ Route::group(['middleware' => ['auth']], function() {
 
     //wallet
     Route::get('/wallet', [walletController::class, "index"]);
+
+
+    //mail
+    Route::get('/testmail', function (){
+        
+    $data = ['message' => 'This is a test!'];
+
+    Mail::to('nick.koenig.be@gmail.com')->send(new TestEmail($data));
+    });
+
 
     
 });
