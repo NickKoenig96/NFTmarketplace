@@ -5,6 +5,11 @@
 
 @section('content')
 
+    {{-- <script src="{{url('/js/app.js')}}"></script> --}}
+    <script type="module" src="{{url('/js/imports.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
 
 
     <x-header firstname="{{ $user->firstname }}" />
@@ -108,8 +113,6 @@
     <script>
         var path = "{{ url('homepage/action') }}";
 
-
-
         $('#search').typeahead({
 
 
@@ -172,6 +175,9 @@
         });
     </script>
 
+    {{-- <script>
+        import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
+    </script> --}}
 
 
 
