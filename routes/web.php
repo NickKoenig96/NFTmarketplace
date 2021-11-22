@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
@@ -9,6 +10,11 @@ use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
+
+
+use App\Http\Controllers\MailController;
+
+
 use App\Views\Composers\MultiComposer;
 
 
@@ -16,6 +22,8 @@ use App\Views\Composers\MultiComposer;
 
 
 use App\Mail\TestEmail;
+use App\Mail\nftSoldMail;
+
 
 
 
@@ -107,6 +115,19 @@ Route::group(['middleware' => ['auth']], function() {
 
     Mail::to('nick.koenig.be@gmail.com')->send(new TestEmail($data));
     });
+
+    Route::get('/nftSoldMail', function (){
+
+        $data = ['message' => 'This is a test!'];
+    
+        Mail::to('nick.koenig.be@gmail.com')->send(new nftSoldMail($data));
+
+        return redirect('nft');
+
+    });
+
+
+
 
 
     
