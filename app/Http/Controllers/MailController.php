@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Nft;
+use App\Models\User;
+
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\TestEmail;
@@ -23,13 +25,17 @@ class MailController extends Controller
        
       // dd($nft);
         $data = [
-            'message' => 'This is a test!',
+            'message' => 'Stephanie acc',
             'nft' => $nft
         ];
         //$data = ['nft' => $id];
         //$test =$id;
+
+        $user = User::where("id", $nft->owner_id)->get('email');
+       // dd($user);
+
     
-        Mail::to('nick.koenig@mail.com')->send(new nftSoldMail($data));
+        Mail::to($user)->send(new nftSoldMail($data));
 
        // return redirect('wallet');
     }

@@ -229,11 +229,14 @@ class NftController extends Controller
 
         //nft updaten
         $nft = Nft::find($request->input('id'));
+
+        MailController::mail($nft);
+
         $nft->owner_id = $request->input('buyer');
         $nft->forSale = 0;
         $nft->save();
 
-     MailController::mail($nft);
+    // MailController::mail($nft);
     //MailController::mail($request->input('id'));
     // $nftId = $request->input('id');
 
