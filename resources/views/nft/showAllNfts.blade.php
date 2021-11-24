@@ -32,18 +32,23 @@
     </section>
     <section class="bg--2">
         <h1>Comments</h1>
-        <div class="comment marginb-24 flex flex--start flex--gap40">
-            <div class="form__control--80perc">
-                <input type="text" placeholder="Your comment">
+        <form method="post" action="{{ url('/comment/store') }}">
+            @csrf
+            <div class="comment marginb-24 flex flex--start flex--gap40">
+                <div class="form__control--80perc">
+                    <input type="text" id="comment" name="comment" placeholder="Your comment">
+                </div>
+                <input type="hidden" id="nft_id" name="nft_id" value="{{ $nft->id }}">
+                <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
+                <div class="form__control--smaller">
+                    <input  type="submit" value="Post">
+                </div>
             </div>
-            <div class="form__control--smaller">
-                <input  type="submit" value="Post">
-            </div>
-        </div>
+        </form>
         <ul>
             @foreach ($nft->comment as $c)
                 <li class="comment">
-                    <p class="comment__user">{{ "@" . "Peter Celi" }}</p>
+                    <p class="comment__user">{{ $c->user->firstname . " " . $c->user->lastname}}</p>
                     <p class="comment__text">{{ $c->text }}</p>
                     <div class="comment__details flex flex--start flex--gap40">
                         <p>Delete</p>

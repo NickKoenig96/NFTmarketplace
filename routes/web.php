@@ -9,6 +9,7 @@ use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
+use App\Http\Controllers\CommentController;
 
 
 
@@ -62,7 +63,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/profile/updateUserdata', [UserController::class, "updateUserdata"]);
     Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
 
-
+    //comments
+    Route::post('/comment/store', [CommentController::class, "store"]);
+    
 
     //search
     Route::get('/search', [SearchController::class, "search"]);
