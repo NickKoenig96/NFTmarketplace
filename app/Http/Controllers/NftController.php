@@ -233,9 +233,12 @@ class NftController extends Controller
         $nft->forSale = 0;
         $nft->save();
 
-        MailController::mailData($request->input('id'));
+     MailController::mail($request->input('id'));
+    // $nftId = $request->input('id');
 
-        return redirect('/nftSoldMail');
+       // return redirect('/nftSoldMail');
+               return redirect('wallet');
+
 
     }
 

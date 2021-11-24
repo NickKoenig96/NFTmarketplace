@@ -116,7 +116,7 @@ Route::group(['middleware' => ['auth']], function() {
     Mail::to('nick.koenig.be@gmail.com')->send(new TestEmail($data));
     });*/
 
-    Route::get('/nftSoldMail', function (){
+    /*Route::get('/nftSoldMail', function (){
 
         $data = ['message' => 'This is a test!'];
     
@@ -124,9 +124,10 @@ Route::group(['middleware' => ['auth']], function() {
 
         return redirect('wallet');
 
-    });
+    });*/
 
-    Route::get('nft/order', [MailController::class, "mailData"]);
+   // Route::get('/nftSoldMail', [MailController::class, "mailData"]);
+    Route::get('/nftSoldMail', [MailController::class, "mail"]);
 
 
 
