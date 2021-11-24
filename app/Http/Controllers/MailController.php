@@ -19,13 +19,15 @@ use Illuminate\Support\Facades\Mail;
 class MailController extends Controller
 {
 
-    public static function mail($id){
+    public static function mail($nft){
+       
+      // dd($nft);
         $data = [
             'message' => 'This is a test!',
-            'nft' => $id
+            'nft' => $nft
         ];
         //$data = ['nft' => $id];
-        $test =$id;
+        //$test =$id;
     
         Mail::to('nick.koenig@mail.com')->send(new nftSoldMail($data));
 
