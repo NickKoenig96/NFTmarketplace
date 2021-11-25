@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use App\Models\User;
+use App\Models\Rate;
 use Illuminate\View\View;
 
 use Illuminate\Support\Facades\Http;
@@ -19,9 +20,8 @@ class EthComposer
      */
     public function compose(View $view)
     {
-        
-        $user = User::where('id', 5)->first();
-        $userid = $user['id'];
-        $view->with('eth', $userid);
+        $rate = Rate::find(1);
+        $eth = $rate->rate;
+        $view->with('eth', $eth);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\Models\Rate;
 
 class GetPriceEth extends Command
 {
@@ -40,6 +41,10 @@ class GetPriceEth extends Command
     public function handle()
     {
         $eth =  Http::get('https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=ETH')['ETH'];
+        
+        $rate = Rate::find(1);
+        $rate->rate = $eth;
+        $rate->save();
         
         return Command::SUCCESS;
     }

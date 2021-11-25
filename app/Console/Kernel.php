@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('get:ethprice')->everyMinute();
+        $schedule->command('get:ethprice')->hourly();
     }
 
     /**
