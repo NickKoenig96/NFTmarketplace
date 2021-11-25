@@ -40,7 +40,7 @@ class GetPriceEth extends Command
     public function handle()
     {
         $eth =  Http::get('https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=ETH')['ETH'];
-        info($eth);
+        
         return Command::SUCCESS;
     }
 }

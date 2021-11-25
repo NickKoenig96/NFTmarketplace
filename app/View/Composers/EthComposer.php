@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Models\User;
 use Illuminate\View\View;
 
 use Illuminate\Support\Facades\Http;
@@ -18,7 +19,9 @@ class EthComposer
      */
     public function compose(View $view)
     {
-        $eth =  Http::get('https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=ETH')['ETH'];
-        $view->with('eth', $eth);
+        
+        $user = User::where('id', 5)->first();
+        $userid = $user['id'];
+        $view->with('eth', $userid);
     }
 }
