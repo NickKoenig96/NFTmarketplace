@@ -23,7 +23,7 @@ class nftSoldMail extends Mailable
         $address = 'nick.koenig.be@gmail.com';
         $subject = 'One off your nfts has been sold';
         $name = 'Atria';
-//dd($this->data);
+
         return $this->view('emails.nftSoldMail')
                     ->from($address, $name)
                     ->cc($address, $name)
@@ -31,7 +31,5 @@ class nftSoldMail extends Mailable
                     ->replyTo($address, $name)
                     ->subject($subject)
                     ->with([ 'nft'=> $this->data['nft'],'user'=> $this->data['user']]);
-                   // ->with([  ]);
-
     }
 }
