@@ -30,7 +30,7 @@ class nftSoldMail extends Mailable
                     ->bcc($address, $name)
                     ->replyTo($address, $name)
                     ->subject($subject)
-                    ->with([ 'test_message' => $this->data['message'], 'nft'=> $this->data['nft']]);
+                    ->with([ 'nft'=> $this->data['nft'],'user'=> $this->data['user']]);
                    // ->with([  ]);
 
     }

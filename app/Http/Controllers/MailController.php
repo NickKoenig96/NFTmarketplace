@@ -22,20 +22,24 @@ class MailController extends Controller
 {
 
     public static function mail($nft){
-       
+
+      //$user = User::where("id", $nft->owner_id)->get();
+      $user = User::find($nft->owner_id);
+
+      //dd($user->email);
+
       // dd($nft);
         $data = [
-            'message' => 'Stephanie acc',
-            'nft' => $nft
+            'nft' => $nft,
+            'user' =>  $user
         ];
         //$data = ['nft' => $id];
         //$test =$id;
 
-        $user = User::where("id", $nft->owner_id)->get('email');
        // dd($user);
 
     
-        Mail::to($user)->send(new nftSoldMail($data));
+        Mail::to($user->email)->send(new nftSoldMail($data));
 
        // return redirect('wallet');
     }
