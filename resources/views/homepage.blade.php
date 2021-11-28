@@ -5,12 +5,6 @@
 
 @section('content')
 
-    {{-- <script src="{{url('/js/app.js')}}"></script> --}}
-    <script type="module" src="{{url('/js/imports.js')}}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
-
 
     <x-header firstname="{{ $user->firstname }}" />
 
@@ -63,7 +57,7 @@
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">
-                    <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
+                    <img id="nftImage" data-user-firstname="{{ $user->firstname }}" data-nfts="{{$nfts}}" data-user-id="{{$user->id}}" src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
                     <div class="marginb-24">
                         <div class="flex--spbet">
                             <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
@@ -73,7 +67,7 @@
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
-                        <span class="card__price">ETH {{ $eth * $nft->price }}</span>
+                        <span id="ethPrice" data-eth-price="{{ $eth }}" class="card__price">ETH {{ $eth * $nft->price }}</span>
 
                     </div>
                     <div class="flex--spbet">
@@ -83,9 +77,9 @@
                         @endif
                     </div>
                     <div class="flex--spbet">
-                        @if ($nft->owner_id == $user->id)
-                            <a href="" class="btn btn--blue btn--155 btn--mint">Mint NFT</a>
-
+                        @if ($nft->creator_id == $user->id)
+                            <button class="btn--mint">Mint NFT</button>
+                           
                             @if ($nft->forSale === 0)
                                 <a href="/nft/sell/{{ $nft->id }}" class="btn btn--blue btn--155">Sell NFT</a>
                             @elseif($nft->forSale === 1)
@@ -104,11 +98,61 @@
                     </div>
                 </div>
             @endforeach
+            <script type="text/javascript"> 
+                const mintNFTBtn = document.querySelector(".btn--mint");
+                    mintNFTBtn.addEventListener("click", async()=>{
+                        // console.log("MINTED");
+                        const provider = new ethers.providers.Web3Provider(window.ethereum);
+                        const signer = provider.getSigner();
+                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                        let Abi;
+                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data; console.log(Abi);});
+                        const contract = new ethers.Contract(contractAddress, Abi, provider);
+                        let contractWithSigner = contract.connect(signer);
+                        let media_file = "{{$nft->image_file_path}}";
+                        // let price = ethers.utils.parseEther({{$nft->price}}.toString());
+                        let tempPrice = "{{$nft->price}}";
+                        console.log(tempPrice);
+                        let price = ethers.utils.parseUnits(tempPrice, "ether");
+                        console.log(price);
+                        
+                        const itemId =  await contractWithSigner.mintNFT(media_file, price);
+                        // const nftId =  {{$nft->id}};
+
+                        console.log(itemId);
+                        console.log(itemId['hash']);
+                        
+
+                        // send a post 
+                        let nftOwner = "{{$nft->owner_id}}";
+                        let nftId = "{{$nft->id}}";
+
+
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+
+                        let csrf_token = "{{csrf_token()}}";
+                        const hiddencsrf = document.createElement('input');
+                        hiddencsrf.type = 'hidden';
+                        hiddencsrf.name = "_token";
+                        hiddencsrf.value = csrf_token;
+
+                        form.appendChild(hiddencsrf);
+                        document.body.appendChild(form);
+                        form.action = `/nft/${itemId['hash']}/${nftOwner}/${nftId}`;
+                        form.submit();
+                    });
+            </script>
+            <script type="text/javascript">
+            
+            
+            </script>
         </div>
 
     </section>
 
 
+    <script src="{{ url('js/app.js') }}"></script> 
 
     <script>
         var path = "{{ url('homepage/action') }}";
@@ -174,11 +218,5 @@
             }
         });
     </script>
-
-    {{-- <script>
-        import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
-    </script> --}}
-
-
 
 @endsection
