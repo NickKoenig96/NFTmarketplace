@@ -38,7 +38,8 @@ class NftController extends Controller
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data['user'] = $user;
-         return view('nft/index', $data);
+        
+        return view('nft/index', $data);
     }
 
     // nfts in homepage
@@ -49,7 +50,7 @@ class NftController extends Controller
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
-
+        
         
         return view('homepage', $data);
         
