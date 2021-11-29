@@ -1,4 +1,4 @@
-@server[['development' => '-i /home/jonathan/.ssh/authorized_keys hacker@139.162.134.152 ']];
+@server[['development' => '-i /home/jonathan/.ssh/authorized_keys jonathan@139.162.134.152 ']];
 
 @task('deploy', ['on' => 'development'])
     cd /home/hacker/beta
