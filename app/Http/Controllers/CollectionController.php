@@ -101,8 +101,12 @@ class CollectionController extends Controller
      */
     public function show($id)
     {
-        $data['user'] = Auth::user();
-        $collection = Collection::find($id);
+        $user = Auth::user();
+        $collection = Collection::where('id', $id)->first();
+
+        
+
+        $data['user'] = $user;
         $data['collection'] = $collection;
         return view('collection/editCollection', $data);
 
@@ -117,7 +121,11 @@ class CollectionController extends Controller
      */
     public function edit(Request $request)
     {
+        $collection = Collection::find($request->id);
 
+        if ($request->user()->cannot('update', $collection)) {
+            abort(403);
+        }
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
         $image = $request->file('collectionImage');
@@ -137,7 +145,7 @@ class CollectionController extends Controller
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
-        $collection = Collection::find($request->id);
+        
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $filePath;
