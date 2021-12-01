@@ -2,6 +2,7 @@
 
 @section('title', 'editCollection')
 
+@section('content')
 
 <body>
 
