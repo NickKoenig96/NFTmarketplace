@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $user1 = new \App\Models\User();
         $user1->firstname = "Stephanie";
         $user1->lastname = "Lambrights";
-        $user1->email = "stephanie@atria.com";
+        $user1->email = "r0806290@student.thomasmore.be";
         $user1->password = Hash::make("Test12345");
         $user1->save();
 
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $user4 = new \App\Models\User();
         $user4->firstname = "Jonathan";
         $user4->lastname = "Verhaegen";
-        $user4->email = "jonathan@atria.com";
+        $user4->email = "jonathan_verhaegen@hotmail.com";
         $user4->password = Hash::make("Test12345");
         $user4->save();
 
