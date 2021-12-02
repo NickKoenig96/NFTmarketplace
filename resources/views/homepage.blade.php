@@ -81,7 +81,7 @@
                             <button class="btn--mint">Mint NFT</button>
                            
                             @if ($nft->forSale === 0)
-                                <a href="/nft/sell/{{ $nft->id }}" class="btn btn--blue btn--155">Sell NFT</a>
+                                <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{ $nft->price }}" data-hash="{{ $nft->item_hash }}" class="btn btn--blue btn--155">Sell NFT</a>
                             @elseif($nft->forSale === 1)
                                 <p class="info">Your NFT is for sale</p>
                             @endif
@@ -98,6 +98,58 @@
                     </div>
                 </div>
             @endforeach
+            <!-- put up for sale -->
+            <script type="text/javascript">
+                let sellBtns = document.querySelectorAll('#sellBtn');
+
+                sellBtns.forEach((sellBtn) => {
+                    sellBtn.addEventListener('click', async(e)=>{
+                        e.preventDefault();
+                        const provider = new ethers.providers.Web3Provider(window.ethereum);
+                        const signer = provider.getSigner();
+                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                        let Abi;
+                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data; console.log(Abi);});
+                        const contract = new ethers.Contract(contractAddress, Abi, provider);
+                        let contractWithSigner = contract.connect(signer);
+
+                        let id = sellBtn.dataset.id;
+                        let tokenId = sellBtn.dataset.hash;
+                        let priceEuro = sellBtn.dataset.price;
+                        let ethString = "{{ $eth}}";
+                        let eth = parseFloat(ethString);
+                        
+                        let price = ethers.utils.parseUnits(priceEuro, "ether")
+                        
+
+                        console.log(id);
+                        
+                        const putUp =  await contractWithSigner.putUpForSale(tokenId, price);
+                        
+
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+
+                        let csrf_token = "{{csrf_token()}}";
+                        const hiddencsrf = document.createElement('input');
+                        hiddencsrf.type = 'hidden';
+                        hiddencsrf.name = "_token";
+                        hiddencsrf.value = csrf_token;
+
+                        const idInput = document.createElement('input');
+                        idInput.type = 'hidden';
+                        idInput.name = "id";
+                        idInput.value = id;
+
+                        form.appendChild(hiddencsrf);
+                        form.appendChild(idInput);
+                        document.body.appendChild(form);
+                        form.action = `/nft/markForSale`;
+                        form.submit();
+                    })
+                })
+            </script>
+
             <script type="text/javascript"> 
                 const mintNFTBtn = document.querySelector(".btn--mint");
                     mintNFTBtn.addEventListener("click", async()=>{
