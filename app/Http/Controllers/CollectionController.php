@@ -8,6 +8,7 @@ use App\Models\Collection;
 use App\Models\Nft;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Gate;
 
 
 class CollectionController extends Controller
