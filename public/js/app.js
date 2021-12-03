@@ -28154,14 +28154,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 var ethers = __webpack_require__(/*! ethers */ "./node_modules/ethers/lib.esm/index.js");
 
 console.log('started appjs');
-var tempelement = document.getElementById('nftImage');
-var mintButton = document.getElementById('mintButton');
-var eth = document.getElementById('ethPrice');
-var userId = tempelement.getAttribute('data-user-id');
-var userFirstname = tempelement.getAttribute('data-user-firstname');
-var nfts = tempelement.getAttribute('data-nfts');
-var ethPrice = eth.getAttribute('data-eth-price');
-var arrayNfts = JSON.parse(nfts);
+var tempelement = document.getElementById('nftImage'); // let mintButton = document.getElementById('mintButton');
+// let eth = document.getElementById('ethPrice');
+// let userId = tempelement.getAttribute('data-user-id');
+// let userFirstname = tempelement.getAttribute('data-user-firstname');
+
+var nfts = tempelement.getAttribute('data-nfts'); // let ethPrice = eth.getAttribute('data-eth-price');
+// let arrayNfts = JSON.parse(nfts);
 
 var App = /*#__PURE__*/function () {
   function App() {

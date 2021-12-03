@@ -4,17 +4,17 @@ const ethers = require('ethers');
 console.log('started appjs');
 
 let tempelement = document.getElementById('nftImage');
-let mintButton = document.getElementById('mintButton');
-let eth = document.getElementById('ethPrice');
+// let mintButton = document.getElementById('mintButton');
+// let eth = document.getElementById('ethPrice');
 
 
-let userId = tempelement.getAttribute('data-user-id');
-let userFirstname = tempelement.getAttribute('data-user-firstname');
+// let userId = tempelement.getAttribute('data-user-id');
+// let userFirstname = tempelement.getAttribute('data-user-firstname');
 let nfts = tempelement.getAttribute('data-nfts');
 
-let ethPrice = eth.getAttribute('data-eth-price');
+// let ethPrice = eth.getAttribute('data-eth-price');
 
-let arrayNfts = JSON.parse(nfts);
+// let arrayNfts = JSON.parse(nfts);
 
 
 class App {

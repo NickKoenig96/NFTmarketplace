@@ -67,7 +67,7 @@
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
-                        <span id="ethPrice" data-eth-price="{{ $eth }}" class="card__price">ETH {{ $eth * $nft->price }}</span>
+                        <span data-hash="{{$nft->item_hash}}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
 
                     </div>
                     <div class="flex--spbet">
@@ -78,8 +78,9 @@
                     </div>
                     <div class="flex--spbet">
                         @if ($nft->creator_id == $user->id)
-                            <button data-owner="{{$nft->owner_id}}" data-price="{{$nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
-                           
+                            @if($nft->minted == false)
+                                <button data-owner="{{$nft->owner_id}}" data-price="{{$nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
+                            @endif
                             @if ($nft->forSale === 0)
                                 <a href="/nft/sell/{{ $nft->id }}" class="btn btn--blue btn--155">Sell NFT</a>
                             @elseif($nft->forSale === 1)
@@ -111,7 +112,6 @@
                             const contract = new ethers.Contract(contractAddress, Abi, provider);
                             let contractWithSigner = contract.connect(signer);
 
-
                             let id = mintNftBtn.dataset.id;
                             let tokenId = mintNftBtn.dataset.hash;
                             let priceEuro = mintNftBtn.dataset.price;
@@ -120,10 +120,7 @@
                             let price = ethers.utils.parseUnits(priceEuro, "ether");
 
                             let nftOwner = parseInt(nftOwnerString);
-                            // console.log(nftOwner);
                             const itemId =  await contractWithSigner.mintNFT(media_file, price);
-                            
-                            // console.log(itemId['hash']);
 
                             // send a post 
                             const form = document.createElement('form');
@@ -143,44 +140,21 @@
                 })
             </script>
             <script type="text/javascript">
-                let ethPrice = document.querySelector("#ethPrice");
+                // getPrice contract web3
+                let ethPrices = document.querySelectorAll(".card__price--eth");
+                ethPrices.forEach(async(ethPrice)=> {
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                    let Abi;
+                    await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data;});
+                    const contract = new ethers.Contract(contractAddress, Abi, provider);
 
-                // set hash in int for the function
-                async function getNftPrice(){
-                    let minted = "{{$nft->minted}}";
-                    if(minted == true){
-                        const provider = new ethers.providers.Web3Provider(window.ethereum);
-                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
-                        let Abi;
-                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data;});
-                        const contract = new ethers.Contract(contractAddress, Abi, provider);
+                    let tokenId = ethPrice.dataset.hash;
+                    let price = await contract.getPrice(tokenId);
+                    let priceNumber = price.toString();
 
-                        let hash = "{{$nft->item_hash}}";
-                        // let priceNFT = "{{$eth * $nft->price}}";
-
-                        let test = parseInt(hash, 16);
-                        
-                        // console.log(test);
-
-                        let price = await contract.getPrice(hash);
-                        let priceNumber = price.toString();
-
-                        // console.log(ethers.utils.formatEther(price));
-
-                        // console.log(price);
-                        // console.log(priceNumber);
-
-                        ethPrice.innerHTML = priceNumber;
-                    }
-                }
-
-                getNftPrice();
-
-                // error: argument value="" value="" omdat ik 2 values geef (2nfts)
-                // Enkel de getPrice laten zien als er gemint wordt
-
-                // Als je op mint nft klikt dan pakt hij altijd de laatste in het lijstje
-            
+                    ethPrice.innerHTML = "ETH " + price;
+                });
             </script>
         </div>
 
