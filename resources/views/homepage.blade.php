@@ -57,7 +57,7 @@
         <div class="cardgallery">
             @foreach ($nfts as $nft)
                 <div class="card card--3col flex--spbet">
-                    <img id="nftImage" data-user-firstname="{{ $user->firstname }}" data-nfts="{{$nfts}}" data-user-id="{{$user->id}}" src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
+                    <img id="nftImage" src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
                     <div class="marginb-24">
                         <div class="flex--spbet">
                             <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="flex--spbet">
                         @if ($nft->creator_id == $user->id)
-                            <button class="btn--mint">Mint NFT</button>
+                            <button data-owner="{{$nft->owner_id}}" data-price="{{$nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
                            
                             @if ($nft->forSale === 0)
                                 <a href="/nft/sell/{{ $nft->id }}" class="btn btn--blue btn--155">Sell NFT</a>
@@ -99,52 +99,87 @@
                 </div>
             @endforeach
             <script type="text/javascript"> 
-                const mintNFTBtn = document.querySelector(".btn--mint");
-                    mintNFTBtn.addEventListener("click", async()=>{
-                        // console.log("MINTED");
-                        const provider = new ethers.providers.Web3Provider(window.ethereum);
-                        const signer = provider.getSigner();
-                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
-                        let Abi;
-                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data; console.log(Abi);});
-                        const contract = new ethers.Contract(contractAddress, Abi, provider);
-                        let contractWithSigner = contract.connect(signer);
-                        let media_file = "{{$nft->image_file_path}}";
-                        // let price = ethers.utils.parseEther({{$nft->price}}.toString());
-                        let tempPrice = "{{$nft->price}}";
-                        console.log(tempPrice);
-                        let price = ethers.utils.parseUnits(tempPrice, "ether");
-                        console.log(price);
-                        
-                        const itemId =  await contractWithSigner.mintNFT(media_file, price);
-                        // const nftId =  {{$nft->id}};
-
-                        console.log(itemId);
-                        console.log(itemId['hash']);
-                        
-
-                        // send a post 
-                        let nftOwner = "{{$nft->owner_id}}";
-                        let nftId = "{{$nft->id}}";
+                let mintNftBtns = document.querySelectorAll(".btn--mint");
+                    mintNftBtns.forEach((mintNftBtn)=>{
+                        mintNftBtn.addEventListener('click', async(e)=>{
+                            e.preventDefault();
+                            const provider = new ethers.providers.Web3Provider(window.ethereum);
+                            const signer = provider.getSigner();
+                            const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                            let Abi;
+                            await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data;});
+                            const contract = new ethers.Contract(contractAddress, Abi, provider);
+                            let contractWithSigner = contract.connect(signer);
 
 
-                        const form = document.createElement('form');
-                        form.method = 'POST';
+                            let id = mintNftBtn.dataset.id;
+                            let tokenId = mintNftBtn.dataset.hash;
+                            let priceEuro = mintNftBtn.dataset.price;
+                            let media_file = mintNftBtn.dataset.image;
+                            let nftOwnerString = mintNftBtn.dataset.owner;
+                            let price = ethers.utils.parseUnits(priceEuro, "ether");
 
-                        let csrf_token = "{{csrf_token()}}";
-                        const hiddencsrf = document.createElement('input');
-                        hiddencsrf.type = 'hidden';
-                        hiddencsrf.name = "_token";
-                        hiddencsrf.value = csrf_token;
+                            let nftOwner = parseInt(nftOwnerString);
+                            // console.log(nftOwner);
+                            const itemId =  await contractWithSigner.mintNFT(media_file, price);
+                            
+                            // console.log(itemId['hash']);
 
-                        form.appendChild(hiddencsrf);
-                        document.body.appendChild(form);
-                        form.action = `/nft/${itemId['hash']}/${nftOwner}/${nftId}`;
-                        form.submit();
+                            // send a post 
+                            const form = document.createElement('form');
+                            form.method = 'POST';
+
+                            let csrf_token = "{{csrf_token()}}";
+                            const hiddencsrf = document.createElement('input');
+                            hiddencsrf.type = 'hidden';
+                            hiddencsrf.name = "_token";
+                            hiddencsrf.value = csrf_token;
+
+                            form.appendChild(hiddencsrf);
+                            document.body.appendChild(form);
+                            form.action = `/nft/${itemId['hash']}/${nftOwner}/${id}`;
+                            form.submit();
                     });
+                })
             </script>
             <script type="text/javascript">
-            
+                let ethPrice = document.querySelector("#ethPrice");
+
+                // set hash in int for the function
+                async function getNftPrice(){
+                    let minted = "{{$nft->minted}}";
+                    if(minted == true){
+                        const provider = new ethers.providers.Web3Provider(window.ethereum);
+                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                        let Abi;
+                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data;});
+                        const contract = new ethers.Contract(contractAddress, Abi, provider);
+
+                        let hash = "{{$nft->item_hash}}";
+                        // let priceNFT = "{{$eth * $nft->price}}";
+
+                        let test = parseInt(hash, 16);
+                        
+                        // console.log(test);
+
+                        let price = await contract.getPrice(hash);
+                        let priceNumber = price.toString();
+
+                        // console.log(ethers.utils.formatEther(price));
+
+                        // console.log(price);
+                        // console.log(priceNumber);
+
+                        ethPrice.innerHTML = priceNumber;
+                    }
+                }
+
+                getNftPrice();
+
+                // error: argument value="" value="" omdat ik 2 values geef (2nfts)
+                // Enkel de getPrice laten zien als er gemint wordt
+
+                // Als je op mint nft klikt dan pakt hij altijd de laatste in het lijstje
             
             </script>
         </div>

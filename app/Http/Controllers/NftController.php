@@ -58,12 +58,7 @@ class NftController extends Controller
     }
 
     public function addItem(Request $request){
-        // $currentUrl = url()->current();
-        // $itemHash = explode('/', $currentUrl)[4];
-        // $ownerId = intval(explode('/', $currentUrl)[5]);
-        // $nftId = intval(explode('/', $currentUrl)[6]);
-
-        $nft = Nft::find($request->nftId);
+        $nft = Nft::find($request->id);
         $nft->owner_id = $request->nftOwner;
         $nft->minted = 1;
         $nft->item_hash = $request->itemId;
