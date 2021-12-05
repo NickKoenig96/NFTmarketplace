@@ -102,13 +102,14 @@ class UserController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
-        // if($request->input('password') === $request->input('confirmPassword')){
-            $user->password = Hash::make($request->input('password'));
-            $user->save();
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
+        $request->flashExcept('password');
             
-            if (Auth::attempt($credentials)) {
-                return redirect()->intended('./');
-            }
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('./');
+        }
         
 
         

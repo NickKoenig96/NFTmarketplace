@@ -29,7 +29,7 @@
     @csrf
 
     
-    <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
+    <input value="{{ old('email') }}" class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 
