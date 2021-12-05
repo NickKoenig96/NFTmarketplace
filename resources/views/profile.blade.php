@@ -10,6 +10,26 @@
             @endcomponent
         @endif
 
+        @if($errors->any())
+            @component('components/alert')
+            @slot('type') danger @endslot
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+                @endcomponent
+        @endif
+
+        @if($flash = session('error'))
+            @component('components/alert')
+            @slot('type') danger @endslot
+            <ul>
+                <li>{{ $flash }}</li>
+            </ul>
+            @endcomponent
+        @endif
+
     <section>
         <h1>Profile</h1>
 
@@ -63,14 +83,33 @@
                             <input type="email" id="email" name="email" placeholder="{{ $user->email }}"
                                 value="{{ $user->email }}">
                         </div>
-                        <div class="form__control">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="••••••••••••">
-                        </div>
                     </div>
                     <input type="hidden" name="id" value="{{ $user->id }}">
                     <input type="submit" class="btn btn--blue btn--h40 mcenter" value="Update information">
                 </form>
+                
+            <p class="card__title">Edit your password</p>
+            <form action="/profile/updateUserPassword" method="POST">
+                    @csrf
+                    <div class="twocol" style="height: 332px; margin-top:40px; margin-bottom: 40px;">
+                    <div class="form__control">
+                            <label for="password">Old password</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••••••">
+                    </div>
+                    <div class="form__control">
+                            <label for="newPassword">New password</label>
+                            <input type="password" id="newPassword" name="newPassword" placeholder="••••••••••••">
+                    </div>
+                    <div class="form__control">
+                            <label for="password">Confirm new password</label>
+                            <input type="password" id="confirmPassword" name="newPassword_confirmation" placeholder="••••••••••••">
+                    </div>
+                    <input type="hidden" name="id" value="{{ $user->id }}">
+                    <input type="hidden" name="email" value="{{ $user->email }}">
+                    <input type="submit" class="btn btn--blue btn--h40 mcenter" value="Update password">
+            </div>
+            </form>
+
             </div>
         </div>
         </div>
