@@ -733,6 +733,9 @@ select {
   background-color: #162C99;
   padding: 15px;
   color: #ffffff;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  border-radius: 5px;
 }
 
 .alert li {
@@ -742,15 +745,12 @@ select {
 
 .alert--danger {
   background-color: red;
+  border: 2px solid red;
 }
 
 .alert--succes {
   background-color: #5CB323;
-  color: white;
-  text-align: center;
-  font-family: "Work Sans", sans-serif;
   border: 2px solid #5CB323;
-  border-radius: 5px;
 }
 
 .info {

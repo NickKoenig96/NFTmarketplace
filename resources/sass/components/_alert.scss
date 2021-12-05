@@ -9,6 +9,9 @@
     background-color: $blue;
     padding: 15px;
     color: $white;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    border-radius: 5px;
 }
 
 .alert li{
@@ -18,14 +21,12 @@
 
 .alert--danger{
     background-color: $danger;
+    border: 2px solid $danger;
 }
 
 .alert--succes{
     background-color: $succes;
-    color: white;
-    text-align: center;
-    font-family: 'Work Sans', sans-serif;
     border: 2px solid $succes;
-    border-radius: 5px;
+    
 }
 
