@@ -43,11 +43,11 @@
                 <blockquote class="body--tiny card__biography">{{ $user->bio }}</blockquote>
                 <div class="card--profile__totals">
                     <div class="userCollections">
-                        <h3>2</h3>
+                        <h3>{{ $collections->count() }}</h3>
                         <span class="body--tiny black--60">Collections</span>
                     </div>
                     <div class="usernfts">
-                        <h3>15</h3>
+                        <h3>{{ $nfts->count() }}</h3>
                         <span class="body--tiny black--60">NFT's</span>
                     </div>
                 </div>
