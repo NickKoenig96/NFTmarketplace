@@ -100,6 +100,25 @@
             @endforeach
             <!-- put up for sale -->
             <script type="text/javascript">
+                async function isForSale(){
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                    let Abi;
+                    await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data; console.log(Abi);});
+                    const contract = new ethers.Contract(contractAddress, Abi, provider);
+                    let tokenId = "0xbf9881a644ad5fb16c8d408ce0d25fad1aef9e7f4c7752f33ae6bd4ee7688937";
+
+                    const forSale = await contract.isForSale(tokenId);
+
+                    console.log(forSale);
+                }
+
+                isForSale();
+                
+            
+            
+            </script>
+            <script type="text/javascript">
                 let sellBtns = document.querySelectorAll('#sellBtn');
 
                 sellBtns.forEach((sellBtn) => {
@@ -116,36 +135,35 @@
                         let id = sellBtn.dataset.id;
                         let tokenId = sellBtn.dataset.hash;
                         let priceEuro = sellBtn.dataset.price;
-                        let ethString = "{{ $eth}}";
-                        let eth = parseFloat(ethString);
                         
-                        let price = ethers.utils.parseUnits(priceEuro, "ether")
-                        
-
-                        console.log(id);
+                        let price = ethers.utils.parseUnits(priceEuro, "ether");
                         
                         const putUp =  await contractWithSigner.putUpForSale(tokenId, price);
-                        
+                       
+                        const forSale = await contract.isForSale(tokenId);
 
-                        const form = document.createElement('form');
-                        form.method = 'POST';
+                        if(forSale){
+                            //nft forSale zetten in database als de nft voor sale is in het contract
+                            const form = document.createElement('form');
+                            form.method = 'POST';
 
-                        let csrf_token = "{{csrf_token()}}";
-                        const hiddencsrf = document.createElement('input');
-                        hiddencsrf.type = 'hidden';
-                        hiddencsrf.name = "_token";
-                        hiddencsrf.value = csrf_token;
+                            let csrf_token = "{{csrf_token()}}";
+                            const hiddencsrf = document.createElement('input');
+                            hiddencsrf.type = 'hidden';
+                            hiddencsrf.name = "_token";
+                            hiddencsrf.value = csrf_token;
 
-                        const idInput = document.createElement('input');
-                        idInput.type = 'hidden';
-                        idInput.name = "id";
-                        idInput.value = id;
+                            const idInput = document.createElement('input');
+                            idInput.type = 'hidden';
+                            idInput.name = "id";
+                            idInput.value = id;
 
-                        form.appendChild(hiddencsrf);
-                        form.appendChild(idInput);
-                        document.body.appendChild(form);
-                        form.action = `/nft/markForSale`;
-                        form.submit();
+                            form.appendChild(hiddencsrf);
+                            form.appendChild(idInput);
+                            document.body.appendChild(form);
+                            form.action = `/nft/markForSale`;
+                            form.submit();
+                        }
                     })
                 })
             </script>
