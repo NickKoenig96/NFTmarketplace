@@ -12,13 +12,13 @@
             @endforeach
         </ul>
     @endcomponent
-@elseif(!empty($error))
+@endif
+
+@if($flash = session('error'))
 @component('components/alert')
         @slot('type') danger @endslot
         <ul>
-           
-            <li>{{ $error }}</li>
-            
+            <li>{{ $flash }}</li>
         </ul>
     @endcomponent
 @endif

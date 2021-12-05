@@ -124,8 +124,10 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('./');
         }else{
-            $data['error'] = "Email and password do not match";
-            return view('./login', $data);
+            // $data['error'] = "Email and password do not match";
+            $request->flash();
+            $request->session()->flash('error', 'Email and password do not match');
+            return redirect('login');
         }
 
 
