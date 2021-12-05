@@ -87,7 +87,10 @@
                     <input type="hidden" name="id" value="{{ $user->id }}">
                     <input type="submit" class="btn btn--blue btn--h40 mcenter" value="Update information">
                 </form>
-                
+            </div>
+
+
+            <div class="card card--edit">
             <p class="card__title">Edit your password</p>
             <form action="/profile/updateUserPassword" method="POST">
                     @csrf
@@ -109,11 +112,14 @@
                     <input type="submit" class="btn btn--blue btn--h40 mcenter" value="Update password">
             </div>
             </form>
-
             </div>
         </div>
         </div>
     </section>
+
+    <div class=" btn__container btn--logout__container">
+        <a class="btn btn--red" href="./logout">Logout</a>
+    </div>
 
     <section class="bg--2">
         <h1>My NFT's and collections</h1>
