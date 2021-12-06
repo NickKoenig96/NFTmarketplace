@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Nft;
 use App\Models\Collection;
 use App\Models\Comment;
 
-use Illuminate\Support\Facades\Http;
-
-use Illuminate\Support\Facades\Auth;
-
-
-
+use App\Http\Controllers\MailController;
 
 class NftController extends Controller
 {
@@ -38,7 +35,8 @@ class NftController extends Controller
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data['user'] = $user;
-         return view('nft/index', $data);
+        
+        return view('nft/index', $data);
     }
 
     // nfts in homepage
@@ -49,7 +47,7 @@ class NftController extends Controller
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
-
+        
         
         return view('homepage', $data);
         
@@ -227,12 +225,13 @@ class NftController extends Controller
 
         //nft updaten
         $nft = Nft::find($request->input('id'));
+            //transfer sold nft data to mailcontroller
+        MailController::mail($nft);
         $nft->owner_id = $request->input('buyer');
         $nft->forSale = 0;
         $nft->save();
 
-        return redirect('./nft');
-
+        return redirect('wallet');
     }
 
     public function sell($id){

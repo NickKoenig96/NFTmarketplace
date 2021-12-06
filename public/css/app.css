@@ -160,6 +160,7 @@ h5 {
 .cards {
   display: flex;
   justify-content: space-between;
+  gap: 5%;
 }
 
 .card {
@@ -537,6 +538,10 @@ select {
   justify-content: center;
 }
 
+.btn--logout__container {
+  margin-bottom: 50px;
+}
+
 .btn {
   align-items: center;
   border-radius: 10px;
@@ -733,6 +738,9 @@ select {
   background-color: #162C99;
   padding: 15px;
   color: #ffffff;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  border-radius: 5px;
 }
 
 .alert li {
@@ -742,15 +750,12 @@ select {
 
 .alert--danger {
   background-color: red;
+  border: 2px solid red;
 }
 
 .alert--succes {
   background-color: #5CB323;
-  color: white;
-  text-align: center;
-  font-family: "Work Sans", sans-serif;
   border: 2px solid #5CB323;
-  border-radius: 5px;
 }
 
 .info {
