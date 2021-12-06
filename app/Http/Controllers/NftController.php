@@ -234,7 +234,8 @@ class NftController extends Controller
         $order->seller_id = $request->input('seller');
         $order->buyer_id = $request->input('buyer');
         $order->save();
-        
+
+        // eventueel iets opslagen in de db van buyNft        
 
         //nft updaten
         $nft = Nft::find($request->input('id'));

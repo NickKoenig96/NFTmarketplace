@@ -213,6 +213,7 @@
                 // getPrice contract web3
                 let ethPrices = document.querySelectorAll(".card__price--eth");
                 ethPrices.forEach(async(ethPrice)=> {
+                    // set here the tokenid that gived isforsale
                     const provider = new ethers.providers.Web3Provider(window.ethereum);
                     const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
                     let Abi;
