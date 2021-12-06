@@ -6,7 +6,6 @@
     $db_name_staging = 'musicapp';
     $db_name_production = 'musicapp2';
     $db_user = 'root';
-    $db_pass = env('DB_PASS');
 @endsetup
 
 
@@ -24,7 +23,6 @@
     deploy_code_production
 @endstory
 
-
 @task('pull_repository_code_staging')
     echo "Pulling repository code"
     cd {{ $workdir_staging }}
@@ -40,27 +38,31 @@
 
 @task('drop_old_database_staging')
     cd {{ $workdir_staging }}
+    source .env
     echo "Dropping old database"
-    mysql -u {{ $db_user }} -p{{ $db_pass }} -e 'DROP DATABASE {{ $db_name_staging }};' || true
+    mysql -u {{ $db_user }} -p$DB_PASSWORD -e 'DROP DATABASE {{ $db_name_staging }};' || true
 @endtask
 
 @task('drop_old_database_production')
     cd {{ $workdir_production }}
+    source .env
     echo "Dropping old database"
-    mysql -u {{ $db_user }} -p{{ $db_pass }} -e 'DROP DATABASE {{ $db_name_production }};' || true
+    mysql -u {{ $db_user }} -p$DB_PASSWORD -e 'DROP DATABASE {{ $db_name_production }};' || true
 @endtask
 
 
 @task('create_new_database_staging')
     cd {{ $workdir_staging }}
+    source .env
     echo "Creating new database"
-    mysql -u {{ $db_user }} -p{{ $db_pass }} -e 'CREATE DATABASE {{ $db_name_staging }};'
+    mysql -u {{ $db_user }} -p$DB_PASSWORD -e 'CREATE DATABASE {{ $db_name_staging }};'
 @endtask
 
 @task('create_new_database_production')
     cd {{ $workdir_production }}
+    source .env
     echo "Creating new database"
-    mysql -u {{ $db_user }} -p{{ $db_pass }} -e 'CREATE DATABASE {{ $db_name_production }};'
+    mysql -u {{ $db_user }} -p$DB_PASSWORD -e 'CREATE DATABASE {{ $db_name_production }};'
 @endtask
 
 
@@ -69,6 +71,7 @@
     echo "Deploying Laravel code"
     php artisan migrate --force
     php artisan db:seed
+    echo "Successful deployment on staging, now you can enjoy your website"
 @endtask
 
 @task('deploy_code_production')
@@ -76,4 +79,5 @@
     echo "Deploying Laravel code"
     php artisan migrate --force
     php artisan db:seed
+    echo "Successful deployment on production, now you can enjoy your website"
 @endtask

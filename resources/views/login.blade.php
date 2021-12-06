@@ -9,7 +9,6 @@
     <img class="form__img"  src="{{ url('assets/atria_logo.svg') }}" alt="Logo Atria">
 <form action="{{ url('/users/login') }}" method="POST" class="form">
     @csrf
-    <h1>Works very good</h1>
     
     <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
