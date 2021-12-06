@@ -2,7 +2,7 @@
 
 @section('title', 'editNft')
 
-
+@section('content')
 <body>
 
     @if ($errors->any())

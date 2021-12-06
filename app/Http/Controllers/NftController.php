@@ -256,9 +256,8 @@ class NftController extends Controller
         $nft = Nft::find($request->input('id'));
         if($nft->owner_id === Auth::id()){
             $nft->forSale = 1;
-            $nft->price = $request->input('price');
             $nft->save();
-            return redirect('./nft');
+            return redirect('./wallet');
         }
     }
 
