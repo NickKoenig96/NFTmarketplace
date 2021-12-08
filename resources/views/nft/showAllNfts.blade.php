@@ -32,7 +32,7 @@
     </section>
     <section class="bg--2">
         <h1>Comments</h1>
-        <!-- <form method="post" action="{{ url('/comment/store') }}">
+        <form method="post" action="{{ url('/comment/store') }}">
             @csrf
             <div class="comment marginb-24 flex flex--start flex--gap40">
                 <div class="form__control--80perc">
@@ -44,9 +44,7 @@
                     <input  type="submit" value="Post">
                 </div>
             </div>
-        </form> -->
-
-        <livewire:new-comment/>
+        </form>
          
         <ul>
             @foreach ($nft->comment as $c)
