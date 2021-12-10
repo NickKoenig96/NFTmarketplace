@@ -125,7 +125,9 @@ class CollectionController extends Controller
         $collection = Collection::find($request->id);
 
         if ($request->user()->cannot('update', $collection)) {
-            abort(403);
+            $collection_id = $request->id;
+            $request->session()->flash('message', 'You cannot edit a collection that you do not own');
+            return redirect("edit/$collection_id");
         }
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();

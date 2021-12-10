@@ -6,7 +6,14 @@
 
 <body>
 
-    @if ($errors->any())
+    
+
+    <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
+        @csrf
+
+<x-header firstname="{{ $user->firstname }}" />
+
+@if ($errors->any())
         @component('components/alert')
             @slot('type') danger @endslot
             <ul>
@@ -17,10 +24,13 @@
         @endcomponent
     @endif
 
-    <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
-        @csrf
+    @if ($flash = session('message'))
+        @component('components/alert')
+            @slot('type') danger @endslot
+            <p> {{ $flash }}</p>
+        @endcomponent
 
-<x-header firstname="{{ $user->firstname }}" />
+    @endif
 
 <h1>Edit Collection</h1>
 
