@@ -25,14 +25,14 @@ class UserSeeder extends Seeder
         $user2 = new \App\Models\User();
         $user2->firstname = "Nick";
         $user2->lastname = "Koenig";
-        $user2->email = "nick@atria.com";
+        $user2->email = "nick.koenig@mail.com";
         $user2->password = Hash::make("Test12345");
         $user2->save();
 
         $user3 = new \App\Models\User();
         $user3->firstname = "Nicolas";
         $user3->lastname = "van der Straten Ponthoz";
-        $user3->email = "nicolas@atria.com";
+        $user3->email = "r0655240@student.thomasmore.be";
         $user3->password = Hash::make("Test12345");
         $user3->save();
 
