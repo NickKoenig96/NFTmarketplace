@@ -8,6 +8,7 @@ use App\Models\Collection;
 use App\Models\Nft;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Gate;
 
 
 class CollectionController extends Controller
@@ -101,8 +102,12 @@ class CollectionController extends Controller
      */
     public function show($id)
     {
-        $data['user'] = Auth::user();
-        $collection = Collection::find($id);
+        $user = Auth::user();
+        $collection = Collection::where('id', $id)->first();
+
+        
+
+        $data['user'] = $user;
         $data['collection'] = $collection;
         return view('collection/editCollection', $data);
 
@@ -117,7 +122,13 @@ class CollectionController extends Controller
      */
     public function edit(Request $request)
     {
+        $collection = Collection::find($request->id);
 
+        if ($request->user()->cannot('update', $collection)) {
+            $collection_id = $request->id;
+            $request->session()->flash('message', 'You cannot edit a collection that you do not own');
+            return redirect("edit/$collection_id");
+        }
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
         $image = $request->file('collectionImage');
@@ -137,7 +148,7 @@ class CollectionController extends Controller
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
-        $collection = Collection::find($request->id);
+        
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $filePath;

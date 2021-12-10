@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @servers(['web' => ['-i id_rsa_deploybot deploybot@139.162.136.17']])
+=======
+@servers(['development' => ['-i /home/jonathan/.ssh/authorized_keys/ jonathan@139.162.134.152 ']]);
+>>>>>>> gatesAndPolicies
 
 @setup
     $workdir_staging = '/home/deploybot/staging/NFTmarketplace/';

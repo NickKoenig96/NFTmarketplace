@@ -79,7 +79,7 @@ class NftController extends Controller
         $data = Nft::find($id);
         $data->delete();
 
-        session()->flash('message', 'NFT successfully edited');
+        session()->flash('message', 'NFT successfully deleted');
         
         return redirect('/wallet');
     }
@@ -170,6 +170,20 @@ class NftController extends Controller
      */
     public function edit(Request $request)
     {
+
+        $nft = Nft::find($request->id);
+
+        if ($request->user()->cannot('update', $nft)) {
+            //abort(403);
+            $test = $nft['id'];
+
+            $request->session()->flash('message', 'You cannot edit an nft that you do not own');
+            //return redirect('./wallet');
+             return redirect("/edit/nft/$test");
+
+        }
+
+
         $validated = $request->validate([
             'nftTitle' => 'required',
             'nftDescription' => 'required',
@@ -190,7 +204,6 @@ class NftController extends Controller
         $answer = json_decode($response);
         $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
-        $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
         $nft->price = $request->input('nftPrice');
