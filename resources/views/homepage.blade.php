@@ -67,7 +67,7 @@
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
-                        <span data-hash="{{$nft->item_hash}}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
+                        <span data-tokenId="{{$nft->token_id}}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
 
                     </div>
                     <div class="flex--spbet">
@@ -82,7 +82,7 @@
                                 <button data-owner="{{$nft->owner_id}}" data-price="{{$eth * $nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
                             @endif
                             @if ($nft->forSale === 0)
-                                <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{ $nft->price }}" data-hash="{{ $nft->item_hash }}" class="btn btn--blue btn--155">Sell NFT</a>
+                                <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{$eth * $nft->price }}" data-token="{{ $nft->token_id }}" class="btn btn--blue btn--155">Sell NFT</a>
                             @elseif($nft->forSale === 1)
                                 <p class="info">Your NFT is for sale</p>
                             @endif
@@ -134,14 +134,25 @@
                         let contractWithSigner = contract.connect(signer);
 
                         let id = sellBtn.dataset.id;
-                        let tokenId = sellBtn.dataset.hash;
-                        let priceEuro = sellBtn.dataset.price;
+                        let tokenIdString = sellBtn.dataset.token;
+                        let priceEth = sellBtn.dataset.price;
                         
-                        let price = ethers.utils.parseUnits(priceEuro, "ether");
-                        
-                        const putUp =  await contractWithSigner.putUpForSale(tokenId, price);
-                       
+                        let price = ethers.utils.parseUnits(priceEth, "ether");
+                        // let tokenId = ethers.utils.parseUnits(tokenIdString);
+                        let tokenId = ethers.BigNumber.from(tokenIdString);
+
+                        console.log(tokenId);
+
+                        // const putUp =  await contractWithSigner.putUpForSale(tokenId, price);
+
+                        const transaction = await contractWithSigner.putUpForSale(tokenId, price);
+                        await transaction.wait().then(res => {
+                            console.log(res);
+                        });
+
                         const forSale = await contract.isForSale(tokenId);
+
+                        console.log(forSale);
 
                         if(forSale){
                             //nft forSale zetten in database als de nft voor sale is in het contract
@@ -198,8 +209,6 @@
                                 tokenId = ethers.BigNumber.from(tokenIdString).toString(); //puts string in a BigNumber, and converts it to a readable tokenId
                                 console.log(tokenId);
                             });
-                            
-                            // set de tokenid in de post en sla dit op 
 
                             // send a post 
                             const form = document.createElement('form');
@@ -229,9 +238,10 @@
                     await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data;});
                     const contract = new ethers.Contract(contractAddress, Abi, provider);
 
-                    let tokenId = ethPrice.dataset.hash;
+                    let tokenId = ethPrice.dataset.token;
                     let price = await contract.getPrice(tokenId);
-                    let priceNumber = price.toString();
+                    // let priceNumber = price.toString();
+                    console.log(tokenId);
 
                     ethPrice.innerHTML = "ETH " + price;
                 });
