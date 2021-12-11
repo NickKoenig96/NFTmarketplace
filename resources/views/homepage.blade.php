@@ -67,7 +67,7 @@
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
-                        <span data-tokenId="{{$nft->token_id}}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
+                        <span data-token="{{$nft->token_id}}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
 
                     </div>
                     <div class="flex--spbet">
@@ -240,10 +240,9 @@
 
                     let tokenId = ethPrice.dataset.token;
                     let price = await contract.getPrice(tokenId);
-                    // let priceNumber = price.toString();
-                    console.log(tokenId);
+                    let priceToEth = ethers.utils.formatEther(price);
 
-                    ethPrice.innerHTML = "ETH " + price;
+                    ethPrice.innerHTML = "ETH " + priceToEth;
                 });
             </script>
         </div>
