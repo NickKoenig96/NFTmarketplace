@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('nft/order', [NftController::class, "order"]);
     Route::get('/nft/sell/{id}', [NftController::class, "sell"]);
     Route::post('/nft/markForSale', [NftController::class, "markForSale"]);
-    Route::post('/nft/{itemId}/{nftOwner}/{id}', [NftController::class, 'addItem']);
+    Route::post('/nft/{tokenId}/{nftOwner}/{id}', [NftController::class, 'addItem']);
 
 
     //collection

@@ -79,7 +79,7 @@
                     <div class="flex--spbet">
                         @if ($nft->creator_id == $user->id)
                             @if($nft->minted == false)
-                                <button data-owner="{{$nft->owner_id}}" data-price="{{$nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
+                                <button data-owner="{{$nft->owner_id}}" data-price="{{$eth * $nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
                             @endif
                             @if ($nft->forSale === 0)
                                 <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{ $nft->price }}" data-hash="{{ $nft->item_hash }}" class="btn btn--blue btn--155">Sell NFT</a>
@@ -183,14 +183,23 @@
                             let contractWithSigner = contract.connect(signer);
 
                             let id = mintNftBtn.dataset.id;
-                            let tokenId = mintNftBtn.dataset.hash;
                             let priceEuro = mintNftBtn.dataset.price;
                             let media_file = mintNftBtn.dataset.image;
                             let nftOwnerString = mintNftBtn.dataset.owner;
                             let price = ethers.utils.parseUnits(priceEuro, "ether");
 
                             let nftOwner = parseInt(nftOwnerString);
-                            const itemId =  await contractWithSigner.mintNFT(media_file, price);
+
+                            let tokenId;
+                            const transaction = await contractWithSigner.mintNFT(media_file, price);
+                            await transaction.wait().then(res => {
+                                console.log(res);
+                                let tokenIdString = res['events'][0]['topics'][3]; //returns string with tokenId as hexadecimal
+                                tokenId = ethers.BigNumber.from(tokenIdString).toString(); //puts string in a BigNumber, and converts it to a readable tokenId
+                                console.log(tokenId);
+                            });
+                            
+                            // set de tokenid in de post en sla dit op 
 
                             // send a post 
                             const form = document.createElement('form');
@@ -204,7 +213,7 @@
 
                             form.appendChild(hiddencsrf);
                             document.body.appendChild(form);
-                            form.action = `/nft/${itemId['hash']}/${nftOwner}/${id}`;
+                            form.action = `/nft/${tokenId}/${nftOwner}/${id}`;
                             form.submit();
                     });
                 })

@@ -61,7 +61,7 @@ class NftController extends Controller
         $nft = Nft::find($request->id);
         $nft->owner_id = $request->nftOwner;
         $nft->minted = 1;
-        $nft->item_hash = $request->itemId;
+        $nft->token_id = $request->tokenId;
         
         $nft->save();
         
