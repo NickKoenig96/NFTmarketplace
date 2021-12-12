@@ -6,6 +6,12 @@
 @use 'components/buttons';
 @use 'components/comments';
 
+@use 'components/alert';
+
+@use 'components/messages';
+
+
+
 body{
     background-color: $blue--bg;
 }

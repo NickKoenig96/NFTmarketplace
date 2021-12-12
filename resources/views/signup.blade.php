@@ -3,7 +3,16 @@
 
 @section('content')
 
-
+@if($errors->any())
+    @component('components/alert')
+        @slot('type') danger @endslot
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endcomponent
+@endif
 
 <div class="form__container">
     
@@ -12,19 +21,19 @@
 <form action="{{ url('/users/signup') }}" method="POST" class="form">
     @csrf
     
-    <input class="input input--light" type="text" placeholder="Firstname" name="firstname" id="firstname">
+    <input value="{{ old('firstname') }}" class="input input--light" type="text" placeholder="Firstname" name="firstname" id="firstname">
 
     
-    <input class="input input--light" type="text" placeholder="Lastname" name="lastname" id="lastname">
+    <input value="{{ old('lastname') }}" class="input input--light" type="text" placeholder="Lastname" name="lastname" id="lastname">
 
 
-    <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
+    <input value="{{ old('email') }}" class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
     
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 
     
-    <input class="input input--light" type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword">
+    <input class="input input--light" type="password" placeholder="Confirm Password" name="password_confirmation" id="confirmPassword">
 
 
     <input class="btn--login" type="submit"  value="Signup">

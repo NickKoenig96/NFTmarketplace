@@ -160,6 +160,7 @@ h5 {
 .cards {
   display: flex;
   justify-content: space-between;
+  gap: 5%;
 }
 
 .card {
@@ -359,8 +360,8 @@ nav a:not(:last-child) {
 }
 
 .form__control {
-  display: flex;
-  flex-direction: column;
+  max-width: 380px;
+  margin: auto;
 }
 
 input {
@@ -532,6 +533,15 @@ select {
     width: 35%;
   }
 }
+.btn__container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn--logout__container {
+  margin-bottom: 50px;
+}
+
 .btn {
   align-items: center;
   border-radius: 10px;
@@ -662,6 +672,36 @@ select {
   border: 2px solid #D0D5EB;
 }
 
+.btn--red {
+  background-color: red;
+  color: #ffffff;
+}
+
+.btn--green {
+  background-color: green;
+  color: #ffffff;
+}
+
+.btn--login {
+  background-color: #ECF1F2;
+  border-radius: 20px;
+  margin-top: 5%;
+  border: none;
+  color: #162C99;
+  width: 40%;
+  font-weight: bold;
+}
+
+.btn--login:hover {
+  background-color: #162C99;
+  color: #ECF1F2;
+  border: 2px solid #ECF1F2;
+}
+
+.btn--mint {
+  background-color: #f7b552;
+}
+
 .comment {
   padding: 24px 48px;
   background-color: #f9fafd;
@@ -689,30 +729,42 @@ select {
   color: red;
 }
 
-.btn--red {
-  background-color: red;
-  color: #ffffff;
-}
-
-.btn--green {
-  background-color: green;
-  color: #ffffff;
-}
-
-.btn--login {
-  background-color: #ECF1F2;
-  border-radius: 20px;
-  margin-top: 5%;
-  border: none;
-  color: #162C99;
-  width: 40%;
-  font-weight: bold;
-}
-
-.btn--login:hover {
+.alert {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
   background-color: #162C99;
-  color: #ECF1F2;
-  border: 2px solid #ECF1F2;
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  border-radius: 5px;
+}
+
+.alert li {
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.alert--danger {
+  background-color: red;
+  border: 2px solid red;
+}
+
+.alert--succes {
+  background-color: #5CB323;
+  border: 2px solid #5CB323;
+}
+
+.info {
+  background-color: #459155;
+  border-radius: 2px;
+  color: white;
+  font-weight: 600;
+  margin: 1%;
+  padding: 2%;
 }
 
 body {

@@ -2,6 +2,8 @@
 
 namespace App\View\Composers;
 
+use App\Models\User;
+use App\Models\Rate;
 use Illuminate\View\View;
 
 use Illuminate\Support\Facades\Http;
@@ -18,7 +20,8 @@ class EthComposer
      */
     public function compose(View $view)
     {
-        $eth =  Http::get('https://min-api.cryptocompare.com/data/price?fsym=EUR&tsyms=ETH')['ETH'];
+        $rate = Rate::find(1);
+        $eth = $rate->rate;
         $view->with('eth', $eth);
     }
 }

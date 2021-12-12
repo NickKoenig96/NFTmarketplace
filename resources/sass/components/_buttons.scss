@@ -1,5 +1,14 @@
 @use '../abstracts' as *;
 
+.btn__container{
+    display:flex;
+    justify-content: center;
+}
+
+.btn--logout__container{
+    margin-bottom: 50px;
+}
+
 .btn{
     align-items: center;
     border-radius: 10px;
@@ -154,5 +163,9 @@
     background-color: $blue;
     color: $grey--light;
     border: 2px solid $grey--light;
+}
+
+.btn--mint{
+    background-color: rgb(247, 181, 82);
 }
 

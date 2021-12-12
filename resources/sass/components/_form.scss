@@ -17,9 +17,10 @@
 
 
 .form__control{
-    display: flex;
-    flex-direction: column;
+    max-width: 380px;
+    margin: auto;
 }
+
 input{
     margin-top: 6px;
     margin-bottom: 17px;

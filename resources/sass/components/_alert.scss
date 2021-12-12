@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+.alert{
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    margin-bottom:50px;
+    background-color: $blue;
+    padding: 15px;
+    color: $white;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    border-radius: 5px;
+}
+
+.alert li{
+    margin-bottom:5px;
+    color: $white;
+}
+
+.alert--danger{
+    background-color: $danger;
+    border: 2px solid $danger;
+}
+
+.alert--succes{
+    background-color: $succes;
+    border: 2px solid $succes;
+    
+}
+

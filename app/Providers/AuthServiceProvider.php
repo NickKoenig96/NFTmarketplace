@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -29,5 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('selling-nft', function(\App\Models\Nft $nft){
             return $nft->user_id === 4;
         });
+
+        
     }
 }

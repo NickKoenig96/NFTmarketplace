@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
@@ -11,12 +12,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
 
 
+use App\Http\Controllers\MailController;
+
 
 use App\Views\Composers\MultiComposer;
 
 
 
 
+
+use App\Mail\TestEmail;
+use App\Mail\nftSoldMail;
 
 
 
@@ -61,6 +67,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile', [UserController::class, "profile"]);
     Route::post('/profile/updateUserdata', [UserController::class, "updateUserdata"]);
     Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
+    Route::post('/profile/updateUserPassword', [UserController::class, "updateUserPassword"]);
 
 
 
@@ -85,17 +92,48 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     //collection
-    Route::get('/collection', [CollectionController::class, "index"]);
+    Route::get('/collections', [CollectionController::class, "index"]);
+    Route::get('/collections/{id}', [CollectionController::class, "showCollection"]);
     Route::get('/delete/{id}', [CollectionController::class, "destroy"]);
     Route::get('/edit/{id}', [CollectionController::class, "show"]);
     Route::post('/collection/editCollection', [CollectionController::class, "edit"]);
     Route::get('/collection/addCollection', [CollectionController::class, "create"]);
     Route::post('/collection/addCollection', [CollectionController::class, "store"]);
 
+    Route::get('/collection/detailCollection', [CollectionController::class, "indexDetail"]);
+
+
 
 
     //wallet
     Route::get('/wallet', [walletController::class, "index"]);
+
+
+    //mail
+   /* Route::get('/testmail', function (){
+        
+    $data = ['message' => 'This is a test!'];
+
+    Mail::to('nick.koenig.be@gmail.com')->send(new TestEmail($data));
+    });*/
+
+    /*Route::get('/nftSoldMail', function (){
+
+        $data = ['message' => 'This is a test!'];
+    
+        Mail::to('nick.koenig@mail.com')->send(new nftSoldMail($data));
+
+        return redirect('wallet');
+
+    });*/
+
+   // Route::get('/nftSoldMail', [MailController::class, "mailData"]);
+    Route::get('/nftSoldMail', [MailController::class, "mail"]);
+
+
+
+
+
 
     
 });

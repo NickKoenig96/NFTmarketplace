@@ -3,14 +3,32 @@
 
 @section('content')
 
+@if($errors->any())
+    @component('components/alert')
+        @slot('type') danger @endslot
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endcomponent
+@endif
 
+@if($flash = session('error'))
+@component('components/alert')
+        @slot('type') danger @endslot
+        <ul>
+            <li>{{ $flash }}</li>
+        </ul>
+    @endcomponent
+@endif
 
 <div class="form__container">
     <img class="form__img"  src="{{ url('assets/atria_logo.svg') }}" alt="Logo Atria">
 <form action="{{ url('/users/login') }}" method="POST" class="form">
     @csrf
     
-    <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
+    <input value="{{ old('email') }}" class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 
