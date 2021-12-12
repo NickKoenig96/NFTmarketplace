@@ -3,7 +3,6 @@
 @section('title', 'Home')
 
 
-<p>testtesttest</p>
 @section('content')
 
     <x-header firstname="{{ $user->firstname }}" />
@@ -13,6 +12,7 @@
     <section>
         <p>1 euro = {{ $eth }}ETH</p>
         <h1>Collections</h1>
+        <p>testtesttest</p>
 
         <div class="cardgallery">
             @foreach ($collections as $collection)
