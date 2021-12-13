@@ -28153,15 +28153,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var ethers = __webpack_require__(/*! ethers */ "./node_modules/ethers/lib.esm/index.js");
 
-console.log('started appjs');
-var tempelement = document.getElementById('nftImage'); // let mintButton = document.getElementById('mintButton');
-// let eth = document.getElementById('ethPrice');
-// let userId = tempelement.getAttribute('data-user-id');
-// let userFirstname = tempelement.getAttribute('data-user-firstname');
-
-var nfts = tempelement.getAttribute('data-nfts'); // let ethPrice = eth.getAttribute('data-eth-price');
-// let arrayNfts = JSON.parse(nfts);
-
 var App = /*#__PURE__*/function () {
   function App() {
     _classCallCheck(this, App);
@@ -28209,100 +28200,6 @@ var App = /*#__PURE__*/function () {
       return launch;
     }()
   }, {
-    key: "loadMintNFT",
-    value: function loadMintNFT(temp) {
-      document.querySelector(".btn--mint").addEventListener("click", function () {
-        console.log("Hold on, about to mint nft"); // connect via MetaMask
-
-        var provider = new ethers.providers.Web3Provider(window.ethereum); // Sign via MetaMask (use the selected account)
-
-        var signer = provider.getSigner(); // The address of our contract to talk to
-
-        var daiAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e"; // The human readible representation the contract
-
-        var daiAbi = temp;
-        console.log(daiAbi); // The Contract object we can work with
-
-        var contract = new ethers.Contract(daiAddress, daiAbi, provider); // Connect the signer, or replace provider with signer when instantiating the contract object
-
-        var contractWithSigner = contract.connect(signer); // call the methods
-        // for (let i = 0; i < arrayNfts.length; i++){
-        //   if(userId == arrayNfts[i]['creator_id']){
-        //     console.log('succesvol'+ " "  + arrayNfts[i]['image_file_path'] + " " +  ethPrice * arrayNfts[i]['price']);
-        //     let imagePath = arrayNfts[i]['image_file_path'];
-        // let price = ethPrice * arrayNfts[i]['price'];
-        // ethers.utils.parseUnits(price, "ether");
-
-        var tx = contractWithSigner.mintNFT("path", "33");
-        console.log(tx); // }
-        // }
-
-        console.log("The NFT was minted! 🎉");
-      });
-    } // async mintButtonClick(){
-    //   mintButton.addEventListener("click", function (){
-    //       loadMintNFT();
-    //   });
-    // }
-    // throwConfetti() {
-    //   // Pass in the id of an element
-    //   confetti({
-    //     particleCount: 100,
-    //     spread: 70,
-    //     origin: { y: 0.6 }
-    //   });
-    // }
-    // setupEvents() {
-    //   document
-    //     .querySelector(".btn--mint")
-    //     .addEventListener("click", this.invest.bind(this));
-    //   const contract = new ethers.Contract(
-    //     this.contractAddress,
-    //     this.contractAbi,
-    //     this.provider
-    //   );
-    //   contract.on("Investment", (from, value) => {
-    //     this.logToConsole(
-    //       `New investment from ${from} for ${ethers.utils.formatEther(value)}`
-    //     );
-    //     this.throwConfetti();
-    //   });
-    //   contract.on("Payout", (value) => {
-    //     this.logToConsole(
-    //       `Payout done by Chainify for ${ethers.utils.formatEther(value)}`
-    //     );
-    //     this.throwConfetti();
-    //   });
-    // }
-    // async invest() {
-    //   try {
-    //     console.log("Loading the contract code.");
-    //     const contract = new ethers.Contract(
-    //       this.contractAddress,
-    //       this.contractAbi,
-    //       this.provider
-    //     );
-    //     // this.showLoading();
-    //     const contractWithSigner = await contract.connect(this.signer);
-    //     const tx = await contractWithSigner
-    //       .invest(userFirstname, {
-    //         value: ethers.utils.parseEther("0.2")
-    //       })
-    //       .catch((e) => {
-    //         if (e.message.includes("You can only invest once")) {
-    //           console.log("You can only invest once.");
-    //         } else {
-    //           console.log("Something went wrong there...");
-    //         }
-    //         // this.hideLoading();
-    //       });
-    //     await tx.wait();
-    //     // this.hideLoading();
-    //     console.log("Congrats! You are now an investor!");
-    //   } catch (e) {}
-    // }
-
-  }, {
     key: "loadAbi",
     value: function () {
       var _loadAbi = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -28312,20 +28209,17 @@ var App = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log("Loading the contract code.");
-                _context2.next = 3;
+                _context2.next = 2;
                 return fetch("/abi/NFT.json").then(function (response) {
                   return response.json();
                 }).then(function (json) {
                   _this.contractAbi = json;
-                  console.log(_this.contractAbi);
-                  console.log("Contract loaded, you can now invest. 😎");
                 });
 
-              case 3:
+              case 2:
                 return _context2.abrupt("return", _context2.sent);
 
-              case 4:
+              case 3:
               case "end":
                 return _context2.stop();
             }
@@ -28348,22 +28242,10 @@ var App = /*#__PURE__*/function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                console.log("Loading contract details.");
-                contract = new ethers.Contract(this.contractAddress, this.contractAbi, this.provider); //   const isForSale = await contract.isForSale();
-                //   document.querySelector(".investment__forsale").innerHTML = isForSale;
-                //   const putUpForSale = await contract.putUpForSale();
-                //   document.querySelector(".investmentAmountRequired").innerHTML =
-                //     ethers.utils.formatEther(investmentRequired) + " ETH";
-                //   const investmentLeft = await contract.artistInvestmentStillRequired();
-                //   document.querySelector(".investmentAmountLeft").innerHTML =
-                //     ethers.utils.formatEther(investmentLeft) + " ETH";
-                //   const nrOfInvestors = await contract.nrOfInvestors();
-                //   document.querySelector(".investmentNumber").innerHTML = nrOfInvestors;
-
-                console.log("Ready when you are.");
+                contract = new ethers.Contract(this.contractAddress, this.contractAbi, this.provider);
                 return _context3.abrupt("return", contract);
 
-              case 4:
+              case 2:
               case "end":
                 return _context3.stop();
             }
@@ -28387,7 +28269,7 @@ var App = /*#__PURE__*/function () {
             switch (_context4.prev = _context4.next) {
               case 0:
                 if (!(typeof window.ethereum !== "undefined")) {
-                  _context4.next = 8;
+                  _context4.next = 7;
                   break;
                 }
 
@@ -28399,11 +28281,10 @@ var App = /*#__PURE__*/function () {
               case 3:
                 accounts = _context4.sent;
                 this.account = accounts[0];
-                console.log("Cool, we're connected to ".concat(this.account));
-                _context4.next = 8;
+                _context4.next = 7;
                 return this.setupProvider();
 
-              case 8:
+              case 7:
               case "end":
                 return _context4.stop();
             }
@@ -28445,20 +28326,7 @@ var App = /*#__PURE__*/function () {
       }
 
       return setupProvider;
-    }() // showLoading() {
-    //   // show the loading screen
-    //   document.querySelector(".loading").style.visibility = "visible";
-    // }
-    // hideLoading() {
-    //   // hide the loading screen
-    //   document.querySelector(".loading").style.visibility = "hidden";
-    // }
-    // logToConsole() {
-    //   // log a message on screen
-    //   var msg = "Set message";
-    //   document.querySelector(".message").innerHTML = msg;
-    // }
-
+    }()
   }]);
 
   return App;

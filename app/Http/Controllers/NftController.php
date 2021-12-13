@@ -229,17 +229,18 @@ class NftController extends Controller
     public function Order(Request $request){
         //order toevoegen
         $order = new \App\Models\Order();
-        $order->nft_id = $request->input('id');
-        $order->price = $request->input('price');
-        $order->seller_id = $request->input('seller');
-        $order->buyer_id = $request->input('buyer');
+        $order->nft_id = $request->nftId;
+        $order->price = $request->priceToEth;
+        $order->seller_id = $request->sellerId;
+        $order->buyer_id = $request->buyerId;
         $order->save();
 
         // eventueel iets opslagen in de db van buyNft        
 
         //nft updaten
-        $nft = Nft::find($request->input('id'));
-        $nft->owner_id = $request->input('buyer');
+        $nft = Nft::find($request->nftId);
+        // $nft->owner_id = $request->input('buyer');
+        $nft->owner_id = $request->buyerId;
         $nft->forSale = 0;
         $nft->save();
 

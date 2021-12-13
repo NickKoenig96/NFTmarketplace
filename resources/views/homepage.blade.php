@@ -99,26 +99,6 @@
                     </div>
                 </div>
             @endforeach
-            <!-- put up for sale -->
-            <script type="text/javascript">
-                async function isForSale(){
-                    const provider = new ethers.providers.Web3Provider(window.ethereum);
-                    const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
-                    let Abi;
-                    await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data; console.log(Abi);});
-                    const contract = new ethers.Contract(contractAddress, Abi, provider);
-                    let tokenId = "0xbf9881a644ad5fb16c8d408ce0d25fad1aef9e7f4c7752f33ae6bd4ee7688937";
-
-                    const forSale = await contract.isForSale(tokenId);
-
-                    console.log(forSale);
-                }
-
-                isForSale();
-                
-            
-            
-            </script>
             <script type="text/javascript">
                 let sellBtns = document.querySelectorAll('#sellBtn');
 
@@ -129,7 +109,7 @@
                         const signer = provider.getSigner();
                         const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
                         let Abi;
-                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data; console.log(Abi);});
+                        await fetch("/abi/NFT.json").then((res) => {return res.json();}).then((data) => {Abi = data;});
                         const contract = new ethers.Contract(contractAddress, Abi, provider);
                         let contractWithSigner = contract.connect(signer);
 
@@ -138,21 +118,13 @@
                         let priceEth = sellBtn.dataset.price;
                         
                         let price = ethers.utils.parseUnits(priceEth, "ether");
-                        // let tokenId = ethers.utils.parseUnits(tokenIdString);
                         let tokenId = ethers.BigNumber.from(tokenIdString);
-
-                        console.log(tokenId);
-
-                        // const putUp =  await contractWithSigner.putUpForSale(tokenId, price);
 
                         const transaction = await contractWithSigner.putUpForSale(tokenId, price);
                         await transaction.wait().then(res => {
-                            console.log(res);
                         });
 
                         const forSale = await contract.isForSale(tokenId);
-
-                        console.log(forSale);
 
                         if(forSale){
                             //nft forSale zetten in database als de nft voor sale is in het contract
@@ -194,20 +166,18 @@
                             let contractWithSigner = contract.connect(signer);
 
                             let id = mintNftBtn.dataset.id;
-                            let priceEuro = mintNftBtn.dataset.price;
+                            let priceEth = mintNftBtn.dataset.price;
                             let media_file = mintNftBtn.dataset.image;
                             let nftOwnerString = mintNftBtn.dataset.owner;
-                            let price = ethers.utils.parseUnits(priceEuro, "ether");
+                            let price = ethers.utils.parseUnits(priceEth, "ether");
 
                             let nftOwner = parseInt(nftOwnerString);
 
                             let tokenId;
                             const transaction = await contractWithSigner.mintNFT(media_file, price);
                             await transaction.wait().then(res => {
-                                console.log(res);
                                 let tokenIdString = res['events'][0]['topics'][3]; //returns string with tokenId as hexadecimal
                                 tokenId = ethers.BigNumber.from(tokenIdString).toString(); //puts string in a BigNumber, and converts it to a readable tokenId
-                                console.log(tokenId);
                             });
 
                             // send a post 
