@@ -21,7 +21,7 @@ class ComposerServiceProvider extends ServiceProvider
         
 
      // Using class based composers...
-     View::composer(['homepage','nft/index', 'nft/showAllNfts', 'nft/search', 'wallet/index', 'collection/showCollection'], EthComposer::class);
+     View::composer(['homepage','nft/index', 'nft/showAllNfts', 'nft/search', 'wallet/index', 'collection/showCollection', 'nft/buyNft'], EthComposer::class);
 
 
     }
