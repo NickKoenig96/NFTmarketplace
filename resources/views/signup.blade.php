@@ -21,13 +21,13 @@
 <form action="{{ url('/users/signup') }}" method="POST" class="form">
     @csrf
     
-    <input class="input input--light" type="text" placeholder="Firstname" name="firstname" id="firstname">
+    <input value="{{ old('firstname') }}" class="input input--light" type="text" placeholder="Firstname" name="firstname" id="firstname">
 
     
-    <input class="input input--light" type="text" placeholder="Lastname" name="lastname" id="lastname">
+    <input value="{{ old('lastname') }}" class="input input--light" type="text" placeholder="Lastname" name="lastname" id="lastname">
 
 
-    <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
+    <input value="{{ old('email') }}" class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
     
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">

@@ -12,13 +12,13 @@
             @endforeach
         </ul>
     @endcomponent
-@elseif(!empty($error))
+@endif
+
+@if($flash = session('error'))
 @component('components/alert')
         @slot('type') danger @endslot
         <ul>
-           
-            <li>{{ $error }}</li>
-            
+            <li>{{ $flash }}</li>
         </ul>
     @endcomponent
 @endif
@@ -29,7 +29,7 @@
     @csrf
 
     
-    <input class="input input--light" type="text" placeholder="Email" name="email" id="email">
+    <input value="{{ old('email') }}" class="input input--light" type="text" placeholder="Email" name="email" id="email">
 
     <input class="input input--light" type="password" placeholder="Password" name="password" id="password">
 

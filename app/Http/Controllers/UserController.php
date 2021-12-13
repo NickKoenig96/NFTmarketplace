@@ -67,12 +67,16 @@ class UserController extends Controller
     }
 
     public function updateUserdata(Request $request){
-        
+        $credentials = $request->validate([
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'email' => 'required|email'
+        ]);
+
         $user = User::find($request->id);
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
         $user->save();
         $request->session()->flash('message', 'Profile has been changed successfully');
         return redirect('./profile');
@@ -102,13 +106,14 @@ class UserController extends Controller
         $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
-        // if($request->input('password') === $request->input('confirmPassword')){
-            $user->password = Hash::make($request->input('password'));
-            $user->save();
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
+        $request->flashExcept('password');
             
-            if (Auth::attempt($credentials)) {
-                return redirect()->intended('./');
-            }
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('./');
+        }
         
 
         
@@ -124,8 +129,10 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('./');
         }else{
-            $data['error'] = "Email and password do not match";
-            return view('./login', $data);
+            // $data['error'] = "Email and password do not match";
+            $request->flash();
+            $request->session()->flash('error', 'Email and password do not match');
+            return redirect('login');
         }
 
 
@@ -134,6 +141,46 @@ class UserController extends Controller
     public function logout(){
         Auth::logout();
         return redirect('./login');
+    }
+
+    public function updateUserPassword(Request $request){
+        
+        $credentials = $request->validate([
+            'password' => 'required',
+            'newPassword' => 'required|confirmed|min:8'
+        ]);
+
+        $check = $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        
+        
+
+        if(Auth::attempt($check)){
+            $user = User::find($request->id);
+
+            $user->password = Hash::make($request->input('newPassword'));
+            $user->save();
+
+            $request->flash();
+            $request->session()->flash('message', 'Password is updated');
+            return redirect('./profile');
+        }else{
+            $request->flash();
+            $request->session()->flash('error', 'Old password incorrect');
+            return redirect('./profile');
+        }
+        
+        
+
+        
+
+        
+
+        
+        
+        
     }
 
     

@@ -13,6 +13,10 @@
 
         <p>1 euro = {{ $eth }}ETH</p>
         <h1>Collections</h1>
+        
+        
+
+        
 
 
 
