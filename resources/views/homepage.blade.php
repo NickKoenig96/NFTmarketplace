@@ -16,7 +16,7 @@
 
         <p>1 euro = {{ $eth }}ETH</p>
         <h1>Collections</h1>
-        <p>test late night</p>
+        
 
         <div class="cardgallery">
             @foreach ($collections as $collection)
