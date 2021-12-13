@@ -8,8 +8,6 @@
 
     <x-header firstname="{{ $user->firstname }}" />
 
-    {{-- <h1>Homepage</h1> --}}
-
     <section>
 
 
@@ -68,33 +66,27 @@
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
                         <span data-token="{{$nft->token_id}}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
-
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
                         @if ($nft->forSale === 1 && $user->id != $nft->owner_id)
                             <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                         @endif
-                    </div>
-                    <div class="flex--spbet">
                         @if ($nft->creator_id == $user->id)
                             @if($nft->minted == false)
                                 <button data-owner="{{$nft->owner_id}}" data-price="{{$eth * $nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
                             @endif
-                            @if ($nft->forSale === 0)
+                            @if ($nft->forSale === 0 && $nft->minted == true && $nft->creator_id == $nft->owner_id)
                                 <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{$eth * $nft->price }}" data-token="{{ $nft->token_id }}" class="btn btn--blue btn--155">Sell NFT</a>
                             @elseif($nft->forSale === 1)
                                 <p class="info">Your NFT is for sale</p>
                             @endif
-
                         @elseif($nft->creator != $user && $nft->minted == 0 && $nft->forsale == 0)
-
                             <p class="info">This NFT has not been minted yet</p>
 
                             @if ($nft->forSale === 0)
                                 <p class="info">This NFT is not for sale right now</p>
                             @endif
-
                         @endif
                     </div>
                 </div>

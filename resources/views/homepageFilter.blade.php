@@ -13,7 +13,7 @@
                     <p class="card__title ta_c" style="margin-bottom: 12px;">€ {{ $nft->price }} </p>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
-                        @if($nft->forSale === 1 && $user->id != $nft->owner_id)
+                        @if ($nft->forSale === 1 && $user->id != $nft->owner_id)
                         <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                         @endif
                     </div>

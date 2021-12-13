@@ -35,28 +35,19 @@
                 let contractWithSigner = contract.connect(signer);
 
                 let nftId = buyNftBtn.dataset.id;
-                console.log(nftId);
                 let tokenId = buyNftBtn.dataset.token;
-                console.log(tokenId);
                 let userId = buyNftBtn.dataset.user;
-                console.log(userId);
                 let sellerId = buyNftBtn.dataset.seller;
-                console.log(sellerId);
 
                 let price = await contract.getPrice(tokenId);
                 let priceToEth = ethers.utils.formatEther(price);
-                console.log(priceToEth);
 
-            
                 let buyerId;
                 const transaction = await contractWithSigner.buyNFT(ethers.BigNumber.from(tokenId), {value: price.toString()});
                 await transaction.wait().then(res => {
-                    console.log(res);
                     let buyerIdString = res['events'][2]['topics'][2]; //returns string with tokenId as hexadecimal
                     buyerId = ethers.BigNumber.from(buyerIdString).toString(); //puts string in a BigNumber, and converts it to a readable tokenId
-                    console.log(buyerId);
                 });
-                console.log(buyerId);
 
                 // send a post 
                 const form = document.createElement('form');
