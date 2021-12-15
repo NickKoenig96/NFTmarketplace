@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(\App\Models\Comment::class);
     }
+
+    public function favourites(){
+        return $this->belongsToMany(\App\Models\Nft::class);
+    }
 }

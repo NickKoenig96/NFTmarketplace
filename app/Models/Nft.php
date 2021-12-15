@@ -26,4 +26,8 @@ class Nft extends Model
     public function owner(){
         return $this->belongsTo(\App\Models\User::class);
     }
+
+    public function favourites(){
+        return $this->belongsToMany(\App\Models\User::class);
+    }
 }
