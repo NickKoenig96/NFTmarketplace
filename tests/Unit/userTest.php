@@ -35,8 +35,16 @@ class userTest extends TestCase
     }
 
     public function test_delete_user(){
-        $user = User::factory()->count(1)->make();
-        $user = User::first();
+        
+        $user1 = new User;
+        $user1->firstname = 'john';
+        $user1->lastname = 'doe';
+        $user1->email = 'john@test.com';
+        $user1->password = "test12345";
+        $user1->save();
+
+        $user = User::where('email','john@test.com');
+        
         if($user){
             $user->delete();
         }
@@ -49,7 +57,7 @@ class userTest extends TestCase
         $user = [
             'firstname' => 'John',
             'lastname' => 'Doe',
-            'email' => 'john@test.com',
+            'email' => 'john@test2.com',
             'password' => 'Test12345'
         ];
 
