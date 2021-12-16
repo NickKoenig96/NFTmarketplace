@@ -105,7 +105,9 @@ class CollectionController extends Controller
         $user = Auth::user();
         $collection = Collection::where('id', $id)->first();
 
-        
+        if ($user->cannot('update', $collection)) {
+            abort(403);
+        }
 
         $data['user'] = $user;
         $data['collection'] = $collection;
