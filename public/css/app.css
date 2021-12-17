@@ -684,6 +684,7 @@ select {
 
 .btn--login {
   background-color: #ECF1F2;
+  text-indent: 0px;
   border-radius: 20px;
   margin-top: 5%;
   border: none;
