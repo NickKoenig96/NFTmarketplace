@@ -58,19 +58,21 @@
             </div>
         </form> -->
          
+        
         @livewire("new-comment", ['nftId' => $nft->id, 'userId' => $user->id, 'userFirstname' => $user->firstname, 'userLastname' => $user->lastname])
-
-        <ul>
+        @livewire("all-comments", ['nftId' => $nft->id, 'userId' => $user->id, 'userFirstname' => $user->firstname, 'userLastname' => $user->lastname])
+        
+        
+        <!-- <ul>
             @foreach ($comments as $comment)
                 <li class="comment">
                     <p class="comment__user">{{ $comment->user->firstname . " " . $comment->user->lastname}}</p>
                     <p class="comment__text">{{ $comment->text }}</p>
                     <div class="comment__details flex flex--start flex--gap40">
                         <p>Delete</p>
-                        <p>whoops</p>
                     </div>
                 </li>
             @endforeach
-        </ul>
+        </ul> -->
     </section>
 @endsection

@@ -14,6 +14,9 @@ class NewComment extends Component
     public $userLastname;
     public $data;
     public $newComment;
+    public $commentId;
+    public $comment;
+    public $deleted = false;
 
     public $comments = [];
     
@@ -28,14 +31,11 @@ class NewComment extends Component
                 'user' => $this->userFirstname . ' ' . $this->userLastname
             ]);
             $this->storeComment();
+            $this->comment = Comment::with('Nft', 'User')->where('nft_id', $this->nftId)->orderBy('id','desc')->first();
+            $this->commentId = $this->comment->id;
 
             $this->newComment = "";
         }
-    }
-
-    public function deleteComment()
-    {
-        //delete code
     }
 
     public function storeComment()
@@ -47,6 +47,13 @@ class NewComment extends Component
                 'text' => $this->newComment
             ]
         );
+    }
+
+    public function deleteNewComment()
+    {
+        Comment::where('id', $this->commentId)
+            ->delete();
+        $this->deleted = true;
     }
 
     public function mount($nftId, $userId, $userFirstname, $userLastname)

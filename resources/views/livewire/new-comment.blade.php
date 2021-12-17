@@ -1,4 +1,5 @@
 <div>
+    <!-- comment form -->
     <form>
         @csrf
         <div class="comment marginb-24 flex flex--start flex--gap40">
@@ -13,16 +14,21 @@
         </div>
     </form>
 
+    <!-- new added comments -->
     @foreach($comments as $comment)
-    <div class="comment" style="margin-bottom: 24px;">
-        <p class="comment__user">{{ $comment['user'] }}</p>
-        <p class="comment__text">{{ $comment['commentText'] }}</p>
-        <div class="comment__details flex flex--start flex--gap40">
-            <p>Delete</p>
-            <p>{{ $comment['created_at'] }}</p>
-        </div>
-    </div>   
+        @if($deleted == false)
+            <div class="comment" style="margin-bottom: 24px;">
+                <p class="comment__user">{{ $comment['user'] }}</p>
+                <p class="comment__text">{{ $comment['commentText'] }}</p>
+                <div class="comment__details flex flex--start flex--gap40">
+                    <p style="cursor: pointer;" wire:click="deleteNewComment">Delete</p>
+                    <!-- <p>{{ $comment['created_at'] }}</p> -->
+                </div>
+            </div>  
+        @endif
     @endforeach
+
+    
 
 </div>
 

@@ -59,5 +59,4 @@ class Comment extends Model
             }
         }
     }
-    
 }
