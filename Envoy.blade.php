@@ -1,10 +1,10 @@
-@servers(['web' => ['-i id_rsa_deploybot deploybot@139.162.134.152 ']]);
+@servers(['web' => ['-i id_rsa_deploybot deploybot@139.162.136.17']]);
 
 @setup
 $workdir_staging = '/home/deploybot/staging/NFTmarketplace/';
 $workdir_production = '/home/deploybot/production/NFTmarketplace/';
-$db_name_staging = 'musicappbeta';
-$db_name_production = 'musicapp';
+$db_name_staging = 'musicapp';
+$db_name_production = 'musicapp2';
 $db_user = 'root';
 @endsetup
 
