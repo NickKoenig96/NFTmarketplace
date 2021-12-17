@@ -83,9 +83,6 @@ class CollectionController extends Controller
         $collection->creator_id = Auth::id();
         $collection->save();
 
-        // return redirect('./collections');
-
-
         //add colection id when Nicolas made detailpage
         $request->session()->flash('message', 'Collection successfully created');
 
@@ -140,6 +137,7 @@ class CollectionController extends Controller
         $collection->image_file_path = $filePath;
         $collection->save();
 
+        $request->flash();
         $request->session()->flash('message', 'Collection successfully edited');
 
         return redirect('./wallet');
