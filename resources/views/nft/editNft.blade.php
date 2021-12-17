@@ -5,16 +5,7 @@
 @section('content')
 <body>
 
-    @if ($errors->any())
-        @component('components/alert')
-            @slot('type') danger @endslot
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endcomponent
-    @endif
+    
 
 
 
@@ -24,6 +15,17 @@
 <x-header firstname="{{ $user->firstname }}" />
 
 <h1>Edit NFT</h1>
+
+@if ($errors->any())
+        @component('components/alert')
+            @slot('type') danger @endslot
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endcomponent
+    @endif
 
     <div class="form-group">
         <form method="POST" action="{{ url('/nft/editNft') }}" enctype='multipart/form-data'>
@@ -47,9 +49,6 @@
         <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
         <input class="form-group__input" type="text" value="{{ $nft->price }}" id="nPrice" name="nftPrice"><br>
 
-        <label for="nImage">nft image</label><br>
-        <input type="file" value="{{ $nft->image_file_path }}" name="nftImage"> <br>
-
         <label class="form-group__label" for="collections">choose collection</label><br>
         <select id="collections" name="collectionsId">
             @foreach ($collections as $collection)
@@ -58,13 +57,8 @@
         </select>
         <br>
 
-
-
             <label class="form-group__label" for="cDescription">nft description</label><br>
-            <input class="form-group__input" type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
-
-            <label class="form-group__label" for="nImage">nft image</label><br>
-            <input class="form-group__input--image" type="file" name="nftImage"> <br>
+            <textarea class="form-group__input" type="text" id="cDescription" name="nftDescription">{{ $nft->description }}</textarea><br>
 
 
             <input type="submit" name="upload" value="edit">

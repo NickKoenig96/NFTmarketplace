@@ -375,6 +375,19 @@ input {
   font-size: 16px;
 }
 
+textarea {
+  margin-top: 6px;
+  margin-bottom: 17px;
+  height: 132px;
+  width: 375px;
+  border-radius: 5px;
+  border: 3px #D0D5EB solid;
+  padding-left: 15px;
+  padding-top: 5px;
+  font-size: 16px;
+  font-family: "Work Sans", sans-serif;
+}
+
 input[type=submit] {
   font-size: 16px;
   display: flex;
