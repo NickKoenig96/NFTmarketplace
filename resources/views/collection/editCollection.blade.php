@@ -2,10 +2,19 @@
 
 @section('title', 'editCollection')
 
+@section('content')
+
 
 <body>
 
-    @if ($errors->any())
+    
+
+    
+
+<x-header firstname="{{ $user->firstname }}" />
+
+<h1>Edit Collection</h1>
+@if ($errors->any())
         @component('components/alert')
             @slot('type') danger @endslot
             <ul>
@@ -15,13 +24,6 @@
             </ul>
         @endcomponent
     @endif
-
-    <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
-        @csrf
-
-<x-header firstname="{{ $user->firstname }}" />
-
-<h1>Edit Collection</h1>
 
     <div class="form-group">
         <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>

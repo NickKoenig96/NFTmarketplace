@@ -9,8 +9,7 @@
 
 
 
-    <form method="POST" action="{{ url('/nft/editNft') }}" enctype='multipart/form-data'>
-        @csrf
+   
 
 <x-header firstname="{{ $user->firstname }}" />
 

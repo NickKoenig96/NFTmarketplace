@@ -124,7 +124,7 @@ class NftController extends Controller
             'nftArea' => 'required|integer',
             'nftObjectType' => 'required',
             'nftPrice' => 'required|integer',
-            'nftImage' => 'required|image',
+            'nftImage' => 'required|mimes:jpeg,jpg,png|max:200',
             'collectionsId' => 'required',
         ]);
         
@@ -147,10 +147,10 @@ class NftController extends Controller
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
 
-        //dd($nft['id']);
+        
         $test = $nft['id'];
         $request->session()->flash('message', 'NFT successfully created');
-
+        $request->flash();
 
         return redirect("./nfts/$test");
     }

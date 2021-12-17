@@ -29,22 +29,22 @@
             <input type="hidden" name='creator' value="{{ $user->id }}">
 
             <label class="form-group__label" for="nTitle"> title</label><br>
-            <input class="form-group__input" type="text" id="nTitle" name="nftTitle"><br>
+            <input class="form-group__input" type="text" value="{{ old('nftTitle') }}" id="nTitle" name="nftTitle"><br>
 
             <label class="form-group__label" for="nDescription">description</label><br>
-            <input class="form-group__input" type="text" id="nDescription" name="nftDescription"><br>
+            <textarea class="form-group__input" type="text"  id="nDescription" name="nftDescription">{{ old('nftDescription') }}</textarea><br>
 
             <label class="form-group__label" for="nArea">Area</label><br>
-            <input class="form-group__input" type="text" id="nArea" name="nftArea"><br>
+            <input class="form-group__input" type="text" value="{{ old('nftArea') }}" id="nArea" name="nftArea"><br>
 
             <label class="form-group__label" for="nObjectType">Object type</label><br>
-            <input class="form-group__input" type="text" id="nObjectType" name="nftObjectType"><br>
+            <input class="form-group__input" type="text" value="{{ old('nftObjectType') }}" id="nObjectType" name="nftObjectType"><br>
 
             <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
-            <input class="form-group__input" type="text" id="nPrice" name="nftPrice"><br>
+            <input class="form-group__input" type="text" value="{{ old('nftPrice') }}" id="nPrice" name="nftPrice"><br>
 
             <label class="form-group__label" for="nImage">upload image</label><br>
-            <input class="form-group__input--image" type="file" id="nImage" name="nftImage"><br>
+            <input class="form-group__input--image" type="file"  id="nImage" name="nftImage"><br>
 
             <label class="form-group__label" for="collections">choose collection</label><br>
             <select id="collections" name="collectionsId" form="editNftForm">
