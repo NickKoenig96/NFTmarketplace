@@ -53,7 +53,138 @@
                         @endif
             </div>
         </div>
+        <script type="text/javascript">
+                let sellBtns = document.querySelectorAll('#sellBtn');
+
+                sellBtns.forEach((sellBtn) => {
+                    sellBtn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const provider = new ethers.providers.Web3Provider(window.ethereum);
+                        const signer = provider.getSigner();
+                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                        let Abi;
+                        await fetch("/abi/NFT.json").then((res) => {
+                            return res.json();
+                        }).then((data) => {
+                            Abi = data;
+                        });
+                        const contract = new ethers.Contract(contractAddress, Abi, provider);
+                        let contractWithSigner = contract.connect(signer);
+
+                        let id = sellBtn.dataset.id;
+                        let tokenIdString = sellBtn.dataset.token;
+                        let priceEth = sellBtn.dataset.price;
+
+                        let price = ethers.utils.parseUnits(priceEth, "ether");
+                        let tokenId = ethers.BigNumber.from(tokenIdString);
+
+                        const transaction = await contractWithSigner.putUpForSale(tokenId, price);
+                        await transaction.wait().then(res => {});
+
+                        const forSale = await contract.isForSale(tokenId);
+
+                        if (forSale) {
+                            //nft forSale zetten in database als de nft voor sale is in het contract
+                            const form = document.createElement('form');
+                            form.method = 'POST';
+
+                            let csrf_token = "{{ csrf_token() }}";
+                            const hiddencsrf = document.createElement('input');
+                            hiddencsrf.type = 'hidden';
+                            hiddencsrf.name = "_token";
+                            hiddencsrf.value = csrf_token;
+
+                            const idInput = document.createElement('input');
+                            idInput.type = 'hidden';
+                            idInput.name = "id";
+                            idInput.value = id;
+
+                            form.appendChild(hiddencsrf);
+                            form.appendChild(idInput);
+                            document.body.appendChild(form);
+                            form.action = `/nft/markForSale`;
+                            form.submit();
+                        }
+                    })
+                })
+            </script>
+
+            <script type="text/javascript">
+                let mintNftBtns = document.querySelectorAll(".btn--mint");
+                mintNftBtns.forEach((mintNftBtn) => {
+                    mintNftBtn.addEventListener('click', async (e) => {
+                        e.preventDefault();
+                        const provider = new ethers.providers.Web3Provider(window.ethereum);
+                        const signer = provider.getSigner();
+                        const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                        let Abi;
+                        await fetch("/abi/NFT.json").then((res) => {
+                            return res.json();
+                        }).then((data) => {
+                            Abi = data;
+                        });
+                        const contract = new ethers.Contract(contractAddress, Abi, provider);
+                        let contractWithSigner = contract.connect(signer);
+
+                        let id = mintNftBtn.dataset.id;
+                        let priceEth = mintNftBtn.dataset.price;
+                        let media_file = mintNftBtn.dataset.image;
+                        let nftOwnerString = mintNftBtn.dataset.owner;
+                        let price = ethers.utils.parseUnits(priceEth, "ether");
+
+                        let nftOwner = parseInt(nftOwnerString);
+
+                        let tokenId;
+                        const transaction = await contractWithSigner.mintNFT(media_file, price);
+                        await transaction.wait().then(res => {
+                            console.log(res);
+                            let tokenIdString = res['events'][0]['topics'][3]; //returns string with tokenId as hexadecimal
+                            console.log(tokenIdString);
+                            tokenId = ethers.BigNumber.from(tokenIdString).toString(); //puts string in a BigNumber, and converts it to a readable tokenId
+                        });
+                        
+
+                        // send a post 
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+
+                        let csrf_token = "{{ csrf_token() }}";
+                        const hiddencsrf = document.createElement('input');
+                        hiddencsrf.type = 'hidden';
+                        hiddencsrf.name = "_token";
+                        hiddencsrf.value = csrf_token;
+
+                        form.appendChild(hiddencsrf);
+                        document.body.appendChild(form);
+                        form.action = `/nft/${tokenId}/${nftOwner}/${id}`;
+                        form.submit();
+                    });
+                })
+            </script>
+            <script type="text/javascript">
+                // getPrice contract web3
+                let ethPrices = document.querySelectorAll(".card__price--eth");
+                ethPrices.forEach(async (ethPrice) => {
+                    // set here the tokenid that gived isforsale
+                    const provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const contractAddress = "0x76d463D9CA4CAE1Fd478d62e9914A6b6Cc2b604e";
+                    let Abi;
+                    await fetch("/abi/NFT.json").then((res) => {
+                        return res.json();
+                    }).then((data) => {
+                        Abi = data;
+                    });
+                    const contract = new ethers.Contract(contractAddress, Abi, provider);
+
+                    let tokenId = ethPrice.dataset.token;
+                    let price = await contract.getPrice(tokenId);
+                    let priceToEth = ethers.utils.formatEther(price);
+
+                    ethPrice.innerHTML = "ETH " + priceToEth;
+                });
+            </script>
     </section>
+
     <section class="bg--2">
         <h1>Comments</h1>
         <!-- <form method="post" action="{{ url('/comment/store') }}">
