@@ -3,16 +3,28 @@
 @section('title', 'editCollection')
 
 @section('content')
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0a2a82d0923c3ab7e066130278efbdcf3ac9a90
 
 <body>
 
     
 
+<<<<<<< HEAD
     <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
         @csrf
 
 <x-header firstname="{{ $user->firstname }}" />
 
+=======
+    
+
+<x-header firstname="{{ $user->firstname }}" />
+
+<h1>Edit Collection</h1>
+>>>>>>> b0a2a82d0923c3ab7e066130278efbdcf3ac9a90
 @if ($errors->any())
         @component('components/alert')
             @slot('type') danger @endslot
@@ -24,6 +36,7 @@
         @endcomponent
     @endif
 
+<<<<<<< HEAD
     @if ($flash = session('message'))
         @component('components/alert')
             @slot('type') danger @endslot
@@ -34,6 +47,8 @@
 
 <h1>Edit Collection</h1>
 
+=======
+>>>>>>> b0a2a82d0923c3ab7e066130278efbdcf3ac9a90
     <div class="form-group">
         <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
             @csrf

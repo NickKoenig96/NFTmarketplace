@@ -22,6 +22,7 @@ class CreateNftsTable extends Migration
             $table->foreignId('creator_id');
             $table->foreignId('owner_id');
             $table->integer('price');
+            $table->integer('token_id')->default(0);
             $table->boolean('minted')->default(false);
             $table->boolean('forSale')->default(false);
             $table->foreignId('collection_id');

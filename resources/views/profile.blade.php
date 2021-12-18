@@ -164,22 +164,22 @@
 
         <!-- Momenteel dezelfde output als bij de "owned NFT's" -->
         <h3 class="medium hr black--60 marginb-24">
-            <!--{{ count($collections) }}-->4 Favourite nft's
+            {{ count($favorites) }} Favourite nft's
         </h3>
-        <div class="cardgallery">
-            @foreach ($nfts as $nft)
+        <div id="favorite" class="cardgallery">
+            @foreach ($favorites as $favorite)
                 <div class="card card--3col flex--spbet">
-                    <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
+                    <img src="{{ $favorite->nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
                     <div class="marginb-24">
                         <div class="flex--spbet">
-                            <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
+                            <p class="card__title" style="margin-bottom: 0px;">{{ $favorite->nft->title }}</p>
                             <div class="btn--favourite--true"></div>
                         </div>
-                        <span class="card__price">€ {{ $nft->price }}</span>
+                        <span class="card__price">€ {{ $favorite->nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
-                        <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
-                        <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        <a href="/nfts/{{ $favorite->nft->id }}" class="btn btn--light btn--1col">View</a>
+                        <a href="/nfts/{{ $favorite->nft->id }}" class="btn btn--blue btn--155">Buy</a>
                     </div>
                 </div>
             @endforeach

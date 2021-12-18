@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('nft_id');
             $table->foreignId('seller_id');
             $table->foreignId('buyer_id');
-            $table->float('price');
+            $table->string('price');
             $table->timestamps();
         });
     }
