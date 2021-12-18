@@ -35,10 +35,10 @@
             <textarea class="form-group__input" type="text" id="nDescription"
                 name="nftDescription">{{ old('nftDescription') }}</textarea><br>
 
-            <label class="form-group__label" for="nArea">Area</label><br>
+            <label class="form-group__label" for="nArea">Area (km²)</label><br>
             <input class="form-group__input" type="text" value="{{ old('nftArea') }}" id="nArea" name="nftArea"><br>
 
-            <label class="form-group__label" for="nObjectType">Object type</label><br>
+            <label class="form-group__label" for="nObjectType">Object type (moon-star-planet)</label><br>
             <input class="form-group__input" type="text" value="{{ old('nftObjectType') }}" id="nObjectType"
                 name="nftObjectType"><br>
 

@@ -144,9 +144,10 @@
                         const transaction = await contractWithSigner.mintNFT(media_file, price);
                         await transaction.wait().then(res => {
                             let tokenIdString = res['events'][0]['topics'][
-                            3]; //returns string with tokenId as hexadecimal
+                                3
+                            ]; //returns string with tokenId as hexadecimal
                             tokenId = ethers.BigNumber.from(tokenIdString)
-                        .toString(); //puts string in a BigNumber, and converts it to a readable tokenId
+                                .toString(); //puts string in a BigNumber, and converts it to a readable tokenId
                         });
 
                         // send a post 

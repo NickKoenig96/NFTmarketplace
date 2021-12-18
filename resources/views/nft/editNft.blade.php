@@ -51,11 +51,11 @@
                         <input class="form-group__input" type="text" id="cTitle" value="{{ $nft->title }}"
                             name="nftTitle"><br>
 
-                        <label class="form-group__label" for="nArea">Area</label><br>
+                        <label class="form-group__label" for="nArea">Area (km²)</label><br>
                         <input class="form-group__input" type="text" value="{{ $nft->area }}" id="nArea"
                             name="nftArea"><br>
 
-                        <label class="form-group__label" for="nObjectType">Object type</label><br>
+                        <label class="form-group__label" for="nObjectType">Object type (moon-star-planet)</label><br>
                         <input class="form-group__input" type="text" value="{{ $nft->object_type }}" id="nObjectType"
                             name="nftObjectType"><br>
 
