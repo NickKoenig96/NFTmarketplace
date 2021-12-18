@@ -216,15 +216,7 @@ class NftController extends Controller
             'nftPrice' => 'required|integer',
             'collectionsId' => 'required',
         ]);
-<<<<<<< HEAD
-     
-
-    
-        
-        // $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
        
-=======
->>>>>>> b0a2a82d0923c3ab7e066130278efbdcf3ac9a90
 
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');

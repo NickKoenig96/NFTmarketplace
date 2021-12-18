@@ -73,7 +73,7 @@
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
-                        @if ($nft->forSale === 1 && $user->id != $nft->owner_id)
+                        <!-- @if ($nft->forSale === 1 && $user->id != $nft->owner_id)
                             <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
                         @endif
                         @if ($nft->creator_id == $user->id)
@@ -91,7 +91,26 @@
                             @if ($nft->forSale === 0)
                                 <p class="info">This NFT is not for sale right now</p>
                             @endif
+                        @endif -->
+                        @if($nft->creator_id === $user->id)
+                            @if($nft->minted === 0)
+                                <button data-owner="{{$nft->owner_id}}" data-price="{{$eth * $nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
+                            @endif
                         @endif
+                        @if($nft->owner_id === $user->id && $nft->minted === 1)
+                            @if($nft->forSale === 0)
+                                <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{$eth * $nft->price }}" data-token="{{ $nft->token_id }}" class="btn btn--blue btn--155">Sell NFT</a>
+                            @elseif($nft->forSale === 1)
+                                <p style="display:block" class="info">Your NFT is for sale</p>
+                            @endif
+                        @endif
+
+                        @if($nft->owner_id != $user->id && $nft->forSale === 1 && $nft->minted === 1)
+                            <a href="/nft/buy/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        @endif
+                        
+
+
                     </div>
                 </div>
             @endforeach
