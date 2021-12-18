@@ -89,6 +89,7 @@
                                 <p class="info">This NFT is not for sale right now</p>
                             @endif
                         @endif -->
+                        <!-- juist ifloop voor de sales -->
                         @if($nft->creator_id === $user->id)
                             @if($nft->minted === 0)
                                 <button data-owner="{{$nft->owner_id}}" data-price="{{$eth * $nft->price}}" data-id="{{$nft->id}}" data-hash="{{$nft->item_hash}}" data-image="{{$nft->image_file_path}}" class="btn--mint">Mint NFT</button>
