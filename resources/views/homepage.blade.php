@@ -12,6 +12,7 @@
 
         <h1>Collections</h1>
 
+
         <div class="cardgallery">
             @foreach ($collections as $collection)
                 <a class="card card--3col" href="/collections/{{ $collection->id }}">
