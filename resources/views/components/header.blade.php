@@ -16,7 +16,7 @@
 
     <nav>
         <a href="/wallet">My wallet</a>
-        <a href="/profile">My favourites</a>
+        <a href="/profile/#favorite">My favourites</a>
         <a href="#">About us</a>
         <a href="#">Contact</a>
         <a class="btn btn--blue btn--h40 btn--signedin" href="/profile">{{ $firstname }}</a>

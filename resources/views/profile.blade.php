@@ -166,7 +166,7 @@
         <h3 class="medium hr black--60 marginb-24">
             {{ count($favorites) }} Favourite nft's
         </h3>
-        <div class="cardgallery">
+        <div id="favorite" class="cardgallery">
             @foreach ($favorites as $favorite)
                 <div class="card card--3col flex--spbet">
                     <img src="{{ $favorite->nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
