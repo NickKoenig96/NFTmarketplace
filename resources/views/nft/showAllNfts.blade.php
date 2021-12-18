@@ -25,9 +25,7 @@
                     <h1>{{ $nft->title }}</h1>
                     <h4 class="blue--20">Owner: {{ $nft->owner->firstname . ' ' . $nft->owner->lastname }}</h4>
                     <div class="margint-12 flex flex--alcen">
-                        <div class="btn--view"></div>
-                        <h5 class="blue--20 marginr-48 marginl-12">11k Views</h5>
-                        <a href="#" class="btn--favourite btn--favourite--small"></a>
+                        @livewire("favorites", ['nftId' => $nft->id, 'userId' => $user->id])
                         <h5 class="blue--20 marginl-12">favourite</h5>
                     </div>
                     <h1 class="margint-48">&euro; {{ $nft->price }} <span class="marginl-24 body--normal">ETH
