@@ -45,34 +45,101 @@
     <section class="bg--2">
         <h1>Comments</h1>
         <!-- <form method="post" action="{{ url('/comment/store') }}">
-            @csrf
-            <div class="comment marginb-24 flex flex--start flex--gap40">
-                <div class="form__control--80perc">
-                    <input type="text" id="comment" name="comment" placeholder="Your comment">
-                </div>
-                <input type="hidden" id="nft_id" name="nft_id" value="{{ $nft->id }}">
-                <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
-                <div class="form__control--smaller">
-                    <input  type="submit" value="Post">
-                </div>
-            </div>
-        </form> -->
-         
-        
-        @livewire("new-comment", ['nftId' => $nft->id, 'userId' => $user->id, 'userFirstname' => $user->firstname, 'userLastname' => $user->lastname])
-        @livewire("all-comments", ['nftId' => $nft->id, 'userId' => $user->id, 'userFirstname' => $user->firstname, 'userLastname' => $user->lastname])
-        
-        
-        <!-- <ul>
-            @foreach ($comments as $comment)
-                <li class="comment">
-                    <p class="comment__user">{{ $comment->user->firstname . " " . $comment->user->lastname}}</p>
-                    <p class="comment__text">{{ $comment->text }}</p>
-                    <div class="comment__details flex flex--start flex--gap40">
-                        <p>Delete</p>
+                @csrf
+                <div class="comment marginb-24 flex flex--start flex--gap40">
+                    <div class="form__control--80perc">
+                        <input type="text" id="comment" name="comment" placeholder="Your comment">
                     </div>
-                </li>
-            @endforeach
-        </ul> -->
+                    <input type="hidden" id="nft_id" name="nft_id" value="{{ $nft->id }}">
+                    <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
+                    <div class="form__control--smaller">
+                        <input  type="submit" value="Post">
+                    </div>
+                </div>
+            </form> -->
+
+
+        @livewire("new-comment", ['nftId' => $nft->id, 'userId' => $user->id, 'userFirstname' => $user->firstname,
+        'userLastname' => $user->lastname])
+        @livewire("all-comments", ['nftId' => $nft->id, 'userId' => $user->id, 'userFirstname' => $user->firstname,
+        'userLastname' => $user->lastname])
+
+
+        <!-- <ul>
+                @foreach ($comments as $comment)
+                    <li class="comment">
+                        <p class="comment__user">{{ $comment->user->firstname . ' ' . $comment->user->lastname }}</p>
+                        <p class="comment__text">{{ $comment->text }}</p>
+                        <div class="comment__details flex flex--start flex--gap40">
+                            <p>Delete</p>
+                        </div>
+                    </li>
+                @endforeach
+            </ul> -->
     </section>
+
+    <script>
+        var path = "{{ url('homepage/action') }}";
+
+        $('#search').typeahead({
+
+
+            source: function(query, process) {
+
+                return $.get(path, {
+                    term: query,
+                    category: $("select#category").val()
+
+                }, function(data) {
+                    return process(data);
+
+                });
+
+            }
+
+        });
+
+        let option = document.getElementById("option");
+        option.style.display = "none";
+
+        function priceVisible() {
+            option.innerHTML = `<option value="">Select</option>`;
+            option.innerHTML += `<option id="PriceLH" value="PriceLH">Price LOW to HIGH</option>`;
+            option.innerHTML += `<option id="HLPrice" value="PriceHL">Price HIGH to LOW</option>`;
+        }
+
+        function areaVisible() {
+            option.innerHTML = `<option value="">Select</option>`;
+            option.innerHTML += `<option id="AreaLH" value="AreaLH">Area LOW to HIGH</option>`;
+            option.innerHTML += `<option id="HLArea" value="AreaHL">Area HIGH to LOW</option>`;
+        }
+
+        function typeVisible() {
+            option.innerHTML = `<option value="">Select</option>`;
+            option.innerHTML += `<option id="TypeAZ" value="TypeAZ">Object type title (A-Z)</option>`;
+            option.innerHTML += `<option id="ZAType" value="TypeZA">Object type title (Z-A)</option>`;
+        }
+
+
+        let filter = document.getElementById("filter");
+
+        filter.addEventListener("change", function(e) {
+            let selectedIndex = filter.selectedIndex;
+            let selectedValue = filter[selectedIndex].value;
+            console.log(selectedValue);
+
+            if (selectedValue == 'Price') {
+                option.style.display = "inline-block";
+                priceVisible();
+            } else if (selectedValue == "Area") {
+                option.style.display = "inline-block";
+                areaVisible();
+            } else if (selectedValue == "Type") {
+                option.style.display = "inline-block";
+                typeVisible();
+            } else {
+                option.style.display = "none";
+            }
+        });
+    </script>
 @endsection
