@@ -26,10 +26,10 @@
             @csrf
             <h2 class="form-group__title">New collection for your NFT's</h2>
             <label class="form-group__label" for="cTitle">title</label><br>
-            <input class="form-group__input" type="text" id="cTitle" name="collectionTitle"><br>
+            <input class="form-group__input" value="{{ old('collectionTitle') }}" type="text" id="cTitle" name="collectionTitle"><br>
 
             <label class="form-group__label" for="cDescription">description</label><br>
-            <input class="form-group__input" type="text" id="cDescription" name="collectionDescription"><br>
+            <textarea class="form-group__input" type="text" id="cDescription" name="collectionDescription">{{ old('collectionDescription') }}</textarea><br>
 
             <label class="form-group__label" for="cImage">upload image</label><br>
             <input class="form-group__input--image" type="file" name="collectionImage"> <br>

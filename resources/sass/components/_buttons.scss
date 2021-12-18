@@ -5,6 +5,10 @@
     justify-content: center;
 }
 
+.btn--logout__container{
+    margin-bottom: 50px;
+}
+
 .btn{
     align-items: center;
     border-radius: 10px;
@@ -146,7 +150,7 @@
 
 .btn--login{
     background-color: $grey--light;
-    
+    text-indent: 0px;
     border-radius: 20px;
     margin-top:5%;
     border:none;
@@ -163,5 +167,27 @@
 
 .btn--mint{
     background-color: rgb(247, 181, 82);
+    color: white;
+    border: 2px solid rgb(247, 181, 82);
+    font-family: 'Work Sans', sans-serif;
+    width: 155px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 6px 8px;
+}
+
+#sellBtn {
+    width: 155px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 8px 10px;
 }
 

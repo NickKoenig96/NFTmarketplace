@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Nft;
 use App\Models\Collection;
 use App\Models\Comment;
 
-use Illuminate\Support\Facades\Http;
-
-use Illuminate\Support\Facades\Auth;
-
-
-
+use App\Http\Controllers\MailController;
 
 class NftController extends Controller
 {
@@ -38,7 +35,8 @@ class NftController extends Controller
        // $nfts = \DB::table("nfts")->get();
         $data["nfts"] = $nfts;
         $data['user'] = $user;
-         return view('nft/index', $data);
+        
+        return view('nft/index', $data);
     }
 
     // nfts in homepage
@@ -49,12 +47,23 @@ class NftController extends Controller
         $data["nfts"] = $nfts;
         $data["user"] = $user;
         $data["collections"] = $collections;
-
+        
         
         return view('homepage', $data);
         
 
          
+    }
+
+    public function addItem(Request $request){
+        $nft = Nft::find($request->id);
+        $nft->owner_id = $request->nftOwner;
+        $nft->minted = 1;
+        $nft->token_id = $request->tokenId;
+        
+        $nft->save();
+        
+        return redirect('/');
     }
 
     // detail page from the homepage
@@ -116,7 +125,7 @@ class NftController extends Controller
             'nftArea' => 'required|integer',
             'nftObjectType' => 'required',
             'nftPrice' => 'required|integer',
-            'nftImage' => 'required|image',
+            'nftImage' => 'required|mimes:jpeg,jpg,png|max:200',
             'collectionsId' => 'required',
         ]);
         
@@ -139,10 +148,10 @@ class NftController extends Controller
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
 
-        //dd($nft['id']);
+        
         $test = $nft['id'];
         $request->session()->flash('message', 'NFT successfully created');
-
+        $request->flash();
 
         return redirect("./nfts/$test");
     }
@@ -179,19 +188,8 @@ class NftController extends Controller
             'nftArea' => 'required|integer',
             'nftObjectType' => 'required',
             'nftPrice' => 'required|integer',
-            'nftImage' => 'required|image',
             'collectionsId' => 'required',
         ]);
-     
-
-    
-        
-        // $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
-        $image = $request->file('nftImage');
-        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
-        $response = Http::withToken($token)->attach('attachment', file_get_contents($image))->post('https://api.pinata.cloud/pinning/pinFileToIPFS', ['file' => fopen($image, "r")]);
-        $answer = json_decode($response);
-        $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
         $nft = Nft::find($request->id);
         $nft->title = $request->input('nftTitle');
@@ -199,7 +197,6 @@ class NftController extends Controller
         $nft->price = $request->input('nftPrice');
         $nft->area = $request->input('nftArea');
         $nft->object_type = $request->input('nftObjectType');
-        $nft->image_file_path = $filePath;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
 
@@ -219,21 +216,26 @@ class NftController extends Controller
     public function Order(Request $request){
         //order toevoegen
         $order = new \App\Models\Order();
-        $order->nft_id = $request->input('id');
-        $order->price = $request->input('price');
-        $order->seller_id = $request->input('seller');
-        $order->buyer_id = $request->input('buyer');
+        $order->nft_id = $request->nftId;
+        $order->price = $request->priceToEth;
+        $order->seller_id = $request->sellerId;
+        $order->buyer_id = $request->buyerId;
         $order->save();
-        
+
+        // eventueel iets opslagen in de db van buyNft        
 
         //nft updaten
-        $nft = Nft::find($request->input('id'));
-        $nft->owner_id = $request->input('buyer');
+        $nft = Nft::find($request->nftId);
+        // $nft->owner_id = $request->input('buyer');
+        $nft->owner_id = $request->buyerId;
+
+            //transfer sold nft data to mailcontroller
+        MailController::mail($nft);
+
         $nft->forSale = 0;
         $nft->save();
 
-        return redirect('./nft');
-
+        return redirect('wallet');
     }
 
     public function sell($id){
@@ -246,9 +248,8 @@ class NftController extends Controller
         $nft = Nft::find($request->input('id'));
         if($nft->owner_id === Auth::id()){
             $nft->forSale = 1;
-            $nft->price = $request->input('price');
             $nft->save();
-            return redirect('./nft');
+            return redirect('./wallet');
         }
     }
 

@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            CollectionSeeder::class
+            CollectionSeeder::class,
+            ExchangeRateSeeder::class
         ]);
 
         \App\Models\Nft::factory(10)->create();

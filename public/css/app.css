@@ -160,6 +160,7 @@ h5 {
 .cards {
   display: flex;
   justify-content: space-between;
+  gap: 5%;
 }
 
 .card {
@@ -374,6 +375,19 @@ input {
   font-size: 16px;
 }
 
+textarea {
+  margin-top: 6px;
+  margin-bottom: 17px;
+  height: 132px;
+  width: 375px;
+  border-radius: 5px;
+  border: 3px #D0D5EB solid;
+  padding-left: 15px;
+  padding-top: 5px;
+  font-size: 16px;
+  font-family: "Work Sans", sans-serif;
+}
+
 input[type=submit] {
   font-size: 16px;
   display: flex;
@@ -537,6 +551,10 @@ select {
   justify-content: center;
 }
 
+.btn--logout__container {
+  margin-bottom: 50px;
+}
+
 .btn {
   align-items: center;
   border-radius: 10px;
@@ -679,6 +697,7 @@ select {
 
 .btn--login {
   background-color: #ECF1F2;
+  text-indent: 0px;
   border-radius: 20px;
   margin-top: 5%;
   border: none;
@@ -695,6 +714,28 @@ select {
 
 .btn--mint {
   background-color: #f7b552;
+  color: white;
+  border: 2px solid #f7b552;
+  font-family: "Work Sans", sans-serif;
+  width: 155px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 6px 8px;
+}
+
+#sellBtn {
+  width: 155px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 8px 10px;
 }
 
 .comment {
@@ -733,6 +774,9 @@ select {
   background-color: #162C99;
   padding: 15px;
   color: #ffffff;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  border-radius: 5px;
 }
 
 .alert li {
@@ -742,24 +786,22 @@ select {
 
 .alert--danger {
   background-color: red;
+  border: 2px solid red;
 }
 
 .alert--succes {
   background-color: #5CB323;
-  color: white;
-  text-align: center;
-  font-family: "Work Sans", sans-serif;
   border: 2px solid #5CB323;
-  border-radius: 5px;
 }
 
 .info {
   background-color: #459155;
-  border-radius: 2px;
+  border-radius: 8px;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   margin: 1%;
   padding: 2%;
+  display: none;
 }
 
 body {
@@ -775,6 +817,10 @@ section:not(:last-of-type) {
 }
 section:not(:first-of-type) {
   padding-top: 40px;
+}
+
+h1 {
+  margin-left: 5%;
 }
 
 .mcenter {
@@ -799,6 +845,11 @@ section:not(:first-of-type) {
 }
 
 .flex--spbet {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex--button {
   display: flex;
   justify-content: space-between;
 }

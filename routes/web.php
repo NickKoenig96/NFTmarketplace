@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ImageTest;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\walletController;
@@ -10,14 +11,15 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
 use App\Http\Controllers\CommentController;
-
-
-
+use App\Http\Controllers\MailController;
 use App\Views\Composers\MultiComposer;
 
 
 
 
+
+use App\Mail\TestEmail;
+use App\Mail\nftSoldMail;
 
 
 
@@ -62,6 +64,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profile', [UserController::class, "profile"]);
     Route::post('/profile/updateUserdata', [UserController::class, "updateUserdata"]);
     Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
+    Route::post('/profile/updateUserPassword', [UserController::class, "updateUserPassword"]);
 
     //comments
     Route::post('/comment/store', [CommentController::class, "store"]);
@@ -73,7 +76,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/homepage/action', [SearchController::class, 'action'])->name('typeahead_autocomplete.action');
 
 
-
     //nft
     Route::get('/nft', [NftController::class, "index"]);
     Route::get('/delete/nft/{id}', [NftController::class, "destroy"]);
@@ -82,9 +84,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/edit/nft/{id}', [NftController::class, "show"]);
     Route::post('/nft/editNft', [NftController::class, "edit"]);
     Route::get('/nft/buy/{id}', [NftController::class, "buyNft"]);
-    Route::post('nft/order', [NftController::class, "order"]);
+    Route::post('nft/order/{nftId}/{buyerId}/{priceToEth}/{userId}/{sellerId}', [NftController::class, "order"]);
     Route::get('/nft/sell/{id}', [NftController::class, "sell"]);
     Route::post('/nft/markForSale', [NftController::class, "markForSale"]);
+    Route::post('/nft/{tokenId}/{nftOwner}/{id}', [NftController::class, 'addItem']);
 
 
     //collection
@@ -103,6 +106,33 @@ Route::group(['middleware' => ['auth']], function() {
 
     //wallet
     Route::get('/wallet', [walletController::class, "index"]);
+
+
+    //mail
+   /* Route::get('/testmail', function (){
+        
+    $data = ['message' => 'This is a test!'];
+
+    Mail::to('nick.koenig.be@gmail.com')->send(new TestEmail($data));
+    });*/
+
+    /*Route::get('/nftSoldMail', function (){
+
+        $data = ['message' => 'This is a test!'];
+    
+        Mail::to('nick.koenig@mail.com')->send(new nftSoldMail($data));
+
+        return redirect('wallet');
+
+    });*/
+
+   // Route::get('/nftSoldMail', [MailController::class, "mailData"]);
+    Route::get('/nftSoldMail', [MailController::class, "mail"]);
+
+
+
+
+
 
     
 });
