@@ -178,8 +178,8 @@
                         <span class="card__price">€ {{ $favorite->nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
-                        <a href="/nfts/{{ $collection->nft->id }}" class="btn btn--light btn--1col">View</a>
-                        <a href="/nfts/{{ $collection->nft->id }}" class="btn btn--blue btn--155">Buy</a>
+                        <a href="/nfts/{{ $favorite->nft->id }}" class="btn btn--light btn--1col">View</a>
+                        <a href="/nfts/{{ $favorite->nft->id }}" class="btn btn--blue btn--155">Buy</a>
                     </div>
                 </div>
             @endforeach
