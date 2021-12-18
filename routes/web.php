@@ -10,11 +10,8 @@ use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
-
-
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MailController;
-
-
 use App\Views\Composers\MultiComposer;
 
 
@@ -69,13 +66,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
     Route::post('/profile/updateUserPassword', [UserController::class, "updateUserPassword"]);
 
-
+    //comments
+    Route::post('/comment/store', [CommentController::class, "store"]);
+    
 
     //search
     Route::get('/search', [SearchController::class, "search"]);
     Route::get('/homepage', [SearchController::class, 'index']);
     Route::get('/homepage/action', [SearchController::class, 'action'])->name('typeahead_autocomplete.action');
-
 
 
     //nft
@@ -86,9 +84,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/edit/nft/{id}', [NftController::class, "show"]);
     Route::post('/nft/editNft', [NftController::class, "edit"]);
     Route::get('/nft/buy/{id}', [NftController::class, "buyNft"]);
-    Route::post('nft/order', [NftController::class, "order"]);
+    Route::post('nft/order/{nftId}/{buyerId}/{priceToEth}/{userId}/{sellerId}', [NftController::class, "order"]);
     Route::get('/nft/sell/{id}', [NftController::class, "sell"]);
     Route::post('/nft/markForSale', [NftController::class, "markForSale"]);
+    Route::post('/nft/{tokenId}/{nftOwner}/{id}', [NftController::class, 'addItem']);
 
 
     //collection

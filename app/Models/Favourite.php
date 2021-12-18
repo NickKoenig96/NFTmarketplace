@@ -14,4 +14,10 @@ class Favourite extends Model
         'nft_id',
         'user_id',
     ];
+
+    protected $with = ["Nft"];
+
+    public function Nft(){
+        return $this->belongsTo(\App\Models\Nft::class);
+    }
 }

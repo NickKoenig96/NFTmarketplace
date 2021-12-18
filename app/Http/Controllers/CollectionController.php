@@ -60,7 +60,7 @@ class CollectionController extends Controller
         $validated = $request->validate([
             'collectionTitle' => 'required |unique:collections,title',
             'collectionDescription' => 'required',
-            'collectionImage' => 'required|image',
+            'collectionImage' => 'required|mimes:jpeg,jpg,png|max:200',
         ]);
         
 
@@ -84,14 +84,11 @@ class CollectionController extends Controller
         $collection->creator_id = Auth::id();
         $collection->save();
 
-        // return redirect('./collections');
-
-
         //add colection id when Nicolas made detailpage
         $request->session()->flash('message', 'Collection successfully created');
 
 
-        return redirect('./collection/detailCollection');
+        return redirect("./collections/$collection->id");
     }
 
         /**
@@ -131,6 +128,14 @@ class CollectionController extends Controller
         }
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
+        
+        $validated = $request->validate([
+            'collectionTitle' => 'required |unique:collections,title',
+            'collectionDescription' => 'required',
+            'collectionImage' => 'required|mimes:jpeg,jpg,png|max:200',
+        ]);
+        
+
         $image = $request->file('collectionImage');
             
         $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
@@ -149,11 +154,13 @@ class CollectionController extends Controller
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
         
+        $collection = Collection::find($request->id);
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $filePath;
         $collection->save();
 
+        $request->flash();
         $request->session()->flash('message', 'Collection successfully edited');
 
         return redirect('./wallet');
