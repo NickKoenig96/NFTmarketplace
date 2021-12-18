@@ -119,7 +119,6 @@ class CollectionController extends Controller
      */
     public function edit(Request $request)
     {
-<<<<<<< HEAD
         $collection = Collection::find($request->id);
 
         if ($request->user()->cannot('update', $collection)) {
@@ -129,7 +128,6 @@ class CollectionController extends Controller
         }
 
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
-=======
         
         $validated = $request->validate([
             'collectionTitle' => 'required |unique:collections,title',
@@ -138,7 +136,6 @@ class CollectionController extends Controller
         ]);
         
 
->>>>>>> b0a2a82d0923c3ab7e066130278efbdcf3ac9a90
         $image = $request->file('collectionImage');
             
         $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
@@ -148,7 +145,6 @@ class CollectionController extends Controller
         $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
 
 
-<<<<<<< HEAD
         $validated = $request->validate([
             'collectionTitle' => 'required |unique:collections,title',
             'collectionDescription' => 'required',
@@ -158,9 +154,7 @@ class CollectionController extends Controller
         // $uploadedFileUrl = \Cloudinary::upload($request->file('collectionImage')->getRealPath())->getSecurePath();
        
         
-=======
         $collection = Collection::find($request->id);
->>>>>>> b0a2a82d0923c3ab7e066130278efbdcf3ac9a90
         $collection->title = $request->input('collectionTitle');
         $collection->description = $request->input('collectionDescription');
         $collection->image_file_path = $filePath;
