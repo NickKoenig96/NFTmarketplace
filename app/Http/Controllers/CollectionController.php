@@ -91,7 +91,7 @@ class CollectionController extends Controller
         $request->session()->flash('message', 'Collection successfully created');
 
 
-        return redirect('./collection/detailCollection');
+        return redirect("./collections/$collection->id");
     }
 
         /**

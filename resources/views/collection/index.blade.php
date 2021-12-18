@@ -2,10 +2,10 @@
 @section('title', 'Collections')
 
 @section('content')
-<x-header firstname="{{ $user->firstname }}" />
+    <x-header firstname="{{ $user->firstname }}" />
 
-<section>
-        
+    <section>
+
         <h1>Collections</h1>
 
 

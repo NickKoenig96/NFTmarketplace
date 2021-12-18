@@ -26,6 +26,14 @@
 
             @endif
 
+            @if ($flash = session('message error'))
+                @component('components/alert')
+                    @slot('type') danger @endslot
+                    <p> {{ $flash }}</p>
+                @endcomponent
+
+            @endif
+
             <div class="cardgallery">
                 @foreach ($nfts as $nft)
                     @if ($nft->owner_id == $user->id)

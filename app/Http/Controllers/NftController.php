@@ -150,7 +150,7 @@ class NftController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
        
         $data['user'] = Auth::user();
@@ -158,6 +158,18 @@ class NftController extends Controller
         $collections = Collection::get();
         $data['collections'] = $collections;
         $data['nft'] = $nft;
+
+        
+        if ($request->user()->cannot('update', $nft)) {
+            //abort(403);
+            $test = $nft['id'];
+
+            $request->session()->flash('message error', 'You cannot edit an nft that you do not own');
+            //return redirect('./wallet');
+             return redirect("wallet");
+
+        }
+
         return view('nft/editNft', $data);
 
     }
@@ -190,7 +202,6 @@ class NftController extends Controller
             'nftArea' => 'required|integer',
             'nftObjectType' => 'required',
             'nftPrice' => 'required|integer',
-            'nftImage' => 'required|image',
             'collectionsId' => 'required',
         ]);
      
@@ -198,18 +209,13 @@ class NftController extends Controller
     
         
         // $uploadedFileUrl = \Cloudinary::upload($request->file('nftImage')->getRealPath())->getSecurePath();
-        $image = $request->file('nftImage');
-        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJlODU4Y2FjNS0yNjQ4LTRmYzEtYmZlMC0wYWFiMDVjODM4N2EiLCJlbWFpbCI6ImpvbmF0aGFuX3ZlcmhhZWdlbkBob3RtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI1ODk3ZjdlNzI5YWY2MTI4MmEzMyIsInNjb3BlZEtleVNlY3JldCI6IjY0YjQ4YTQ5NDQwMTc5NTJjMzlmYzZkZTUxNzk1NjI3NjdkZjY2Mjg3N2RiMGZhYWU0Y2NjYTIzMzdkZGE2MTIiLCJpYXQiOjE2MzU5NTc4MDV9.gEhDh3rJNqr1rbUp6u4X6y_6kkUSxmBEipuoVjVdGFQ";
-        $response = Http::withToken($token)->attach('attachment', file_get_contents($image))->post('https://api.pinata.cloud/pinning/pinFileToIPFS', ['file' => fopen($image, "r")]);
-        $answer = json_decode($response);
-        $filePath = "https://ipfs.io/ipfs/" . $answer->IpfsHash;
+       
 
         $nft->title = $request->input('nftTitle');
         $nft->description = $request->input('nftDescription');
         $nft->price = $request->input('nftPrice');
         $nft->area = $request->input('nftArea');
         $nft->object_type = $request->input('nftObjectType');
-        $nft->image_file_path = $filePath;
         $nft->collection_id = $request->input('collectionsId');
         $nft->save();
 
