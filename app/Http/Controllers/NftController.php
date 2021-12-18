@@ -71,9 +71,10 @@ class NftController extends Controller
         $user = Auth::user();
         $userId = $user["id"];
         $nft = Nft::where('id', $id)->with('Comment')->first();
-        $comments = Comment::with('Nft', 'User')->get();
+        $comments = Comment::with('Nft', 'User')->where('nft_id', $id)->orderBy('id','desc')->get();
         $data['user'] = $user;
         $data['nft'] = $nft;
+        $data['comments'] = $comments;
         return view('nft/showAllNfts', $data);
     }
 

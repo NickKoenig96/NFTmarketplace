@@ -10,11 +10,8 @@ use App\Http\Controllers\NftController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\apiController;
-
-
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MailController;
-
-
 use App\Views\Composers\MultiComposer;
 
 
@@ -69,7 +66,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/profile/updateAvatar', [UserController::class, "updateAvatar"]);
     Route::post('/profile/updateUserPassword', [UserController::class, "updateUserPassword"]);
 
-
+    //comments
+    Route::post('/comment/store', [CommentController::class, "store"]);
+    
 
     //search
     Route::get('/search', [SearchController::class, "search"]);
