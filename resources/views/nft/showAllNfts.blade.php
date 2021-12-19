@@ -52,7 +52,7 @@
                         @if($nft->forSale === 0)
                             <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{$eth * $nft->price }}" data-token="{{ $nft->token_id }}" class="btn btn--blue btn--155">Sell NFT</a>
                         @elseif($nft->forSale === 1)
-                            <p style="display:block" class="info">Your NFT is for sale</p>
+                            <p class="info">NFT is for sale</p>
                         @endif
                     @endif
 
