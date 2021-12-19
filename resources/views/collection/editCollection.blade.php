@@ -4,13 +4,6 @@
 
 @section('content')
 
-
-    <body>
-
-
-
-
-
         <x-header firstname="{{ $user->firstname }}" />
 
         <h1>Edit Collection</h1>
@@ -26,7 +19,7 @@
         @endif
 
         <div class="form-group">
-            <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
+            <form method="POST" id="editNftForm" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
                 @csrf
 
                 <h2 class="form-group__title">Edit a new masterpiece</h2>

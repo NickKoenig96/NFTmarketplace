@@ -22,7 +22,7 @@
     @endif
 
     <div class="form-group">
-        <form method="POST" action="/collection/addCollection" enctype='multipart/form-data'>
+        <form method="POST" id="editNftForm" action="/collection/addCollection" enctype='multipart/form-data'>
             @csrf
             <h2 class="form-group__title">New collection for your NFT's</h2>
             <label class="form-group__label" for="cTitle">title</label><br>
