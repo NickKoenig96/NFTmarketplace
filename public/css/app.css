@@ -233,6 +233,9 @@ h5 {
   display: inline-block;
   margin-top: 6px;
 }
+.card__price--eth {
+  padding-top: 7px;
+}
 
 .card__profilepicture {
   border-radius: 20px;
@@ -736,6 +739,14 @@ select {
   border-radius: 8px;
   text-decoration: none;
   padding: 8px 10px;
+}
+
+#buyNft {
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #162C99;
+  width: 250px;
 }
 
 .comment {

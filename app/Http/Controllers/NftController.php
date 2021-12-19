@@ -232,11 +232,11 @@ class NftController extends Controller
     }
 
     public function buyNft($id){
-        $user = Auth::id();
+        $user = Auth::user();
         $nft = Nft::find($id);
         $data["nft"] = $nft;
         $data["user"] = $user;
-        return view('nft/buyNft', $data );
+        return view('nft/buyNft', $data);
     }
 
     public function Order(Request $request){
