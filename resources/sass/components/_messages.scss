@@ -1,3 +1,6 @@
+@use '../abstracts' as *;
+
+
 .info{
     background-color: rgb(69, 145, 85);
     border-radius: 8px;
@@ -6,4 +9,13 @@
     margin: 1%;
     padding: 2%;
     display:none;
+}
+
+.info--eth {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 35px;
+    color: $blue;
 }

@@ -49,6 +49,16 @@
     width: -webkit-fill-available;
     width: -moz-available;
     margin-bottom: 24px;
+
+    &--headerOne {
+        margin-left: 0px;
+        margin-bottom: 0px;
+    }
+
+    &--headerSecond {
+        margin-left: 0px;
+        margin-bottom: 20px;
+    }
 }
 
 .card__image, .card__image--large, .card__image--xlarge{

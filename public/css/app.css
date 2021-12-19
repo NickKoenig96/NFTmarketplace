@@ -201,6 +201,14 @@ h5 {
   width: -moz-available;
   margin-bottom: 24px;
 }
+.card__title--headerOne {
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+.card__title--headerSecond {
+  margin-left: 0px;
+  margin-bottom: 20px;
+}
 
 .card__image, .card__image--large, .card__image--xlarge {
   width: 100%;
@@ -749,6 +757,10 @@ select {
   width: 250px;
 }
 
+#commentBtn {
+  text-indent: 0px !important;
+}
+
 .comment {
   padding: 24px 48px;
   background-color: #f9fafd;
@@ -815,6 +827,15 @@ select {
   display: none;
 }
 
+.info--eth {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+  margin-bottom: 35px;
+  color: #162C99;
+}
+
 body {
   background-color: #f9fafd;
 }
@@ -845,6 +866,19 @@ h1 {
 
 .blue--20 {
   color: #A2ABD6;
+}
+
+.blue--20--owner {
+  color: #A2ABD6;
+  padding-right: 15px;
+  padding-top: 0px;
+}
+
+.blue--20--favourite {
+  color: #A2ABD6;
+  padding-right: 15px;
+  margin-top: -3px;
+  margin-left: 14px;
 }
 
 .bg--2 {
