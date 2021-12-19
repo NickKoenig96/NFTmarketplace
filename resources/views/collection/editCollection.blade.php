@@ -33,7 +33,7 @@
                 <input class="form-group__input" type="text" id="cDescription" value="{{ $collection->description }}"
                     name="collectionDescription"><br>
 
-                <label class="form-group__label" for="cImage">collection image</label><br>
+                <label class="form-group__label" for="cImage">Collection image</label><br>
                 <input class="form-group__input--image" type="file" name="collectionImage"> <br>
 
                 <input type="submit" name="upload">

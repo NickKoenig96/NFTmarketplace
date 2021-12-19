@@ -33,7 +33,7 @@
                 @csrf
                 <h2 class="form-group__title">Edit a new masterpiece</h2>
                 <input type="hidden" name="id" value="{{ $nft->id }}">
-                <label class="form-group__label" for="cTitle">nft title</label><br>
+                <label class="form-group__label" for="cTitle">Nft title</label><br>
                 <input class="form-group__input" type="text" id="cTitle" value="{{ $nft->title }}" name="nftTitle"><br>
 
                 <label class="form-group__label" for="nArea">Area (km²)</label><br>
@@ -45,10 +45,10 @@
                 <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
                 <input class="form-group__input" type="text" value="{{ $nft->price }}" id="nPrice" name="nftPrice"><br>
 
-                <label class="form-group__label" for="cDescription">nft description</label><br>
+                <label class="form-group__label" for="cDescription">Nft description</label><br>
                 <input class="form-group__input" type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
 
-                <label class="form-group__label" for="collections">choose collection</label><br>
+                <label class="form-group__label" for="collections">Choose collection</label><br>
                 <select id="collections" name="collectionsId">
                     @foreach ($collections as $collection)
                         <option class="form-group__input" value="{{ $collection->id }}">

@@ -38,7 +38,7 @@
             <div class="card card--profile">
                 <p class="card__title">Your profile</p>
 
-                <img class="card__profilepicture" src="{{ $user->avatar }}" alt="avatar">
+                <a href="#"><img class="card__profilepicture" src="{{ $user->avatar }}" alt="avatar"></a>
                 <p class="body--normal bold"><span>{{ $user->firstname }}</span> <span>{{ $user->lastname }}</span></p>
                 <blockquote class="body--tiny card__biography">{{ $user->bio }}</blockquote>
                 <div class="card--profile__totals">

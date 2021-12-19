@@ -91,6 +91,11 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="btn__container">
+            <a class="btn btn--blue--all" href="/nft">See all nfts</a>
+        </div>
+        <br>
             <script type="text/javascript">
                 let sellBtns = document.querySelectorAll('#sellBtn');
 
@@ -221,7 +226,6 @@
                     ethPrice.innerHTML = "ETH " + priceToEth;
                 });
             </script>
-        </div>
 
     </section>
 
