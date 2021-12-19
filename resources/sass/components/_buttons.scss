@@ -25,6 +25,14 @@
     height: 40px;
 }
 
+.btn--blue--all {
+    background-color: $blue;
+    color: $white;
+    padding: 6px 25px;
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
+}
+
 .btn--1col, .btn--155{
     font-weight: 600;
     display: flex;
@@ -139,8 +147,22 @@
 }
 
 .btn--red{
-    background-color: red;
     color: $white;
+    background-color: red;
+}
+
+.btn--logout{
+    background-color: $white;
+    color: $blue;
+    padding: 5px 25px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    border: 2px solid $blue;
+}
+
+.btn--logout:hover {
+    color: $white;
+    background-color: $blue;
 }
 
 .btn--green{

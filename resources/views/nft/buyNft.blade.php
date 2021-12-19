@@ -7,7 +7,7 @@
     <x-header firstname="{{ $user->firstname }}" />
 
     <section>
-        <h1>Buy NFT</h1>
+        <h1 class="card__title--headerSecond">Buy NFT</h1>
 
         <div class="cardgallery">
             <div class="card card--3col flex--spbet">

@@ -9,7 +9,7 @@
 
     <section>
 
-        <h1>wallet</h1>
+        <h1 class="card__title--headerSecond">Wallet</h1>
 
 
         <br>

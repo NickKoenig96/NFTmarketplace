@@ -209,6 +209,10 @@ h5 {
   margin-left: 0px;
   margin-bottom: 20px;
 }
+.card__title--headerThird {
+  margin-bottom: 20px;
+  margin-left: 80px;
+}
 
 .card__image, .card__image--large, .card__image--xlarge {
   width: 100%;
@@ -598,6 +602,14 @@ select {
   height: 40px;
 }
 
+.btn--blue--all {
+  background-color: #162C99;
+  color: #ffffff;
+  padding: 6px 25px;
+  font-weight: 600;
+  font-family: "Work Sans", sans-serif;
+}
+
 .btn--1col, .btn--155 {
   font-weight: 600;
   display: flex;
@@ -713,8 +725,22 @@ select {
 }
 
 .btn--red {
-  background-color: red;
   color: #ffffff;
+  background-color: red;
+}
+
+.btn--logout {
+  background-color: #ffffff;
+  color: #162C99;
+  padding: 5px 25px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  border: 2px solid #162C99;
+}
+
+.btn--logout:hover {
+  color: #ffffff;
+  background-color: #162C99;
 }
 
 .btn--green {

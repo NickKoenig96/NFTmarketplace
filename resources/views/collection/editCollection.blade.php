@@ -6,7 +6,7 @@
 
         <x-header firstname="{{ $user->firstname }}" />
 
-        <h1>Edit Collection</h1>
+        <h1 class="card__title--headerThird">Edit Collection</h1>
         @if ($errors->any())
             @component('components/alert')
                 @slot('type') danger @endslot

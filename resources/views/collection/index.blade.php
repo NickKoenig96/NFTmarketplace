@@ -6,7 +6,7 @@
 
     <section>
 
-        <h1>Collections</h1>
+        <h1 class="card__title--headerSecond">Collections</h1>
 
 
         <div class="cardgallery">

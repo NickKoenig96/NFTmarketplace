@@ -6,7 +6,7 @@
 
         <x-header firstname="{{ $user->firstname }}" />
 
-        <h1>Edit NFT</h1>
+        <h1 class="card__title--headerThird">Edit NFT</h1>
 
         @if ($flash = session('message'))
             @component('components/alert')

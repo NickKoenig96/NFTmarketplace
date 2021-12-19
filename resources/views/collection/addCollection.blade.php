@@ -8,7 +8,7 @@
     <x-header firstname="{{ $user->firstname }}" />
 
 
-    <h1>Add collection</h1>
+    <h1 class="card__title--headerThird">Add collection</h1>
 
     @if ($errors->any())
         @component('components/alert')

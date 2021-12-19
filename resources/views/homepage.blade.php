@@ -10,7 +10,7 @@
 
     <section>
 
-        <h1>Collections</h1>
+        <h1 class="card__title--headerSecond">Collections</h1>
 
 
         <div class="cardgallery">
@@ -28,12 +28,12 @@
             @endforeach
         </div>
         <div class="btn__container">
-            <a class="btn btn--blue" href="/collections">See all collections</a>
+            <a class="btn btn--blue--all" href="/collections">See all collections</a>
         </div>
     </section>
 
     <section class="bg--2">
-        <h1>NFT's</h1>
+        <h1 class="card__title--headerSecond">NFT's</h1>
         <form action="{{ url('/homepageFilter') }}" type="get">
             <h2 class="form-group__title">Filter:</h2>
             <select class="filter" name="filter" id="filter">

@@ -9,8 +9,7 @@
     <x-header firstname="{{ $user->firstname }}" />
 
     <section>
-        <p>1 euro = {{ $eth }}ETH</p>
-        <h1>NFT's</h1>
+        <h1 class="card__title--headerSecond">NFT's</h1>
 
 
         <div class="cardgallery">

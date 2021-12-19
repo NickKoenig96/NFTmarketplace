@@ -31,7 +31,7 @@
         @endif
 
     <section>
-        <h1>Profile</h1>
+        <h1 class="card__title--headerSecond">Profile</h1>
 
 
         <div class="cards">
@@ -118,11 +118,11 @@
     </section>
 
     <div class=" btn__container btn--logout__container">
-        <a class="btn btn--red" href="./logout">Logout</a>
+        <a class="btn btn--logout" href="./logout">Logout</a>
     </div>
 
     <section class="bg--2">
-        <h1>My NFT's and collections</h1>
+        <h1 class="card__title--headerSecond">My NFT's and collections</h1>
 
 
         <h3 class="medium hr black--60 marginb-24">{{ count($nfts) }} Owned NFT's</h3>
