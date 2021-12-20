@@ -62,8 +62,10 @@ class NftController extends Controller
         $nft->token_id = $request->tokenId;
         
         $nft->save();
+
+        $nftId = $nft['id'];
         
-        return redirect('/');
+        return redirect("./nfts/$nftId");
     }
 
     // detail page from the homepage
@@ -264,7 +266,9 @@ class NftController extends Controller
         $nft->forSale = 0;
         $nft->save();
 
-        return redirect('wallet');
+        $nftId = $nft['id'];
+        
+        return redirect("./nfts/$nftId");
     }
 
     public function sell($id){
@@ -278,7 +282,10 @@ class NftController extends Controller
         if($nft->owner_id === Auth::id()){
             $nft->forSale = 1;
             $nft->save();
-            return redirect('./wallet');
+            
+            $nftId = $nft['id'];
+        
+            return redirect("./nfts/$nftId");
         }
     }
 
