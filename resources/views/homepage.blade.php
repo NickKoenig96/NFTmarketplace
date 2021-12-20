@@ -10,7 +10,7 @@
 
     <section>
 
-        <h1>Collections</h1>
+        <h1 class="card__title--headerSecond">Collections</h1>
 
 
         <div class="cardgallery">
@@ -28,12 +28,12 @@
             @endforeach
         </div>
         <div class="btn__container">
-            <a class="btn btn--blue" href="/collections">See all collections</a>
+            <a class="btn btn--blue--all" href="/collections">See all collections</a>
         </div>
     </section>
 
     <section class="bg--2">
-        <h1>NFT's</h1>
+        <h1 class="card__title--headerSecond">NFT's</h1>
         <form action="{{ url('/homepageFilter') }}" type="get">
             <h2 class="form-group__title">Filter:</h2>
             <select class="filter" name="filter" id="filter">
@@ -62,8 +62,7 @@
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
-                        <span data-token="{{ $nft->token_id }}" class="card__price--eth">ETH
-                            {{ $eth * $nft->price }}</span>
+                        <span data-token="{{ $nft->token_id }}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
@@ -78,7 +77,7 @@
                             @if($nft->forSale === 0)
                                 <a href="" id="sellBtn" data-id="{{ $nft->id }}" data-price="{{$eth * $nft->price }}" data-token="{{ $nft->token_id }}" class="btn btn--blue btn--155">Sell NFT</a>
                             @elseif($nft->forSale === 1)
-                                <p style="display:block" class="info">Your NFT is for sale</p>
+                                <p class="info--small">NFT is for sale</p>
                             @endif
                         @endif
 
@@ -91,6 +90,11 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="btn__container">
+            <a class="btn btn--blue--all" href="/nft">See all nfts</a>
+        </div>
+        <br>
             <script type="text/javascript">
                 let sellBtns = document.querySelectorAll('#sellBtn');
 
@@ -221,7 +225,6 @@
                     ethPrice.innerHTML = "ETH " + priceToEth;
                 });
             </script>
-        </div>
 
     </section>
 

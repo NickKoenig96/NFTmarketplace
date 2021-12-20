@@ -9,13 +9,13 @@
 
     <section>
 
-        <h1>wallet</h1>
+        <h1 class="card__title--headerSecond">Wallet</h1>
 
 
         <br>
         <section>
             <h3>My NFT's</h3>
-            <a href="/nft/addNft" class="btn btn--blue btn--155">add NFT</a>
+            <a href="/nft/addNft" class="btn btn--blue btn--155">Add NFT</a>
             <br>
 
             @if ($flash = session('message'))
@@ -37,29 +37,24 @@
             <div class="cardgallery">
                 @foreach ($nfts as $nft)
                     @if ($nft->owner_id == $user->id)
-
                         <div class="card card--3col flex--spbet">
                             <img src="{{ $nft->image_file_path }}" alt="nft image" class="card__image card__image--large">
-                            <div class="marginb-24">
+                            <div class="marginb-24__margint">
                                 <div class="flex--spbet">
                                     <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
-                                    <div class="btn--favourite"></div>
+                                    @livewire("favorites", ['nftId' => $nft->id, 'userId' => $user->id])
                                 </div>
                                 <span class="card__price">€ {{ $nft->price }}</span>
                                 <br>
                                 <span class="card__price">ETH {{ $eth * $nft->price }}</span>
-
                             </div>
                             <div class="flex--spbet">
                                 <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
-                                <a href="/nfts/{{ $nft->id }}" class="btn btn--blue btn--155">Buy</a>
-
                             </div>
                             <br>
                             <div class="flex--spbet">
                                 <a href="delete/nft/{{ $nft->id }}" class="btn btn--red btn--155">DELETE</a>
                                 <a href="edit/nft/{{ $nft->id }}" class="btn btn--green btn--155">EDIT</a>
-
                             </div>
                         </div>
                     @endif
@@ -70,7 +65,7 @@
 
         <section class="bg--2">
             <h3>My Collections</h3>
-            <a href="/collection/addCollection" class="btn btn--blue btn--155">add Collection</a>
+            <a href="/collection/addCollection" class="btn btn--blue btn--155">Add Collection</a>
             <br>
             <div class="cardgallery">
                 @foreach ($collections as $collection)
@@ -128,48 +123,6 @@
 
         });
 
-        let option = document.getElementById("option");
-        option.style.display = "none";
-
-        function priceVisible() {
-            option.innerHTML = `<option value="">Select</option>`;
-            option.innerHTML += `<option id="PriceLH" value="PriceLH">Price LOW to HIGH</option>`;
-            option.innerHTML += `<option id="HLPrice" value="PriceHL">Price HIGH to LOW</option>`;
-        }
-
-        function areaVisible() {
-            option.innerHTML = `<option value="">Select</option>`;
-            option.innerHTML += `<option id="AreaLH" value="AreaLH">Area LOW to HIGH</option>`;
-            option.innerHTML += `<option id="HLArea" value="AreaHL">Area HIGH to LOW</option>`;
-        }
-
-        function typeVisible() {
-            option.innerHTML = `<option value="">Select</option>`;
-            option.innerHTML += `<option id="TypeAZ" value="TypeAZ">Object type title (A-Z)</option>`;
-            option.innerHTML += `<option id="ZAType" value="TypeZA">Object type title (Z-A)</option>`;
-        }
-
-
-        let filter = document.getElementById("filter");
-
-        filter.addEventListener("change", function(e) {
-            let selectedIndex = filter.selectedIndex;
-            let selectedValue = filter[selectedIndex].value;
-            console.log(selectedValue);
-
-            if (selectedValue == 'Price') {
-                option.style.display = "inline-block";
-                priceVisible();
-            } else if (selectedValue == "Area") {
-                option.style.display = "inline-block";
-                areaVisible();
-            } else if (selectedValue == "Type") {
-                option.style.display = "inline-block";
-                typeVisible();
-            } else {
-                option.style.display = "none";
-            }
-        });
     </script>
 
 @endsection

@@ -31,14 +31,13 @@
         @endif
 
     <section>
-        <h1>Profile</h1>
+        <h1 class="card__title--headerSecond">Profile</h1>
 
 
         <div class="cards">
             <div class="card card--profile">
-                <p class="card__title">Your profile</p>
-
-                <img class="card__profilepicture" src="{{ $user->avatar }}" alt="avatar">
+                <p class="card__title">Your profile</p>              
+                <a href="#"><img class="card__profilepicture" src="{{ $user->avatar }}" alt="avatar"></a>
                 <p class="body--normal bold"><span>{{ $user->firstname }}</span> <span>{{ $user->lastname }}</span></p>
                 <blockquote class="body--tiny card__biography">{{ $user->bio }}</blockquote>
                 <div class="card--profile__totals">
@@ -118,11 +117,11 @@
     </section>
 
     <div class=" btn__container btn--logout__container">
-        <a class="btn btn--red" href="./logout">Logout</a>
+        <a class="btn btn--logout" href="./logout">Logout</a>
     </div>
 
     <section class="bg--2">
-        <h1>My NFT's and collections</h1>
+        <h1 class="card__title--headerSecond">My NFT's and collections</h1>
 
 
         <h3 class="medium hr black--60 marginb-24">{{ count($nfts) }} Owned NFT's</h3>
@@ -133,7 +132,7 @@
                     <div class="marginb-24">
                         <div class="flex--spbet">
                             <p class="card__title" style="margin-bottom: 0px;">{{ $nft->title }}</p>
-                            <div class="btn--favourite"></div>
+                            @livewire("favorites", ['nftId' => $nft->id, 'userId' => $user->id])
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                     </div>

@@ -1,9 +1,33 @@
+@use '../abstracts' as *;
+
+
 .info{
-    background-color: rgb(69, 145, 85);
+    background-color: $white;
     border-radius: 8px;
-    color: white;
+    color: rgb(69, 145, 85);
     font-weight: 400;
     margin: 1%;
-    padding: 2%;
-    display:none;
+    padding: 8px 25px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    border: 2px solid rgb(69, 145, 85);
+}
+
+.info--small {
+    background-color: rgb(69, 145, 85);
+    border-radius: 8px;
+    color: $white;
+    padding: 5px 15px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    border: 2px solid rgb(69, 145, 85);
+}
+
+.info--eth {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 35px;
+    color: $blue;
 }

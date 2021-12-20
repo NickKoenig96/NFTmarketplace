@@ -152,9 +152,8 @@ h5 {
 }
 
 .cardgallery {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 .cards {
@@ -201,6 +200,18 @@ h5 {
   width: -moz-available;
   margin-bottom: 24px;
 }
+.card__title--headerOne {
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+.card__title--headerSecond {
+  margin-left: 0px;
+  margin-bottom: 20px;
+}
+.card__title--headerThird {
+  margin-bottom: 20px;
+  margin-left: 80px;
+}
 
 .card__image, .card__image--large, .card__image--xlarge {
   width: 100%;
@@ -231,13 +242,14 @@ h5 {
 
 .card__price {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .card__profilepicture {
   border-radius: 20px;
-  width: 120px;
-  width: 120px;
+  width: 190px;
+  height: 190px;
   border: 7px solid #f7F7F9;
   margin-bottom: 24px;
 }
@@ -293,6 +305,31 @@ h5 {
   border-left: 2px solid #ececec;
 }
 
+@media screen and (min-width: 400px) {
+  .cardgallery {
+    display: grid;
+    grid-template-columns: 25%;
+  }
+}
+@media screen and (min-width: 720px) {
+  .cardgallery {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+@media screen and (min-width: 950px) {
+  .cardgallery {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 3%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .cardgallery {
+    display: grid;
+    grid-template-columns: 23% 23% 23% 23%;
+  }
+}
 header {
   padding: 40px 80px;
   display: flex;
@@ -345,6 +382,18 @@ nav a:not(:last-child) {
   background-color: #eee;
 }
 
+@media screen and (min-width: 400px) {
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav a {
+    display: block;
+  }
+}
 .searchbar {
   width: 300px;
   height: 40px;
@@ -514,13 +563,6 @@ select {
   color: #162C9966;
 }
 
-#editNftForm {
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  margin: 0;
-}
-
 #filter {
   margin-left: 0;
   margin-bottom: 4em;
@@ -532,18 +574,29 @@ select {
 }
 
 @media screen and (min-width: 400px) {
-  .form-group {
+  #editNftForm {
+    margin-left: -50px;
+  }
+}
+@media screen and (min-width: 750px) {
+  #editNftForm {
+    margin-left: 10%;
     width: 100%;
   }
 }
-@media screen and (min-width: 600px) {
-  .form-group {
-    width: 60%;
+@media screen and (min-width: 800px) {
+  #editNftForm {
+    margin-left: 15%;
   }
 }
-@media screen and (min-width: 800px) {
-  .form-group {
-    width: 35%;
+@media screen and (min-width: 920px) {
+  #editNftForm {
+    margin-left: 25%;
+  }
+}
+@media screen and (min-width: 1290px) {
+  #editNftForm {
+    margin-left: 30%;
   }
 }
 .btn__container {
@@ -569,6 +622,14 @@ select {
 
 .btn--h40 {
   height: 40px;
+}
+
+.btn--blue--all {
+  background-color: #162C99;
+  color: #ffffff;
+  padding: 6px 25px;
+  font-weight: 600;
+  font-family: "Work Sans", sans-serif;
 }
 
 .btn--1col, .btn--155 {
@@ -686,8 +747,22 @@ select {
 }
 
 .btn--red {
-  background-color: red;
   color: #ffffff;
+  background-color: red;
+}
+
+.btn--logout {
+  background-color: #ffffff;
+  color: #162C99;
+  padding: 5px 25px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  border: 2px solid #162C99;
+}
+
+.btn--logout:hover {
+  color: #ffffff;
+  background-color: #162C99;
 }
 
 .btn--green {
@@ -724,7 +799,8 @@ select {
   align-items: center;
   border-radius: 8px;
   text-decoration: none;
-  padding: 6px 8px;
+  padding: 4px 8px;
+  font-size: 15px;
 }
 
 #sellBtn {
@@ -736,6 +812,18 @@ select {
   border-radius: 8px;
   text-decoration: none;
   padding: 8px 10px;
+}
+
+#buyNft {
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border: 2px solid #162C99;
+  width: 250px;
+}
+
+#commentBtn {
+  text-indent: 0px !important;
 }
 
 .comment {
@@ -795,13 +883,34 @@ select {
 }
 
 .info {
-  background-color: #459155;
+  background-color: #ffffff;
   border-radius: 8px;
-  color: white;
+  color: #459155;
   font-weight: 400;
   margin: 1%;
-  padding: 2%;
-  display: none;
+  padding: 8px 25px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  border: 2px solid #459155;
+}
+
+.info--small {
+  background-color: #459155;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 5px 15px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  border: 2px solid #459155;
+}
+
+.info--eth {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+  margin-bottom: 35px;
+  color: #162C99;
 }
 
 body {
@@ -834,6 +943,19 @@ h1 {
 
 .blue--20 {
   color: #A2ABD6;
+}
+
+.blue--20--owner {
+  color: #A2ABD6;
+  padding-right: 15px;
+  padding-top: 0px;
+}
+
+.blue--20--favourite {
+  color: #A2ABD6;
+  padding-right: 15px;
+  margin-top: -3px;
+  margin-left: 14px;
 }
 
 .bg--2 {
@@ -883,6 +1005,10 @@ h1 {
 }
 
 .marginb-24 {
+  margin-bottom: 24px;
+}
+.marginb-24__margint {
+  padding-top: 15px;
   margin-bottom: 24px;
 }
 

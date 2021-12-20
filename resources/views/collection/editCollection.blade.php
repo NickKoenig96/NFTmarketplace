@@ -4,16 +4,9 @@
 
 @section('content')
 
-
-    <body>
-
-
-
-
-
         <x-header firstname="{{ $user->firstname }}" />
 
-        <h1>Edit Collection</h1>
+        <h1 class="card__title--headerThird">Edit Collection</h1>
         @if ($errors->any())
             @component('components/alert')
                 @slot('type') danger @endslot
@@ -26,7 +19,7 @@
         @endif
 
         <div class="form-group">
-            <form method="POST" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
+            <form method="POST" id="editNftForm" action="{{ '/collection/editCollection' }}" enctype='multipart/form-data'>
                 @csrf
 
                 <h2 class="form-group__title">Edit a new masterpiece</h2>
@@ -40,7 +33,7 @@
                 <input class="form-group__input" type="text" id="cDescription" value="{{ $collection->description }}"
                     name="collectionDescription"><br>
 
-                <label class="form-group__label" for="cImage">collection image</label><br>
+                <label class="form-group__label" for="cImage">Collection image</label><br>
                 <input class="form-group__input--image" type="file" name="collectionImage"> <br>
 
                 <input type="submit" name="upload">
