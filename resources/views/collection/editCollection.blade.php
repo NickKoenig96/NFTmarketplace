@@ -37,11 +37,7 @@
                     name="collectionTitle"><br>
 
                 <label class="form-group__label" for="cDescription">Collection description</label><br>
-                <input class="form-group__input" type="text" id="cDescription" value="{{ $collection->description }}"
-                    name="collectionDescription"><br>
-
-                <label class="form-group__label" for="cImage">collection image</label><br>
-                <input class="form-group__input--image" type="file" name="collectionImage"> <br>
+                <textarea class="form-group__input" type="text" id="cDescription"  name="collectionDescription">{{ $collection->description }}</textarea><br>
 
                 <input type="submit" name="upload">
 

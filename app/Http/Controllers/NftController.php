@@ -125,7 +125,7 @@ class NftController extends Controller
             'nftArea' => 'required|integer',
             'nftObjectType' => 'required',
             'nftPrice' => 'required|integer',
-            'nftImage' => 'required|mimes:jpeg,jpg,png|max:200',
+            'nftImage' => 'required|mimes:jpeg,jpg,png|max:500',
             'collectionsId' => 'required',
         ]);
         

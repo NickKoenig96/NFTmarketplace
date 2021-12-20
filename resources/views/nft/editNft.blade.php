@@ -68,8 +68,7 @@
 
 
                         <label class="form-group__label" for="cDescription">nft description</label><br>
-                        <input class="form-group__input" type="text" id="cDescription" value="{{ $nft->description }}"
-                            name="nftDescription"><br>
+                        <textarea class="form-group__input" type="text" id="cDescription" name="nftDescription">{{ $nft->description }}</textarea><br>
 
                         <label class="form-group__label" for="collections">choose collection</label><br>
                         <select id="collections" name="collectionsId">
