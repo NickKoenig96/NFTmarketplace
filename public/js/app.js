@@ -4100,7 +4100,11 @@ const BUMP = FixedNumber.from("0.5");
     if (typeof window !== 'undefined' && typeof window.Buffer !== 'undefined') {
       Buffer = window.Buffer;
     } else {
+<<<<<<< HEAD
       Buffer = (__webpack_require__(/*! buffer */ "?ff28").Buffer);
+=======
+      Buffer = __webpack_require__(/*! buffer */ "?ff28").Buffer;
+>>>>>>> bugfixes2
     }
   } catch (e) {
   }
@@ -11122,7 +11126,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
+<<<<<<< HEAD
 const version = "networks/5.5.0";
+=======
+const version = "networks/5.5.1";
+>>>>>>> bugfixes2
 //# sourceMappingURL=_version.js.map
 
 /***/ }),
@@ -11241,6 +11249,10 @@ const classicMordor = {
     name: "classicMordor",
     _defaultProvider: etcDefaultProvider("https://www.ethercluster.com/mordor", "classicMordor")
 };
+<<<<<<< HEAD
+=======
+// See: https://chainlist.org
+>>>>>>> bugfixes2
 const networks = {
     unspecified: { chainId: 0, name: "unspecified" },
     homestead: homestead,
@@ -11282,6 +11294,14 @@ const networks = {
     xdai: { chainId: 100, name: "xdai" },
     matic: { chainId: 137, name: "matic" },
     maticmum: { chainId: 80001, name: "maticmum" },
+<<<<<<< HEAD
+=======
+    optimism: { chainId: 10, name: "optimism" },
+    "optimism-kovan": { chainId: 69, name: "optimism-kovan" },
+    "optimism-goerli": { chainId: 420, name: "optimism-goerli" },
+    arbitrum: { chainId: 42161, name: "arbitrum" },
+    "arbitrum-rinkeby": { chainId: 421611, name: "arbitrum-rinkeby" },
+>>>>>>> bugfixes2
     bnb: { chainId: 56, name: "bnb" },
     bnbt: { chainId: 97, name: "bnbt" },
 };
@@ -11595,7 +11615,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
+<<<<<<< HEAD
 const version = "providers/5.5.0";
+=======
+const version = "providers/5.5.1";
+>>>>>>> bugfixes2
 //# sourceMappingURL=_version.js.map
 
 /***/ }),
@@ -11680,6 +11704,21 @@ class AlchemyProvider extends _url_json_rpc_provider__WEBPACK_IMPORTED_MODULE_4_
             case "maticmum":
                 host = "polygon-mumbai.g.alchemy.com/v2/";
                 break;
+<<<<<<< HEAD
+=======
+            case "arbitrum":
+                host = "arb-mainnet.g.alchemy.com/v2/";
+                break;
+            case "arbitrum-rinkeby":
+                host = "arb-rinkeby.g.alchemy.com/v2/";
+                break;
+            case "optimism":
+                host = "opt-mainnet.g.alchemy.com/v2/";
+                break;
+            case "optimism-kovan":
+                host = "opt-kovan.g.alchemy.com/v2/";
+                break;
+>>>>>>> bugfixes2
             default:
                 logger.throwArgumentError("unsupported network", "network", arguments[0]);
         }
@@ -12062,6 +12101,11 @@ class Resolver {
         return __awaiter(this, void 0, void 0, function* () {
             const linkage = [];
             try {
+<<<<<<< HEAD
+=======
+                // test data for ricmoo.eth
+                //const avatar = "eip155:1/erc721:0x265385c7f4132228A0d54EB1A9e7460b91c0cC68/29233";
+>>>>>>> bugfixes2
                 const avatar = yield this.getText("avatar");
                 if (avatar == null) {
                     return null;
@@ -12132,7 +12176,11 @@ class Resolver {
                             // Get the token metadata
                             const metadata = yield (0,_ethersproject_web__WEBPACK_IMPORTED_MODULE_12__.fetchJson)(metadataUrl);
                             // Pull the image URL out
+<<<<<<< HEAD
                             if (!metadata || typeof (metadata.image) !== "string" || !metadata.image.match(/^https:\/\//i)) {
+=======
+                            if (!metadata || typeof (metadata.image) !== "string" || !metadata.image.match(/^(https:\/\/|data:)/i)) {
+>>>>>>> bugfixes2
                                 return null;
                             }
                             linkage.push({ type: "metadata", content: JSON.stringify(metadata) });
@@ -13324,6 +13372,12 @@ class BaseProvider extends _ethersproject_abstract_provider__WEBPACK_IMPORTED_MO
             else {
                 // ENS name; forward lookup
                 resolver = yield this.getResolver(nameOrAddress);
+<<<<<<< HEAD
+=======
+                if (!resolver) {
+                    return null;
+                }
+>>>>>>> bugfixes2
             }
             const avatar = yield resolver.getAvatar();
             if (avatar == null) {
@@ -15240,6 +15294,21 @@ class InfuraProvider extends _url_json_rpc_provider__WEBPACK_IMPORTED_MODULE_4__
             case "maticmum":
                 host = "polygon-mumbai.infura.io";
                 break;
+<<<<<<< HEAD
+=======
+            case "optimism":
+                host = "optimism-mainnet.infura.io";
+                break;
+            case "optimism-kovan":
+                host = "optimism-kovan.infura.io";
+                break;
+            case "arbitrum":
+                host = "arbitrum-mainnet.infura.io";
+                break;
+            case "arbitrum-rinkeby":
+                host = "arbitrum-rinkeby.infura.io";
+                break;
+>>>>>>> bugfixes2
             default:
                 logger.throwError("unsupported network", _ethersproject_logger__WEBPACK_IMPORTED_MODULE_0__.Logger.errors.INVALID_ARGUMENT, {
                     argument: "network",
@@ -19811,7 +19880,11 @@ function computePublicKey(key, compressed) {
     if (typeof window !== 'undefined' && typeof window.Buffer !== 'undefined') {
       Buffer = window.Buffer;
     } else {
+<<<<<<< HEAD
       Buffer = (__webpack_require__(/*! buffer */ "?0707").Buffer);
+=======
+      Buffer = __webpack_require__(/*! buffer */ "?0707").Buffer;
+>>>>>>> bugfixes2
     }
   } catch (e) {
   }
@@ -24671,7 +24744,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
+
 const version = "web/5.5.0";
+
+
 //# sourceMappingURL=_version.js.map
 
 /***/ }),
@@ -24856,6 +24932,34 @@ function _fetchData(connection, body, processFunc) {
             };
         }
     }
+
+    const reData = new RegExp("^data:([a-z0-9-]+/[a-z0-9-]+);base64,(.*)$", "i");
+    const dataMatch = ((url) ? url.match(reData) : null);
+    if (dataMatch) {
+        try {
+            const response = {
+                statusCode: 200,
+                statusMessage: "OK",
+                headers: { "content-type": dataMatch[1] },
+                body: (0,_ethersproject_base64__WEBPACK_IMPORTED_MODULE_4__.decode)(dataMatch[2])
+            };
+            let result = response.body;
+            if (processFunc) {
+                result = processFunc(response.body, response);
+            }
+            return Promise.resolve(result);
+        }
+        catch (error) {
+            logger.throwError("processing response error", _ethersproject_logger__WEBPACK_IMPORTED_MODULE_0__.Logger.errors.SERVER_ERROR, {
+                body: bodyify(dataMatch[1], dataMatch[2]),
+                error: error,
+                requestBody: null,
+                requestMethod: "GET",
+                url: url
+            });
+        }
+    }
+
     if (body) {
         options.method = "POST";
         options.body = body;
@@ -24905,6 +25009,7 @@ function _fetchData(connection, body, processFunc) {
                 let response = null;
                 try {
                     response = yield (0,_geturl__WEBPACK_IMPORTED_MODULE_5__.getUrl)(url, options);
+
                     // Exponential back-off throttling
                     if (response.statusCode === 429 && attempt < attemptLimit) {
                         let tryAgain = true;
@@ -24923,6 +25028,7 @@ function _fetchData(connection, body, processFunc) {
                             //console.log("Stalling 429");
                             yield staller(stall);
                             continue;
+
                         }
                     }
                 }
@@ -28571,7 +28677,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
+<<<<<<< HEAD
 const version = "ethers/5.5.1";
+=======
+const version = "ethers/5.5.2";
+>>>>>>> bugfixes2
 //# sourceMappingURL=_version.js.map
 
 /***/ }),

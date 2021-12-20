@@ -42,8 +42,8 @@
                 <label class="form-group__label" for="nObjectType">Object type (moon-star-planet)</label><br>
                 <input class="form-group__input" type="text" value="{{ $nft->object_type }}" id="nObjectType" name="nftObjectType"><br>
 
-                <label class="form-group__label" for="nPrice">Price (Euro)</label><br>
-                <input class="form-group__input" type="text" value="{{ $nft->price }}" id="nPrice" name="nftPrice"><br>
+                <label class="form-group__label" for="cDescription">nft description</label><br>
+                <textarea class="form-group__input" type="text" id="cDescription" name="nftDescription">{{ $nft->description }}</textarea><br>
 
                 <label class="form-group__label" for="cDescription">Nft description</label><br>
                 <input class="form-group__input" type="text" id="cDescription" value="{{ $nft->description }}" name="nftDescription"><br>
