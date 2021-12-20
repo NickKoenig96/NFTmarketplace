@@ -1,9 +1,9 @@
 @use '../abstracts' as *;
 
 .cardgallery{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    // justify-content: space-between;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 
 .cards{
@@ -151,4 +151,41 @@
 .usernfts{
     grid-column: 2/3;
     border-left: 2px solid #ececec;
+}
+
+
+
+
+@media screen and (min-width: 400px) {
+    .cardgallery{
+        display: grid;
+        // justify-content: space-between;
+        grid-template-columns: 25%;
+    }    
+}
+
+
+@media screen and (min-width: 720px) {
+    .cardgallery{
+        display: grid;
+        // justify-content: space-between;
+        grid-template-columns: 50% 50%;
+    }    
+}
+
+@media screen and (min-width: 950px) {
+    .cardgallery{
+        display: grid;
+        // justify-content: space-between;
+        grid-template-columns: 33% 33% 33%;
+        gap: 3%;
+    }    
+}
+
+@media screen and (min-width: 1200px) {
+    .cardgallery{
+        display: grid;
+        // justify-content: space-between;
+        grid-template-columns: 23% 23% 23% 23%;
+    }    
 }
