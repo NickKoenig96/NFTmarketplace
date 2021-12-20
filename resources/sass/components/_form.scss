@@ -154,7 +154,7 @@ input[type=submit]{
     }
 
     &__input--image::after {
-        content: "PNG, JPG or GIF (max. 800 x 400 px)";
+        content: "PNG, JPG, JPEG  (max. 50kb)";
         display: flex;
         color: $black--40;
         font-family: 'Work Sans', sans-serif;
