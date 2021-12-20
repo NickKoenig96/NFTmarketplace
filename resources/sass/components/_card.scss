@@ -91,15 +91,9 @@
 }
 
 .card__price{
-    // color: $white;
     display: inline-block;
-    margin-top: 6px;
-    // background-color: $blue--60;
-    // padding: 4px;
-    // border-radius: 5px;
-    &--eth {
-        padding-top: 7px;
-    }
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .card__profilepicture{

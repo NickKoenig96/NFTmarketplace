@@ -27,15 +27,6 @@ class CollectionController extends Controller
         return view('collection/index', $data);
     }
 
-
-    public function indexDetail(){
-        $user = Auth::user();
-        $collections = Collection::get();
-       $data["collections"] = $collections;
-       $data["user"] = $user;
-        return view('collection/detailCollection', $data);
-    }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -243,10 +243,8 @@ h5 {
 
 .card__price {
   display: inline-block;
-  margin-top: 6px;
-}
-.card__price--eth {
-  padding-top: 7px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .card__profilepicture {

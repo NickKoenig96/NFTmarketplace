@@ -62,8 +62,7 @@
                         </div>
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
-                        <span data-token="{{ $nft->token_id }}" class="card__price--eth">ETH
-                            {{ $eth * $nft->price }}</span>
+                        <span data-token="{{ $nft->token_id }}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
