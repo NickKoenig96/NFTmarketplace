@@ -22,6 +22,7 @@
                     <div class="flex--spbet">
                         <span data-token="{{ $nft->token_id }}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
                     </div>
+                    <div class="loader loader--{{ $nft->id }}"></div>
                 </div>
                 <div class="flex--spbet">
                     @if ($nft->forSale === 1)
@@ -63,6 +64,7 @@
                 const transaction = await contractWithSigner.buyNFT(ethers.BigNumber.from(tokenId), {
                     value: price.toString()
                 });
+                document.querySelector(`.loader--${nftId}`).style.display = "block";
                 await transaction.wait().then(res => {
                     let buyerIdString = res['events'][2]['topics'][
                     2]; //returns string with tokenId as hexadecimal
@@ -84,6 +86,7 @@
                 document.body.appendChild(form);
                 form.action = `/nft/order/${nftId}/${buyerId}/${priceToEth}/${userId}/${sellerId}`;
                 form.submit();
+                document.querySelector(`.loader--${nftId}`).style.display = "none";
             });
         })
     </script>

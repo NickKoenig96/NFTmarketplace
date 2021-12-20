@@ -4100,11 +4100,7 @@ const BUMP = FixedNumber.from("0.5");
     if (typeof window !== 'undefined' && typeof window.Buffer !== 'undefined') {
       Buffer = window.Buffer;
     } else {
-<<<<<<< HEAD
-      Buffer = (__webpack_require__(/*! buffer */ "?ff28").Buffer);
-=======
       Buffer = __webpack_require__(/*! buffer */ "?ff28").Buffer;
->>>>>>> bugfixes2
     }
   } catch (e) {
   }
@@ -11126,11 +11122,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
-<<<<<<< HEAD
-const version = "networks/5.5.0";
-=======
 const version = "networks/5.5.1";
->>>>>>> bugfixes2
 //# sourceMappingURL=_version.js.map
 
 /***/ }),
@@ -11249,10 +11241,7 @@ const classicMordor = {
     name: "classicMordor",
     _defaultProvider: etcDefaultProvider("https://www.ethercluster.com/mordor", "classicMordor")
 };
-<<<<<<< HEAD
-=======
 // See: https://chainlist.org
->>>>>>> bugfixes2
 const networks = {
     unspecified: { chainId: 0, name: "unspecified" },
     homestead: homestead,
@@ -11294,14 +11283,11 @@ const networks = {
     xdai: { chainId: 100, name: "xdai" },
     matic: { chainId: 137, name: "matic" },
     maticmum: { chainId: 80001, name: "maticmum" },
-<<<<<<< HEAD
-=======
     optimism: { chainId: 10, name: "optimism" },
     "optimism-kovan": { chainId: 69, name: "optimism-kovan" },
     "optimism-goerli": { chainId: 420, name: "optimism-goerli" },
     arbitrum: { chainId: 42161, name: "arbitrum" },
     "arbitrum-rinkeby": { chainId: 421611, name: "arbitrum-rinkeby" },
->>>>>>> bugfixes2
     bnb: { chainId: 56, name: "bnb" },
     bnbt: { chainId: 97, name: "bnbt" },
 };
@@ -11615,11 +11601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
-<<<<<<< HEAD
-const version = "providers/5.5.0";
-=======
 const version = "providers/5.5.1";
->>>>>>> bugfixes2
 //# sourceMappingURL=_version.js.map
 
 /***/ }),
@@ -11704,8 +11686,6 @@ class AlchemyProvider extends _url_json_rpc_provider__WEBPACK_IMPORTED_MODULE_4_
             case "maticmum":
                 host = "polygon-mumbai.g.alchemy.com/v2/";
                 break;
-<<<<<<< HEAD
-=======
             case "arbitrum":
                 host = "arb-mainnet.g.alchemy.com/v2/";
                 break;
@@ -11718,7 +11698,6 @@ class AlchemyProvider extends _url_json_rpc_provider__WEBPACK_IMPORTED_MODULE_4_
             case "optimism-kovan":
                 host = "opt-kovan.g.alchemy.com/v2/";
                 break;
->>>>>>> bugfixes2
             default:
                 logger.throwArgumentError("unsupported network", "network", arguments[0]);
         }
@@ -12101,11 +12080,8 @@ class Resolver {
         return __awaiter(this, void 0, void 0, function* () {
             const linkage = [];
             try {
-<<<<<<< HEAD
-=======
                 // test data for ricmoo.eth
                 //const avatar = "eip155:1/erc721:0x265385c7f4132228A0d54EB1A9e7460b91c0cC68/29233";
->>>>>>> bugfixes2
                 const avatar = yield this.getText("avatar");
                 if (avatar == null) {
                     return null;
@@ -12176,11 +12152,7 @@ class Resolver {
                             // Get the token metadata
                             const metadata = yield (0,_ethersproject_web__WEBPACK_IMPORTED_MODULE_12__.fetchJson)(metadataUrl);
                             // Pull the image URL out
-<<<<<<< HEAD
-                            if (!metadata || typeof (metadata.image) !== "string" || !metadata.image.match(/^https:\/\//i)) {
-=======
                             if (!metadata || typeof (metadata.image) !== "string" || !metadata.image.match(/^(https:\/\/|data:)/i)) {
->>>>>>> bugfixes2
                                 return null;
                             }
                             linkage.push({ type: "metadata", content: JSON.stringify(metadata) });
@@ -13372,12 +13344,9 @@ class BaseProvider extends _ethersproject_abstract_provider__WEBPACK_IMPORTED_MO
             else {
                 // ENS name; forward lookup
                 resolver = yield this.getResolver(nameOrAddress);
-<<<<<<< HEAD
-=======
                 if (!resolver) {
                     return null;
                 }
->>>>>>> bugfixes2
             }
             const avatar = yield resolver.getAvatar();
             if (avatar == null) {
@@ -15294,8 +15263,6 @@ class InfuraProvider extends _url_json_rpc_provider__WEBPACK_IMPORTED_MODULE_4__
             case "maticmum":
                 host = "polygon-mumbai.infura.io";
                 break;
-<<<<<<< HEAD
-=======
             case "optimism":
                 host = "optimism-mainnet.infura.io";
                 break;
@@ -15308,7 +15275,6 @@ class InfuraProvider extends _url_json_rpc_provider__WEBPACK_IMPORTED_MODULE_4__
             case "arbitrum-rinkeby":
                 host = "arbitrum-rinkeby.infura.io";
                 break;
->>>>>>> bugfixes2
             default:
                 logger.throwError("unsupported network", _ethersproject_logger__WEBPACK_IMPORTED_MODULE_0__.Logger.errors.INVALID_ARGUMENT, {
                     argument: "network",
@@ -19880,11 +19846,7 @@ function computePublicKey(key, compressed) {
     if (typeof window !== 'undefined' && typeof window.Buffer !== 'undefined') {
       Buffer = window.Buffer;
     } else {
-<<<<<<< HEAD
-      Buffer = (__webpack_require__(/*! buffer */ "?0707").Buffer);
-=======
       Buffer = __webpack_require__(/*! buffer */ "?0707").Buffer;
->>>>>>> bugfixes2
     }
   } catch (e) {
   }
@@ -24744,10 +24706,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
-
-const version = "web/5.5.0";
-
-
+const version = "web/5.5.1";
 //# sourceMappingURL=_version.js.map
 
 /***/ }),
@@ -24932,7 +24891,6 @@ function _fetchData(connection, body, processFunc) {
             };
         }
     }
-
     const reData = new RegExp("^data:([a-z0-9-]+/[a-z0-9-]+);base64,(.*)$", "i");
     const dataMatch = ((url) ? url.match(reData) : null);
     if (dataMatch) {
@@ -24959,7 +24917,6 @@ function _fetchData(connection, body, processFunc) {
             });
         }
     }
-
     if (body) {
         options.method = "POST";
         options.body = body;
@@ -25009,26 +24966,34 @@ function _fetchData(connection, body, processFunc) {
                 let response = null;
                 try {
                     response = yield (0,_geturl__WEBPACK_IMPORTED_MODULE_5__.getUrl)(url, options);
-
-                    // Exponential back-off throttling
-                    if (response.statusCode === 429 && attempt < attemptLimit) {
-                        let tryAgain = true;
-                        if (throttleCallback) {
-                            tryAgain = yield throttleCallback(attempt, url);
+                    if (attempt < attemptLimit) {
+                        if (response.statusCode === 301 || response.statusCode === 302) {
+                            // Redirection; for now we only support absolute locataions
+                            const location = response.headers.location || "";
+                            if (options.method === "GET" && location.match(/^https:/)) {
+                                url = response.headers.location;
+                                continue;
+                            }
                         }
-                        if (tryAgain) {
-                            let stall = 0;
-                            const retryAfter = response.headers["retry-after"];
-                            if (typeof (retryAfter) === "string" && retryAfter.match(/^[1-9][0-9]*$/)) {
-                                stall = parseInt(retryAfter) * 1000;
+                        else if (response.statusCode === 429) {
+                            // Exponential back-off throttling
+                            let tryAgain = true;
+                            if (throttleCallback) {
+                                tryAgain = yield throttleCallback(attempt, url);
                             }
-                            else {
-                                stall = throttleSlotInterval * parseInt(String(Math.random() * Math.pow(2, attempt)));
+                            if (tryAgain) {
+                                let stall = 0;
+                                const retryAfter = response.headers["retry-after"];
+                                if (typeof (retryAfter) === "string" && retryAfter.match(/^[1-9][0-9]*$/)) {
+                                    stall = parseInt(retryAfter) * 1000;
+                                }
+                                else {
+                                    stall = throttleSlotInterval * parseInt(String(Math.random() * Math.pow(2, attempt)));
+                                }
+                                //console.log("Stalling 429");
+                                yield staller(stall);
+                                continue;
                             }
-                            //console.log("Stalling 429");
-                            yield staller(stall);
-                            continue;
-
                         }
                     }
                 }
@@ -28677,11 +28642,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "version": () => (/* binding */ version)
 /* harmony export */ });
-<<<<<<< HEAD
-const version = "ethers/5.5.1";
-=======
 const version = "ethers/5.5.2";
->>>>>>> bugfixes2
 //# sourceMappingURL=_version.js.map
 
 /***/ }),

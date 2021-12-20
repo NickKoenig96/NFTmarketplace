@@ -40,6 +40,7 @@
                     <div class="margint-12 flex flex--alcen">
                         <p>{{ $nft->description }}</p>
                     </div>
+                    <div class="loader loader--{{ $nft->id }}"></div>
                 </div>
                 <!-- juist ifloop voor de sales -->
                 <div class="margint-12 flex flex--alcen">
@@ -88,6 +89,7 @@
                         let tokenId = ethers.BigNumber.from(tokenIdString);
 
                         const transaction = await contractWithSigner.putUpForSale(tokenId, price);
+                        document.querySelector(`.loader--${id}`).style.display = "block";
                         await transaction.wait().then(res => {});
 
                         const forSale = await contract.isForSale(tokenId);
@@ -112,6 +114,7 @@
                             form.appendChild(idInput);
                             document.body.appendChild(form);
                             form.action = `/nft/markForSale`;
+                            document.querySelector(`.loader--${id}`).style.display = "none";
                             form.submit();
                         }
                     })
@@ -145,6 +148,9 @@
 
                         let tokenId;
                         const transaction = await contractWithSigner.mintNFT(media_file, price);
+                        
+                        document.querySelector(`.loader--${id}`).style.display = "block";
+                        
                         await transaction.wait().then(res => {
                             console.log(res);
                             let tokenIdString = res['events'][0]['topics'][3]; //returns string with tokenId as hexadecimal
@@ -166,6 +172,7 @@
                         form.appendChild(hiddencsrf);
                         document.body.appendChild(form);
                         form.action = `/nft/${tokenId}/${nftOwner}/${id}`;
+                        document.querySelector(`.loader--${id}`).style.display = "none";
                         form.submit();
                     });
                 })

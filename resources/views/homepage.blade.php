@@ -12,6 +12,7 @@
 
         <h1 class="card__title--headerSecond">Collections</h1>
 
+        
 
         <div class="cardgallery">
             @foreach ($collections as $collection)
@@ -63,6 +64,7 @@
                         <span class="card__price">€ {{ $nft->price }}</span>
                         <br>
                         <span data-token="{{ $nft->token_id }}" class="card__price--eth">ETH {{ $eth * $nft->price }}</span>
+                        <div class="loader loader--{{ $nft->id }}"></div>
                     </div>
                     <div class="flex--spbet">
                         <a href="/nfts/{{ $nft->id }}" class="btn btn--light btn--1col">View</a>
@@ -86,9 +88,10 @@
                         @endif
                         
 
-
+                        
                     </div>
                 </div>
+                
             @endforeach
         </div>
         <div class="btn__container">
@@ -121,6 +124,7 @@
                         let tokenId = ethers.BigNumber.from(tokenIdString);
 
                         const transaction = await contractWithSigner.putUpForSale(tokenId, price);
+                        document.querySelector(`.loader--${id}`).style.display = "block";
                         await transaction.wait().then(res => {});
 
                         const forSale = await contract.isForSale(tokenId);
@@ -145,6 +149,7 @@
                             form.appendChild(idInput);
                             document.body.appendChild(form);
                             form.action = `/nft/markForSale`;
+                            document.querySelector(`.loader--${id}`).style.display = "none";
                             form.submit();
                         }
                     })
@@ -178,6 +183,9 @@
 
                         let tokenId;
                         const transaction = await contractWithSigner.mintNFT(media_file, price);
+                        
+                        document.querySelector(`.loader--${id}`).style.display = "block";
+                        
                         await transaction.wait().then(res => {
                             console.log(res);
                             let tokenIdString = res['events'][0]['topics'][3]; //returns string with tokenId as hexadecimal
@@ -199,6 +207,7 @@
                         form.appendChild(hiddencsrf);
                         document.body.appendChild(form);
                         form.action = `/nft/${tokenId}/${nftOwner}/${id}`;
+                        document.querySelector(`.loader--${id}`).style.display = "none";
                         form.submit();
                     });
                 })

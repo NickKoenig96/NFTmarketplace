@@ -913,6 +913,19 @@ select {
   color: #162C99;
 }
 
+.loader {
+  display: none;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+  margin-top: 10px;
+}
+
 body {
   background-color: #f9fafd;
 }
